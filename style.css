@@ -1,50 +1,128 @@
-/* Importação de fonte moderna */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+/* 1. Reset e Variáveis */
+:root {
+    --primary: #2563eb;
+    --dark: #1f2937;
+    --light: #f9fafb;
+    --text: #4b5563;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Permite a navegação suave entre as âncoras */
+}
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f172a;
-    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--white);
 }
 
-/* Efeito Glassmorphism */
-.glass {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* 2. Componentes Reutilizáveis */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Scrollbar Personalizada */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0f172a; 
-}
-::-webkit-scrollbar-thumb {
-    background: #334155; 
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #475569; 
+.section {
+    padding: 100px 0;
 }
 
-/* Animações de entrada */
-.fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--dark);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.bg-light { background-color: var(--light); }
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
 }
 
-/* Interação com ícones de Apps */
-.app-icon {
-    transition: transform 0.2s, background-color 0.2s;
+.btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* 3. Navegação */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.app-icon:hover {
-    transform: scale(1.05);
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 30px; }
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: var(--transition);
+}
+.nav-links a:hover { color: var(--primary); }
+
+/* 4. Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.highlight { color: var(--primary); }
+
+/* 5. Projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.project-card:hover { transform: translateY(-5px); }
+
+/* 6. Footer */
+.footer {
+    padding: 40px 0;
+    text-align: center;
+    background: var(--dark);
+    color: var(--white);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplicidade para Mobile */
+    .section-title { font-size: 2rem; }
 }

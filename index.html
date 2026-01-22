@@ -1,159 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio do Bruno</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>O Meu Portfólio | Desenvolvedor</title>
     <!-- Link para o CSS Externo -->
     <link rel="stylesheet" href="style.css">
+    <!-- Ícones via Lucide (CDN leve) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+<body>
 
-    <main class="w-full max-w-4xl min-h-[600px] glass rounded-3xl shadow-2xl overflow-hidden relative flex flex-col md:flex-row">
-        
-        <!-- Sidebar -->
-        <aside class="w-full md:w-1/3 bg-slate-900/50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-slate-700">
-            <div class="mb-8 text-center">
-                <div class="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-white mb-4 shadow-lg mx-auto">
-                    B
-                </div>
-                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Bruno</h1>
-                <p class="text-slate-400 text-sm">Desenvolvedor Web em Evolução</p>
-            </div>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="logo">Dev<span>Portfolio</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-            <div class="flex flex-col w-full gap-3">
-                <button onclick="toggleSection('about')" class="w-full py-3 px-6 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition flex items-center justify-center gap-2 border border-slate-700">
-                    <i class="fas fa-user"></i> Sobre Mim
-                </button>
-                <button onclick="toggleSection('projects')" class="w-full py-3 px-6 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition flex items-center justify-center gap-2 border border-slate-700">
-                    <i class="fas fa-code-branch"></i> Outros Projetos
-                </button>
-            </div>
-        </aside>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Olá, eu sou o <span class="highlight">Teu Nome</span></h1>
+            <p>Desenvolvedor Web focado em criar experiências digitais incríveis.</p>
+            <a href="#projetos" class="btn-primary">Ver Projetos</a>
+        </div>
+    </section>
 
-        <!-- Conteúdo -->
-        <section class="w-full md:w-2/3 p-6 md:p-8 relative bg-slate-800/30">
-            
-            <div id="home-view" class="h-full flex flex-col">
-                <h2 class="text-2xl font-semibold mb-6 text-slate-200">Meus Aplicativos</h2>
-                <div class="grid grid-cols-2 gap-4 flex-grow content-start">
-                    <div onclick="openApp('calculator')" class="app-icon cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 border border-slate-600 shadow-lg text-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center text-white text-xl"><i class="fas fa-calculator"></i></div>
-                        <span class="font-medium">Calculadora</span>
-                    </div>
+    <!-- Sobre Mim -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <p class="section-text">
+                Sou um entusiasta de tecnologia com paixão por transformar ideias em código. 
+                Especialista em criar soluções limpas, eficientes e visualmente atraentes.
+            </p>
+        </div>
+    </section>
 
-                    <div onclick="openApp('clock')" class="app-icon cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 border border-slate-600 shadow-lg text-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl"><i class="fas fa-clock"></i></div>
-                        <span class="font-medium">Relógio</span>
-                    </div>
-
-                    <div onclick="openApp('todo')" class="app-icon cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 border border-slate-600 shadow-lg text-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white text-xl"><i class="fas fa-check-double"></i></div>
-                        <span class="font-medium">Tarefas</span>
-                    </div>
-
-                    <div onclick="openApp('weather')" class="app-icon cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 border border-slate-600 shadow-lg text-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-sky-400 flex items-center justify-center text-white text-xl"><i class="fas fa-cloud-sun"></i></div>
-                        <span class="font-medium">Clima</span>
+    <!-- Projetos -->
+    <section id="projetos" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Meus Projetos</h2>
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Web App XPTO</h3>
+                        <p>Uma aplicação robusta desenvolvida com tecnologias modernas.</p>
+                        <a href="#" class="project-link">Ver Código</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Sobre Mim -->
-            <div id="about-section" class="hidden absolute inset-0 bg-slate-900 p-8 z-20 overflow-y-auto fade-in">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-blue-400">Sobre Mim</h2>
-                    <button onclick="closeOverlay()" class="text-slate-400 hover:text-white"><i class="fas fa-times fa-lg"></i></button>
-                </div>
-                <div class="space-y-4 text-slate-300">
-                    <p>Olá! Sou o Bruno. Atualmente estou focado em aprender desenvolvimento Web...</p>
+                <!-- Projeto 2 -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Plataforma E-commerce</h3>
+                        <p>Interface intuitiva e focada na experiência do utilizador.</p>
+                        <a href="#" class="project-link">Ver Código</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Outros Projetos -->
-            <div id="projects-section" class="hidden absolute inset-0 bg-slate-900 p-8 z-20 overflow-y-auto fade-in">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-purple-400">Repositórios</h2>
-                    <button onclick="closeOverlay()" class="text-slate-400 hover:text-white"><i class="fas fa-times fa-lg"></i></button>
-                </div>
-                <div class="space-y-4 text-slate-200">
-                    <a href="https://github.com/brunojsdev" target="_blank" class="flex items-center justify-between p-4 bg-slate-800 rounded-xl border border-slate-700 hover:bg-slate-700 transition group">
-                        <div>
-                            <h4 class="text-white font-semibold">Meu Perfil GitHub</h4>
-                            <p class="text-xs text-slate-400">Veja meus códigos e evoluções.</p>
-                        </div>
-                        <i class="fas fa-external-link-alt text-slate-500 group-hover:text-blue-400"></i>
-                    </a>
-                </div>
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-wrapper">
+                <p>Estou disponível para novos projetos e colaborações.</p>
+                <a href="mailto:exemplo@email.com" class="btn-outline">Enviar E-mail</a>
             </div>
+        </div>
+    </section>
 
-            <!-- App Container -->
-            <div id="app-wrapper" class="hidden absolute inset-0 bg-slate-800 z-10 flex flex-col fade-in">
-                <div class="flex justify-between items-center p-4 border-b border-slate-700 bg-slate-900/50">
-                    <h3 id="app-title" class="font-bold text-lg text-slate-200">App</h3>
-                    <button onclick="closeApp()" class="px-3 py-1 bg-red-500/20 text-red-400 rounded-lg text-sm">Fechar</button>
-                </div>
-                <div id="app-content" class="flex-grow p-4 overflow-y-auto flex items-center justify-center relative">
-                    <!-- Conteúdo dinâmico -->
-                    <div id="app-calculator" class="hidden w-full max-w-xs bg-slate-900 p-4 rounded-2xl border border-slate-700">
-                        <input type="text" id="calc-display" readonly class="w-full bg-slate-800 text-right text-3xl text-white p-4 rounded-lg mb-4 font-mono outline-none">
-                        <div class="grid grid-cols-4 gap-2 text-slate-200">
-                           <button onclick="calcClear()" class="p-3 bg-red-900/50 text-red-200 rounded-lg">C</button>
-                           <button onclick="calcInput('/')" class="p-3 bg-slate-700 text-blue-300 rounded-lg">÷</button>
-                           <button onclick="calcInput('*')" class="p-3 bg-slate-700 text-blue-300 rounded-lg">×</button>
-                           <button onclick="calcDelete()" class="p-3 bg-slate-700 text-yellow-300 rounded-lg">⌫</button>
-                           <button onclick="calcInput('7')" class="p-3 bg-slate-800 rounded-lg">7</button>
-                           <button onclick="calcInput('8')" class="p-3 bg-slate-800 rounded-lg">8</button>
-                           <button onclick="calcInput('9')" class="p-3 bg-slate-800 rounded-lg">9</button>
-                           <button onclick="calcInput('-')" class="p-3 bg-slate-700 text-blue-300 rounded-lg">-</button>
-                           <button onclick="calcInput('4')" class="p-3 bg-slate-800 rounded-lg">4</button>
-                           <button onclick="calcInput('5')" class="p-3 bg-slate-800 rounded-lg">5</button>
-                           <button onclick="calcInput('6')" class="p-3 bg-slate-800 rounded-lg">6</button>
-                           <button onclick="calcInput('+')" class="p-3 bg-slate-700 text-blue-300 rounded-lg">+</button>
-                           <button onclick="calcInput('1')" class="p-3 bg-slate-800 rounded-lg">1</button>
-                           <button onclick="calcInput('2')" class="p-3 bg-slate-800 rounded-lg">2</button>
-                           <button onclick="calcInput('3')" class="p-3 bg-slate-800 rounded-lg">3</button>
-                           <button onclick="calcResult()" class="row-span-2 p-3 bg-blue-600 text-white rounded-lg">=</button>
-                           <button onclick="calcInput('0')" class="col-span-2 p-3 bg-slate-800 rounded-lg">0</button>
-                           <button onclick="calcInput('.')" class="p-3 bg-slate-800 rounded-lg">.</button>
-                        </div>
-                   </div>
-
-                   <div id="app-clock" class="hidden text-center text-slate-200">
-                       <div class="relative w-64 h-64 border-4 border-blue-500 rounded-full flex items-center justify-center bg-slate-900">
-                           <div>
-                               <div id="clock-time" class="text-5xl font-mono font-bold text-white">00:00</div>
-                               <div id="clock-date" class="text-slate-400 mt-2 text-sm uppercase">...</div>
-                           </div>
-                       </div>
-                   </div>
-
-                   <div id="app-todo" class="hidden w-full max-w-sm h-full flex flex-col">
-                       <div class="flex gap-2 mb-4">
-                           <input type="text" id="todo-input" placeholder="Nova tarefa..." class="flex-grow p-3 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none">
-                           <button onclick="addTodo()" class="bg-green-600 text-white px-4 rounded-lg"><i class="fas fa-plus"></i></button>
-                       </div>
-                       <ul id="todo-list" class="flex flex-col gap-2 overflow-y-auto max-h-[350px]"></ul>
-                   </div>
-
-                   <div id="app-weather" class="hidden w-full max-w-sm text-center">
-                       <div class="bg-gradient-to-b from-sky-500 to-blue-600 p-8 rounded-3xl text-white shadow-xl">
-                           <h2 class="text-2xl font-bold mb-1">São Paulo</h2>
-                           <div class="flex justify-center items-center gap-4 my-6">
-                               <i class="fas fa-sun text-yellow-300 text-6xl"></i>
-                               <div class="text-6xl font-bold" id="weather-temp">--°</div>
-                           </div>
-                           <button onclick="updateWeather()" class="text-xs bg-white/20 px-3 py-1 rounded-full">Atualizar</button>
-                       </div>
-                   </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2024 DevPortfolio. Todos os direitos reservados.</p>
+    </footer>
 
     <!-- Link para o JavaScript Externo -->
     <script src="script.js"></script>
