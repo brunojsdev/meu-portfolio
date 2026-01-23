@@ -4,12 +4,510 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Bruno Silveira</title>
-    <!-- Link para o arquivo CSS externo -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* * CONFIGURAÇÕES GERAIS E PALETA DE CORES 
+         * Restrição de cores: Azul Claro, Azul Escuro, Verde Escuro, Roxo, Preto, Branco.
+         */
+        :root {
+            --cor-preto: #050505;
+            --cor-branco: #ffffff;
+            --cor-azul-escuro: #0f172a;
+            --cor-azul-claro: #38bdf8;
+            --cor-verde-escuro: #15803d; /* Usado para sucessos e detalhes */
+            --cor-roxo: #7e22ce; /* Usado para criatividade e destaques */
+            --bg-glass: rgba(15, 23, 42, 0.8); /* Azul escuro com transparência */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-preto);
+            color: var(--cor-branco);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* TIPOGRAFIA E UTILITÁRIOS */
+        .text-destaque { color: var(--cor-azul-claro); }
+        .text-roxo { color: var(--cor-roxo); }
+        .text-verde { color: var(--cor-verde-escuro); }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* NAVEGAÇÃO / TRANSIÇÃO DE TELAS */
+        .section-container {
+            display: none; /* Esconde todas as seções por padrão */
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section-container.active {
+            display: flex; /* Mostra a seção ativa */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* * TELA INICIAL (HOME) 
+         */
+        #home-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza tudo verticalmente */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--cor-branco), var(--cor-azul-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--cor-azul-claro);
+            margin-bottom: 20px;
+        }
+
+        /* MENU DE BOTÕES PRINCIPAIS */
+        .main-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+
+        .menu-btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: transparent;
+            border: 2px solid var(--cor-azul-claro);
+            color: var(--cor-branco);
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-btn:hover {
+            background-color: var(--cor-azul-claro);
+            color: var(--cor-preto);
+            box-shadow: 0 0 15px var(--cor-azul-claro);
+            transform: translateY(-2px);
+        }
+
+        .menu-btn.destaque {
+            border-color: var(--cor-roxo);
+        }
+        .menu-btn.destaque:hover {
+            background-color: var(--cor-roxo);
+            box-shadow: 0 0 15px var(--cor-roxo);
+        }
+
+        .menu-btn.github { border-color: var(--cor-verde-escuro); }
+        .menu-btn.github:hover { background: var(--cor-verde-escuro); }
+
+        /* TÍTULO DA SEÇÃO DE PEQUENOS PROJETOS */
+        .section-title {
+            font-size: 2rem;
+            color: var(--cor-branco);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--cor-roxo);
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 1200px;
+            text-align: left;
+        }
+
+        /* GRID DE MINI PROJETOS */
+        .widgets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .widget-card {
+            background-color: var(--cor-azul-escuro);
+            border: 1px solid var(--cor-roxo);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            height: auto;
+        }
+
+        .widget-card.collapsed .widget-content {
+            display: none;
+        }
+        
+        .widget-card.collapsed {
+            padding: 25px;
+            justify-content: center;
+        }
+        
+        .widget-card.collapsed:hover {
+            background-color: var(--cor-roxo);
+            transform: translateY(-5px);
+        }
+
+        .widget-card.expanded {
+            border-color: var(--cor-azul-claro);
+            cursor: default;
+        }
+
+        .widget-title {
+            color: var(--cor-azul-claro);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .widget-card.expanded .widget-title {
+            border-bottom: 1px solid var(--cor-roxo);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .widget-card.collapsed .widget-title {
+            color: var(--cor-branco);
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .widget-content {
+            width: 100%;
+            animation: fadeInContent 0.5s ease;
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .expand-icon {
+            font-size: 1.5rem;
+            color: var(--cor-branco);
+            margin-top: 10px;
+            display: none;
+        }
+        .widget-card.collapsed .expand-icon {
+            display: block;
+        }
+
+        /* WIDGET: RELÓGIO */
+        #digital-clock {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            color: var(--cor-branco);
+            text-shadow: 0 0 10px var(--cor-azul-claro);
+            text-align: center;
+        }
+
+        /* WIDGET: CLIMA */
+        .weather-display {
+            text-align: center;
+        }
+        .weather-temp {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .weather-city {
+            color: #aaa;
+        }
+        .weather-btn {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: var(--cor-verde-escuro);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* WIDGET: TODO LIST */
+        .todo-input-group {
+            display: flex;
+            width: 100%;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .todo-input {
+            flex: 1;
+            background: var(--cor-preto);
+            border: 1px solid var(--cor-azul-claro);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .todo-add-btn {
+            background: var(--cor-roxo);
+            color: white;
+            padding: 0 10px;
+            border-radius: 4px;
+        }
+        .todo-list {
+            list-style: none;
+            width: 100%;
+            max-height: 120px;
+            overflow-y: auto;
+            text-align: left;
+        }
+        .todo-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        .todo-item-text {
+            flex: 1;
+            padding-right: 10px;
+        }
+        .todo-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .todo-check {
+            color: var(--cor-verde-escuro);
+            cursor: pointer;
+        }
+        .todo-delete {
+            color: #991b1b;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .todo-delete:hover {
+            color: #ef4444;
+        }
+
+        /* WIDGET: CALCULADORA */
+        .calc-display {
+            width: 100%;
+            background: var(--cor-preto);
+            color: var(--cor-azul-claro);
+            text-align: right;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .calc-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            width: 100%;
+        }
+        .calc-btn {
+            background: var(--cor-azul-escuro);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #333;
+        }
+        .calc-btn:hover { background: var(--cor-roxo); }
+        .calc-btn.op { background: var(--cor-verde-escuro); }
+        .calc-btn.clear { background: #991b1b; }
+
+        /* * TELA SOBRE MIM 
+         */
+        .content-box {
+            background: var(--cor-azul-escuro);
+            border: 1px solid var(--cor-azul-claro);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }
+
+        .about-header {
+            border-bottom: 2px solid var(--cor-roxo);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .about-header h2 {
+            font-size: 2.5rem;
+            color: var(--cor-branco);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media(min-width: 768px) {
+            .about-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .profile-info h3 {
+            color: var(--cor-azul-claro);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .role-tag {
+            background-color: var(--cor-roxo);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .bio-text {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .skills-container {
+            margin-top: 20px;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .skill-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--cor-verde-escuro);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .skill-badge:hover {
+            background: var(--cor-verde-escuro);
+            color: white;
+        }
+
+        /* * TELA PROJETOS 
+         */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--cor-azul-claro);
+            transform: scale(1.02);
+        }
+
+        .project-card h4 {
+            color: var(--cor-azul-claro);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .back-btn {
+            margin-bottom: 20px;
+            align-self: flex-start;
+            background: transparent;
+            color: var(--cor-azul-claro);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-btn:hover { color: var(--cor-branco); }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: auto;
+        }
+
+    </style>
 </head>
 <body>
 
-    <!-- SEÇÃO HOME -->
+    <!-- HOME SECTION -->
     <div id="home" class="section-container active">
         <header>
             <h1 id="main-name">Bruno Silveira</h1>
@@ -75,8 +573,15 @@
                             <li>
                                 <span class="todo-item-text">Estudar Python</span>
                                 <div class="todo-actions">
-                                    <span class="todo-check" onclick="markDone(this)">✔</span>
-                                    <span class="todo-delete" onclick="deleteTask(this)">✖</span>
+                                    <span class="todo-check" onclick="this.closest('li').style.textDecoration = 'line-through'">✔</span>
+                                    <span class="todo-delete" onclick="this.closest('li').remove()">✖</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="todo-item-text">Atualizar GitHub</span>
+                                <div class="todo-actions">
+                                    <span class="todo-check" onclick="this.closest('li').style.textDecoration = 'line-through'">✔</span>
+                                    <span class="todo-delete" onclick="this.closest('li').remove()">✖</span>
                                 </div>
                             </li>
                         </ul>
@@ -115,7 +620,7 @@
         </footer>
     </div>
 
-    <!-- SEÇÃO SOBRE MIM -->
+    <!-- ABOUT SECTION -->
     <div id="about" class="section-container">
         <button class="back-btn" onclick="showSection('home')">← Voltar para Início</button>
         
@@ -137,7 +642,7 @@
                     <div style="margin-top: 30px;">
                         <h4 class="text-destaque">Objetivo de Carreira</h4>
                         <p class="bio-text">
-                            Decidi aprender programação motivado pelo interesse em tecnologia e pela possibilidade de criar soluções práticas para problemas reais. Busco desenvolver habilidades técnicas sólidas, com foco em aprendizado contínuo.
+                            Decidi aprender programação motivado pelo interesse em tecnologia e pela possibilidade de criar soluções práticas para problemas reais. Busco desenvolver habilidades técnicas sólidas, com foco em aprendizado contínuo, boas práticas de desenvolvimento e evolução profissional na área de software.
                         </p>
                     </div>
                 </div>
@@ -145,38 +650,166 @@
                 <div>
                     <h4 class="text-destaque">Tech Stack</h4>
                     <div class="skills-container">
+                        <p style="font-size: 0.9rem; color:#ccc;">Linguagens e Ferramentas que estou aprendendo:</p>
                         <div class="skills-list">
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">HTML</span>
-                            <span class="skill-badge">CSS</span>
-                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge" style="border-color: var(--cor-azul-claro);">Python</span>
+                            <span class="skill-badge" style="border-color: #f7df1e;">JavaScript</span>
+                            <span class="skill-badge" style="border-color: #e34f26;">HTML</span>
+                            <span class="skill-badge" style="border-color: #264de4;">CSS</span>
+                            <span class="skill-badge" style="border-color: #f89820;">Java</span>
+                            <span class="skill-badge" style="border-color: #38bdf8;">Tailwind</span>
                         </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <h4 class="text-roxo">Interesses Pessoais</h4>
+                        <p class="bio-text">
+                            Tenho interesse em animes, jogos como Pokémon e animações independentes no YouTube, que utilizo como inspiração para projetos pessoais e estudos em programação. Também pratico caminhadas, buscando equilíbrio, foco e constância no aprendizado.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SEÇÃO OUTROS PROJETOS -->
+    <!-- PROJECTS SECTION -->
     <div id="projects" class="section-container">
         <button class="back-btn" onclick="showSection('home')">← Voltar para Início</button>
         
         <div class="content-box">
             <div class="about-header">
                 <h2>Projetos</h2>
+                <p class="subtitle">Repositórios e Experimentos</p>
             </div>
+
             <div class="projects-grid">
                 <div class="project-card">
                     <h4>Portfólio Pessoal</h4>
-                    <p>Este site que você está acessando.</p>
+                    <p style="font-size: 0.9rem; color: #ccc;">Este site que você está acessando. Feito com HTML, CSS e JS puro.</p>
                 </div>
-                <!-- Mais cards aqui... -->
+
+                <div class="project-card">
+                    <h4>Em breve</h4>
+                    <p style="font-size: 0.9rem; color: #666;">Espaço reservado para adicionar repositórios do GitHub.</p>
+                    <span style="font-size: 2rem; color: var(--cor-verde-escuro); margin-top: 10px;">+</span>
+                </div>
+
+                <div class="project-card">
+                    <h4>Em breve</h4>
+                    <p style="font-size: 0.9rem; color: #666;">Espaço reservado para adicionar repositórios do GitHub.</p>
+                    <span style="font-size: 2rem; color: var(--cor-verde-escuro); margin-top: 10px;">+</span>
+                </div>
+
+                <div class="project-card">
+                    <h4>Em breve</h4>
+                    <p style="font-size: 0.9rem; color: #666;">Espaço reservado para adicionar repositórios do GitHub.</p>
+                    <span style="font-size: 2rem; color: var(--cor-verde-escuro); margin-top: 10px;">+</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Link para o arquivo JavaScript externo -->
-    <script src="script.js"></script>
+    <script>
+        // --- NAVEGAÇÃO ENTRE SEÇÕES ---
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-container').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- EXPANSÃO DOS WIDGETS ---
+        function toggleWidget(element) {
+            if (element.classList.contains('collapsed')) {
+                element.classList.remove('collapsed');
+                element.classList.add('expanded');
+            } else {
+                element.classList.add('collapsed');
+                element.classList.remove('expanded');
+            }
+        }
+
+        // --- WIDGET: RELÓGIO DIGITAL ---
+        function startClock() {
+            const clockEl = document.getElementById('digital-clock');
+            setInterval(() => {
+                const now = new Date();
+                clockEl.innerText = now.toLocaleTimeString('pt-BR');
+            }, 1000);
+        }
+        startClock();
+
+        // --- WIDGET: CALCULADORA ---
+        let calcExpression = '';
+        const calcDisplay = document.getElementById('calc-display');
+
+        function calcAppend(val) {
+            calcExpression += val;
+            calcDisplay.innerText = calcExpression;
+        }
+
+        function calcClear() {
+            calcExpression = '';
+            calcDisplay.innerText = '0';
+        }
+
+        function calcEqual() {
+            try {
+                if(/^[0-9+\-*/.]+$/.test(calcExpression)) {
+                    const result = eval(calcExpression);
+                    calcDisplay.innerText = result;
+                    calcExpression = result.toString();
+                } else {
+                    calcDisplay.innerText = 'Erro';
+                    calcExpression = '';
+                }
+            } catch (e) {
+                calcDisplay.innerText = 'Erro';
+                calcExpression = '';
+            }
+        }
+
+        // --- WIDGET: TODO LIST ---
+        const todoInput = document.getElementById('todo-input');
+        const todoList = document.getElementById('todo-list');
+
+        function addTodo() {
+            const text = todoInput.value;
+            if (text.trim() === '') return;
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span class="todo-item-text">${text}</span>
+                <div class="todo-actions">
+                    <span class="todo-check" onclick="this.closest('li').style.textDecoration = 'line-through'">✔</span>
+                    <span class="todo-delete" onclick="this.closest('li').remove()">✖</span>
+                </div>
+            `;
+            todoList.appendChild(li);
+            todoInput.value = '';
+        }
+        
+        todoInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') addTodo();
+        });
+
+        // --- WIDGET: CLIMA (SIMULADO) ---
+        function updateWeather() {
+            const display = document.getElementById('weather-display');
+            display.innerHTML = '<div style="padding: 20px;">Buscando...</div>';
+            
+            setTimeout(() => {
+                display.innerHTML = `
+                    <div style="font-size: 3rem;">🌦</div>
+                    <div class="weather-temp">22°C</div>
+                    <div class="weather-city">São Bernardo do Campo</div>
+                    <div style="font-size: 0.8rem; color: var(--cor-azul-claro);">Atualizado agora</div>
+                    <button class="weather-btn" onclick="event.stopPropagation(); updateWeather()">Atualizar</button>
+                `;
+            }, 1000);
+        }
+
+    </script>
 </body>
 </html>
