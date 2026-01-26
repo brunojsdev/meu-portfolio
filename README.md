@@ -1,6 +1,6 @@
 # Portfólio Pessoal — Bruno Silveira
 
-Este repositório contém o meu **portfólio pessoal**, desenvolvido com o objetivo de apresentar minhas competências, projetos e objetivos na área  de **desenvolvimento de software**.
+Este repositório contém o meu **portfólio pessoal**, desenvolvido com o objetivo de apresentar minhas competências, projetos e objetivos na área de **desenvolvimento de software**.
 
 Atualmente, estou focado no aprendizado como **Desenvolvedor Fullstack Júnior**, buscando criar soluções que unam **funcionalidade**, **clareza** e **design**.
 
