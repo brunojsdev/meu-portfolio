@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfólio | Bruno Silveira</title>
     <style>
-      /* * CONFIGURAÇÕES GERAIS E PALETA DE CORES 
-         * Paleta: Azul Escuro, Azul Claro, Preto, Branco, Roxo.
+      /* * CONFIGURAÇÕES GERAIS E PALETA DE CORES (Baseada na Imagem de Referência)
+         * Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Branco.
          */
       :root {
-        --cor-bg-main: #020617; /* Azul muito escuro (quase preto) */
-        --cor-bg-card: #0f172a; /* Azul escuro para cartões */
-        --cor-texto: #f8fafc; /* Branco gelo */
-        --cor-destaque: #38bdf8; /* Azul Claro (Sky Blue) */
-        --cor-roxo: #a855f7; /* Roxo para detalhes sutis */
-        --cor-borda: #1e293b; /* Cor de borda suave */
+        --cor-bg-main: #050a14; /* Azul muito escuro (quase preto) */
+        --cor-bg-card: #0b1221; /* Azul escuro levemente mais claro */
+        --cor-texto: #e2e8f0;   /* Branco gelo suave */
+        --cor-primaria: #00ff88; /* Verde Neon (Destaque principal) */
+        --cor-secundaria: #00d2ff; /* Ciano (Destaque secundário) */
+        --cor-borda: #1e293b;
       }
 
       * {
@@ -26,31 +26,32 @@
 
       body {
         background-color: var(--cor-bg-main);
-        /* Gradiente sutil para não ficar chapado */
-        background-image:
-          radial-gradient(
-            circle at 15% 50%,
-            rgba(56, 189, 248, 0.08) 0%,
-            transparent 25%
-          ),
-          radial-gradient(
-            circle at 85% 30%,
-            rgba(168, 85, 247, 0.08) 0%,
-            transparent 25%
-          );
         color: var(--cor-texto);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        position: relative;
       }
 
-      /* TIPOGRAFIA E UTILITÁRIOS */
-      .text-destaque {
-        color: var(--cor-destaque);
+      /* CANVAS DE FUNDO (Efeito Digital Rain) */
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.4; /* Suavizar o fundo para não atrapalhar a leitura */
       }
-      .text-roxo {
-        color: var(--cor-roxo);
+
+      /* UTILITÁRIOS DE TEXTO */
+      .text-destaque {
+        color: var(--cor-primaria);
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+      .text-secundario {
+        color: var(--cor-secundaria);
       }
 
       button {
@@ -63,73 +64,69 @@
       a {
         text-decoration: none;
         color: inherit;
+        transition: all 0.3s ease;
       }
 
-      /* NAVEGAÇÃO / TRANSIÇÃO DE TELAS */
+      /* NAVEGAÇÃO / TRANSIÇÃO DE SEÇÕES */
       .section-container {
-        display: none; /* Esconde todas as seções por padrão */
+        display: none;
         min-height: 100vh;
         width: 100%;
         padding: 20px;
-        animation: fadeIn 0.5s ease-in-out;
+        animation: fadeIn 0.6s ease-in-out;
+        z-index: 1;
       }
 
       .section-container.active {
-        display: flex; /* Mostra a seção ativa */
-        flex-direction: column;
-        align-items: center;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* * TELA INICIAL (HOME) 
-         */
-      #home-content {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        flex-grow: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      header {
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* === TELA INICIAL (HOME) === */
+      #home-content {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        margin-bottom: 20px;
-        margin-top: 40px;
+      }
+
+      header {
+        margin-top: 60px;
+        margin-bottom: 30px;
       }
 
       h1 {
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 800;
-        letter-spacing: -1px;
+        letter-spacing: -2px;
+        /* Gradiente Verde -> Ciano */
         background: linear-gradient(
           to right,
-          var(--cor-texto),
-          var(--cor-destaque)
+          var(--cor-primaria),
+          var(--cor-secundaria)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 10px;
-        text-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+        text-shadow: 0 0 40px rgba(0, 255, 136, 0.15);
       }
 
       .subtitle {
-        font-size: 1.2rem;
-        color: var(--cor-destaque);
-        margin-bottom: 20px;
+        font-size: 1.3rem;
+        color: var(--cor-secundaria);
         font-weight: 300;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
       }
 
       /* MENU DE BOTÕES PRINCIPAIS */
@@ -138,29 +135,29 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        margin-bottom: 60px;
+        margin-bottom: 50px;
         width: 100%;
       }
 
-      /* Estilo UNIFICADO para todos os botões do menu */
       .menu-btn {
-        padding: 12px 30px;
+        padding: 14px 35px;
         font-size: 1rem;
-        font-weight: 600;
-        background-color: transparent;
-        border: 1px solid var(--cor-destaque); /* Azul claro para todos */
-        color: var(--cor-destaque);
+        font-weight: 700;
+        background-color: rgba(5, 10, 20, 0.8);
+        border: 1px solid var(--cor-primaria);
+        color: var(--cor-primaria);
         border-radius: 4px;
         display: inline-flex;
         align-items: center;
         gap: 10px;
         position: relative;
         overflow: hidden;
-        z-index: 1;
         text-transform: uppercase;
         letter-spacing: 1px;
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
       }
 
+      /* Efeito Hover Estilo "Preencher" */
       .menu-btn::before {
         content: "";
         position: absolute;
@@ -168,7 +165,7 @@
         left: 0;
         width: 0%;
         height: 100%;
-        background: var(--cor-destaque);
+        background: var(--cor-primaria);
         transition: width 0.3s ease;
         z-index: -1;
       }
@@ -179,416 +176,133 @@
 
       .menu-btn:hover {
         color: var(--cor-bg-main);
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+        transform: translateY(-3px);
       }
 
-      /* TÍTULO DA SEÇÃO */
-      .section-title {
-        font-size: 1.5rem;
-        color: var(--cor-texto);
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border-left: 4px solid var(--cor-roxo);
-        padding-left: 15px;
-        width: 100%;
-        max-width: 1200px;
-        text-align: left;
-      }
-
-      /* GRID DE WIDGETS */
-      .widgets-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        width: 100%;
-        margin-bottom: 50px;
-      }
-
-      .widget-card {
-        background-color: var(--cor-bg-card);
+      /* === CONTEÚDO SOBRE MIM (Agora na Home) === */
+      .about-embedded {
+        background: rgba(11, 18, 33, 0.7); /* Fundo semi-transparente */
+        backdrop-filter: blur(5px);
         border: 1px solid var(--cor-borda);
-        border-bottom: 2px solid var(--cor-destaque);
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        cursor: pointer;
-        height: auto;
-      }
-
-      .widget-card:hover {
-        border-color: var(--cor-roxo);
-        box-shadow: 0 8px 25px rgba(168, 85, 247, 0.15);
-      }
-
-      .widget-card.collapsed .widget-content {
-        display: none;
-      }
-
-      .widget-card.collapsed {
-        padding: 25px;
-        justify-content: center;
-      }
-
-      .widget-card.collapsed:hover {
-        background-color: #1e293b;
-        transform: translateY(-5px);
-      }
-
-      .widget-card.expanded {
-        border-color: var(--cor-roxo);
-        cursor: default;
-      }
-
-      .widget-title {
-        color: var(--cor-destaque);
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        width: 100%;
-        text-align: center;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      .widget-card.expanded .widget-title {
-        border-bottom: 1px solid var(--cor-borda);
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-        text-align: left;
-        color: var(--cor-roxo);
-      }
-
-      .widget-card.collapsed .widget-title {
-        color: var(--cor-texto);
-        border: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .widget-content {
-        width: 100%;
-        animation: fadeInContent 0.5s ease;
-      }
-
-      @keyframes fadeInContent {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      .expand-icon {
-        font-size: 1.5rem;
-        color: var(--cor-destaque);
-        margin-top: 10px;
-        display: none;
-      }
-      .widget-card.collapsed .expand-icon {
-        display: block;
-      }
-
-      /* WIDGET: RELÓGIO */
-      #digital-clock {
-        font-size: 2.5rem;
-        font-weight: bold;
-        font-family: "Courier New", monospace;
-        color: var(--cor-destaque);
-        text-align: center;
-        letter-spacing: 2px;
-        text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-      }
-
-      /* WIDGET: CLIMA */
-      .weather-display {
-        text-align: center;
-      }
-      .weather-temp {
-        font-size: 3rem;
-        font-weight: bold;
-        color: var(--cor-texto);
-      }
-      .weather-city {
-        color: #94a3b8;
-      }
-      .weather-btn {
-        margin-top: 10px;
-        padding: 6px 15px;
-        background: transparent;
-        color: var(--cor-destaque);
-        border: 1px solid var(--cor-destaque);
-        border-radius: 4px;
-        font-size: 0.8rem;
-      }
-      .weather-btn:hover {
-        background: var(--cor-destaque);
-        color: var(--cor-bg-main);
-      }
-
-      /* WIDGET: TODO LIST */
-      .todo-input-group {
-        display: flex;
-        width: 100%;
-        gap: 5px;
-        margin-bottom: 10px;
-      }
-      .todo-input {
-        flex: 1;
-        background: var(--cor-bg-main);
-        border: 1px solid var(--cor-borda);
-        color: white;
-        padding: 8px;
-        border-radius: 4px;
-      }
-      .todo-input:focus {
-        border-color: var(--cor-destaque);
-      }
-      .todo-add-btn {
-        background: var(--cor-roxo);
-        color: white;
-        padding: 0 15px;
-        border-radius: 4px;
-        font-weight: bold;
-      }
-      .todo-add-btn:hover {
-        background: var(--cor-destaque);
-        color: var(--cor-bg-main);
-      }
-
-      .todo-list {
-        list-style: none;
-        width: 100%;
-        max-height: 120px;
-        overflow-y: auto;
-        text-align: left;
-      }
-      .todo-list li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0;
-        border-bottom: 1px solid var(--cor-borda);
-        font-size: 0.9rem;
-      }
-      .todo-check {
-        color: var(--cor-destaque);
-        cursor: pointer;
-      }
-      .todo-delete {
-        color: #ef4444;
-        cursor: pointer;
-        margin-left: 10px;
-      }
-
-      /* WIDGET: CALCULADORA */
-      .calc-display {
-        width: 100%;
-        background: var(--cor-bg-main);
-        color: var(--cor-destaque);
-        text-align: right;
-        padding: 15px;
-        font-family: monospace;
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        border-radius: 4px;
-        border: 1px solid var(--cor-borda);
-      }
-      .calc-keys {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-        width: 100%;
-      }
-      .calc-btn {
-        background: #1e293b;
-        color: white;
-        padding: 12px;
-        border-radius: 4px;
-        border: 1px solid transparent;
-      }
-      .calc-btn:hover {
-        background: var(--cor-destaque);
-        color: var(--cor-bg-main);
-      }
-      .calc-btn.op {
-        background: #334155;
-        color: var(--cor-destaque);
-        font-weight: bold;
-      }
-      .calc-btn.op:hover {
-        background: var(--cor-destaque);
-        color: var(--cor-bg-main);
-      }
-
-      .calc-btn.clear {
-        background: #450a0a;
-        color: #fca5a5;
-      }
-      .calc-btn.clear:hover {
-        background: #ef4444;
-        color: white;
-      }
-
-      /* * TELA SOBRE MIM 
-         */
-      .content-box {
-        background: var(--cor-bg-card);
-        border: 1px solid var(--cor-borda);
+        border-top: 2px solid var(--cor-secundaria);
         border-radius: 8px;
         padding: 40px;
-        max-width: 900px;
         width: 100%;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        margin-top: 20px;
+        text-align: left;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       }
 
       .about-header {
-        border-bottom: 2px solid var(--cor-roxo);
-        padding-bottom: 20px;
-        margin-bottom: 30px;
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: baseline;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--cor-borda);
+        padding-bottom: 15px;
         flex-wrap: wrap;
+        gap: 10px;
       }
 
       .about-header h2 {
-        font-size: 2.5rem;
         color: var(--cor-texto);
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      @media (min-width: 768px) {
-        .about-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .profile-info h3 {
-        color: var(--cor-destaque);
-        margin-bottom: 10px;
-        font-size: 1.5rem;
-      }
-
-      .role-tag {
-        background-color: transparent;
-        border: 1px solid var(--cor-roxo);
-        color: var(--cor-roxo);
-        padding: 5px 15px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 20px;
+        font-size: 1.8rem;
       }
 
       .location {
-        display: flex;
-        align-items: center;
-        gap: 8px;
         color: #94a3b8;
-        margin-bottom: 20px;
         font-size: 0.9rem;
       }
 
       .bio-text {
-        line-height: 1.7;
-        margin-bottom: 20px;
-        text-align: justify;
+        line-height: 1.8;
         color: #cbd5e1;
+        margin-bottom: 25px;
+        text-align: justify;
       }
 
-      .skills-container {
-        margin-top: 20px;
-      }
       .skills-list {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 10px;
       }
+
       .skill-badge {
-        background: rgba(56, 189, 248, 0.05);
-        border: 1px solid var(--cor-borda);
-        color: #cbd5e1;
-        padding: 6px 12px;
-        border-radius: 4px;
+        background: rgba(0, 210, 255, 0.05);
+        border: 1px solid var(--cor-secundaria);
+        color: var(--cor-secundaria);
+        padding: 5px 12px;
+        border-radius: 3px;
         font-size: 0.85rem;
         transition: all 0.3s;
       }
+
       .skill-badge:hover {
-        border-color: var(--cor-destaque);
-        color: var(--cor-destaque);
-        background: rgba(56, 189, 248, 0.1);
-        box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+        background: var(--cor-secundaria);
+        color: var(--cor-bg-main);
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
       }
 
-      /* * TELA PROJETOS 
-         */
+      /* === SEÇÃO DE PROJETOS === */
+      .projects-wrapper {
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .projects-header {
+        text-align: left;
+        margin-bottom: 30px;
+        border-left: 5px solid var(--cor-primaria);
+        padding-left: 20px;
+      }
+
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
+        gap: 25px;
         width: 100%;
       }
 
       .project-card {
         background: var(--cor-bg-card);
         border: 1px solid var(--cor-borda);
-        border-radius: 8px;
+        border-radius: 6px;
         padding: 25px;
-        min-height: 220px;
+        min-height: 240px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        align-items: flex-start;
-        text-align: left;
-        transition:
-          transform 0.3s,
-          border-color 0.3s;
+        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         position: relative;
+        overflow: hidden;
       }
 
-      .project-card:hover {
-        border-color: var(--cor-destaque);
-        transform: translateY(-5px);
-      }
-
-      /* Faixa decorativa no topo do card */
+      /* Linha decorativa no topo */
       .project-card::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, var(--cor-destaque), transparent);
+        height: 3px;
+        background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+      }
+
+      .project-card:hover {
+        transform: translateY(-7px);
+        border-color: var(--cor-primaria);
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
       }
 
       .project-card h4 {
         color: var(--cor-texto);
         margin-bottom: 10px;
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: 1.4rem;
       }
 
       .project-desc {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #94a3b8;
         margin-bottom: 20px;
         line-height: 1.5;
@@ -603,14 +317,14 @@
       }
 
       .tech-mini {
-        font-size: 0.75rem;
-        color: var(--cor-destaque);
-        background: rgba(56, 189, 248, 0.1);
-        padding: 2px 6px;
-        border-radius: 3px;
+        font-size: 0.7rem;
+        color: var(--cor-primaria);
+        background: rgba(0, 255, 136, 0.1);
+        padding: 3px 8px;
+        border-radius: 2px;
+        border: 1px solid rgba(0, 255, 136, 0.2);
       }
 
-      /* Botão do Repositório */
       .repo-link {
         display: inline-flex;
         align-items: center;
@@ -622,43 +336,56 @@
         color: var(--cor-texto);
         font-size: 0.9rem;
         border-radius: 4px;
-        transition: all 0.3s;
-        text-decoration: none;
       }
 
       .repo-link:hover {
-        background: var(--cor-roxo);
-        border-color: var(--cor-roxo);
-        color: white;
-        box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+        background: var(--cor-secundaria);
+        border-color: var(--cor-secundaria);
+        color: var(--cor-bg-main);
+        font-weight: bold;
       }
 
       .back-btn {
-        margin-bottom: 20px;
         align-self: flex-start;
         background: transparent;
-        color: var(--cor-destaque);
-        font-size: 1rem;
+        color: var(--cor-primaria);
+        font-size: 1.1rem;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 8px;
+        margin-bottom: 30px;
+        padding: 10px 0;
       }
       .back-btn:hover {
         color: var(--cor-texto);
+        transform: translateX(-5px);
       }
 
       footer {
         text-align: center;
         padding: 30px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         color: #64748b;
         margin-top: auto;
         border-top: 1px solid #1e293b;
+        width: 100%;
+        background: rgba(5, 10, 20, 0.9);
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        .main-menu { flex-direction: column; align-items: stretch; }
+        .menu-btn { text-align: center; justify-content: center; }
+        .about-header { flex-direction: column; }
       }
     </style>
   </head>
   <body>
-    <!-- HOME SECTION -->
+    <!-- CANVAS DE FUNDO (EFEITO CHUVA DIGITAL DE QUADRADOS) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- SECTION: HOME -->
     <div id="home" class="section-container active">
       <header>
         <h1 id="main-name">Bruno Silveira</h1>
@@ -666,375 +393,76 @@
       </header>
 
       <div id="home-content">
+        <!-- MENU DE NAVEGAÇÃO -->
         <nav class="main-menu">
-          <button class="menu-btn" onclick="showSection('about')">
-            Sobre Mim
-          </button>
+          <!-- Botão modificado para Currículo -->
+          <a href="#" class="menu-btn" title="Baixar Currículo (Em breve)">
+            📄 Currículo
+          </a>
+          
           <button class="menu-btn" onclick="showSection('projects')">
-            Outros Projetos
+            📂 Outros Projetos
           </button>
 
-          <a
-            href="#"
-            class="menu-btn"
-            target="_blank"
-            title="Link para LinkedIn"
-          >
-            LinkedIn
+          <a href="#" class="menu-btn" target="_blank">
+            🔗 LinkedIn
           </a>
 
-          <a
-            href="https://github.com/brunojsdev"
-            class="menu-btn"
-            target="_blank"
-          >
-            GitHub
+          <a href="https://github.com/brunojsdev" class="menu-btn" target="_blank">
+            🖥️ GitHub
           </a>
         </nav>
 
-        <h2 class="section-title">Experimentos & Widgets</h2>
+        <!-- CONTEÚDO "SOBRE MIM" (Movido para a Home) -->
+        <section class="about-embedded">
+          <div class="about-header">
+            <h2>Sobre o Desenvolvedor</h2>
+            <div class="location">📍 São Bernardo do Campo, SP</div>
+          </div>
+          
+          <h4 class="text-destaque" style="margin-bottom: 10px;">Objetivo</h4>
+          <p class="bio-text">
+            Decidi aprender programação motivado pelo interesse em tecnologia e pela possibilidade de criar soluções práticas para problemas reais. Busco desenvolver habilidades técnicas sólidas, com foco em aprendizado contínuo, boas práticas de desenvolvimento e evolução profissional na área de software.
+          </p>
 
-        <div class="widgets-grid">
-          <!-- Widget 1: Calculadora -->
-          <div class="widget-card collapsed" onclick="toggleWidget(this)">
-            <div class="widget-title">Calculadora</div>
-            <div class="expand-icon">↓</div>
-            <div class="widget-content">
-              <div class="calc-display" id="calc-display">0</div>
-              <div class="calc-keys">
-                <button
-                  class="calc-btn clear"
-                  onclick="
-                    event.stopPropagation();
-                    calcClear();
-                  "
-                >
-                  C
-                </button>
-                <button
-                  class="calc-btn op"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('/');
-                  "
-                >
-                  /
-                </button>
-                <button
-                  class="calc-btn op"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('*');
-                  "
-                >
-                  x
-                </button>
-                <button
-                  class="calc-btn op"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('-');
-                  "
-                >
-                  -
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('7');
-                  "
-                >
-                  7
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('8');
-                  "
-                >
-                  8
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('9');
-                  "
-                >
-                  9
-                </button>
-                <button
-                  class="calc-btn op"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('+');
-                  "
-                >
-                  +
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('4');
-                  "
-                >
-                  4
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('5');
-                  "
-                >
-                  5
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('6');
-                  "
-                >
-                  6
-                </button>
-                <button
-                  class="calc-btn op"
-                  onclick="
-                    event.stopPropagation();
-                    calcEqual();
-                  "
-                >
-                  =
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('1');
-                  "
-                >
-                  1
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('2');
-                  "
-                >
-                  2
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('3');
-                  "
-                >
-                  3
-                </button>
-                <button
-                  class="calc-btn"
-                  onclick="
-                    event.stopPropagation();
-                    calcAppend('0');
-                  "
-                >
-                  0
-                </button>
-              </div>
+          <h4 class="text-secundario" style="margin-bottom: 10px;">Interesses</h4>
+          <p class="bio-text">
+            Tenho interesse em animes, jogos como Pokémon e animações independentes, que utilizo como inspiração criativa. Também pratico caminhadas para manter o foco e constância.
+          </p>
+
+          <div style="margin-top: 20px;">
+            <p style="font-size: 0.9rem; color: #888; margin-bottom: 8px;">Stack Principal:</p>
+            <div class="skills-list">
+              <span class="skill-badge">HTML5</span>
+              <span class="skill-badge">CSS3</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">Tailwind</span>
             </div>
           </div>
+        </section>
 
-          <!-- Widget 2: Lista de Tarefas -->
-          <div class="widget-card collapsed" onclick="toggleWidget(this)">
-            <div class="widget-title">Lista de Tarefas</div>
-            <div class="expand-icon">↓</div>
-            <div class="widget-content">
-              <div class="todo-input-group">
-                <input
-                  type="text"
-                  id="todo-input"
-                  class="todo-input"
-                  placeholder="Nova tarefa..."
-                  onclick="event.stopPropagation()"
-                />
-                <button
-                  class="todo-add-btn"
-                  onclick="
-                    event.stopPropagation();
-                    addTodo();
-                  "
-                >
-                  +
-                </button>
-              </div>
-              <ul
-                class="todo-list"
-                id="todo-list"
-                onclick="event.stopPropagation()"
-              >
-                <li>
-                  <span class="todo-item-text">Estudar Python</span>
-                  <div class="todo-actions">
-                    <span
-                      class="todo-check"
-                      onclick="
-                        this.closest('li').style.textDecoration = 'line-through'
-                      "
-                      >✔</span
-                    >
-                    <span
-                      class="todo-delete"
-                      onclick="this.closest('li').remove()"
-                      >✖</span
-                    >
-                  </div>
-                </li>
-                <li>
-                  <span class="todo-item-text">Atualizar GitHub</span>
-                  <div class="todo-actions">
-                    <span
-                      class="todo-check"
-                      onclick="
-                        this.closest('li').style.textDecoration = 'line-through'
-                      "
-                      >✔</span
-                    >
-                    <span
-                      class="todo-delete"
-                      onclick="this.closest('li').remove()"
-                      >✖</span
-                    >
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Widget 3: Clima Simulado -->
-          <div class="widget-card collapsed" onclick="toggleWidget(this)">
-            <div class="widget-title">Clima</div>
-            <div class="expand-icon">↓</div>
-            <div class="widget-content">
-              <div class="weather-display" id="weather-display">
-                <div style="font-size: 3rem">⛅</div>
-                <div class="weather-temp">24°C</div>
-                <div class="weather-city">São Bernardo do Campo</div>
-                <button
-                  class="weather-btn"
-                  onclick="
-                    event.stopPropagation();
-                    updateWeather();
-                  "
-                >
-                  Atualizar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Widget 4: Relógio Digital -->
-          <div class="widget-card collapsed" onclick="toggleWidget(this)">
-            <div class="widget-title">Relógio</div>
-            <div class="expand-icon">↓</div>
-            <div class="widget-content">
-              <div id="digital-clock">00:00:00</div>
-            </div>
-          </div>
-        </div>
       </div>
-
+      
       <footer>&copy; 2026 Bruno Silveira. Todos os direitos reservados.</footer>
     </div>
 
-    <!-- ABOUT SECTION -->
-    <div id="about" class="section-container">
-      <button class="back-btn" onclick="showSection('home')">
-        ← Voltar para Início
-      </button>
-
-      <div class="content-box">
-        <div class="about-header">
-          <h2>Sobre o Desenvolvedor</h2>
-        </div>
-
-        <div class="about-grid">
-          <div>
-            <div class="profile-info">
-              <h3>Bruno Silveira</h3>
-              <span class="role-tag">Programador Junior Fullstack</span>
-              <div class="location">
-                <span>📍</span> São Bernardo do Campo, SP
-              </div>
-            </div>
-
-            <div style="margin-top: 30px">
-              <h4 class="text-destaque" style="margin-bottom: 10px">
-                Objetivo de Carreira
-              </h4>
-              <p class="bio-text">
-                Decidi aprender programação motivado pelo interesse em
-                tecnologia e pela possibilidade de criar soluções práticas para
-                problemas reais. Busco desenvolver habilidades técnicas sólidas,
-                com foco em aprendizado contínuo, boas práticas de
-                desenvolvimento e evolução profissional na área de software.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-destaque">Tech Stack</h4>
-            <div class="skills-container">
-              <p style="font-size: 0.9rem; color: #888">
-                Linguagens e Ferramentas:
-              </p>
-              <div class="skills-list">
-                <!-- Apenas HTML, CSS, JS e Python conforme solicitado -->
-                <span class="skill-badge">HTML5</span>
-                <span class="skill-badge">CSS</span>
-                <span class="skill-badge">JavaScript</span>
-                <span class="skill-badge">Python</span>
-                <span class="skill-badge">Java</span>
-                <span class="skill-badge">Tailwind</span>
-              </div>
-            </div>
-
-            <div style="margin-top: 30px">
-              <h4 class="text-roxo" style="margin-bottom: 10px">
-                Interesses Pessoais
-              </h4>
-              <p class="bio-text">
-                Tenho interesse em animes, jogos como Pokémon e animações
-                independentes no YouTube, que utilizo como inspiração para
-                projetos pessoais e estudos em programação. Também pratico
-                caminhadas, buscando equilíbrio, foco e constância no
-                aprendizado.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECTS SECTION -->
+    <!-- SECTION: OUTROS PROJETOS -->
     <div id="projects" class="section-container">
-      <button class="back-btn" onclick="showSection('home')">
-        ← Voltar para Início
-      </button>
+      <div class="projects-wrapper">
+        <button class="back-btn" onclick="showSection('home')">
+          ← Voltar para Início
+        </button>
 
-      <div class="content-box">
-        <div class="about-header">
-          <h2>Meus Projetos</h2>
-          <p class="subtitle" style="font-size: 1rem">Repositórios do GitHub</p>
+        <div class="projects-header">
+          <h2 style="font-size: 2rem; color: var(--cor-texto);">Meus Projetos</h2>
+          <p class="text-secundario">Repositórios e Experimentos</p>
         </div>
 
         <div class="projects-grid">
-          <!-- PROJETO 1 -->
+          
+          <!-- PROJETO PRINCIPAL 1 -->
           <div class="project-card">
             <div>
               <h4>Portfólio Pessoal</h4>
@@ -1043,101 +471,94 @@
                 <span class="tech-mini">CSS</span>
                 <span class="tech-mini">JS</span>
               </div>
-              <p class="project-desc">Este é o meu Portfólio Pessoal.</p>
+              <p class="project-desc">Meu portfólio pessoal com tema Dark/Cyber, responsivo e com animações em Canvas.</p>
             </div>
-            <a
-              href="https://brunojsdev.github.io/meu-portfolio/"
-              target="_blank"
-              class="repo-link"
-            >
-              Ver Repositório ↗
-            </a>
+            <a href="https://brunojsdev.github.io/meu-portfolio/" target="_blank" class="repo-link">Ver Repositório ↗</a>
           </div>
 
-          <a
-            href="https://brunojsdev.github.io/guia-primeiros-socorros/"
-            target="_blank"
-            class="project-card"
-          >
+          <!-- PROJETO PRINCIPAL 2 -->
+          <div class="project-card">
             <div>
               <h4>SOS Primeiros Socorros</h4>
-
               <div class="project-techs">
                 <span class="tech-mini">HTML</span>
                 <span class="tech-mini">CSS</span>
-                <span class="tech-mini">JS</span>
               </div>
-
-              <p class="project-desc">
-                Guia informativo para primeiros socorros.
-              </p>
+              <p class="project-desc">Guia informativo interativo para instruções de primeiros socorros.</p>
             </div>
+            <a href="https://brunojsdev.github.io/guia-primeiros-socorros/" target="_blank" class="repo-link">Ver Repositório ↗</a>
+          </div>
 
-            <span class="repo-link">Ver Repositório ↗</span>
-          </a>
-
-          <!-- PROJETO 2 -->
+          <!-- PROJETO PRINCIPAL 3 -->
           <div class="project-card">
             <div>
-              <h4>Automação com Python</h4>
+              <h4>Automação Python</h4>
               <div class="project-techs">
                 <span class="tech-mini">Python</span>
-                <span class="tech-mini">Scripts</span>
+                <span class="tech-mini">Automation</span>
               </div>
-              <p class="project-desc">
-                Scripts desenvolvidos para automatizar tarefas repetitivas e
-                manipulação de arquivos.
-              </p>
+              <p class="project-desc">Scripts para manipulação de arquivos e automação de rotinas.</p>
             </div>
-            <a href="#" target="_blank" class="repo-link">
-              Ver Repositório ↗
-            </a>
+            <a href="#" class="repo-link">Ver Repositório ↗</a>
           </div>
 
-          <!-- PROJETO 3 -->
-          <div class="project-card">
+          <!-- ESPAÇO RESERVADO: CALCULADORA -->
+          <div class="project-card" style="border-color: var(--cor-secundaria);">
             <div>
-              <h4>Landing Page Responsiva</h4>
+              <h4 class="text-secundario">Calculadora Web</h4>
               <div class="project-techs">
-                <span class="tech-mini">HTML</span>
-                <span class="tech-mini">CSS</span>
+                <span class="tech-mini">JS Widget</span>
+                <span class="tech-mini">Math</span>
               </div>
-              <p class="project-desc">
-                Uma página de aterrissagem moderna focada em conversão,
-                totalmente responsiva para mobile e desktop.
-              </p>
+              <p class="project-desc">Uma calculadora funcional com interface moderna e operações básicas.</p>
             </div>
-            <a href="#" target="_blank" class="repo-link">
-              Ver Repositório ↗
-            </a>
+            <a href="#" class="repo-link">Link do Repositório (Placeholder)</a>
           </div>
 
-          <!-- CARD "EM BREVE" -->
-          <div
-            class="project-card"
-            style="
-              justify-content: center;
-              align-items: center;
-              border-style: dashed;
-              background: transparent;
-            "
-          >
-            <span
-              style="
-                font-size: 3rem;
-                color: var(--cor-destaque);
-                margin-bottom: 10px;
-              "
-              >+</span
-            >
-            <p style="color: #64748b">Em breve mais projetos</p>
+          <!-- ESPAÇO RESERVADO: TODO LIST -->
+          <div class="project-card" style="border-color: var(--cor-secundaria);">
+            <div>
+              <h4 class="text-secundario">Lista de Tarefas</h4>
+              <div class="project-techs">
+                <span class="tech-mini">DOM Manipulation</span>
+                <span class="tech-mini">Events</span>
+              </div>
+              <p class="project-desc">Aplicação para gerenciamento de tarefas diárias com marcação de conclusão.</p>
+            </div>
+            <a href="#" class="repo-link">Link do Repositório (Placeholder)</a>
           </div>
+
+          <!-- ESPAÇO RESERVADO: CLIMA -->
+          <div class="project-card" style="border-color: var(--cor-secundaria);">
+            <div>
+              <h4 class="text-secundario">Widget de Clima</h4>
+              <div class="project-techs">
+                <span class="tech-mini">Async/Simulação</span>
+              </div>
+              <p class="project-desc">Interface de previsão do tempo com atualização assíncrona simulada.</p>
+            </div>
+            <a href="#" class="repo-link">Link do Repositório (Placeholder)</a>
+          </div>
+
+           <!-- ESPAÇO RESERVADO: RELÓGIO -->
+           <div class="project-card" style="border-color: var(--cor-secundaria);">
+            <div>
+              <h4 class="text-secundario">Relógio Digital</h4>
+              <div class="project-techs">
+                <span class="tech-mini">Date API</span>
+                <span class="tech-mini">Timing</span>
+              </div>
+              <p class="project-desc">Relógio digital preciso em tempo real com estilo de terminal.</p>
+            </div>
+            <a href="#" class="repo-link">Link do Repositório (Placeholder)</a>
+          </div>
+
         </div>
       </div>
     </div>
 
     <script>
-      // --- NAVEGAÇÃO ENTRE SEÇÕES ---
+      // --- NAVEGAÇÃO ---
       function showSection(sectionId) {
         document.querySelectorAll(".section-container").forEach((sec) => {
           sec.classList.remove("active");
@@ -1146,97 +567,86 @@
         window.scrollTo(0, 0);
       }
 
-      // --- EXPANSÃO DOS WIDGETS ---
-      function toggleWidget(element) {
-        if (element.classList.contains("collapsed")) {
-          element.classList.remove("collapsed");
-          element.classList.add("expanded");
-        } else {
-          element.classList.add("collapsed");
-          element.classList.remove("expanded");
+      // --- SCRIPT DO FUNDO (CANVAS SQUARES) ---
+      // Cria um efeito de quadrados caindo/piscando inspirado na imagem de referência
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      let width, height;
+      let particles = [];
+
+      // Cores da paleta (Verde, Ciano, Amarelo pálido)
+      const colors = ['#00ff88', '#00d2ff', '#ffffcc', '#005544'];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      class Square {
+        constructor() {
+          this.init();
         }
-      }
 
-      // --- WIDGET: RELÓGIO DIGITAL ---
-      function startClock() {
-        const clockEl = document.getElementById("digital-clock");
-        setInterval(() => {
-          const now = new Date();
-          clockEl.innerText = now.toLocaleTimeString("pt-BR");
-        }, 1000);
-      }
-      startClock();
+        init() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height - height; // Começa acima da tela
+          this.size = Math.random() * 15 + 5; // Tamanho entre 5 e 20
+          this.speed = Math.random() * 2 + 0.5;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.opacity = Math.random() * 0.5 + 0.1;
+        }
 
-      // --- WIDGET: CALCULADORA ---
-      let calcExpression = "";
-      const calcDisplay = document.getElementById("calc-display");
-
-      function calcAppend(val) {
-        calcExpression += val;
-        calcDisplay.innerText = calcExpression;
-      }
-
-      function calcClear() {
-        calcExpression = "";
-        calcDisplay.innerText = "0";
-      }
-
-      function calcEqual() {
-        try {
-          if (/^[0-9+\-*/.]+$/.test(calcExpression)) {
-            const result = eval(calcExpression);
-            calcDisplay.innerText = result;
-            calcExpression = result.toString();
-          } else {
-            calcDisplay.innerText = "Erro";
-            calcExpression = "";
+        update() {
+          this.y += this.speed;
+          if (this.y > height) {
+            this.init(); // Reinicia quando sai da tela
+            this.y = -20;
           }
-        } catch (e) {
-          calcDisplay.innerText = "Erro";
-          calcExpression = "";
+        }
+
+        draw() {
+          ctx.globalAlpha = this.opacity;
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(this.x, this.y, this.size, this.size);
+          
+          // Ocasionalmente preenche o quadrado
+          if (Math.random() > 0.98) {
+             ctx.fillStyle = this.color;
+             ctx.fillRect(this.x, this.y, this.size, this.size);
+          }
+          ctx.globalAlpha = 1;
         }
       }
 
-      // --- WIDGET: TODO LIST ---
-      const todoInput = document.getElementById("todo-input");
-      const todoList = document.getElementById("todo-list");
-
-      function addTodo() {
-        const text = todoInput.value;
-        if (text.trim() === "") return;
-
-        const li = document.createElement("li");
-        li.innerHTML = `
-                <span class="todo-item-text">${text}</span>
-                <div class="todo-actions">
-                    <span class="todo-check" onclick="this.closest('li').style.textDecoration = 'line-through'">✔</span>
-                    <span class="todo-delete" onclick="this.closest('li').remove()">✖</span>
-                </div>
-            `;
-        todoList.appendChild(li);
-        todoInput.value = "";
+      function initParticles() {
+        particles = [];
+        const particleCount = Math.floor(width / 10); // Densidade baseada na largura
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Square());
+        }
       }
 
-      todoInput.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") addTodo();
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', () => {
+        resize();
+        initParticles();
       });
 
-      // --- WIDGET: CLIMA (SIMULADO) ---
-      function updateWeather() {
-        const display = document.getElementById("weather-display");
-        display.innerHTML =
-          '<div style="padding: 20px; color: var(--cor-destaque);">Buscando...</div>';
+      // Inicia
+      resize();
+      initParticles();
+      animate();
 
-        setTimeout(() => {
-          display.innerHTML = `
-                    <div style="font-size: 3rem;">🌦</div>
-                    <div class="weather-temp">22°C</div>
-                    <div class="weather-city">São Bernardo do Campo</div>
-                    <div style="font-size: 0.8rem; color: var(--cor-destaque); margin-top:5px;">Atualizado agora</div>
-                    <button class="weather-btn" onclick="event.stopPropagation(); updateWeather()">Atualizar</button>
-                `;
-        }, 1000);
-      }
     </script>
   </body>
 </html>
