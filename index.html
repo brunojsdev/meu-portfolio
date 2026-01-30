@@ -1,57 +1,493 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Meu Portfolio - Corrigido</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio | Bruno Silveira</title>
 
-  <!-- Conectar CSS (mesmo diretório) -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <h1>Meu Portfólio</h1>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+    <!-- Ligação ao CSS separado -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- HOME SECTION -->
+    <div id="home" class="section-container active">
+      <header>
+        <h1 id="main-name">Bruno Silveira</h1>
+        <p class="subtitle">Programador Júnior Fullstack</p>
+      </header>
 
-  <main>
-    <section id="sobre">
-      <h2>Sobre mim</h2>
-      <p>Texto de exemplo sobre você. Substitua pelo conteúdo real.</p>
-    </section>
+      <div id="home-content">
+        <nav class="main-menu">
+          <button class="menu-btn" onclick="showSection('about')">
+            Sobre Mim
+          </button>
+          <button class="menu-btn" onclick="showSection('projects')">
+            Outros Projetos
+          </button>
 
-    <section id="projetos">
-      <h2>Projetos</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Projeto 1</h3>
-          <p>Descrição curta do projeto.</p>
-          <a class="ver-mais" href="#contato">Ver mais</a>
-        </article>
+          <a
+            href="#"
+            class="menu-btn"
+            target="_blank"
+            title="Link para LinkedIn"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/brunojsdev"
+            class="menu-btn"
+            target="_blank"
+          >
+            GitHub
+          </a>
+        </nav>
+
+        <h2 class="section-title">Experimentos & Widgets</h2>
+
+        <div class="widgets-grid">
+          <!-- Widget 1: Calculadora -->
+          <div class="widget-card collapsed" onclick="toggleWidget(this)">
+            <div class="widget-title">Calculadora</div>
+            <div class="expand-icon">↓</div>
+            <div class="widget-content">
+              <div class="calc-display" id="calc-display">0</div>
+              <div class="calc-keys">
+                <button
+                  class="calc-btn clear"
+                  onclick="
+                    event.stopPropagation();
+                    calcClear();
+                  "
+                >
+                  C
+                </button>
+                <button
+                  class="calc-btn op"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('/');
+                  "
+                >
+                  /
+                </button>
+                <button
+                  class="calc-btn op"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('*');
+                  "
+                >
+                  x
+                </button>
+                <button
+                  class="calc-btn op"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('-');
+                  "
+                >
+                  -
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('7');
+                  "
+                >
+                  7
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('8');
+                  "
+                >
+                  8
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('9');
+                  "
+                >
+                  9
+                </button>
+                <button
+                  class="calc-btn op"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('+');
+                  "
+                >
+                  +
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('4');
+                  "
+                >
+                  4
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('5');
+                  "
+                >
+                  5
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('6');
+                  "
+                >
+                  6
+                </button>
+                <button
+                  class="calc-btn op"
+                  onclick="
+                    event.stopPropagation();
+                    calcEqual();
+                  "
+                >
+                  =
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('1');
+                  "
+                >
+                  1
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('2');
+                  "
+                >
+                  2
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('3');
+                  "
+                >
+                  3
+                </button>
+                <button
+                  class="calc-btn"
+                  onclick="
+                    event.stopPropagation();
+                    calcAppend('0');
+                  "
+                >
+                  0
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 2: Lista de Tarefas -->
+          <div class="widget-card collapsed" onclick="toggleWidget(this)">
+            <div class="widget-title">Lista de Tarefas</div>
+            <div class="expand-icon">↓</div>
+            <div class="widget-content">
+              <div class="todo-input-group">
+                <input
+                  type="text"
+                  id="todo-input"
+                  class="todo-input"
+                  placeholder="Nova tarefa..."
+                  onclick="event.stopPropagation()"
+                />
+                <button
+                  class="todo-add-btn"
+                  onclick="
+                    event.stopPropagation();
+                    addTodo();
+                  "
+                >
+                  +
+                </button>
+              </div>
+              <ul
+                class="todo-list"
+                id="todo-list"
+                onclick="event.stopPropagation()"
+              >
+                <li>
+                  <span class="todo-item-text">Estudar Python</span>
+                  <div class="todo-actions">
+                    <span
+                      class="todo-check"
+                      onclick="
+                        this.closest('li').style.textDecoration = 'line-through'
+                      "
+                      >✔</span
+                    >
+                    <span
+                      class="todo-delete"
+                      onclick="this.closest('li').remove()"
+                      >✖</span
+                    >
+                  </div>
+                </li>
+                <li>
+                  <span class="todo-item-text">Atualizar GitHub</span>
+                  <div class="todo-actions">
+                    <span
+                      class="todo-check"
+                      onclick="
+                        this.closest('li').style.textDecoration = 'line-through'
+                      "
+                      >✔</span
+                    >
+                    <span
+                      class="todo-delete"
+                      onclick="this.closest('li').remove()"
+                      >✖</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Widget 3: Clima Simulado -->
+          <div class="widget-card collapsed" onclick="toggleWidget(this)">
+            <div class="widget-title">Clima</div>
+            <div class="expand-icon">↓</div>
+            <div class="widget-content">
+              <div class="weather-display" id="weather-display">
+                <div style="font-size: 3rem">⛅</div>
+                <div class="weather-temp">24°C</div>
+                <div class="weather-city">São Bernardo do Campo</div>
+                <button
+                  class="weather-btn"
+                  onclick="
+                    event.stopPropagation();
+                    updateWeather();
+                  "
+                >
+                  Atualizar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 4: Relógio Digital -->
+          <div class="widget-card collapsed" onclick="toggleWidget(this)">
+            <div class="widget-title">Relógio</div>
+            <div class="expand-icon">↓</div>
+            <div class="widget-content">
+              <div id="digital-clock">00:00:00</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <form id="contactForm">
-        <label for="name">Nome</label>
-        <input id="name" name="name" type="text" required>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+      <footer>&copy; 2026 Bruno Silveira. Todos os direitos reservados.</footer>
+    </div>
 
-  <footer class="site-footer">
-    <p>© 2026 Seu Nome</p>
-  </footer>
+    <!-- ABOUT SECTION -->
+    <div id="about" class="section-container">
+      <button class="back-btn" onclick="showSection('home')">
+        ← Voltar para Início
+      </button>
 
-  <!-- Script com defer para garantir que o DOM esteja carregado -->
-  <script src="script.js" defer></script>
-</body>
+      <div class="content-box">
+        <div class="about-header">
+          <h2>Sobre o Desenvolvedor</h2>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <div class="profile-info">
+              <h3>Bruno Silveira</h3>
+              <span class="role-tag">Programador Junior Fullstack</span>
+              <div class="location">
+                <span>📍</span> São Bernardo do Campo, SP
+              </div>
+            </div>
+
+            <div style="margin-top: 30px">
+              <h4 class="text-destaque" style="margin-bottom: 10px">
+                Objetivo de Carreira
+              </h4>
+              <p class="bio-text">
+                Decidi aprender programação motivado pelo interesse em
+                tecnologia e pela possibilidade de criar soluções práticas para
+                problemas reais. Busco desenvolver habilidades técnicas sólidas,
+                com foco em aprendizado contínuo, boas práticas de
+                desenvolvimento e evolução profissional na área de software.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-destaque">Tech Stack</h4>
+            <div class="skills-container">
+              <p style="font-size: 0.9rem; color: #888">
+                Linguagens e Ferramentas:
+              </p>
+              <div class="skills-list">
+                <!-- Apenas HTML, CSS, JS e Python conforme solicitado -->
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">Tailwind</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 30px">
+              <h4 class="text-roxo" style="margin-bottom: 10px">
+                Interesses Pessoais
+              </h4>
+              <p class="bio-text">
+                Tenho interesse em animes, jogos como Pokémon e animações
+                independentes no YouTube, que utilizo como inspiração para
+                projetos pessoais e estudos em programação. Também pratico
+                caminhadas, buscando equilíbrio, foco e constância no
+                aprendizado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div id="projects" class="section-container">
+      <button class="back-btn" onclick="showSection('home')">
+        ← Voltar para Início
+      </button>
+
+      <div class="content-box">
+        <div class="about-header">
+          <h2>Meus Projetos</h2>
+          <p class="subtitle" style="font-size: 1rem">Repositórios do GitHub</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROJETO 1 -->
+          <div class="project-card">
+            <div>
+              <h4>Portfólio Pessoal</h4>
+              <div class="project-techs">
+                <span class="tech-mini">HTML</span>
+                <span class="tech-mini">CSS</span>
+                <span class="tech-mini">JS</span>
+              </div>
+              <p class="project-desc">Este é o meu Portfólio Pessoal.</p>
+            </div>
+            <a
+              href="https://brunojsdev.github.io/meu-portfolio/"
+              target="_blank"
+              class="repo-link"
+            >
+              Ver Repositório ↗
+            </a>
+          </div>
+
+          <a
+            href="https://brunojsdev.github.io/guia-primeiros-socorros/"
+            target="_blank"
+            class="project-card"
+          >
+            <div>
+              <h4>SOS Primeiros Socorros</h4>
+
+              <div class="project-techs">
+                <span class="tech-mini">HTML</span>
+                <span class="tech-mini">CSS</span>
+                <span class="tech-mini">JS</span>
+              </div>
+
+              <p class="project-desc">
+                Guia informativo para primeiros socorros.
+              </p>
+            </div>
+
+            <span class="repo-link">Ver Repositório ↗</span>
+          </a>
+
+          <!-- PROJETO 2 -->
+          <div class="project-card">
+            <div>
+              <h4>Automação com Python</h4>
+              <div class="project-techs">
+                <span class="tech-mini">Python</span>
+                <span class="tech-mini">Scripts</span>
+              </div>
+              <p class="project-desc">
+                Scripts desenvolvidos para automatizar tarefas repetitivas e
+                manipulação de arquivos.
+              </p>
+            </div>
+            <a href="#" target="_blank" class="repo-link">
+              Ver Repositório ↗
+            </a>
+          </div>
+
+          <!-- PROJETO 3 -->
+          <div class="project-card">
+            <div>
+              <h4>Landing Page Responsiva</h4>
+              <div class="project-techs">
+                <span class="tech-mini">HTML</span>
+                <span class="tech-mini">CSS</span>
+              </div>
+              <p class="project-desc">
+                Uma página de aterrissagem moderna focada em conversão,
+                totalmente responsiva para mobile e desktop.
+              </p>
+            </div>
+            <a href="#" target="_blank" class="repo-link">
+              Ver Repositório ↗
+            </a>
+          </div>
+
+          <!-- CARD "EM BREVE" -->
+          <div
+            class="project-card"
+            style="
+              justify-content: center;
+              align-items: center;
+              border-style: dashed;
+              background: transparent;
+            "
+          >
+            <span
+              style="
+                font-size: 3rem;
+                color: var(--cor-destaque);
+                margin-bottom: 10px;
+              "
+              >+</span
+            >
+            <p style="color: #64748b">Em breve mais projetos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ligação ao JS separado -->
+    <script src="script.js" defer></script>
+  </body>
 </html>
