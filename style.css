@@ -365,10 +365,15 @@ h1 {
   font-weight: 600;
 }
 
-/* Botão "Ver Projeto" */
+/* Botão "Ver Projeto" - AGORA COM DESTAQUE PADRÃO */
+.action-btn.demo {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+  background: rgba(0, 255, 136, 0.05);
+}
+
 .action-btn.demo:hover {
   background: var(--cor-primaria);
-  border-color: var(--cor-secundaria);
   color: #050a14;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
 }
