@@ -368,7 +368,7 @@ h1 {
 /* Botão "Ver Projeto" */
 .action-btn.demo:hover {
   background: var(--cor-primaria);
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-secundaria);
   color: #050a14;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
 }
