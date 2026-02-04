@@ -1,87 +1,38 @@
-# 🚀 Portfólio | Bruno Silveira
+# Portfólio de Desenvolvimento Web | Bruno Silveira
 
-Bem-vindo ao repositório do meu portfólio pessoal!  
-Este projeto foi reestruturado para ser **modular, profissional e visualmente impactante**, utilizando uma estética **cyber-tech** com foco em **performance** e **organização de código**.
+Este é o repositório central do meu portfólio pessoal. O projeto foi desenvolvido com o objetivo de demonstrar minhas competências técnicas, organização de código e criatividade através de uma interface moderna com estética tecnológica.
 
----
+## 🚀 Descrição e Funcionamento
+O portfólio funciona como um hub centralizado que conecta diversos projetos e experimentos. Diferente de aplicações monolíticas, este projeto preza pela modularidade: a página principal gerencia a apresentação e o design, enquanto cada aplicação (como a calculadora ou o relógio) funciona de forma independente. 
 
-## 🎨 Identidade Visual & Design
+A experiência do usuário é enriquecida com um fundo dinâmico renderizado via Canvas e uma galeria de cartões interativos que utilizam pré-visualizações personalizadas para cada projeto.
 
-O projeto utiliza uma paleta de cores focada em **Azul Profundo**, **Verde Neon** e **Ciano**.
+## 🛠️ Tecnologias e Ferramentas
+Para a construção deste ecossistema, foram utilizadas as seguintes tecnologias:
 
-- **Fundo Dinâmico**:  
-  Efeito de *“Quadrados Digitais”* (Digital Rain Style) renderizado via **HTML5 Canvas**, criando profundidade visual e interatividade. 🌌
+* **HTML5:** Para a estruturação semântica de todas as páginas e seções.
+* **CSS3:** Implementação de layouts responsivos (Flexbox/Grid), variáveis de cores para o tema dark/neon e animações de interface.
+* **JavaScript (ES6+):** Utilizado para a lógica de animação do fundo, interatividade dos menus e funcionamento individual dos componentes.
+* **GitHub/Git:** Ferramentas essenciais para o controle de versão e hospedagem do projeto.
 
-- **Thumbnails de Projetos**:  
-  Sistema de capas para cada card de projeto, utilizando `object-fit: cover` para garantir que as prévias fiquem perfeitas em qualquer resolução. 🖼️
+## 📂 Estrutura do Repositório
+O repositório está organizado de forma limpa para facilitar a manutenção e leitura:
 
-- **Interface Reativa**:  
-  Feedback visual em todos os botões e links com efeitos de brilho neon e transições suaves de *hover*.
+* `index.html`: O ponto de entrada principal do portfólio.
+* `style.css`: Arquivo contendo toda a identidade visual e regras de estilo.
+* `script.js`: Arquivo com a lógica de programação e efeitos visuais.
+* `img/`: Diretório dedicado exclusivamente às **thumbnails** (capas) que ilustram cada projeto nos cards de navegação.
+* `README.md`: Documentação detalhada sobre o projeto.
 
----
+## 📂 Resumo do Conteúdo
+Dentro deste portfólio, estão disponíveis para consulta:
 
-## 🛠️ Tecnologias e Estrutura
+1.  **Apresentação Profissional:** Resumo sobre minha trajetória, objetivos e stack tecnológica principal.
+2.  **Galeria de Projetos:** Links para repositórios externos e demonstrações de ferramentas desenvolvidas por mim.
+3.  **Aplicações Web:** Projetos isolados de utilitários como Calculadora Digital, Lista de Tarefas, Widget de Clima e Relógio em Tempo Real.
 
-O projeto utiliza a técnica de **Separação de Responsabilidades (Separation of Concerns)**, facilitando a manutenção e a escalabilidade:
-
-- **`index.html`**:  
-  Estrutura semântica, seções de navegação e conteúdo principal. 🧱
-
-- **`style.css`**:  
-  Arquitetura de design, variáveis de cores CSS (`:root`), layouts responsivos (Grid/Flexbox) e animações. 🎨
-
-- **`script.js`**:  
-  Motor de animação do Canvas e lógica de navegação **Single Page Application (SPA)**. ⚡
-
----
-
-## 📂 Organização do Portfólio
-
-O portfólio está dividido em seções dinâmicas para uma melhor experiência do usuário:
-
-### 🏠 Página Inicial (Home)
-
-- **Apresentação & Bio**:  
-  Resumo profissional e objetivos de carreira.
-
-- **Navegação Rápida**:  
-  Links externos estratégicos (GitHub / LinkedIn) e botões de acesso.
-
-- **Tech Stack**:  
-  Exibição das tecnologias dominadas através de *badges* estilizadas.
+## 🌐 Como visualizar
+Como o projeto utiliza tecnologias nativas da web, basta baixar os arquivos e abrir o `index.html` em qualquer navegador moderno ou acessar o link de publicação via GitHub Pages.
 
 ---
-
-### 📂 Galeria de Projetos
-
-- Sistema de **Cards** com imagem, título, descrição e *tags* de tecnologia.
-- Links diretos para repositórios externos e demonstrações ao vivo.
-
----
-
-### 🧪 Ecossistema de Widgets (Projetos Integrados)
-
-Aplicações independentes acessíveis diretamente pelo portfólio, demonstrando **lógica de programação pura**:
-
-- **Calculadora**: Interface funcional com operações matemáticas.
-- **Lista de Tarefas**: Gerenciador de produtividade com manipulação de DOM.
-- **Widget de Clima**: Simulação de interface meteorológica assíncrona.
-- **Relógio Digital**: Sistema de tempo real com precisão de milissegundos.
-
----
-
-## ⚙️ Instalação e Uso
-
-Como o projeto está modularizado, a estrutura de arquivos deve ser mantida da seguinte forma para o correto funcionamento:
-
-```text
-/
-├── index.html
-├── style.css
-└── script.js
-
-```
-
-Para visualizar localmente, basta abrir o arquivo index.html em qualquer navegador moderno. 🌐
-
-
+**"A tecnologia move o mundo, mas a curiosidade move o programador."**
