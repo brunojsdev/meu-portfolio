@@ -34,5 +34,3 @@ Dentro deste portfólio, estão disponíveis para consulta:
 ## 🌐 Como visualizar
 Como o projeto utiliza tecnologias nativas da web, basta baixar os arquivos e abrir o `index.html` em qualquer navegador moderno ou acessar o link de publicação via GitHub Pages.
 
----
-**"A tecnologia move o mundo, mas a curiosidade move o programador."**
