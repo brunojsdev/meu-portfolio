@@ -1,4 +1,4 @@
-# Portfólio de Desenvolvimento Web | 
+# Portfólio de Desenvolvimento Web 
 
 Este é o repositório central do meu portfólio pessoal. O projeto foi desenvolvido com o objetivo de demonstrar minhas competências técnicas, organização de código e criatividade através de uma interface moderna com estética tecnológica.
 
