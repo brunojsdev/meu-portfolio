@@ -2,7 +2,7 @@
 
 Este é o repositório central do meu portfólio pessoal. O projeto foi desenvolvido com o objetivo de demonstrar minhas competências técnicas, organização de código e criatividade através de uma interface moderna com estética tecnológica.
 
-## 🚀 Descrição e Funcionamento
+## 🚀 Descriçãi e Funcionamento
 O portfólio funciona como um hub centralizado que conecta diversos projetos e experimentos. Diferente de aplicações monolíticas, este projeto preza pela modularidade: a página principal gerencia a apresentação e o design, enquanto cada aplicação (como a calculadora ou o relógio) funciona de forma independente. 
 
 A experiência do usuário é enriquecida com um fundo dinâmico renderizado via Canvas e uma galeria de cartões interativos que utilizam pré-visualizações personalizadas para cada projeto.
