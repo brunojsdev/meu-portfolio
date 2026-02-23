@@ -1,7 +1,7 @@
 // --- NAVEGAÇÃO ---
 function showSection(sectionId) {
     // Esconde todas as seções
-    document.querySelectorAll(".section-container").forEach((sec) => {
+    document.querySelectorAll(".section-container").forEach((sec) => {6
       sec.classList.remove("active");
     });
     // Mostra a seção desejada
