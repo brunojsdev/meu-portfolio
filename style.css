@@ -1,16 +1,20 @@
-/* * CONFIGURAÇÕES GERAIS E PALETA DE CORES
-   * Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Dourado, Branco.
-   */
+/* ==========================================================================
+   1. VARIÁVEIS E PALETA DE CORES
+   Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Dourado, Branco.
+   ========================================================================== */
 :root {
-  --cor-bg-main: #050a14; /* Azul muito escuro (quase preto) */
-  --cor-bg-card: #0b1221; /* Azul escuro levemente mais claro */
-  --cor-texto: #e2e8f0; /* Branco gelo suave */
-  --cor-primaria: #00ff88; /* Verde Neon (Destaque principal) */
-  --cor-secundaria: #00d2ff; /* Ciano (Destaque secundário) */
-  --cor-terciaria: #f5d742; /* Amarelo Esverdeado / Dourado (Novo Destaque) */
-  --cor-borda: #1e293b;
+  --cor-bg-main: #050a14;     /* Azul muito escuro (quase preto) */
+  --cor-bg-card: #0b1221;     /* Azul escuro levemente mais claro */
+  --cor-texto: #e2e8f0;       /* Branco gelo suave */
+  --cor-primaria: #00ff88;    /* Verde Neon (Destaque principal) */
+  --cor-secundaria: #00d2ff;  /* Ciano (Destaque secundário) */
+  --cor-terciaria: #f5d742;   /* Amarelo Esverdeado / Dourado (Novo Destaque) */
+  --cor-borda: #1e293b;       /* Cor das bordas em geral */
 }
 
+/* ==========================================================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -28,30 +32,7 @@ body {
   position: relative;
 }
 
-/* CANVAS DE FUNDO (Efeito Digital Rain) */
-#bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.4; /* Suavizar o fundo para não atrapalhar a leitura */
-}
-
-/* UTILITÁRIOS DE TEXTO */
-.text-destaque {
-  color: var(--cor-primaria);
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-.text-secundario {
-  color: var(--cor-secundaria);
-}
-.text-terciario {
-  color: var(--cor-terciaria);
-  text-shadow: 0 0 10px rgba(245, 215, 66, 0.3);
-}
-
+/* Elementos Interativos Base */
 button {
   cursor: pointer;
   border: none;
@@ -65,9 +46,23 @@ a {
   transition: all 0.3s ease;
 }
 
+/* ==========================================================================
+   3. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
+   ========================================================================== */
+/* CANVAS DE FUNDO (Efeito Digital Rain) */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.4; /* Suaviza o fundo para não atrapalhar a leitura */
+}
+
 /* NAVEGAÇÃO / TRANSIÇÃO DE SEÇÕES */
 .section-container {
-  display: none;
+  display: none; /* Escondido por padrão, o JS controla */
   min-height: 100vh;
   width: 100%;
   padding: 20px;
@@ -92,7 +87,26 @@ a {
   }
 }
 
-/* === TELA INICIAL (HOME) === */
+/* ==========================================================================
+   4. CLASSES UTILITÁRIAS (TEXTOS)
+   ========================================================================== */
+.text-destaque {
+  color: var(--cor-primaria);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.text-secundario {
+  color: var(--cor-secundaria);
+}
+
+.text-terciario {
+  color: var(--cor-terciaria);
+  text-shadow: 0 0 10px rgba(245, 215, 66, 0.3);
+}
+
+/* ==========================================================================
+   5. SEÇÃO: TELA INICIAL (HOME)
+   ========================================================================== */
 #home-content {
   width: 100%;
   max-width: 900px;
@@ -104,6 +118,7 @@ a {
   text-align: center;
 }
 
+/* Cabeçalho Home */
 header {
   margin-top: 60px;
   margin-bottom: 30px;
@@ -113,7 +128,7 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -2px;
-  /* Gradiente atualizado: Verde -> Dourado -> Ciano */
+  /* Gradiente: Verde -> Dourado -> Ciano */
   background: linear-gradient(
     to right,
     var(--cor-terciaria),
@@ -128,14 +143,14 @@ h1 {
 
 .subtitle {
   font-size: 1.3rem;
-  color: var(--cor-terciaria); /* Aplicado o dourado aqui para maior sofisticação */
+  color: var(--cor-terciaria);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 0 0 15px rgba(245, 215, 66, 0.2);
 }
 
-/* MENU DE BOTÕES PRINCIPAIS */
+/* Menu de Botões Principais */
 .main-menu {
   display: flex;
   flex-wrap: wrap;
@@ -163,7 +178,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
 }
 
-/* Efeito Hover Estilo "Preencher" */
+/* Efeito Hover Estilo "Preencher" nos Botões */
 .menu-btn::before {
   content: "";
   position: absolute;
@@ -186,12 +201,12 @@ h1 {
   transform: translateY(-3px);
 }
 
-/* === CONTEÚDO SOBRE MIM === */
+/* Bloco "Sobre Mim" */
 .about-embedded {
   background: rgba(11, 18, 33, 0.7); /* Fundo semi-transparente */
   backdrop-filter: blur(5px);
   border: 1px solid var(--cor-borda);
-  border-top: 2px solid var(--cor-terciaria); /* Borda superior destacada em dourado */
+  border-top: 2px solid var(--cor-terciaria); /* Borda superior destacada */
   border-radius: 8px;
   padding: 40px;
   width: 100%;
@@ -228,6 +243,7 @@ h1 {
   text-align: justify;
 }
 
+/* Lista de Habilidades / Skills */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -250,7 +266,9 @@ h1 {
   box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
-/* === SEÇÃO DE PROJETOS === */
+/* ==========================================================================
+   6. SEÇÃO: PROJETOS
+   ========================================================================== */
 .projects-wrapper {
   max-width: 1200px;
   width: 100%;
@@ -263,6 +281,7 @@ h1 {
   padding-left: 20px;
 }
 
+/* Grid de Projetos */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -270,13 +289,33 @@ h1 {
   width: 100%;
 }
 
-/* ESTILO DOS CARDS COM THUMBNAILS */
+/* Botão de Voltar */
+.back-btn {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--cor-terciaria);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+.back-btn:hover {
+  color: var(--cor-texto);
+  transform: translateX(-5px);
+}
+
+/* ==========================================================================
+   7. COMPONENTES: CARDS DE PROJETO
+   ========================================================================== */
 .project-card {
   background: var(--cor-bg-card);
   border: 1px solid var(--cor-borda);
   border-radius: 6px;
   padding: 0;
-  min-height: 380px; /* Aumentado levemente para caber os botões */
+  min-height: 380px; 
   display: flex;
   flex-direction: column;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
@@ -290,7 +329,7 @@ h1 {
   box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
 }
 
-/* Container da Imagem */
+/* Container da Imagem do Projeto */
 .project-thumb {
   width: 100%;
   height: 160px;
@@ -310,7 +349,7 @@ h1 {
   transform: scale(1.1);
 }
 
-/* Container do Conteúdo (Texto e Botões) */
+/* Conteúdo do Card (Texto e Botões) */
 .project-content {
   padding: 25px;
   display: flex;
@@ -332,6 +371,7 @@ h1 {
   line-height: 1.5;
 }
 
+/* Tecnologias (Tags pequenas) */
 .project-techs {
   display: flex;
   gap: 8px;
@@ -341,7 +381,6 @@ h1 {
 
 .tech-mini {
   font-size: 0.7rem;
-  /* Atualizado para a nova cor dourada para separar das cores dos botões */
   color: var(--cor-terciaria);
   background: rgba(245, 215, 66, 0.1);
   padding: 3px 8px;
@@ -349,8 +388,7 @@ h1 {
   border: 1px solid rgba(245, 215, 66, 0.3);
 }
 
-/* --- CÓDIGO DOS BOTÕES --- */
-
+/* Ações (Botões dentro do card) */
 .project-actions {
   display: flex;
   gap: 10px;
@@ -373,7 +411,7 @@ h1 {
   font-weight: 600;
 }
 
-/* Botão "Ver Projeto" - AGORA COM DESTAQUE PADRÃO */
+/* Estilo do Botão "Ver Projeto" (Demo) */
 .action-btn.demo {
   border-color: var(--cor-primaria);
   color: var(--cor-primaria);
@@ -386,7 +424,7 @@ h1 {
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
 }
 
-/* Botão "Ver Código" */
+/* Estilo do Botão "Ver Código" (Code) */
 .action-btn.code {
   border-color: var(--cor-secundaria);
   color: var(--cor-secundaria);
@@ -399,23 +437,9 @@ h1 {
   box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
-/* Botão de Voltar Geral */
-.back-btn {
-  align-self: flex-start;
-  background: transparent;
-  color: var(--cor-terciaria);
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 30px;
-  padding: 10px 0;
-}
-.back-btn:hover {
-  color: var(--cor-texto);
-  transform: translateX(-5px);
-}
-
+/* ==========================================================================
+   8. FOOTER (RODAPÉ)
+   ========================================================================== */
 footer {
   text-align: center;
   padding: 30px;
@@ -427,19 +451,24 @@ footer {
   background: rgba(5, 10, 20, 0.9);
 }
 
-/* Responsividade */
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
+  
   .main-menu {
     flex-direction: column;
     align-items: stretch;
   }
+  
   .menu-btn {
     text-align: center;
     justify-content: center;
   }
+  
   .about-header {
     flex-direction: column;
   }
