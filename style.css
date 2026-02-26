@@ -310,11 +310,11 @@ h1 {
 }
 
 /* ==========================================================================
-   7. COMPONENTES: CARDS DE PROJETO
+   7. COMPONENTES: CARDS DE PROJETO (ATUALIZADO)
    ========================================================================== */
 .project-card {
   background: var(--cor-bg-card);
-  border: 1px solid var(--cor-borda);
+  border: 1px solid var(--cor-secundaria); 
   border-radius: 6px;
   padding: 0;
   min-height: 380px; 
@@ -323,12 +323,14 @@ h1 {
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+  /* Glow suave constante na cor secundária */
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.05);
 }
 
 .project-card:hover {
   transform: translateY(-7px);
   border-color: var(--cor-primaria);
-  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
 }
 
 /* Container da Imagem do Projeto */
