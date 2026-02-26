@@ -305,7 +305,7 @@ h1 {
 }
 
 .back-btn:hover {
-  color: var(--cor-texto);
+  color: var(--cor-secundaria);
   transform: translateX(-5px);
 }
 
