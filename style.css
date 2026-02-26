@@ -116,8 +116,8 @@ h1 {
   /* Gradiente atualizado: Verde -> Dourado -> Ciano */
   background: linear-gradient(
     to right,
-    var(--cor-primaria),
     var(--cor-terciaria),
+    var(--cor-primaria),
     var(--cor-secundaria)
   );
   -webkit-background-clip: text;
@@ -186,7 +186,7 @@ h1 {
   transform: translateY(-3px);
 }
 
-/* === CONTEÚDO SOBRE MIM (Agora na Home) === */
+/* === CONTEÚDO SOBRE MIM === */
 .about-embedded {
   background: rgba(11, 18, 33, 0.7); /* Fundo semi-transparente */
   backdrop-filter: blur(5px);
@@ -236,8 +236,8 @@ h1 {
 
 .skill-badge {
   background: rgba(0, 210, 255, 0.05);
-  border: 1px solid var(--cor-secundaria);
-  color: var(--cor-secundaria);
+  border: 1px solid var(--cor-terciaria);
+  color: var(--cor-terciaria);
   padding: 5px 12px;
   border-radius: 3px;
   font-size: 0.85rem;
@@ -245,7 +245,7 @@ h1 {
 }
 
 .skill-badge:hover {
-  background: var(--cor-secundaria);
+  background: var(--cor-terciaria);
   color: var(--cor-bg-main);
   box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
