@@ -1,36 +1,47 @@
-# Portfólio de Desenvolvimento Web 
+# 🚀 Portfólio de Desenvolvimento Web | Cyber-Modern Edition
 
-Este é o repositório central do meu portfólio pessoal. O projeto foi desenvolvido com o objetivo de demonstrar minhas competências técnicas, organização de código e criatividade através de uma interface moderna com estética tecnológica.
+Este repositório abriga o meu portfólio pessoal, um ecossistema projetado para demonstrar competências técnicas em Front-end, design de interface e organização de software. O projeto utiliza uma estética tecnológica moderna com uma paleta de cores personalizada e efeitos dinâmicos de alto desempenho.
 
-## 🚀 Descrição e Funcionamento
-O portfólio funciona como um hub centralizado que conecta diversos projetos e experimentos. Diferente de aplicações monolíticas, este projeto preza pela modularidade: a página principal gerencia a apresentação e o design, enquanto cada aplicação (como a calculadora ou o relógio) funciona de forma independente. 
+## ⚡ Diferenciais do Projeto
+Diferente de portfólios convencionais, este projeto foi construído sob três pilares:
+1. **Performance Visual:** Fundo animado utilizando a API Canvas para garantir fluidez sem sobrecarregar o processador.
+2. **Modularidade:** Arquitetura limpa onde o portfólio atua como um hub para aplicações independentes.
+3. **Identidade Visual Única:** Paleta de cores exclusiva (Cyber-Modern) que equilibra tons frios de azul e ciano com acentos quentes de verde pistache.
 
-A experiência do usuário é enriquecida com um fundo dinâmico renderizado via Canvas e uma galeria de cartões interativos que utilizam pré-visualizações personalizadas para cada projeto.
+## 🛠️ Stack Tecnológica
+* **HTML5 Semântico:** Estruturação focada em acessibilidade e SEO.
+* **CSS3 Advanced:** Uso extensivo de variáveis (Custom Properties), Flexbox, Grid e animações de estado.
+* **JavaScript (ES6+):** Lógica de navegação entre seções (SPA Style) e renderização de partículas em tempo real.
+* **Canvas API:** Manipulação de gráficos via script para o efeito de "Digital Rain" ao fundo.
 
-## 🛠️ Tecnologias e Ferramentas
-Para a construção deste ecossistema, foram utilizadas as seguintes tecnologias:
+## 🎨 Paleta de Cores (Cyber-Modern)
+O projeto utiliza uma hierarquia visual rigorosa:
+* **Fundo:** `#050a14` (Azul Profundo)
+* **Destaque Primário:** `#00ff88` (Verde Neon)
+* **Destaque Secundário:** `#00d2ff` (Ciano Digital)
+* **Acento de Harmonização:** `#b0d15a` (Amarelo Pistache/Esverdeado)
 
-* **HTML5:** Para a estruturação semântica de todas as páginas e seções.
-* **CSS3:** Implementação de layouts responsivos (Flexbox/Grid), variáveis de cores para o tema dark/neon e animações de interface.
-* **JavaScript (ES6+):** Utilizado para a lógica de animação do fundo, interatividade dos menus e funcionamento individual dos componentes.
-* **GitHub/Git:** Ferramentas essenciais para o controle de versão e hospedagem do projeto.
+## 📂 Organização do Repositório
+```text
+├── index.html          # Ponto de entrada e estrutura principal
+├── style.css           # Identidade visual, variáveis e responsividade
+├── script.js           # Motor de animação e lógica de navegação
+├── img/                # Thumbnails otimizadas dos projetos
+└── README.md           # Documentação técnica
+```
 
-## 📂 Estrutura do Repositório
-O repositório está organizado de forma limpa para facilitar a manutenção e leitura:
+## 🚀 Experiência do Usuário
+O portfólio está organizado em seções dinâmicas:
+1.  **Home:** Apresentação de impacto com Bio profissional e resumo de Skills.
+2.  **Galeria Interativa:** Cartões de projetos com efeitos de hover, tags de tecnologias e links diretos para demonstrações e código-fonte.
+3.  **Micro-Aplicações:** Demonstração de utilitários como calculadoras, relógios e widgets, provando versatilidade em diferentes domínios.
 
-* `index.html`: O ponto de entrada principal do portfólio.
-* `style.css`: Arquivo contendo toda a identidade visual e regras de estilo.
-* `script.js`: Arquivo com a lógica de programação e efeitos visuais.
-* `img/`: Diretório dedicado exclusivamente às **thumbnails** (capas) que ilustram cada projeto nos cards de navegação.
-* `README.md`: Documentação detalhada sobre o projeto.
+## 🌐 Acesso e Visualização
+Para visualizar o projeto localmente:
+1. Clone este repositório: `git clone https://github.com/seu-usuario/seu-repositorio.git`
+2. Abra o arquivo `index.html` em seu navegador de preferência.
 
-## 📂 Resumo do Conteúdo
-Dentro deste portfólio, estão disponíveis para consulta:
+Ou acesse a versão online via **GitHub Pages** através do link configurado neste repositório.
 
-1.  **Apresentação Profissional:** Resumo sobre minha trajetória, objetivos e stack tecnológica principal.
-2.  **Galeria de Projetos:** Links para repositórios externos e demonstrações de ferramentas desenvolvidas por mim.
-3.  **Aplicações Web:** Projetos isolados de utilitários como Calculadora Digital, Lista de Tarefas, Widget de Clima e Relógio em Tempo Real.
-
-## 🌐 Como visualizar
-Como o projeto utiliza tecnologias nativas da web, basta baixar os arquivos e abrir o `index.html` em qualquer navegador moderno ou acessar o link de publicação via GitHub Pages.
-
+---
+Desenvolvido com foco em código limpo.
