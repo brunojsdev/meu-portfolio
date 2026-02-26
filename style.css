@@ -295,7 +295,7 @@ h1 {
 .back-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--cor-terciaria);
+  color: var(--cor-primaria);
   font-size: 1.1rem;
   display: flex;
   align-items: center;
