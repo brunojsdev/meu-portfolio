@@ -1,91 +1,135 @@
-// --- NAVEGAÇÃO ---
+/* ==========================================================================
+   1. NAVEGAÇÃO ENTRE SEÇÕES
+   Função responsável por alternar as telas (Home / Projetos)
+   ========================================================================== */
 function showSection(sectionId) {
-    // Esconde todas as seções
-    document.querySelectorAll(".section-container").forEach((sec) => {
-      sec.classList.remove("active");
-    });
-    // Mostra a seção desejada
-    document.getElementById(sectionId).classList.add("active");
-    // Rola para o topo
-    window.scrollTo(0, 0);
+  // Esconde todas as seções removendo a classe 'active' de todas elas
+  document.querySelectorAll(".section-container").forEach((sec) => {
+    sec.classList.remove("active");
+  });
+
+  // Mostra a seção desejada adicionando a classe 'active'
+  document.getElementById(sectionId).classList.add("active");
+
+  // Rola a página suavemente para o topo ao trocar de tela (Melhora a UX)
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* ==========================================================================
+   2. ANIMAÇÃO DE FUNDO (CANVAS SQUARES)
+   Cria um efeito de quadrados caindo/piscando estilo "Digital Rain"
+   ========================================================================== */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+// Variáveis globais de controle do Canvas
+let width, height;
+let particles = [];
+
+// Paleta de cores da animação (Verde Neon, Ciano, Amarelo Esverdeado, Verde Escuro)
+// A cor '#b0d15a' foi adicionada aqui também para sincronizar o fundo com os botões
+const colors = ['#00ff88', '#00d2ff', '#b0d15a', '#005544'];
+
+
+/* --- FUNÇÕES DE CONTROLE DO CANVAS --- */
+
+// Atualiza as dimensões do canvas para ocupar a tela inteira do dispositivo
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+
+
+/* --- CLASSE PRINCIPAL: SQUARE (PARTÍCULAS) --- */
+class Square {
+  constructor() {
+    this.init();
   }
-  
-  // --- SCRIPT DO FUNDO (CANVAS SQUARES) ---
-  // Cria um efeito de quadrados caindo/piscando inspirado na imagem de referência
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  
-  let width, height;
-  let particles = [];
-  
-  // Cores da paleta (Verde, Ciano, Amarelo pálido)
-  const colors = ['#00ff88', '#00d2ff', '#ffffcc', '#005544'];
-  
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+
+  // Inicializa ou reseta as propriedades do quadrado
+  init() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height - height; // Começa acima da tela para queda natural
+    this.size = Math.random() * 15 + 5;       // Tamanho varia aleatoriamente entre 5 e 20
+    this.speed = Math.random() * 2 + 0.5;     // Velocidade de queda
+    this.color = colors[Math.floor(Math.random() * colors.length)]; // Sorteia uma cor da paleta
+    this.opacity = Math.random() * 0.5 + 0.1; // Transparência aleatória
   }
-  
-  class Square {
-    constructor() {
-      this.init();
-    }
-  
-    init() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height - height; // Começa acima da tela
-      this.size = Math.random() * 15 + 5; // Tamanho entre 5 e 20
-      this.speed = Math.random() * 2 + 0.5;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.opacity = Math.random() * 0.5 + 0.1;
-    }
-  
-    update() {
-      this.y += this.speed;
-      if (this.y > height) {
-        this.init(); // Reinicia quando sai da tela
-        this.y = -20;
-      }
-    }
-  
-    draw() {
-      ctx.globalAlpha = this.opacity;
-      ctx.strokeStyle = this.color;
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(this.x, this.y, this.size, this.size);
-      
-      // Ocasionalmente preenche o quadrado
-      if (Math.random() > 0.98) {
-         ctx.fillStyle = this.color;
-         ctx.fillRect(this.x, this.y, this.size, this.size);
-      }
-      ctx.globalAlpha = 1;
-    }
-  }
-  
-  function initParticles() {
-    particles = [];
-    const particleCount = Math.floor(width / 10); // Densidade baseada na largura
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Square());
+
+  // Atualiza a posição da partícula a cada frame (loop de animação)
+  update() {
+    this.y += this.speed;
+    
+    // Se o quadrado sair da tela pela parte de baixo, ele volta para o topo
+    if (this.y > height) {
+      this.init(); // Sorteia tudo de novo
+      this.y = -20; // Reposiciona um pouco acima do limite superior
     }
   }
-  
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    requestAnimationFrame(animate);
+
+  // Desenha o quadrado no elemento Canvas
+  draw() {
+    ctx.globalAlpha = this.opacity;
+    ctx.strokeStyle = this.color;
+    ctx.lineWidth = 1.5;
+    
+    // Desenha o contorno do quadrado (Stroke)
+    ctx.strokeRect(this.x, this.y, this.size, this.size);
+    
+    // Ocasionalmente (2% de chance) preenche o quadrado para dar um efeito de "piscar" ou glitch
+    if (Math.random() > 0.98) {
+       ctx.fillStyle = this.color;
+       ctx.fillRect(this.x, this.y, this.size, this.size);
+    }
+    
+    // Restaura a opacidade para 1, evitando afetar outros desenhos do canvas
+    ctx.globalAlpha = 1;
   }
+}
+
+
+/* --- INICIALIZAÇÃO E LOOP DE ANIMAÇÃO --- */
+
+// Preenche o array com a quantidade ideal de partículas (dinâmico baseado no tamanho da tela)
+function initParticles() {
+  particles = [];
+  const particleCount = Math.floor(width / 10); // Densidade de quadrados na tela
   
-  window.addEventListener('resize', () => {
-    resize();
-    initParticles();
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Square());
+  }
+}
+
+// Loop principal que atualiza a tela a cada frame (normalmente roda a 60fps)
+function animate() {
+  // Limpa a tela inteira antes de desenhar a nova posição dos quadrados
+  ctx.clearRect(0, 0, width, height);
+  
+  // Atualiza a matemática e redesenha cada partícula existente
+  particles.forEach(p => {
+    p.update();
+    p.draw();
   });
   
-  // Inicialização
+  // Chama o próprio método repetidas vezes para criar a animação fluida
+  requestAnimationFrame(animate);
+}
+
+
+/* --- EVENT LISTENERS (RESPONSIVIDADE E INTERATIVIDADE) --- */
+
+// Recalcula o tamanho e recria as partículas se o usuário redimensionar a janela do navegador
+window.addEventListener('resize', () => {
   resize();
   initParticles();
-  animate();
+});
+
+
+/* --- START DO SCRIPT --- */
+// Executa as funções essenciais para a animação começar a rodar assim que a página carregar
+resize();         
+initParticles();  
+animate();
