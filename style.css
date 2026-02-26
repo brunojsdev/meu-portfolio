@@ -1,6 +1,6 @@
 /* ==========================================================================
    1. VARIÁVEIS E PALETA DE CORES
-   Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Dourado, Branco.
+   Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Esverdeado, Branco.
    ========================================================================== */
 :root {
   --cor-bg-main: #050a14;     /* Azul muito escuro (quase preto) */
@@ -8,7 +8,7 @@
   --cor-texto: #e2e8f0;       /* Branco gelo suave */
   --cor-primaria: #00ff88;    /* Verde Neon (Destaque principal) */
   --cor-secundaria: #00d2ff;  /* Ciano (Destaque secundário) */
-  --cor-terciaria: #f5d742;   /* Amarelo Esverdeado / Dourado (Novo Destaque) */
+  --cor-terciaria: #b0d15a;   /* Amarelo Esverdeado suave (Harmoniza sem roubar atenção) */
   --cor-borda: #1e293b;       /* Cor das bordas em geral */
 }
 
@@ -101,7 +101,8 @@ a {
 
 .text-terciario {
   color: var(--cor-terciaria);
-  text-shadow: 0 0 10px rgba(245, 215, 66, 0.3);
+  /* Sombra ajustada para o RGB da nova cor #b0d15a (176, 209, 90) */
+  text-shadow: 0 0 10px rgba(176, 209, 90, 0.3); 
 }
 
 /* ==========================================================================
@@ -128,7 +129,7 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -2px;
-  /* Gradiente: Verde -> Dourado -> Ciano */
+  /* Gradiente: Amarelo Esverdeado -> Verde Neon -> Ciano */
   background: linear-gradient(
     to right,
     var(--cor-terciaria),
@@ -147,7 +148,8 @@ h1 {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(245, 215, 66, 0.2);
+  /* Sombra ajustada para o RGB da nova cor */
+  text-shadow: 0 0 15px rgba(176, 209, 90, 0.2);
 }
 
 /* Menu de Botões Principais */
@@ -263,7 +265,7 @@ h1 {
 .skill-badge:hover {
   background: var(--cor-terciaria);
   color: var(--cor-bg-main);
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 15px rgba(176, 209, 90, 0.4);
 }
 
 /* ==========================================================================
@@ -382,10 +384,11 @@ h1 {
 .tech-mini {
   font-size: 0.7rem;
   color: var(--cor-terciaria);
-  background: rgba(245, 215, 66, 0.1);
+  /* Fundo e Borda ajustados para o RGB da nova cor #b0d15a (176, 209, 90) */
+  background: rgba(176, 209, 90, 0.1);
   padding: 3px 8px;
   border-radius: 2px;
-  border: 1px solid rgba(245, 215, 66, 0.3);
+  border: 1px solid rgba(176, 209, 90, 0.3);
 }
 
 /* Ações (Botões dentro do card) */
