@@ -403,7 +403,7 @@ h1 {
 .back-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--cor-primaria);
+  color: var(--cor-terciaria);
   font-size: 1.1rem;
   display: flex;
   align-items: center;
