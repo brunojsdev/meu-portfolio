@@ -1,5 +1,5 @@
 /* * CONFIGURAÇÕES GERAIS E PALETA DE CORES
-   * Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Branco.
+   * Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Dourado, Branco.
    */
 :root {
   --cor-bg-main: #050a14; /* Azul muito escuro (quase preto) */
@@ -7,6 +7,7 @@
   --cor-texto: #e2e8f0; /* Branco gelo suave */
   --cor-primaria: #00ff88; /* Verde Neon (Destaque principal) */
   --cor-secundaria: #00d2ff; /* Ciano (Destaque secundário) */
+  --cor-terciaria: #f5d742; /* Amarelo Esverdeado / Dourado (Novo Destaque) */
   --cor-borda: #1e293b;
 }
 
@@ -45,6 +46,10 @@ body {
 }
 .text-secundario {
   color: var(--cor-secundaria);
+}
+.text-terciario {
+  color: var(--cor-terciaria);
+  text-shadow: 0 0 10px rgba(245, 215, 66, 0.3);
 }
 
 button {
@@ -108,10 +113,11 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -2px;
-  /* Gradiente Verde -> Ciano */
+  /* Gradiente atualizado: Verde -> Dourado -> Ciano */
   background: linear-gradient(
     to right,
     var(--cor-primaria),
+    var(--cor-terciaria),
     var(--cor-secundaria)
   );
   -webkit-background-clip: text;
@@ -122,10 +128,11 @@ h1 {
 
 .subtitle {
   font-size: 1.3rem;
-  color: var(--cor-secundaria);
+  color: var(--cor-terciaria); /* Aplicado o dourado aqui para maior sofisticação */
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(245, 215, 66, 0.2);
 }
 
 /* MENU DE BOTÕES PRINCIPAIS */
@@ -184,7 +191,7 @@ h1 {
   background: rgba(11, 18, 33, 0.7); /* Fundo semi-transparente */
   backdrop-filter: blur(5px);
   border: 1px solid var(--cor-borda);
-  border-top: 2px solid var(--cor-secundaria);
+  border-top: 2px solid var(--cor-terciaria); /* Borda superior destacada em dourado */
   border-radius: 8px;
   padding: 40px;
   width: 100%;
@@ -334,11 +341,12 @@ h1 {
 
 .tech-mini {
   font-size: 0.7rem;
-  color: var(--cor-primaria);
-  background: rgba(0, 255, 136, 0.1);
+  /* Atualizado para a nova cor dourada para separar das cores dos botões */
+  color: var(--cor-terciaria);
+  background: rgba(245, 215, 66, 0.1);
   padding: 3px 8px;
   border-radius: 2px;
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(245, 215, 66, 0.3);
 }
 
 /* --- CÓDIGO DOS BOTÕES --- */
