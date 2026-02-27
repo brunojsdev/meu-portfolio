@@ -30,11 +30,6 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 body {
   /* Fundo da página utilizando gradiente de Roxos */
   background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
@@ -44,11 +39,6 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
-}
-
-main {
-  flex: 1;
-  display: flex;
 }
 
 /* Elementos Interativos Base */
@@ -80,14 +70,17 @@ a {
 
 .section-container {
   display: none;
-  flex: 1;
+  min-height: 100vh;
   width: 100%;
   padding: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+  z-index: 1;
 }
 
 .section-container.active {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 @keyframes fadeIn {
@@ -415,7 +408,7 @@ footer {
   width: 100%;
   
   /* Background Roxo Escuro */
-  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
+  background: var(--roxo-escuro);
   /* Texto Branco */
   color: var(--branco);
   /* Divisória superior amarela */
