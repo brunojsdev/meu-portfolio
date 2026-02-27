@@ -3,15 +3,15 @@
    ========================================================================== */
 :root {
   /* ROXOS (Exclusivo para Fundos/Backgrounds) */
-  --roxo-claro: #0d013b;
-  --roxo-medio: #090026;
-  --roxo-escuro: #03000d;
+  --roxo-claro: #230c75;
+  --roxo-medio: #180850;
+  --roxo-escuro: #100526;
 
   /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
   --ciano: #02e0e3;
   --azul-claro: #008dd8;
-  --azul-medio: #0073d8;
-  --azul-escuro: #0048d8;
+  --azul-medio: #0070d8;
+  --azul-escuro: #0041d8;
 
   /* AMARELO (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
   --amarelo: #f2bb13;
@@ -31,9 +31,8 @@
 }
 
 body {
-  /* Fundo da página utilizando gradiente de Roxos */
   background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
-  color: var(--branco); /* Texto comum em branco */
+  color: var(--branco);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,7 +40,6 @@ body {
   position: relative;
 }
 
-/* Elementos Interativos Base */
 button {
   cursor: pointer;
   border: none;
@@ -65,7 +63,7 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.25; /* Suaviza a animação para destacar os roxos do fundo */
+  opacity: 0.25;
 }
 
 .section-container {
@@ -97,18 +95,15 @@ a {
 /* ==========================================================================
    4. TIPOGRAFIA GERAL E TEXTOS COMUNS
    ========================================================================== */
-/* Todos os textos comuns de parágrafo em Branco */
-p, .bio-text, .project-desc, .location {
+p, .bio-text, .location {
   color: var(--branco);
 }
 
-/* Títulos Globais: Gradiente Azul/Ciano conforme regra H1 */
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--azul-medio), var(--azul-claro), var(--ciano));
+  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
-  /* Glow suave na mesma cor para dar destaque contra o fundo escuro */
   filter: drop-shadow(0 0 10px rgba(2, 224, 227, 0.2));
 }
 
@@ -137,7 +132,6 @@ h1 {
   letter-spacing: -2px;
 }
 
-/* Subtítulo obrigatório em Amarelo */
 .subtitle {
   font-size: 1.3rem;
   color: var(--amarelo);
@@ -147,7 +141,6 @@ h1 {
   text-shadow: 0 0 15px rgba(242, 187, 19, 0.3);
 }
 
-/* Menu de Botões Principais */
 .main-menu {
   display: flex;
   flex-wrap: wrap;
@@ -167,35 +160,26 @@ h1 {
   gap: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
-  /* Background Roxo Escuro, Borda Amarela, Texto Branco */
   background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
   border: 1px solid var(--amarelo);
   color: var(--branco);
-  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
 }
 
 .menu-btn:hover {
   transform: translateY(-3px);
-  /* Brilho amarelo na borda */
   box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
   background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio));
-  color: var(--branco);
 }
 
-/* Bloco "Sobre Mim" */
 .about-embedded {
-  /* Background com tons de roxo semi-transparente */
   background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
   backdrop-filter: blur(8px);
-  /* Borda destacada em Amarelo */
   border: 1px solid var(--amarelo);
   border-radius: 8px;
   padding: 40px;
   width: 100%;
   text-align: left;
   margin-bottom: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-header {
@@ -203,7 +187,6 @@ h1 {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 20px;
-  /* Linha divisória em amarelo para acompanhar bordas */
   border-bottom: 1px solid var(--amarelo);
   padding-bottom: 15px;
   flex-wrap: wrap;
@@ -216,37 +199,19 @@ h1 {
   text-align: justify;
 }
 
-/* Lista de Habilidades / Skills */
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .skill-badge {
-  /* Fundo roxo obrigatório */
   background: var(--roxo-escuro);
-  /* Borda em amarelo para acompanhar estilo dos botões e card */
   border: 1px solid var(--amarelo);
   padding: 5px 12px;
   border-radius: 3px;
   font-size: 0.85rem;
   font-weight: bold;
-  transition: all 0.3s;
 }
 
-/* Span interno para criar o texto com o gradiente H1 e manter o fundo roxo da caixa */
 .skill-badge span {
   background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
-}
-
-.skill-badge:hover {
-  background: var(--roxo-medio);
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(242, 187, 19, 0.3); /* Glow amarelo leve */
 }
 
 /* ==========================================================================
@@ -260,22 +225,19 @@ h1 {
 .projects-header {
   text-align: left;
   margin-bottom: 30px;
-  /* Borda lateral amarela */
   border-left: 5px solid var(--amarelo);
   padding-left: 20px;
 }
 
-/* Grid de Projetos */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   width: 100%;
+  margin-bottom: 60px; /* Espaço antes do footer */
 }
 
-/* Botão de Voltar - Texto em Amarelo obrigatório */
 .back-btn {
-  align-self: flex-start;
   background: transparent;
   color: var(--amarelo);
   font-size: 1.1rem;
@@ -285,73 +247,47 @@ h1 {
   align-items: center;
   gap: 8px;
   margin-bottom: 30px;
-  padding: 10px 0;
-}
-
-.back-btn:hover {
-  color: var(--amarelo);
-  transform: translateX(-5px);
-  text-shadow: 0 0 10px rgba(242, 187, 19, 0.5); /* Glow para dar feedback de clique */
 }
 
 /* ==========================================================================
    7. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
 .project-card {
-  /* Fundo roxo em gradiente suave */
   background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
-  /* Borda obrigatoriamente amarela */
   border: 1px solid var(--amarelo);
   border-radius: 6px;
-  padding: 0;
-  min-height: 380px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
   overflow: hidden;
 }
 
-.project-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 10px 30px rgba(242, 187, 19, 0.2); /* Sombra amarela que brilha sutilmente */
-}
-
-/* Container da Imagem do Projeto */
 .project-thumb {
   width: 100%;
   height: 160px;
   background-color: var(--roxo-claro);
-  /* Divisória amarela entre a imagem e o conteúdo */
   border-bottom: 1px solid var(--amarelo);
-  overflow: hidden;
 }
 
-.project-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-thumb img {
-  transform: scale(1.1);
-}
-
-/* Conteúdo do Card (Texto e Botões) */
 .project-content {
-  padding: 25px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: space-between;
 }
 
-/* Tecnologias (Tags pequenas) - Texto e Borda Amarela, Fundo Roxo */
+/* Ajuste de espaçamento solicitado pelo usuário */
+.project-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px; /* Espaço entre texto e botões */
+  flex-grow: 1; /* Garante que os botões fiquem alinhados embaixo */
+}
+
 .project-techs {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
@@ -365,7 +301,6 @@ h1 {
   border-radius: 2px;
 }
 
-/* Ações (Botões dentro do card) */
 .project-actions {
   display: flex;
   gap: 10px;
@@ -381,56 +316,40 @@ h1 {
   padding: 10px 5px;
   font-size: 0.85rem;
   border-radius: 4px;
-  text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
-  
-  /* Botões em Background Roxo, Borda Amarela e Texto Branco */
   background: linear-gradient(to top, var(--roxo-escuro), var(--roxo-medio));
   border: 1px solid var(--amarelo);
   color: var(--branco);
 }
 
 .action-btn:hover {
-  background: linear-gradient(to top, var(--roxo-medio), var(--roxo-claro));
-  color: var(--branco);
-  box-shadow: 0 0 15px rgba(242, 187, 19, 0.4); /* Glow amarelo ao sobrepor */
+  box-shadow: 0 0 15px rgba(242, 187, 19, 0.4);
 }
 
 /* ==========================================================================
-   8. FOOTER (RODAPÉ)
+   8. FOOTER (RODAPÉ) - CORREÇÃO DE POSICIONAMENTO
    ========================================================================== */
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 25px 0;
   font-size: 0.85rem;
-  margin-top: auto;
-  width: 100%;
-  
-  /* Background Roxo Escuro */
+  width: 100vw; /* Ocupa toda a largura do viewport */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   background: var(--roxo-escuro);
-  /* Texto Branco */
   color: var(--branco);
-  /* Divisória superior amarela */
   border-top: 1px solid var(--amarelo);
+  margin-top: auto; /* Empurra para o final da página */
 }
 
 /* ==========================================================================
-   9. RESPONSIVIDADE (MOBILE)
+   9. RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-  .main-menu {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .menu-btn {
-    text-align: center;
-    justify-content: center;
-  }
-  .about-header {
-    flex-direction: column;
-  }
+  h1 { font-size: 2.5rem; }
+  .main-menu { flex-direction: column; }
+  footer { width: 100%; margin: auto 0 0 0; left: 0; }
 }
