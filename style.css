@@ -408,7 +408,7 @@ footer {
   width: 100%;
   
   /* Background Roxo Escuro */
-  background: var(--roxo-escuro);
+background: linear-gradient(135deg, var(--azul-escuro), var(--roxo-medio), var(--roxo-escuro));
   /* Texto Branco */
   color: var(--branco);
   /* Divisória superior amarela */
