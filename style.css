@@ -3,15 +3,15 @@
    ========================================================================== */
 :root {
   /* ROXOS (Exclusivo para Fundos/Backgrounds) */
-  --roxo-claro: #230c75;
-  --roxo-medio: #180850;
-  --roxo-escuro: #100526;
+  --roxo-claro: #130154;
+  --roxo-medio: #0e013d;
+  --roxo-escuro: #050017;
 
   /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
   --ciano: #02e0e3;
   --azul-claro: #008dd8;
-  --azul-medio: #0070d8;
-  --azul-escuro: #0041d8;
+  --azul-medio: #0073d8;
+  --azul-escuro: #0048d8;
 
   /* AMARELO (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
   --amarelo: #f2bb13;
