@@ -30,6 +30,11 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   /* Fundo da página utilizando gradiente de Roxos */
   background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
@@ -39,6 +44,10 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
+}
+
+main {
+  flex: 1;
 }
 
 /* Elementos Interativos Base */
