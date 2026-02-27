@@ -1,15 +1,23 @@
 /* ==========================================================================
-   1. VARIÁVEIS E PALETA DE CORES
-   Paleta: .
+   1. VARIÁVEIS E NOVA PALETA DE CORES
    ========================================================================== */
 :root {
-  --cor-bg-main: #100838;     /* Roxo muito escuro (quase preto) */
-  --cor-bg-card: #180850;     /* Roxo escuro levemente mais claro */
-  --cor-texto: #6898e8;       /* Cinza azulado */
-  --cor-primaria: #008dd8;    /* Azul  */
-  --cor-secundaria: #00ced1;  /* Ciano */
-  --cor-terciaria: #f2bb13;   /* Amarelo  */
-  --cor-borda: #1e293b;       /* Cor das bordas em geral */
+  /* ROXOS (Exclusivo para Fundos/Backgrounds) */
+  --roxo-claro: #230c75;
+  --roxo-medio: #180850;
+  --roxo-escuro: #100526;
+
+  /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
+  --ciano: #02e0e3;
+  --azul-claro: #008dd8;
+  --azul-medio: #0070d8;
+  --azul-escuro: #0041d8;
+
+  /* AMARELO (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
+  --amarelo: #f2bb13;
+
+  /* BRANCO (Exclusivo para Textos Comuns de leitura) */
+  --branco: #c9e4ff;
 }
 
 /* ==========================================================================
@@ -23,8 +31,9 @@
 }
 
 body {
-  background-color: var(--cor-bg-main);
-  color: var(--cor-texto);
+  /* Fundo da página utilizando gradiente de Roxos */
+  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
+  color: var(--branco); /* Texto comum em branco */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,7 +58,6 @@ a {
 /* ==========================================================================
    3. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
    ========================================================================== */
-/* CANVAS DE FUNDO (Efeito Digital Rain) */
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -57,12 +65,11 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.4; /* Suaviza o fundo para não atrapalhar a leitura */
+  opacity: 0.25; /* Suaviza a animação para destacar os roxos do fundo */
 }
 
-/* NAVEGAÇÃO / TRANSIÇÃO DE SEÇÕES */
 .section-container {
-  display: none; /* Escondido por padrão, o JS controla */
+  display: none;
   min-height: 100vh;
   width: 100%;
   padding: 20px;
@@ -88,21 +95,21 @@ a {
 }
 
 /* ==========================================================================
-   4. CLASSES UTILITÁRIAS (TEXTOS)
+   4. TIPOGRAFIA GERAL E TEXTOS COMUNS
    ========================================================================== */
-.text-destaque {
-  color: var(--cor-primaria);
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+/* Todos os textos comuns de parágrafo em Branco */
+p, .bio-text, .project-desc, .location {
+  color: var(--branco);
 }
 
-.text-secundario {
-  color: var(--cor-secundaria);
-}
-
-.text-terciario {
-  color: var(--cor-terciaria);
-  /* Sombra ajustada para o RGB da nova cor #b0d15a (176, 209, 90) */
-  text-shadow: 0 0 10px rgba(176, 209, 90, 0.3); 
+/* Títulos Globais: Gradiente Azul/Ciano conforme regra H1 */
+h1, h2, h3, h4 {
+  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  /* Glow suave na mesma cor para dar destaque contra o fundo escuro */
+  filter: drop-shadow(0 0 10px rgba(2, 224, 227, 0.2));
 }
 
 /* ==========================================================================
@@ -119,7 +126,6 @@ a {
   text-align: center;
 }
 
-/* Cabeçalho Home */
 header {
   margin-top: 60px;
   margin-bottom: 30px;
@@ -129,26 +135,16 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -2px;
-  /* Gradiente da paleta */
-  background: linear-gradient(
-    to right,
-    var(--cor-primaria),
-    var(--cor-secundaria)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  text-shadow: 0 0 40px rgba(0, 255, 136, 0.15);
 }
 
+/* Subtítulo obrigatório em Amarelo */
 .subtitle {
   font-size: 1.3rem;
-  color: var(--cor-terciaria);
+  color: var(--amarelo);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  /* Sombra ajustada para o RGB da nova cor */
-  text-shadow: 0 0 15px rgba(176, 209, 90, 0.2);
+  text-shadow: 0 0 15px rgba(242, 187, 19, 0.3);
 }
 
 /* Menu de Botões Principais */
@@ -165,49 +161,35 @@ h1 {
   padding: 14px 35px;
   font-size: 1rem;
   font-weight: 700;
-  background-color: rgba(5, 10, 20, 0.8);
-  border: 1px solid var(--cor-primaria);
-  color: var(--cor-primaria);
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  position: relative;
-  overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
-}
-
-/* Efeito Hover Estilo "Preencher" nos Botões */
-.menu-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: var(--cor-primaria);
-  transition: width 0.3s ease;
-  z-index: -1;
-}
-
-.menu-btn:hover::before {
-  width: 100%;
+  
+  /* Background Roxo Escuro, Borda Amarela, Texto Branco */
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  border: 1px solid var(--amarelo);
+  color: var(--branco);
+  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
 }
 
 .menu-btn:hover {
-  color: var(--cor-bg-main);
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
   transform: translateY(-3px);
+  /* Brilho amarelo na borda */
+  box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
+  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio));
+  color: var(--branco);
 }
 
 /* Bloco "Sobre Mim" */
 .about-embedded {
-  background: rgba(11, 18, 33, 0.7); /* Fundo semi-transparente */
-  backdrop-filter: blur(5px);
-  border: 1px solid var(--cor-borda);
-  border-top: 2px solid var(--cor-terciaria); /* Borda superior destacada */
+  /* Background com tons de roxo semi-transparente */
+  background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
+  backdrop-filter: blur(8px);
+  /* Borda destacada em Amarelo */
+  border: 1px solid var(--amarelo);
   border-radius: 8px;
   padding: 40px;
   width: 100%;
@@ -221,25 +203,15 @@ h1 {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--cor-borda);
+  /* Linha divisória em amarelo para acompanhar bordas */
+  border-bottom: 1px solid var(--amarelo);
   padding-bottom: 15px;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.about-header h2 {
-  color: var(--cor-texto);
-  font-size: 1.8rem;
-}
-
-.location {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
 .bio-text {
   line-height: 1.8;
-  color: #cbd5e1;
   margin-bottom: 25px;
   text-align: justify;
 }
@@ -252,19 +224,29 @@ h1 {
 }
 
 .skill-badge {
-  background: rgba(0, 210, 255, 0.05);
-  border: 1px solid var(--cor-terciaria);
-  color: var(--cor-terciaria);
+  /* Fundo roxo obrigatório */
+  background: var(--roxo-escuro);
+  /* Borda em amarelo para acompanhar estilo dos botões e card */
+  border: 1px solid var(--amarelo);
   padding: 5px 12px;
   border-radius: 3px;
   font-size: 0.85rem;
+  font-weight: bold;
   transition: all 0.3s;
 }
 
+/* Span interno para criar o texto com o gradiente H1 e manter o fundo roxo da caixa */
+.skill-badge span {
+  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
+}
+
 .skill-badge:hover {
-  background: var(--cor-terciaria);
-  color: var(--cor-bg-main);
-  box-shadow: 0 0 15px rgba(176, 209, 90, 0.4);
+  background: var(--roxo-medio);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(242, 187, 19, 0.3); /* Glow amarelo leve */
 }
 
 /* ==========================================================================
@@ -278,7 +260,8 @@ h1 {
 .projects-header {
   text-align: left;
   margin-bottom: 30px;
-  border-left: 5px solid var(--cor-terciaria);
+  /* Borda lateral amarela */
+  border-left: 5px solid var(--amarelo);
   padding-left: 20px;
 }
 
@@ -290,12 +273,14 @@ h1 {
   width: 100%;
 }
 
-/* Botão de Voltar */
+/* Botão de Voltar - Texto em Amarelo obrigatório */
 .back-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--cor-terciaria);
+  color: var(--amarelo);
   font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -304,40 +289,41 @@ h1 {
 }
 
 .back-btn:hover {
-  color: var(--cor-terciaria);
+  color: var(--amarelo);
   transform: translateX(-5px);
+  text-shadow: 0 0 10px rgba(242, 187, 19, 0.5); /* Glow para dar feedback de clique */
 }
 
 /* ==========================================================================
-   7. COMPONENTES: CARDS DE PROJETO (ATUALIZADO)
+   7. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
 .project-card {
-  background: var(--cor-bg-card);
-  border: 1px solid var(--cor-terciaria); 
+  /* Fundo roxo em gradiente suave */
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  /* Borda obrigatoriamente amarela */
+  border: 1px solid var(--amarelo);
   border-radius: 6px;
   padding: 0;
-  min-height: 380px; 
+  min-height: 380px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
-  /* Glow suave constante na cor secundária */
-  /*box-shadow: 0 4px 15px rgba(0, 210, 255, 0.05);*/
 }
 
 .project-card:hover {
   transform: translateY(-7px);
-  border-color: var(--cor-terciaria);
-  /*box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);*/
+  box-shadow: 0 10px 30px rgba(242, 187, 19, 0.2); /* Sombra amarela que brilha sutilmente */
 }
 
 /* Container da Imagem do Projeto */
 .project-thumb {
   width: 100%;
   height: 160px;
-  background-color: #020617;
-  border-bottom: 1px solid var(--cor-borda);
+  background-color: var(--roxo-claro);
+  /* Divisória amarela entre a imagem e o conteúdo */
+  border-bottom: 1px solid var(--amarelo);
   overflow: hidden;
 }
 
@@ -361,20 +347,7 @@ h1 {
   justify-content: space-between;
 }
 
-.project-content h4 {
-  color: var(--cor-texto);
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  color: #94a3b8;
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-/* Tecnologias (Tags pequenas) */
+/* Tecnologias (Tags pequenas) - Texto e Borda Amarela, Fundo Roxo */
 .project-techs {
   display: flex;
   gap: 8px;
@@ -384,12 +357,12 @@ h1 {
 
 .tech-mini {
   font-size: 0.7rem;
-  color: var(--cor-terciaria);
-  /* Fundo e Borda ajustados para o RGB da nova cor #b0d15a (176, 209, 90) */
-  background: rgba(176, 209, 90, 0.1);
+  font-weight: bold;
+  color: var(--amarelo);
+  border: 1px solid var(--amarelo);
+  background: var(--roxo-escuro);
   padding: 3px 8px;
   border-radius: 2px;
-  border: 1px solid rgba(176, 209, 90, 0.3);
 }
 
 /* Ações (Botões dentro do card) */
@@ -409,36 +382,19 @@ h1 {
   font-size: 0.85rem;
   border-radius: 4px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  border: 1px solid var(--cor-borda);
-  color: var(--cor-texto);
   font-weight: 600;
+  transition: all 0.3s ease;
+  
+  /* Botões em Background Roxo, Borda Amarela e Texto Branco */
+  background: linear-gradient(to top, var(--roxo-escuro), var(--roxo-medio));
+  border: 1px solid var(--amarelo);
+  color: var(--branco);
 }
 
-/* Estilo do Botão "Ver Projeto" (Demo) */
-.action-btn.demo {
-  border-color: var(--cor-primaria);
-  color: var(--cor-primaria);
-  background: rgba(0, 255, 136, 0.05);
-}
-
-.action-btn.demo:hover {
-  background: var(--cor-primaria);
-  color: var(--cor-primaria);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-}
-
-/* Estilo do Botão "Ver Código" (Code) */
-.action-btn.code {
-  border-color: var(--cor-secundaria);
-  color: var(--cor-secundaria);
-  background: rgba(0, 210, 255, 0.05);
-}
-
-.action-btn.code:hover {
-  background: var(--cor-secundaria);
-  color: #050a14;
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+.action-btn:hover {
+  background: linear-gradient(to top, var(--roxo-medio), var(--roxo-claro));
+  color: var(--branco);
+  box-shadow: 0 0 15px rgba(242, 187, 19, 0.4); /* Glow amarelo ao sobrepor */
 }
 
 /* ==========================================================================
@@ -448,11 +404,15 @@ footer {
   text-align: center;
   padding: 30px;
   font-size: 0.85rem;
-  color: #64748b;
   margin-top: auto;
-  border-top: 1px solid #1e293b;
   width: 100%;
-  background: rgba(5, 10, 20, 0.9);
+  
+  /* Background Roxo Escuro */
+  background: var(--roxo-escuro);
+  /* Texto Branco */
+  color: var(--branco);
+  /* Divisória superior amarela */
+  border-top: 1px solid var(--amarelo);
 }
 
 /* ==========================================================================
@@ -462,17 +422,14 @@ footer {
   h1 {
     font-size: 2.5rem;
   }
-  
   .main-menu {
     flex-direction: column;
     align-items: stretch;
   }
-  
   .menu-btn {
     text-align: center;
     justify-content: center;
   }
-  
   .about-header {
     flex-direction: column;
   }
