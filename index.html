@@ -1,312 +1,450 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio | Bruno J. Silveira</title>
-    
-    <!-- Link para o arquivo CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Ícone da aba do navegador -->
-    <link rel="icon" type="image/png" href="./img/fi-port.png">
-  </head>
-  <body>
-    <!-- ========================================== -->
-    <!-- FUNDO ANIMADO (CANVAS)                     -->
-    <!-- ========================================== -->
-    <canvas id="bg-canvas"></canvas>
+/* ==========================================================================
+   1. VARIÁVEIS E NOVA PALETA DE CORES
+   ========================================================================== */
+:root {
+  /* ROXOS (Exclusivo para Fundos/Backgrounds) */
+  --roxo-claro: #0d0138;
+  --roxo-medio: #080021;
+  --roxo-escuro: #050114;
 
-    <!-- ========================================== -->
-    <!-- SEÇÃO: INÍCIO (HOME)                       -->
-    <!-- ========================================== -->
-    <div id="home" class="section-container active">
-      
-      <!-- Cabeçalho Principal -->
-      <header>
-        <h1 id="main-name">Bruno J. Silveira</h1>
-        <p class="subtitle">Programador Júnior Fullstack</p>
-      </header>
+  /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
+  --ciano: #00edf0;
+  --azul-claro: #00a0f0;
+  --azul-medio: #0080f0;
+  --azul-escuro: #005cf0;
 
-      <!-- Conteúdo da Página Inicial -->
-      <div id="home-content">
-        
-        <!-- Menu de Navegação / Links -->
-        <nav class="main-menu">
-          <a href="https://drive.google.com/file/d/1XQvk13FFdZKeQq7Ebo2kFmFg9Olu9pga/view" class="menu-btn" title="PDF do Currículo" target="_blank">
-            📄 Currículo
-          </a>
-          <button class="menu-btn" onclick="showSection('projects')" title="Visualizar Projetos">
-            📂 Projetos
-          </button>
-          <a href="https://www.linkedin.com/in/bruno-j-silveira-b64763390" class="menu-btn" title="LinkedIn" target="_blank">
-            🔗 LinkedIn
-          </a>
-          <a href="https://github.com/brunojsdev" class="menu-btn" title="Github" target="_blank">
-            🖥️ GitHub
-          </a>
-        </nav>
+  /* AMARELO (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
+  --amarelo: #f2bb13;
 
-        <!-- Bloco: Sobre o Desenvolvedor -->
-        <section class="about-embedded">
-          
-          <div class="about-header">
-            <h2>Sobre o Desenvolvedor</h2>
-            <div class="location">📍 São Bernardo do Campo, SP</div>
-          </div>
+  /* BRANCO (Exclusivo para Textos Comuns de leitura) */
+  --branco: #c9e4ff;
+}
 
-          <!-- Habilidades / Ferramentas -->
-          <h4 style="margin-bottom: 10px;">Ferramentas e Linguagens</h4>
-          <div class="skills-list" style="margin-bottom: 25px; display: flex; flex-wrap: wrap; justify-content: flex-start;">
-            <!-- O Span interno permite o gradiente no texto enquanto o fundo roxo fica no elemento pai -->
-            <span class="skill-badge"><span>HTML5</span></span>
-            <span class="skill-badge"><span>CSS3</span></span>
-            <span class="skill-badge"><span>JavaScript</span></span>
-            <span class="skill-badge"><span>Python</span></span>
-            <span class="skill-badge"><span>Java</span></span>
-            <span class="skill-badge"><span>Tailwind</span></span>
-            <span class="skill-badge"><span>Git</span></span>
-            <span class="skill-badge"><span>Github</span></span>
-            <span class="skill-badge"><span>VS Code</span></span>
-          </div>
-      
-          <!-- Objetivos -->
-          <h4 style="margin-bottom: 10px;">Objetivos Profissionais</h4>
-          <p class="bio-text">
-            Decidi aprender programação motivado pelo interesse em tecnologia e pela possibilidade de criar soluções práticas para problemas reais. Busco desenvolver habilidades técnicas sólidas, com foco em aprendizado contínuo, boas práticas de desenvolvimento e evolução profissional na área de software.
-          </p>
+/* ==========================================================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-          <!-- Hobbies -->
-          <h4 style="margin-bottom: 10px;">Informações Adicionais (Hobbies)</h4>
-          <p class="bio-text">
-            Tenho interesse em quadrinhos (Marvel e DC), animes, animações independentes e o universo de Pokémon. Também pratico caminhadas para manter o foco e constância.
-          </p>
-          
-        </section>
-      </div>
-      
-      <!-- Rodapé Principal -->
-      <footer>&copy; 2026 Bruno J. Silveira. Todos os direitos reservados.</footer>
-    </div>
+body {
+  /* Fundo da página utilizando gradiente de Roxos */
+  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
+  color: var(--branco); /* Texto comum em branco */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
 
+/* Elementos Interativos Base */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
 
-    <!-- ========================================== -->
-    <!-- SEÇÃO: PROJETOS                            -->
-    <!-- ========================================== -->
-    <div id="projects" class="section-container">
-      <div class="projects-wrapper">
-        
-        <!-- Botão Voltar -->
-        <button class="back-btn" onclick="showSection('home')">
-          ← Voltar para Início
-        </button>
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
 
-        <!-- Cabeçalho da Seção de Projetos -->
-        <div class="projects-header">
-          <h2 style="font-size: 2rem;">Meus Projetos</h2>
-          <p class="project-desc" style="margin-top: 5px;">Repositórios e Experimentos</p>
-        </div>
+/* ==========================================================================
+   3. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
+   ========================================================================== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.25; /* Suaviza a animação para destacar os roxos do fundo */
+}
 
-        <!-- Grade de Projetos -->
-        <div class="projects-grid">
-          
-          <!-- Projeto 1: Calculadora Web -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/calc.png" alt="Capa Calculadora">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Calculadora Web</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">JavaScript</span>
-                  <span class="tech-mini">Canvas API</span>
-                  <span class="tech-mini">Math</span>
-                  <span class="tech-mini">UX Design</span>
-                </div>
-                <p class="project-desc">Uma calculadora funcional com interface moderna e operações básicas.</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://brunojsdev.github.io/calculadora-web/" target="_blank" class="action-btn demo">
-                  Ver Projeto ↗
-                </a>
-                <a href="https://github.com/brunojsdev/calculadora-web" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
+.section-container {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+  z-index: 1;
+}
 
-          <!-- Projeto 2: Lista de Tarefas -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/tarefa.png" alt="Capa Todo List">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Lista de Tarefas</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">JavaScript</span>
-                  <span class="tech-mini">Canvas API</span>
-                  <span class="tech-mini">DOM Manipulation</span>
-                </div>
-                <p class="project-desc">Aplicação para gerenciamento de tarefas, com criação, conclusão e organização de atividades</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://brunojsdev.github.io/lista-tarefas/" target="_blank" class="action-btn demo">
-                  Ver Projeto ↗
-                </a>
-                <a href="https://github.com/brunojsdev/lista-tarefas" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
+.section-container.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-          <!-- Projeto 3: Hora e Clima -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/horaeclima.png" alt="Capa Hora e Clima">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Hora e Clima</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">JavaScript</span>
-                  <span class="tech-mini">API Integration</span>
-                  <span class="tech-mini">Async/Await</span>
-                  <span class="tech-mini">Canvas API</span>
-                  <span class="tech-mini">Date API</span>
-                </div>
-                <p class="project-desc" >Aplicação que exibe hora atual e informações meteorológicas em tempo real via API.</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://brunojsdev.github.io/api-clima-hora/" target="_blank" class="action-btn demo">
-                  Ver Projeto ↗
-                </a>
-                <a href="https://github.com/brunojsdev/api-clima-hora" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-          <!-- Projeto 4: Guia de Primeiros Socorros -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/sos.png" alt="Capa SOS">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Guia de Primeiros Socorros</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">JavaScript</span>
-                  <span class="tech-mini">ES6+</span>
-                  <span class="tech-mini">Lucide Icons</span>
-                  <span class="tech-mini">Tailwind CSS</span>
-                </div>
-                <p class="project-desc">Página informativa e interativa com instruções básicas de primeiros socorros.</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://brunojsdev.github.io/guia-primeiros-socorros/" target="_blank" class="action-btn demo">
-                  Ver Projeto ↗
-                </a>
-                <a href="https://github.com/brunojsdev/guia-primeiros-socorros" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
+/* ==========================================================================
+   4. TIPOGRAFIA GERAL E TEXTOS COMUNS
+   ========================================================================== */
+/* Todos os textos comuns de parágrafo em Branco */
+p, .bio-text, .project-desc, .location {
+  color: var(--branco);
+}
 
-          <!-- Projeto 5: Dashboard do Sistema Solar -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/ss-py.png" alt="Capa Dashboard Py">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Dashboard do Sistema Solar</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">Pandas</span>
-                  <span class="tech-mini">Plotly</span>
-                  <span class="tech-mini">Python</span>
-                  <span class="tech-mini">Streamlit Cloud</span>
-                </div>
-                <p class="project-desc">Dashboard informativo com algumas curiosidades e fatos sobre o Sistema Solar.</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://dashboard-sistema-solar-python.streamlit.app/" target="_blank" class="action-btn demo">
-                  Ver Projeto ↗
-                </a>
-                <a href="https://github.com/brunojsdev/dashboard-sistema-solar" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Projeto 6: Automação Python -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/autopy.png" alt="Capa Python">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Automação Python</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">Python</span>
-                  <span class="tech-mini">Automation</span>
-                </div>
-                <p class="project-desc">Scripts em Python para automação de tarefas e organização de arquivos.</p>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/brunojsdev/organizador-de-arquivos" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Projeto 7: Portfólio Pessoal -->
-          <div class="project-card">
-            <div class="project-thumb">
-               <img src="img/port.png" alt="Capa Portfolio">
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Portfólio Pessoal</h4>
-                <div class="project-techs">
-                  <span class="tech-mini">HTML5</span>
-                  <span class="tech-mini">CSS3</span>
-                  <span class="tech-mini">JavaScript</span>
-                  <span class="tech-mini">Canvas API</span>
-                  <span class="tech-mini">Modularização</span>
-                </div>
-                <p class="project-desc">Portfólio pessoal responsivo, com projetos, informações de contato e animações em Canvas.</p>
-              </div>
-                <a href="https://github.com/brunojsdev/meu-portfolio" target="_blank" class="action-btn code">
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
+/* Títulos Globais: Gradiente Azul/Ciano conforme regra H1 */
+h1, h2, h3, h4 {
+  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  /* Glow suave na mesma cor para dar destaque contra o fundo escuro */
+  filter: drop-shadow(0 0 10px rgba(2, 224, 227, 0.2));
+}
 
-        </div> <!-- Fim Grid -->
-      </div> <!-- Fim Wrapper -->
-    </div> <!-- Fim Seção Projetos -->
+/* ==========================================================================
+   5. SEÇÃO: TELA INICIAL (HOME)
+   ========================================================================== */
+#home-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    <!-- ========================================== -->
-    <!-- SCRIPTS                                    -->
-    <!-- ========================================== -->
-    <script src="script.js"></script>
-  </body>
-</html>
+header {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+/* Subtítulo obrigatório em Amarelo */
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--amarelo);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(242, 187, 19, 0.3);
+}
+
+/* Menu de Botões Principais */
+.main-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.menu-btn {
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Background Roxo Escuro, Borda Amarela, Texto Branco */
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  border: 1px solid var(--amarelo);
+  color: var(--branco);
+  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  /* Brilho amarelo na borda */
+  box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
+  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio));
+  color: var(--branco);
+}
+
+/* Bloco "Sobre Mim" */
+.about-embedded {
+  /* Background com tons de roxo semi-transparente */
+  background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
+  backdrop-filter: blur(8px);
+  /* Borda destacada em Amarelo */
+  border: 1px solid var(--amarelo);
+  border-radius: 8px;
+  padding: 40px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+  /* Linha divisória em amarelo para acompanhar bordas */
+  border-bottom: 1px solid var(--amarelo);
+  padding-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bio-text {
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+/* Lista de Habilidades / Skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  /* Fundo roxo obrigatório */
+  background: var(--roxo-escuro);
+  /* Borda em amarelo para acompanhar estilo dos botões e card */
+  border: 1px solid var(--amarelo);
+  padding: 5px 12px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+/* Span interno para criar o texto com o gradiente H1 e manter o fundo roxo da caixa */
+.skill-badge span {
+  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
+}
+
+.skill-badge:hover {
+  background: var(--roxo-medio);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(242, 187, 19, 0.3); /* Glow amarelo leve */
+}
+
+/* ==========================================================================
+   6. SEÇÃO: PROJETOS
+   ========================================================================== */
+.projects-wrapper {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.projects-header {
+  text-align: left;
+  margin-bottom: 30px;
+  /* Borda lateral amarela */
+  border-left: 5px solid var(--amarelo);
+  padding-left: 20px;
+}
+
+/* Grid de Projetos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 40px; /* Garante que os cards não encostem no footer */
+}
+
+/* Botão de Voltar - Texto em Amarelo obrigatório */
+.back-btn {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--amarelo);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+.back-btn:hover {
+  color: var(--amarelo);
+  transform: translateX(-5px);
+  text-shadow: 0 0 10px rgba(242, 187, 19, 0.5); /* Glow para dar feedback de clique */
+}
+
+/* ==========================================================================
+   7. COMPONENTES: CARDS DE PROJETO
+   ========================================================================== */
+.project-card {
+  /* Fundo roxo em gradiente suave */
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  /* Borda obrigatoriamente amarela */
+  border: 1px solid var(--amarelo);
+  border-radius: 6px;
+  padding: 0;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 30px rgba(242, 187, 19, 0.2); /* Sombra amarela que brilha sutilmente */
+}
+
+/* Container da Imagem do Projeto */
+.project-thumb {
+  width: 100%;
+  height: 160px;
+  background-color: var(--roxo-claro);
+  /* Divisória amarela entre a imagem e o conteúdo */
+  border-bottom: 1px solid var(--amarelo);
+  overflow: hidden;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.1);
+}
+
+/* Conteúdo do Card (Texto e Botões) */
+.project-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+/* Espaçamento da descrição do projeto para não tocar nos botões */
+.project-desc {
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Tecnologias (Tags pequenas) - Texto e Borda Amarela, Fundo Roxo */
+.project-techs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tech-mini {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--amarelo);
+  border: 1px solid var(--amarelo);
+  background: var(--roxo-escuro);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+/* Ações (Botões dentro do card) */
+.project-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  /* Botões em Background Roxo, Borda Amarela e Texto Branco */
+  background: linear-gradient(to top, var(--roxo-escuro), var(--roxo-medio));
+  border: 1px solid var(--amarelo);
+  color: var(--branco);
+}
+
+.action-btn:hover {
+  background: linear-gradient(to top, var(--roxo-medio), var(--roxo-claro));
+  color: var(--branco);
+  box-shadow: 0 0 15px rgba(242, 187, 19, 0.4); /* Glow amarelo ao sobrepor */
+}
+
+/* ==========================================================================
+   8. FOOTER (RODAPÉ)
+   ========================================================================== */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  
+  /* Empurra para o final da tela (caso a página seja curta) */
+  margin-top: auto;
+  
+  /* Correção: anula o padding de 20px da section-container para colar nas bordas laterais e fundo */
+  align-self: stretch;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  
+  /* Background Roxo Escuro */
+  background: var(--roxo-escuro);
+  /* Texto Branco */
+  color: var(--branco);
+  /* Divisória superior amarela */
+  border-top: 1px solid var(--amarelo);
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .main-menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menu-btn {
+    text-align: center;
+    justify-content: center;
+  }
+  .about-header {
+    flex-direction: column;
+  }
+}
