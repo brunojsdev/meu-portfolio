@@ -6,8 +6,8 @@
   --cor-bg-main: #100838;     /* Roxo muito escuro (quase preto) */
   --cor-bg-card: #180850;     /* Roxo escuro levemente mais claro */
   --cor-texto: #6898e8;       /* Cinza azulado */
-  --cor-primaria: #1828e0;    /* Azul  */
-  --cor-secundaria: #10d0d0;  /* Ciano */
+  --cor-primaria: #008dd8;    /* Azul  */
+  --cor-secundaria: #00ced1;  /* Ciano */
   --cor-terciaria: #f2bb13;   /* Amarelo  */
   --cor-borda: #1e293b;       /* Cor das bordas em geral */
 }
@@ -129,10 +129,9 @@ h1 {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: -2px;
-  /* Gradiente: Amarelo Esverdeado -> Verde Neon -> Ciano */
+  /* Gradiente da paleta */
   background: linear-gradient(
     to right,
-    var(--cor-terciaria),
     var(--cor-primaria),
     var(--cor-secundaria)
   );
@@ -279,7 +278,7 @@ h1 {
 .projects-header {
   text-align: left;
   margin-bottom: 30px;
-  border-left: 5px solid var(--cor-primaria);
+  border-left: 5px solid var(--cor-terciaria);
   padding-left: 20px;
 }
 
@@ -295,7 +294,7 @@ h1 {
 .back-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--cor-primaria);
+  color: var(--cor-terciaria);
   font-size: 1.1rem;
   display: flex;
   align-items: center;
@@ -305,7 +304,7 @@ h1 {
 }
 
 .back-btn:hover {
-  color: var(--cor-secundaria);
+  color: var(--cor-terciaria);
   transform: translateX(-5px);
 }
 
@@ -314,7 +313,7 @@ h1 {
    ========================================================================== */
 .project-card {
   background: var(--cor-bg-card);
-  border: 1px solid var(--cor-secundaria); 
+  border: 1px solid var(--cor-terciaria); 
   border-radius: 6px;
   padding: 0;
   min-height: 380px; 
@@ -329,7 +328,7 @@ h1 {
 
 .project-card:hover {
   transform: translateY(-7px);
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-terciaria);
   /*box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);*/
 }
 
@@ -425,7 +424,7 @@ h1 {
 
 .action-btn.demo:hover {
   background: var(--cor-primaria);
-  color: #050a14;
+  color: var(--cor-primaria);
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
 }
 
