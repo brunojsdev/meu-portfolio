@@ -29,9 +29,9 @@ const ctx = canvas.getContext('2d');
 let width, height;
 let particles = [];
 
-// Paleta de cores da animação (Verde Neon, Ciano, Amarelo Esverdeado, Verde Escuro)
-// A cor '#b0d15a' foi adicionada aqui também para sincronizar o fundo com os botões
-const colors = ['#00ff88', '#00d2ff', '#b0d15a', '#005544'];
+// Paleta de cores da animação sincronizada com a NOVA PALETA DO CSS:
+// Cores: Ciano, Azul Claro, Azul Médio, Amarelo e Roxo Claro
+const colors = ['#02e0e3', '#008dd8', '#0070d8', '#f2bb13', '#230c75'];
 
 
 /* --- FUNÇÕES DE CONTROLE DO CANVAS --- */
@@ -55,7 +55,7 @@ class Square {
     this.y = Math.random() * height - height; // Começa acima da tela para queda natural
     this.size = Math.random() * 15 + 5;       // Tamanho varia aleatoriamente entre 5 e 20
     this.speed = Math.random() * 2 + 0.5;     // Velocidade de queda
-    this.color = colors[Math.floor(Math.random() * colors.length)]; // Sorteia uma cor da paleta
+    this.color = colors[Math.floor(Math.random() * colors.length)]; // Sorteia uma cor da nova paleta
     this.opacity = Math.random() * 0.5 + 0.1; // Transparência aleatória
   }
 
