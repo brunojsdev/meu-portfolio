@@ -79,7 +79,7 @@ a {
 
 .section-container {
   display: none;
-  min-height: 100vh;
+  flex: 1;
   width: 100%;
   padding: 20px;
   animation: fadeIn 0.6s ease-in-out;
