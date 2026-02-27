@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   /* ROXOS (Exclusivo para Fundos/Backgrounds) */
-  --roxo-claro: #130154;
-  --roxo-medio: #0e013d;
-  --roxo-escuro: #050017;
+  --roxo-claro: #0d013b;
+  --roxo-medio: #090026;
+  --roxo-escuro: #03000d;
 
   /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
   --ciano: #02e0e3;
@@ -104,7 +104,7 @@ p, .bio-text, .project-desc, .location {
 
 /* Títulos Globais: Gradiente Azul/Ciano conforme regra H1 */
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
+  background: linear-gradient(to right, var(--azul-medio), var(--azul-claro), var(--ciano));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
