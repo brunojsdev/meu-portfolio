@@ -271,6 +271,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   width: 100%;
+  margin-bottom: 40px; /* Garante que os cards não encostem no footer */
 }
 
 /* Botão de Voltar - Texto em Amarelo obrigatório */
@@ -408,17 +409,17 @@ h1 {
    ========================================================================== */
 footer {
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 20px;
   font-size: 0.85rem;
+  
+  /* Empurra para o final da tela (caso a página seja curta) */
   margin-top: auto;
   
-  /* Faz o footer ocupar 100% da tela ignorando paddings laterais */
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  /* Correção: anula o padding de 20px da section-container para colar nas bordas laterais e fundo */
+  align-self: stretch;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
   
   /* Background Roxo Escuro */
   background: var(--roxo-escuro);
