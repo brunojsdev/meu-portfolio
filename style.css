@@ -3,12 +3,12 @@
    Paleta: Fundo Azul Profundo, Verde Neon, Ciano, Amarelo Esverdeado, Branco.
    ========================================================================== */
 :root {
-  --cor-bg-main: #050a14;     /* Azul muito escuro (quase preto) */
-  --cor-bg-card: #0b1221;     /* Azul escuro levemente mais claro */
+  --cor-bg-main: #100838;     /* Roxo muito escuro (quase preto) */
+  --cor-bg-card: #180850;     /* Roxo escuro levemente mais claro */
   --cor-texto: #6898e8;       /* Cinza azulado */
   --cor-primaria: #1828e0;    /* Azul  */
   --cor-secundaria: #10d0d0;  /* Ciano */
-  --cor-terciaria: #180850;   /* Roxo escuro */
+  --cor-terciaria: #f2bb13;   /* Amarelo  */
   --cor-borda: #1e293b;       /* Cor das bordas em geral */
 }
 
