@@ -208,7 +208,7 @@ h1 {
 }
 
 .skill-badge {
-  background: var(--roxo-escuro);
+  background: var(--roxo-medio);
   border: 1px solid var(--amarelo);
   padding: 5px 12px;
   border-radius: 3px;
@@ -225,7 +225,7 @@ h1 {
 }
 
 .skill-badge:hover {
-  background: var(--roxo-medio);
+  background: var(--roxo-claro);
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(242, 187, 19, 0.3);
 }
@@ -334,7 +334,7 @@ h1 {
 
 /* Tech Mini: Estilo da Caixa */
 .tech-mini {
-  background: var(--roxo-escuro);
+  background: var(--roxo-medio);
   border: 1px solid var(--amarelo);
   padding: 4px 10px;
   border-radius: 3px;
@@ -353,7 +353,7 @@ h1 {
 
 /* Tech Mini: Efeito Hover na Caixa */
 .tech-mini:hover {
-  background: var(--roxo-medio);
+  background: var(--roxo-claro);
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(242, 187, 19, 0.3);
 }
