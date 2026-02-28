@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #150136;
-  --fundo-medio: #090024;
-  --fundo-escuro: #040014;
+  --fundo-claro: #380138;
+  --fundo-medio: #140024;
+  --fundo-escuro: #03000f;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
   --destaque-claro: #ffff00;
@@ -13,8 +13,8 @@
   --destaque-escuro: #ff6600;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #02aabd;
-  --borda-escura: #0249bd;
+  --borda-clara: #00fffb;
+  --borda-escura: #00bbff;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
@@ -100,7 +100,7 @@ p, .bio-text, .project-desc, .location {
 }
 
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -236,7 +236,7 @@ h1 {
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
@@ -259,7 +259,7 @@ h1 {
 }
 
 .projects-header {
-  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   background-clip: text; 
   -webkit-text-fill-color: transparent; 
@@ -392,7 +392,7 @@ h1 {
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
-  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
