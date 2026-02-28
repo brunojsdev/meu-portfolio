@@ -9,12 +9,12 @@
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
   --destaque-claro: #ffff00;
-  --destaque-medio: #ffbb00;
-  --destaque-escuro: #ff9900;
+  --destaque-medio: #ffaa00;
+  --destaque-escuro: #ff6600;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #ff00ff;
-  --borda-escura: #ff0000;
+  --borda-clara: #02aabd;
+  --borda-escura: #0249bd;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
