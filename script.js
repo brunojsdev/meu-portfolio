@@ -31,7 +31,7 @@ let particles = [];
 
 // Paleta de cores da animação sincronizada com a NOVA PALETA DO CSS:
 // Cores: Tons de Amarelo
-const colors = ['#ffff00', '#ffcc00', '#ffaa00', '#ff9900', '#ff8800'];
+const colors = [ '#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffaa00'];
 
 
 /* --- FUNÇÕES DE CONTROLE DO CANVAS --- */
