@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   /* ROXOS (Exclusivo para Fundos/Backgrounds) */
-  --roxo-claro: #1c0329;
-  --roxo-medio: #10011c;
-  --roxo-escuro: #04000f;
+  --roxo-claro: #150136;
+  --roxo-medio: #090024;
+  --roxo-escuro: #040014;
 
   /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
   --ciano: #00edf0;
