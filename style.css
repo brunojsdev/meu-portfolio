@@ -8,13 +8,13 @@
   --fundo-escuro: #040014;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #00e5ff;
-  --destaque-medio: #00b9fc; 
-  --destaque-escuro: #0084ff;
+  --destaque-claro: #ffff00;
+  --destaque-medio: #ffbb00;
+  --destaque-escuro: #ff9900;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #ffaa00;
-  --borda-escura: #0062ff;
+  --borda-clara: #ff00ff;
+  --borda-escura: #ff0000;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
