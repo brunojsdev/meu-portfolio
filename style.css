@@ -193,7 +193,7 @@ h1 {
   /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5)) padding-box,
+    linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
 }
 
@@ -326,7 +326,7 @@ h1 {
   /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5)) padding-box,
+    linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
 }
 
