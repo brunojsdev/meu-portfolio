@@ -30,7 +30,7 @@ let width, height;
 let particles = [];
 
 // Paleta de cores da animação sincronizada com a NOVA PALETA DO CSS:
-// Cores: Ciano, Azul Claro, Azul Médio, Amarelo e Roxo Claro
+// Cores: Tons de Amarelo
 const colors = ['#ffff00', '#ffcc00', '#ffaa00', '#ff9900', '#ff8800'];
 
 
