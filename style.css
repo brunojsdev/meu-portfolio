@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
+  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio));
   color: var(--branco);
   min-height: 100vh;
   display: flex;
@@ -160,7 +160,7 @@ h1 {
   gap: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-claro));
   border: 1px solid var(--amarelo);
   color: var(--branco);
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
@@ -169,7 +169,7 @@ h1 {
 .menu-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
-  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio));
+  background: linear-gradient(to bottom, var(--roxo-claro));
 }
 
 .about-embedded {
@@ -376,13 +376,13 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  background: linear-gradient(to top, var(--roxo-escuro), var(--roxo-medio));
+  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-claro));
   border: 1px solid var(--amarelo);
   color: var(--branco);
 }
 
 .action-btn:hover {
-  background: linear-gradient(to top, var(--roxo-medio), var(--roxo-claro));
+  background: linear-gradient(to top, var(--roxo-claro));
   box-shadow: 0 0 15px rgba(242, 187, 19, 0.4);
 }
 
