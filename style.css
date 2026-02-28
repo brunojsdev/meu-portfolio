@@ -239,7 +239,17 @@ h1 {
 }
 
 .projects-header {
+  /* 1. Define o gradiente no fundo */
   background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
+  
+  /* 2. Corta o fundo no exato formato do texto */
+  -webkit-background-clip: text;
+  background-clip: text; 
+  
+  /* 3. Deixa a cor padrão da fonte transparente para revelar o gradiente atrás dela */
+  -webkit-text-fill-color: transparent; 
+  color: transparent; 
+  
   text-align: left;
   margin-bottom: 30px;
   border-left: 5px solid var(--amarelo);
