@@ -332,7 +332,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-/* Tech Mini estilizada igual às skill-badges */
+/* Tech Mini: Estilo da Caixa */
 .tech-mini {
   background: var(--roxo-escuro);
   border: 1px solid var(--amarelo);
@@ -341,14 +341,17 @@ h1 {
   font-size: 0.75rem;
   font-weight: bold;
   transition: all 0.3s;
-  
-  /* Gradiente no texto igual às skill-badges */
+}
+
+/* Tech Mini: Estilo do Texto (Gradiente) */
+.tech-mini span {
   background: linear-gradient(to right, var(--ciano), var(--azul-claro), var(--azul-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
 }
 
+/* Tech Mini: Efeito Hover na Caixa */
 .tech-mini:hover {
   background: var(--roxo-medio);
   transform: translateY(-2px);
