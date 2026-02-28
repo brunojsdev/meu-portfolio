@@ -2,22 +2,22 @@
    1. VARIÁVEIS E NOVA PALETA DE CORES
    ========================================================================== */
 :root {
-  /* ROXOS (Exclusivo para Fundos/Backgrounds) */
-  --roxo-claro: #150136;
-  --roxo-medio: #090024;
-  --roxo-escuro: #040014;
+  /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
+  --fundo-claro: #150136;
+  --fundo-medio: #090024;
+  --fundo-escuro: #040014;
 
-  /* AZUIS E CIANO (Exclusivo para Títulos e Textos de Destaque) */
-  --ciano: #00e5ff;
-  --azul-claro: #00b9fc;
-  --azul-medio: #0084ff;
-  --azul-escuro: #0062ff;
+  /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
+  --destaque-claro: #00e5ff;
+  --destaque-medio: #00b9fc; 
+  --destaque-escuro: #0084ff;
+  --destaque-especial: #0062ff;
 
-  /* AMARELO (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --amarelo: #ffaa00;
+  /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
+  --bordas: #ffaa00;
 
-  /* BRANCO (Exclusivo para Textos Comuns de leitura) */
-  --branco: #c9e4ff;
+  /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
+  --textos: #c9e4ff;
 }
 
 /* ==========================================================================
@@ -31,8 +31,8 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-medio), var(--roxo-escuro));
-  color: var(--branco);
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro));
+  color: var(--textos);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -96,11 +96,11 @@ a {
    4. TIPOGRAFIA GERAL E TEXTOS COMUNS
    ========================================================================== */
 p, .bio-text, .project-desc, .location {
-  color: var(--branco);
+  color: var(--textos);
 }
 
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
+  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -134,7 +134,7 @@ h1 {
 
 .subtitle {
   font-size: 1.3rem;
-  color: var(--amarelo);
+  color: var(--bordas);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -160,22 +160,22 @@ h1 {
   gap: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio), var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
-  border: 3px solid var(--amarelo);
-  color: var(--branco);
+  background: linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro));
+  border: 3px solid var(--bordas);
+  color: var(--textos);
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
 }
 
 .menu-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
-  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio), var(--roxo-claro));
+  background: linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro));
 }
 
 .about-embedded {
   background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
   backdrop-filter: blur(8px);
-  border: 3px solid var(--amarelo);
+  border: 3px solid var(--bordas);
   border-radius: 8px;
   padding: 40px;
   width: 100%;
@@ -189,7 +189,7 @@ h1 {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--amarelo);
+  border-bottom: 1px solid var(--bordas);
   padding-bottom: 15px;
   flex-wrap: wrap;
   gap: 10px;
@@ -208,8 +208,8 @@ h1 {
 }
 
 .skill-badge {
-  background: var(--roxo-medio);
-  border: 1px solid var(--amarelo);
+  background: var(--fundo-medio);
+  border: 1px solid var(--bordas);
   padding: 5px 12px;
   border-radius: 3px;
   font-size: 0.85rem;
@@ -218,14 +218,14 @@ h1 {
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
+  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
 }
 
 .skill-badge:hover {
-  background: var(--roxo-claro);
+  background: var(--fundo-claro);
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(242, 187, 19, 0.3);
 }
@@ -240,7 +240,7 @@ h1 {
 
 .projects-header {
   /* 1. Define o gradiente no fundo */
-  background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
+  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
   
   /* 2. Corta o fundo no exato formato do texto */
   -webkit-background-clip: text;
@@ -252,7 +252,7 @@ h1 {
   
   text-align: left;
   margin-bottom: 30px;
-  border-left: 5px solid var(--amarelo);
+  border-left: 5px solid var(--bordas);
   padding-left: 20px;
 }
 
@@ -267,7 +267,7 @@ h1 {
 .back-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--amarelo);
+  color: var(--bordas);
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -288,7 +288,7 @@ h1 {
    ========================================================================== */
 .project-card {
   background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
-  border: 3px solid var(--amarelo);
+  border: 3px solid var(--bordas);
   border-radius: 6px;
   padding: 0;
   min-height: 380px;
@@ -307,8 +307,8 @@ h1 {
 .project-thumb {
   width: 100%;
   height: 160px;
-  background-color: var(--roxo-claro);
-  border-bottom: 1px solid var(--amarelo);
+  background-color: var(--fundo-claro);
+  border-bottom: 1px solid var(--bordas);
   overflow: hidden;
 }
 
@@ -345,8 +345,8 @@ h1 {
 
 /* Tech Mini: Estilo da Caixa */
 .tech-mini {
-  background: var(--roxo-medio);
-  border: 1px solid var(--amarelo);
+  background: var(--fundo-medio);
+  border: 1px solid var(--bordas);
   padding: 4px 10px;
   border-radius: 3px;
   font-size: 0.75rem;
@@ -356,7 +356,7 @@ h1 {
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
-  background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
+  background: linear-gradient(to right, var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-escuro), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
@@ -364,7 +364,7 @@ h1 {
 
 /* Tech Mini: Efeito Hover na Caixa */
 .tech-mini:hover {
-  background: var(--roxo-claro);
+  background: var(--fundo-claro);
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(242, 187, 19, 0.3);
 }
@@ -387,13 +387,13 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio), var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
-  border: 1px solid var(--amarelo);
-  color: var(--branco);
+  background: linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro));
+  border: 1px solid var(--bordas);
+  color: var(--textos);
 }
 
 .action-btn:hover {
-  background: linear-gradient(to top, var(--roxo-claro), var(--roxo-medio), var(--roxo-claro));
+  background: linear-gradient(to top, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro));
   box-shadow: 0 0 15px rgba(242, 187, 19, 0.4);
 }
 
@@ -409,9 +409,9 @@ footer {
   margin-left: -20px;
   margin-right: -20px;
   margin-bottom: -20px;
-  background: var(--roxo-escuro);
-  color: var(--branco);
-  border-top: 3px solid var(--amarelo);
+  background: var(--fundo-escuro);
+  color: var(--textos);
+  border-top: 3px solid var(--bordas);
 }
 
 /* ==========================================================================
