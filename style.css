@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #380138;
+  --fundo-claro: #2b002b;
   --fundo-medio: #140024;
-  --fundo-escuro: #03000f;
+  --fundo-escuro: #11001f;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
   --destaque-claro: #ffff00;
@@ -14,7 +14,7 @@
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
   --borda-clara: #00fffb;
-  --borda-escura: #00bbff;
+  --borda-escura: #1eff00;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
@@ -100,7 +100,7 @@ p, .bio-text, .project-desc, .location {
 }
 
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -138,7 +138,7 @@ h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
   /* Gradiente para o subtítulo ao invés de cor sólida */
-  background: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara));
+  background: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara), var(--borda-escura), var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
@@ -236,7 +236,7 @@ h1 {
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
@@ -259,7 +259,7 @@ h1 {
 }
 
 .projects-header {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   background-clip: text; 
   -webkit-text-fill-color: transparent; 
@@ -392,7 +392,7 @@ h1 {
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
