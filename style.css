@@ -239,6 +239,7 @@ h1 {
 }
 
 .projects-header {
+  background: linear-gradient(to right, var(--azul-claro), var(--ciano), var(--azul-claro), var(--azul-medio), var(--azul-claro));
   text-align: left;
   margin-bottom: 30px;
   border-left: 5px solid var(--amarelo);
