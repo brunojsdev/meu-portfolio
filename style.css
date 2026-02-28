@@ -161,7 +161,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   background: linear-gradient(to bottom, var(--roxo-claro), var(--roxo-medio), var(--roxo-escuro), var(--roxo-medio), var(--roxo-claro));
-  border: 1px solid var(--amarelo);
+  border: 2px solid var(--amarelo);
   color: var(--branco);
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
 }
@@ -175,7 +175,7 @@ h1 {
 .about-embedded {
   background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
   backdrop-filter: blur(8px);
-  border: 1px solid var(--amarelo);
+  border: 2px solid var(--amarelo);
   border-radius: 8px;
   padding: 40px;
   width: 100%;
@@ -288,7 +288,7 @@ h1 {
    ========================================================================== */
 .project-card {
   background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
-  border: 5px solid var(--amarelo);
+  border: 3px solid var(--amarelo);
   border-radius: 6px;
   padding: 0;
   min-height: 380px;
@@ -411,7 +411,7 @@ footer {
   margin-bottom: -20px;
   background: var(--roxo-escuro);
   color: var(--branco);
-  border-top: 1px solid var(--amarelo);
+  border-top: 2px solid var(--amarelo);
 }
 
 /* ==========================================================================
