@@ -276,7 +276,7 @@ h1 {
    7. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
 .project-card {
-  background: linear-gradient(to bottom, var(--roxo-medio), var(--roxo-escuro));
+  background: linear-gradient(135deg, rgba(35, 12, 117, 0.3), rgba(24, 8, 80, 0.5));
   border: 1px solid var(--amarelo);
   border-radius: 6px;
   padding: 0;
