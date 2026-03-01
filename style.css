@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro));
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro));
   color: var(--textos);
   min-height: 100vh;
   display: flex;
@@ -100,7 +100,7 @@ p, .bio-text, .project-desc, .location {
 }
 
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -236,7 +236,7 @@ h1 {
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
@@ -261,7 +261,7 @@ h1 {
 .projects-header {
   text-align: left;
   margin-bottom: 30px;
-  border-left: 5px solid var(--amarelo);
+  border-left: 5px solid var(--borda-clara));
   padding-left: 20px;
 }
 
@@ -376,7 +376,7 @@ h1 {
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
