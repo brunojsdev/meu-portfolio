@@ -8,13 +8,13 @@
   --fundo-escuro: #040014;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #ddff00;
+  --destaque-claro: #ffff00;
   --destaque-medio: #ffaa00;
-  --destaque-escuro: #ffaa00;
+  --destaque-escuro: #ff9900;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #00e5ff;
-  --borda-escura: #00b9fc;
+  --borda-clara: #14a6fa;
+  --borda-escura: #0099ff;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro));
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro));
   color: var(--textos);
   min-height: 100vh;
   display: flex;
@@ -133,7 +133,7 @@ h1 {
 }
 
 .subtitle {
-  font-size: 1.3rem;
+  font-size: 1.9rem;
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -170,7 +170,7 @@ h1 {
   /* Técnica de borda gradiente que suporta border-radius */
   border: 3px solid transparent;
   background: 
-    linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
 }
 
@@ -259,7 +259,6 @@ h1 {
 }
 
 .projects-header {
-  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   background-clip: text; 
   -webkit-text-fill-color: transparent; 
