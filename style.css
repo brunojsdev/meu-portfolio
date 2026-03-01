@@ -104,7 +104,8 @@ h1, h2, h3, h4 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px rgba(2, 224, 227, 0.2));
+  /* Brilho laranja para combinar com os textos de destaque */
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
 }
 
 /* ==========================================================================
@@ -137,13 +138,12 @@ h1 {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  /* Gradiente para o subtítulo ao invés de cor sólida */
   background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  /* Modificado text-shadow para drop-shadow para funcionar com o text-clip */
-  filter: drop-shadow(0 0 15px rgba(242, 187, 19, 0.3));
+  /* Brilho roxo para combinar com o texto em cor de borda */
+  filter: drop-shadow(0 0 15px rgba(87, 82, 255, 0.5));
 }
 
 .main-menu {
@@ -167,7 +167,6 @@ h1 {
   letter-spacing: 1px;
   color: var(--textos);
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
-  /* Técnica de borda gradiente que suporta border-radius */
   border: 3px solid transparent;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -176,7 +175,8 @@ h1 {
 
 .menu-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
+  /* Brilho roxo para combinar com a borda do botão */
+  box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
@@ -190,7 +190,6 @@ h1 {
   text-align: left;
   margin-bottom: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -205,7 +204,6 @@ h1 {
   padding-bottom: 15px;
   flex-wrap: wrap;
   gap: 10px;
-  /* Linha de borda com gradiente sem radius */
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
@@ -228,7 +226,6 @@ h1 {
   font-size: 0.85rem;
   font-weight: bold;
   transition: all 0.3s;
-  /* Borda com gradiente */
   border: 1px solid transparent;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -239,12 +236,14 @@ h1 {
   background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
+  /* Brilho laranja para o texto span que é laranja */
+  filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.4));
 }
 
 .skill-badge:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(242, 187, 19, 0.3);
+  /* Brilho roxo para a borda da badge ao passar o mouse */
+  box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
@@ -283,7 +282,6 @@ h1 {
   gap: 8px;
   margin-bottom: 30px;
   padding: 10px 0;
-  /* Texto com Gradiente */
   background: linear-gradient(to right, var(--borda-clara), var(--borda-escura));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -292,7 +290,8 @@ h1 {
 
 .back-btn:hover {
   transform: translateX(-5px);
-  filter: drop-shadow(0 0 10px rgba(242, 187, 19, 0.5));
+  /* Brilho roxo porque o texto do botão é roxo (cor de borda) */
+  filter: drop-shadow(0 0 10px rgba(87, 82, 255, 0.6));
 }
 
 /* ==========================================================================
@@ -307,7 +306,6 @@ h1 {
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
-  /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -316,7 +314,8 @@ h1 {
 
 .project-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 10px 30px rgba(242, 187, 19, 0.2);
+  /* Brilho roxo envolvendo o card com borda roxa */
+  box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
 }
 
 .project-thumb {
@@ -324,7 +323,6 @@ h1 {
   height: 160px;
   background-color: var(--fundo-claro);
   overflow: hidden;
-  /* Linha com gradiente */
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
@@ -367,7 +365,6 @@ h1 {
   font-size: 0.75rem;
   font-weight: bold;
   transition: all 0.3s;
-  /* Borda Gradiente */
   border: 1px solid transparent;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -379,13 +376,15 @@ h1 {
   background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
+  /* Brilho laranja para o texto em destaque */
+  filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.3));
 }
 
 /* Tech Mini: Efeito Hover na Caixa */
 .tech-mini:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(242, 187, 19, 0.3);
+  /* Brilho roxo para combinar com a caixa do tech-mini */
+  box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
@@ -410,7 +409,6 @@ h1 {
   font-weight: 600;
   transition: all 0.3s ease;
   color: var(--textos);
-  /* Borda Gradiente */
   border: 1px solid transparent;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -418,7 +416,8 @@ h1 {
 }
 
 .action-btn:hover {
-  box-shadow: 0 0 15px rgba(242, 187, 19, 0.4);
+  /* Brilho roxo para os botões de ação na base do card */
+  box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
@@ -438,7 +437,6 @@ footer {
   margin-bottom: -15px;
   background: var(--fundo-escuro);
   color: var(--textos);
-  /* Linha Gradiente no Footer */
   border-top: 3px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
