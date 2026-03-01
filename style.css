@@ -3,18 +3,18 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #2b002b;
-  --fundo-medio: #140024;
-  --fundo-escuro: #11001f;
+  --fundo-claro: #1f001f;
+  --fundo-medio: #0b0014;
+  --fundo-escuro: #030005;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #ffff00;
+  --destaque-claro: #ffaa00;
   --destaque-medio: #ffaa00;
-  --destaque-escuro: #ff6600;
+  --destaque-escuro: #ffaa00;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #00fffb;
-  --borda-escura: #1eff00;
+  --borda-clara: #6d28d9;
+  --borda-escura: #5d28d9;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
