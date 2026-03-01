@@ -8,7 +8,7 @@
   --fundo-escuro: #040014;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #ffff00;
+  --destaque-claro: #ffdd00;
   --destaque-medio: #ffaa00;
   --destaque-escuro: #ff9900;
 
@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro));
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro));
   color: var(--textos);
   min-height: 100vh;
   display: flex;
@@ -100,7 +100,7 @@ p, .bio-text, .project-desc, .location {
 }
 
 h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -138,7 +138,7 @@ h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
   /* Gradiente para o subtítulo ao invés de cor sólida */
-  background: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara), var(--borda-escura), var(--borda-clara));
+  background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
@@ -170,16 +170,16 @@ h1 {
   /* Técnica de borda gradiente que suporta border-radius */
   border: 3px solid transparent;
   background: 
-    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .menu-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 20px rgba(242, 187, 19, 0.4);
   background: 
-    linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .about-embedded {
@@ -193,8 +193,8 @@ h1 {
   /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .about-header {
@@ -207,7 +207,7 @@ h1 {
   gap: 10px;
   /* Linha de borda com gradiente sem radius */
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
 
 .bio-text {
@@ -231,12 +231,12 @@ h1 {
   /* Borda com gradiente */
   border: 1px solid transparent;
   background: 
-    linear-gradient(var(--fundo-medio), var(--fundo-medio)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.3));
@@ -246,8 +246,8 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(242, 187, 19, 0.3);
   background: 
-    linear-gradient(var(--fundo-claro), var(--fundo-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 /* ==========================================================================
@@ -259,25 +259,10 @@ h1 {
 }
 
 .projects-header {
-  -webkit-background-clip: text;
-  background-clip: text; 
-  -webkit-text-fill-color: transparent; 
-  color: transparent; 
   text-align: left;
   margin-bottom: 30px;
+  border-left: 5px solid var(--amarelo);
   padding-left: 20px;
-  position: relative;
-}
-
-/* Pseudo-elemento para fazer a borda esquerda gradiente sem quebrar o text-clip do título */
-.projects-header::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px;
-  background: linear-gradient(to bottom, var(--borda-clara), var(--borda-escura), var(--borda-clara));
 }
 
 .projects-grid {
@@ -325,8 +310,8 @@ h1 {
   /* Borda com gradiente */
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .project-card:hover {
@@ -341,7 +326,7 @@ h1 {
   overflow: hidden;
   /* Linha com gradiente */
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
 
 .project-thumb img {
@@ -385,13 +370,13 @@ h1 {
   /* Borda Gradiente */
   border: 1px solid transparent;
   background: 
-    linear-gradient(var(--fundo-medio), var(--fundo-medio)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
-  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(2, 224, 227, 0.2));
@@ -402,8 +387,8 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(242, 187, 19, 0.3);
   background: 
-    linear-gradient(var(--fundo-claro), var(--fundo-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .project-actions {
@@ -428,15 +413,15 @@ h1 {
   /* Borda Gradiente */
   border: 1px solid transparent;
   background: 
-    linear-gradient(to bottom, var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .action-btn:hover {
   box-shadow: 0 0 15px rgba(242, 187, 19, 0.4);
   background: 
-    linear-gradient(to top, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura), var(--borda-clara)) border-box;
+    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 /* ==========================================================================
@@ -450,12 +435,12 @@ footer {
   align-self: stretch;
   margin-left: -20px;
   margin-right: -20px;
-  margin-bottom: -20px;
+  margin-bottom: -15px;
   background: var(--fundo-escuro);
   color: var(--textos);
   /* Linha Gradiente no Footer */
   border-top: 3px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura), var(--borda-clara)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
 }
 
 /* ==========================================================================
