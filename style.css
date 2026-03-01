@@ -3,18 +3,18 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #1f001f;
-  --fundo-medio: #0b0014;
-  --fundo-escuro: #030005;
+  --fundo-claro: #150136;
+  --fundo-medio: #090024;
+  --fundo-escuro: #040014;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #ffaa00;
+  --destaque-claro: #ddff00;
   --destaque-medio: #ffaa00;
   --destaque-escuro: #ffaa00;
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #6d28d9;
-  --borda-escura: #5d28d9;
+  --borda-clara: #00e5ff;
+  --borda-escura: #00b9fc;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro));
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro));
   color: var(--textos);
   min-height: 100vh;
   display: flex;
