@@ -56,7 +56,7 @@ class Square {
     this.size = Math.random() * 15 + 5;       // Tamanho varia aleatoriamente entre 5 e 20
     this.speed = Math.random() * 2 + 0.5;     // Velocidade de queda
     this.color = colors[Math.floor(Math.random() * colors.length)]; // Sorteia uma cor da nova paleta
-    this.opacity = Math.random() * 0.7 + 0.2; // Transparência aleatória
+    this.opacity = Math.random() * 0.8 + 0.4; // Transparência aleatória
   }
 
   // Atualiza a posição da partícula a cada frame (loop de animação)
