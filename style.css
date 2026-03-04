@@ -192,7 +192,7 @@ h1 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -228,12 +228,12 @@ h1 {
   transition: all 0.3s;
   border: 1px solid transparent;
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /* Brilho laranja para o texto span que é laranja */
@@ -245,7 +245,7 @@ h1 {
   /* Brilho roxo para a borda da badge ao passar o mouse */
   box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -308,7 +308,7 @@ h1 {
   overflow: hidden;
   border: 3px solid transparent;
   background: 
-    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -367,7 +367,7 @@ h1 {
   transition: all 0.3s;
   border: 1px solid transparent;
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -386,7 +386,7 @@ h1 {
   /* Brilho roxo para combinar com a caixa do tech-mini */
   box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -411,7 +411,7 @@ h1 {
   color: var(--textos);
   border: 1px solid transparent;
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -419,7 +419,7 @@ h1 {
   /* Brilho roxo para os botões de ação na base do card */
   box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
   background: 
-    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
