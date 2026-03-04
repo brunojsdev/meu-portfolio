@@ -169,7 +169,7 @@ h1 {
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
   border: 3px solid transparent;
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
@@ -178,7 +178,7 @@ h1 {
   /* Brilho roxo para combinar com a borda do botão */
   box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
 }
 
