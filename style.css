@@ -335,11 +335,13 @@ h1 {
   object-fit: cover;
   transition: transform 0.4s ease;
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-escura)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 .project-card:hover .project-thumb img {
   transform: scale(1.1);
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-escura)) 1;
 }
 
 .project-content {
