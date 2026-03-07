@@ -338,10 +338,13 @@ h1 {
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
+.project-card:hover .project-thumb {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-escura)) 1;
+}
+
 .project-card:hover .project-thumb img {
   transform: scale(1.1);
-  border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-escura), var(--borda-escura)) 1;
 }
 
 .project-content {
@@ -444,7 +447,7 @@ footer {
   background: var(--fundo-escuro);
   color: var(--textos);
   border-top: 3px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara))) 1;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 /* ==========================================================================
