@@ -341,7 +341,7 @@ h1 {
 .project-card:hover .project-thumb img {
   transform: scale(1.1);
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-escura)) 1;
+  border-image: linear-gradient(to right, var(--borda-escura), var(--borda-escura)) 1;
 }
 
 .project-content {
