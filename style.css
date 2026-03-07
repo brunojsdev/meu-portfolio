@@ -14,7 +14,7 @@
 
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
   --borda-clara: #5752ff;
-  --borda-escura: #5a47ff;
+  --borda-escura: #ffaa00;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
@@ -170,7 +170,7 @@ h1 {
   border: 3px solid transparent;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .menu-btn:hover {
@@ -179,7 +179,7 @@ h1 {
   box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
 .about-embedded {
@@ -193,7 +193,7 @@ h1 {
   border: 3px solid transparent;
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .about-header {
@@ -205,7 +205,7 @@ h1 {
   flex-wrap: wrap;
   gap: 10px;
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 .bio-text {
@@ -229,7 +229,7 @@ h1 {
   border: 1px solid transparent;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .skill-badge span {
@@ -246,7 +246,7 @@ h1 {
   box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 /* ==========================================================================
@@ -282,7 +282,7 @@ h1 {
   gap: 8px;
   margin-bottom: 30px;
   padding: 10px 0;
-  background: linear-gradient(to right, var(--borda-clara), var(--borda-escura));
+  background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
@@ -309,12 +309,14 @@ h1 {
   border: 3px solid transparent;
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .project-card:hover {
   transform: translateY(-7px);
-  /* Brilho roxo envolvendo o card com borda roxa */
+  background: 
+    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;  /* Brilho roxo envolvendo o card com borda roxa */
   box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
 }
 
@@ -324,7 +326,7 @@ h1 {
   background-color: var(--fundo-claro);
   overflow: hidden;
   border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 .project-thumb img {
@@ -387,7 +389,7 @@ h1 {
   box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .project-actions {
@@ -412,7 +414,7 @@ h1 {
   border: 1px solid transparent;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .action-btn:hover {
@@ -420,7 +422,7 @@ h1 {
   box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
 /* ==========================================================================
