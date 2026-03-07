@@ -334,6 +334,8 @@ h1 {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-escura)) 1;
 }
 
 .project-card:hover .project-thumb img {
@@ -370,7 +372,7 @@ h1 {
   border: 1px solid transparent;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), var(--borda-escura)) border-box;
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 /* Tech Mini: Estilo do Texto (Gradiente) */
@@ -440,7 +442,7 @@ footer {
   background: var(--fundo-escuro);
   color: var(--textos);
   border-top: 3px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara), var(--borda-escura)) 1;
+  border-image: linear-gradient(to right, var(--borda-clara))) 1;
 }
 
 /* ==========================================================================
