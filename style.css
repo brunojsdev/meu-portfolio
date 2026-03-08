@@ -65,22 +65,35 @@ a {
 }
 
 /* ==========================================================================
-   3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA
+   3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA (CORREÇÃO DE BORDAS BRANCAS)
    ========================================================================== */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  background-color: var(--fundo-escuro); /* Garante que não haja fundo branco */
+}
+
+/* Esconde os botões de seta que causam os blocos brancos nas pontas */
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* O canto onde as barras se encontram */
+::-webkit-scrollbar-corner {
+  background-color: var(--fundo-escuro);
 }
 
 ::-webkit-scrollbar-track {
-  background: #150136;
+  background: var(--fundo-claro);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #4a2b99;
   border-radius: 10px;
-  border: 2px solid #150136;
+  border: 2px solid var(--fundo-claro); /* Espaçamento para o trilho */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -112,7 +125,6 @@ h1, h2, h3, h4 {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Brilho laranja para combinar com os textos de destaque */
   filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
 }
 
@@ -189,7 +201,6 @@ h1 {
   background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Brilho roxo para combinar com o texto em cor de borda */
   filter: drop-shadow(0 0 15px rgba(87, 82, 255, 0.5));
 }
 
@@ -222,7 +233,6 @@ h1 {
 
 .menu-btn:hover {
   transform: translateY(-3px);
-  /* Brilho roxo para combinar com a borda do botão */
   box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -286,13 +296,11 @@ h1 {
   background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Brilho laranja para o texto span que é laranja */
   filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.4));
 }
 
 .skill-badge:hover {
   transform: translateY(-2px);
-  /* Brilho roxo para a borda da badge ao passar o mouse */
   box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -340,7 +348,6 @@ h1 {
 
 .back-btn:hover {
   transform: translateX(-5px);
-  /* Brilho roxo porque o texto do botão é roxo (cor de borda) */
   filter: drop-shadow(0 0 10px rgba(87, 82, 255, 0.6));
 }
 
