@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIÁVEIS E NOVA PALETA DE CORES
+   1. VARIÁVEIS E PALETA DE CORES
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
@@ -31,13 +31,24 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro));
-  color: var(--textos);
-  min-height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
+  background: linear-gradient(
+    135deg, 
+    var(--fundo-escuro), 
+    var(--fundo-medio), 
+    var(--fundo-claro), 
+    var(--fundo-medio), 
+    var(--fundo-escuro), 
+    var(--fundo-medio), 
+    var(--fundo-claro), 
+    var(--fundo-medio), 
+    var(--fundo-escuro)
+  );
+  color: var(--textos);
 }
 
 button {
@@ -54,7 +65,59 @@ a {
 }
 
 /* ==========================================================================
-   3. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
+   3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #150136;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a2b99;
+  border-radius: 10px;
+  border: 2px solid #150136;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--destaque-medio);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. TIPOGRAFIA GERAL E TEXTOS
+   ========================================================================== */
+p, 
+.bio-text, 
+.project-desc, 
+.location {
+  color: var(--textos);
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right, 
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro), 
+    var(--destaque-medio), 
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Brilho laranja para combinar com os textos de destaque */
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
+}
+
+/* ==========================================================================
+   5. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
    ========================================================================== */
 #bg-canvas {
   position: fixed;
@@ -68,11 +131,11 @@ a {
 
 .section-container {
   display: none;
-  min-height: 100vh;
   width: 100%;
+  min-height: 100vh;
   padding: 20px;
-  animation: fadeIn 0.6s ease-in-out;
   z-index: 1;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 .section-container.active {
@@ -93,61 +156,16 @@ a {
 }
 
 /* ==========================================================================
-   4. TIPOGRAFIA GERAL E TEXTOS COMUNS
-   ========================================================================== */
-p, .bio-text, .project-desc, .location {
-  color: var(--textos);
-}
-
-h1, h2, h3, h4 {
-  background: linear-gradient(to right, var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro), var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-claro));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  /* Brilho laranja para combinar com os textos de destaque */
-  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
-}
-
-/* ==========================================================================
-   BARRA DE ROLAGEM LATERAL CUSTOMIZADA
-   ========================================================================== */
-
-/* 1. Define a largura da barra de rolagem */
-::-webkit-scrollbar {
-    width: 10px;               /* Largura da barra vertical */
-    height: 10px;              /* Altura da barra horizontal (se houver) */
-}
-
-/* 2. Estiliza o 'trilho' (o fundo por onde a barra desliza) */
-::-webkit-scrollbar-track {
-    background: #150136;       /* Cor de fundo do trilho */
-    border-radius: 10px;       /* Opcional: deixa o fundo arredondado */
-}
-
-/* 3. Estiliza o 'polegar' (a parte que o usuário arrasta) */
-::-webkit-scrollbar-thumb {
-    background: #4A2B99;       /* Cor da barra em si */
-    border-radius: 10px;       /* Deixa a barra arredondada */
-    border: 2px solid #150136; /* Cria um espaçamento visual entre a barra e o trilho */
-}
-
-/* 4. Estiliza a barra quando o usuário passa o mouse por cima */
-::-webkit-scrollbar-thumb:hover {
-    background: #ffaa00;       /* Cor de destaque no hover */
-    cursor: pointer;
-}
-
-/* ==========================================================================
-   5. SEÇÃO: TELA INICIAL (HOME)
+   6. SEÇÃO: TELA INICIAL (HOME)
    ========================================================================== */
 #home-content {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -167,10 +185,10 @@ h1 {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
+  color: transparent;
   background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
   /* Brilho roxo para combinar com o texto em cor de borda */
   filter: drop-shadow(0 0 15px rgba(87, 82, 255, 0.5));
 }
@@ -180,23 +198,23 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 50px;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 .menu-btn {
-  padding: 14px 35px;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  text-transform: uppercase;
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 1px;
+  text-transform: uppercase;
   color: var(--textos);
-  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
+  border-radius: 4px;
   border: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
@@ -211,15 +229,18 @@ h1 {
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
+/* ==========================================================================
+   7. SEÇÃO: SOBRE (ABOUT)
+   ========================================================================== */
 .about-embedded {
-  backdrop-filter: blur(8px);
-  border-radius: 8px;
-  padding: 40px;
   width: 100%;
-  text-align: left;
+  padding: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  border-radius: 8px;
   border: 3px solid transparent;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
@@ -227,19 +248,19 @@ h1 {
 
 .about-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
+  gap: 10px;
   margin-bottom: 20px;
   padding-bottom: 15px;
-  flex-wrap: wrap;
-  gap: 10px;
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 .bio-text {
-  line-height: 1.8;
   margin-bottom: 25px;
+  line-height: 1.8;
   text-align: justify;
 }
 
@@ -251,11 +272,11 @@ h1 {
 
 .skill-badge {
   padding: 5px 12px;
-  border-radius: 3px;
   font-size: 0.85rem;
   font-weight: bold;
-  transition: all 0.3s;
+  border-radius: 3px;
   border: 1px solid transparent;
+  transition: all 0.3s;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
@@ -279,18 +300,18 @@ h1 {
 }
 
 /* ==========================================================================
-   6. SEÇÃO: PROJETOS
+   8. SEÇÃO: PROJETOS
    ========================================================================== */
 .projects-wrapper {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
 }
 
 .projects-header {
-  text-align: left;
   margin-bottom: 30px;
-  border-left: 5px solid var(--borda-clara);
   padding-left: 20px;
+  text-align: left;
+  border-left: 5px solid var(--borda-clara);
 }
 
 .projects-grid {
@@ -302,19 +323,19 @@ h1 {
 }
 
 .back-btn {
-  align-self: flex-start;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
   display: flex;
   align-items: center;
+  align-self: flex-start;
   gap: 8px;
   margin-bottom: 30px;
   padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: transparent;
   background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 
 .back-btn:hover {
@@ -324,18 +345,18 @@ h1 {
 }
 
 /* ==========================================================================
-   7. COMPONENTES: CARDS DE PROJETO
+   9. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
 .project-card {
-  border-radius: 6px;
-  padding: 0;
-  min-height: 380px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
+  min-height: 380px;
+  padding: 0;
   overflow: hidden;
+  border-radius: 6px;
   border: 3px solid transparent;
+  transition: transform 0.3s, box-shadow 0.3s;
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
@@ -343,17 +364,17 @@ h1 {
 
 .project-card:hover {
   transform: translateY(-7px);
+  box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
   background: 
     linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-escura)) border-box;  /* Brilho roxo envolvendo o card com borda roxa */
-  box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
+    linear-gradient(135deg, var(--borda-escura)) border-box; 
 }
 
 .project-thumb {
   width: 100%;
   height: 160px;
-  background-color: var(--fundo-claro);
   overflow: hidden;
+  background-color: var(--fundo-claro);
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
@@ -362,13 +383,12 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
   border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
+  transition: transform 0.4s ease;
 }
 
 .project-card:hover .project-thumb {
-  border-bottom: 1px solid transparent;
   border-image: linear-gradient(to right, var(--borda-escura)) 1;
 }
 
@@ -377,11 +397,11 @@ h1 {
 }
 
 .project-content {
-  padding: 25px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
+  padding: 25px;
 }
 
 .project-desc {
@@ -391,37 +411,33 @@ h1 {
 
 .project-techs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
-  flex-wrap: wrap;
 }
 
-/* Tech Mini: Estilo da Caixa */
+/* Tech Mini */
 .tech-mini {
   padding: 4px 10px;
-  border-radius: 3px;
   font-size: 0.75rem;
   font-weight: bold;
-  transition: all 0.3s;
+  border-radius: 3px;
   border: 1px solid transparent;
+  transition: all 0.3s;
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
-/* Tech Mini: Estilo do Texto (Gradiente) */
 .tech-mini span {
   background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Brilho laranja para o texto em destaque */
   filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.3));
 }
 
-/* Tech Mini: Efeito Hover na Caixa */
 .tech-mini:hover {
   transform: translateY(-2px);
-  /* Brilho roxo para combinar com a caixa do tech-mini */
   box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
   background: 
     linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -436,25 +452,24 @@ h1 {
 }
 
 .action-btn {
-  flex: 1;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   padding: 10px 5px;
   font-size: 0.85rem;
-  border-radius: 4px;
-  text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  text-decoration: none;
   color: var(--textos);
+  border-radius: 4px;
   border: 1px solid transparent;
+  transition: all 0.3s ease;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .action-btn:hover {
-  /* Brilho roxo para os botões de ação na base do card */
   box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
   background: 
     linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
@@ -462,29 +477,39 @@ h1 {
 }
 
 /* ==========================================================================
-   8. FOOTER (RODAPÉ)
+   10. FOOTER (RODAPÉ)
    ========================================================================== */
 footer {
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 0.85rem;
-  margin-top: auto;
   align-self: stretch;
+  margin-top: auto;
   margin-left: -20px;
   margin-right: -20px;
   margin-bottom: -15px;
-  background: var(--fundo-escuro);
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  text-align: center;
   color: var(--textos);
+  background: var(--fundo-escuro);
   border-top: 3px solid transparent;
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 /* ==========================================================================
-   9. RESPONSIVIDADE (MOBILE)
+   11. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-  h1 { font-size: 2.5rem; }
-  .main-menu { flex-direction: column; align-items: stretch; }
-  .menu-btn { text-align: center; justify-content: center; }
-  .about-header { flex-direction: column; }
+  h1 { 
+    font-size: 2.5rem; 
+  }
+  .main-menu { 
+    flex-direction: column; 
+    align-items: stretch; 
+  }
+  .menu-btn { 
+    justify-content: center; 
+    text-align: center; 
+  }
+  .about-header { 
+    flex-direction: column; 
+  }
 }
