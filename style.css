@@ -109,6 +109,35 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   BARRA DE ROLAGEM LATERAL CUSTOMIZADA
+   ========================================================================== */
+
+/* 1. Define a largura da barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px;               /* Largura da barra vertical */
+    height: 10px;              /* Altura da barra horizontal (se houver) */
+}
+
+/* 2. Estiliza o 'trilho' (o fundo por onde a barra desliza) */
+::-webkit-scrollbar-track {
+    background: #150136;       /* Cor de fundo do trilho */
+    border-radius: 10px;       /* Opcional: deixa o fundo arredondado */
+}
+
+/* 3. Estiliza o 'polegar' (a parte que o usuário arrasta) */
+::-webkit-scrollbar-thumb {
+    background: #4A2B99;       /* Cor da barra em si */
+    border-radius: 10px;       /* Deixa a barra arredondada */
+    border: 2px solid #150136; /* Cria um espaçamento visual entre a barra e o trilho */
+}
+
+/* 4. Estiliza a barra quando o usuário passa o mouse por cima */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffaa00;       /* Cor de destaque no hover */
+    cursor: pointer;
+}
+
+/* ==========================================================================
    5. SEÇÃO: TELA INICIAL (HOME)
    ========================================================================== */
 #home-content {
