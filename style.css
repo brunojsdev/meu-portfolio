@@ -31,7 +31,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-escuro), var(--fundo-medio), var(--fundo-medio), var(--fundo-escuro));
+  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro));
   color: var(--textos);
   min-height: 100vh;
   display: flex;
