@@ -21,12 +21,12 @@ Interface web desenvolvida para a apresentação centralizada de projetos, habil
 ## 📁 Projetos Indexados
 
 O portfólio atua como hub para os seguintes repositórios:
-1. Calculadora Web
-2. Lista de Tarefas
-3. Integração de API (Hora e Clima)
-4. Guia Informativo de Primeiros Socorros
-5. Dashboard Analítico do Sistema Solar (Python/Streamlit)
-6. Hub de Automações Python
+* Calculadora Web
+* Lista de Tarefas
+* Integração de API (Hora e Clima)
+* Guia Informativo de Primeiros Socorros
+* Dashboard Analítico do Sistema Solar (Python/Streamlit)
+* Hub de Automações Python
 
 ## ⚙️ Configuração e Execução
 
