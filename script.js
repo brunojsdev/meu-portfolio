@@ -20,7 +20,7 @@ function showSection(sectionId) {
 
 /* ==========================================================================
    2. ANIMAÇÃO DE FUNDO (CANVAS STARS)
-   Cria um efeito de estrelas de 4 pontas caindo/piscando (Style: Sparkle)
+   Cria um efeito de estrelas de 4 pontas curvadas (Estilo Ouros)
    ========================================================================== */
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
@@ -29,12 +29,11 @@ const ctx = canvas.getContext('2d');
 let width, height;
 let particles = [];
 
-// Paleta de cores da animação sincronizada com os DESTAQUES do CSS
+// Paleta de cores da animação
 const colors = ['#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffaa00'];
 
 /* --- FUNÇÕES DE CONTROLE DO CANVAS --- */
 
-// Atualiza as dimensões do canvas para ocupar a tela inteira
 function resize() {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
@@ -49,12 +48,12 @@ class Star {
   // Inicializa ou reseta as propriedades da estrela
   init() {
     this.x = Math.random() * width;
-    // Começa em uma posição Y aleatória para não caírem todas juntas no início
     this.y = Math.random() * height; 
-    this.size = Math.random() * 7 + 3;          // Tamanho discreto (3px a 10px)
-    this.speed = Math.random() * 1.5 + 0.5;     // Velocidade de queda suave
+    // Tamanho reduzido para melhor estética
+    this.size = Math.random() * 4 + 3; 
+    this.speed = Math.random() * 1.0 + 0.3;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.opacity = Math.random() * 0.7 + 0.3;   // Transparência variada
+    this.opacity = Math.random() * 0.5 + 0.3; 
   }
 
   // Atualiza a posição da partícula a cada frame
@@ -62,46 +61,43 @@ class Star {
     this.y += this.speed;
     
     // Se a estrela sair da tela pela parte de baixo, reseta para o topo
-    if (this.y > height + this.size) {
+    if (this.y > height + 20) {
       this.x = Math.random() * width;
       this.y = -20;
-      this.size = Math.random() * 7 + 3;
-      this.speed = Math.random() * 1.5 + 0.5;
     }
   }
 
-  // Desenha a estrela de 4 pontas simples (estilo losango esticado)
+  // Desenha a estrela de 4 pontas curvada (Gordinha e Esticada)
   draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
 
     ctx.globalAlpha = this.opacity;
-    ctx.strokeStyle = this.color;
-    ctx.lineWidth = 1.2;
     
-    // Proporções da estrela de 4 pontas
-    const R_major = this.size;            // Pontas verticais e horizontais
-    const R_minor = this.size * 0.25;     // Curvatura interna (mais fina para parecer brilho)
+    // Proporções estilo Naipe de Ouros
+    const R_y = this.size * 1.8; // Vertical esticada
+    const R_x = this.size * 1.2; // Horizontal gordinha
+    const c = 0.25;              // Controle da curvatura (pontas finas)
 
     ctx.beginPath();
-    for (let i = 0; i < 8; i++) {
-      // Alterna entre raio maior e menor a cada 45 graus
-      let angle = (i * Math.PI) / 4 - Math.PI / 2; 
-      let radius = (i % 2 === 0) ? R_major : R_minor;
+    ctx.moveTo(0, -R_y);
 
-      let px = Math.cos(angle) * radius;
-      let py = Math.sin(angle) * radius;
-
-      if (i === 0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
-    }
+    // Curvas que formam o corpo da estrela
+    ctx.quadraticCurveTo(R_x * c, -R_y * c, R_x, 0);   
+    ctx.quadraticCurveTo(R_x * c, R_y * c, 0, R_y);    
+    ctx.quadraticCurveTo(-R_x * c, R_y * c, -R_x, 0); 
+    ctx.quadraticCurveTo(-R_x * c, -R_y * c, 0, -R_y); 
+    
     ctx.closePath();
 
-    // Desenha o contorno da estrela
+    // Estrela Oca por padrão
+    ctx.strokeStyle = this.color;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
     
-    // Efeito de "piscar": 2% de chance de preencher a estrela neste frame
-    if (Math.random() > 0.98) {
+    // Efeito de "piscar": preenche a estrela aleatoriamente
+    if (Math.random() > 0.985) {
+       ctx.globalAlpha = 1;
        ctx.fillStyle = this.color;
        ctx.fill();
     }
@@ -112,7 +108,6 @@ class Star {
 
 /* --- INICIALIZAÇÃO E LOOP DE ANIMAÇÃO --- */
 
-// Preenche o array com estrelas (densidade ajustada para não poluir o texto)
 function initParticles() {
   particles = [];
   const particleCount = Math.floor(width / 15); 
@@ -122,12 +117,9 @@ function initParticles() {
   }
 }
 
-// Loop principal de renderização
 function animate() {
-  // Limpa o canvas
   ctx.clearRect(0, 0, width, height);
   
-  // Atualiza e desenha cada estrela
   particles.forEach(p => {
     p.update();
     p.draw();
@@ -138,7 +130,6 @@ function animate() {
 
 /* --- EVENT LISTENERS --- */
 
-// Recalcula o canvas ao redimensionar a janela
 window.addEventListener('resize', () => {
   resize();
   initParticles();
