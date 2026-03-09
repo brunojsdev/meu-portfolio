@@ -1,47 +1,49 @@
-# 🚀 Portfólio de Desenvolvimento Web | Cyber-Modern Edition
+# 🖥️ Portfólio Profissional | Bruno J. Silveira
 
-Este repositório abriga o meu portfólio pessoal, um ecossistema projetado para demonstrar competências técnicas em Front-end, design de interface e organização de software. O projeto utiliza uma estética tecnológica moderna com uma paleta de cores personalizada e efeitos dinâmicos de alto desempenho.
-
-## ⚡ Diferenciais do Projeto
-Diferente de portfólios convencionais, este projeto foi construído sob três pilares:
-1. **Performance Visual:** Fundo animado utilizando a API Canvas para garantir fluidez sem sobrecarregar o processador.
-2. **Modularidade:** Arquitetura limpa onde o portfólio atua como um hub para aplicações independentes.
-3. **Identidade Visual Única:** Paleta de cores exclusiva (Cyber-Modern) que equilibra tons frios de azul e ciano com acentos quentes de verde pistache.
+Interface web desenvolvida para a apresentação centralizada de projetos, habilidades técnicas e informações profissionais. O sistema foi arquitetado utilizando conceitos de Single Page Application (SPA) através de Vanilla JavaScript, garantindo navegação contínua e renderização de alta performance sem recarregamento da página.
 
 ## 🛠️ Stack Tecnológica
-* **HTML5 Semântico:** Estruturação focada em acessibilidade e SEO.
-* **CSS3 Advanced:** Uso extensivo de variáveis (Custom Properties), Flexbox, Grid e animações de estado.
-* **JavaScript (ES6+):** Lógica de navegação entre seções (SPA Style) e renderização de partículas em tempo real.
-* **Canvas API:** Manipulação de gráficos via script para o efeito de "Digital Rain" ao fundo.
 
-## 🎨 Paleta de Cores (Cyber-Modern)
-O projeto utiliza uma hierarquia visual rigorosa:
-* **Fundo:** `#050a14` (Azul Profundo)
-* **Destaque Primário:** `#00ff88` (Verde Neon)
-* **Destaque Secundário:** `#00d2ff` (Ciano Digital)
-* **Acento de Harmonização:** `#b0d15a` (Amarelo Pistache/Esverdeado)
+* **Estrutura:** HTML5 Semântico
+* **Estilização:** CSS3 (Flexbox, CSS Grid, Variáveis Nativas e Media Queries)
+* **Comportamento:** JavaScript Vanilla (ES6+)
+* **Renderização Gráfica:** HTML5 Canvas API
 
-## 📂 Organização do Repositório
-```text
-├── index.html          # Ponto de entrada e estrutura principal
-├── style.css           # Identidade visual, variáveis e responsividade
-├── script.js           # Motor de animação e lógica de navegação
-├── img/                # Thumbnails otimizadas dos projetos
-└── README.md           # Documentação técnica
-```
+## 📊 Arquitetura e Funcionalidades Principais
 
-## 🚀 Experiência do Usuário
-O portfólio está organizado em seções dinâmicas:
-1.  **Home:** Apresentação de impacto com Bio profissional e resumo de Skills.
-2.  **Galeria Interativa:** Cartões de projetos com efeitos de hover, tags de tecnologias e links diretos para demonstrações e código-fonte.
-3.  **Micro-Aplicações:** Demonstração de utilitários como calculadoras, relógios e widgets, provando versatilidade em diferentes domínios.
+* **Navegação Dinâmica:** Manipulação de classes via DOM (Document Object Model) para controle de estado e transição suave entre a seção "Home" e o "Catálogo de Projetos".
+* **Motor de Animação Background:** Implementação de um sistema de partículas ("Canvas Stars") processado localmente via Canvas API. Utiliza `requestAnimationFrame` para atualização contínua de coordenadas geométricas, opacidade e curvaturas de bezier (`quadraticCurveTo`).
+* **Design System e Tema Estético:** Estruturação de variáveis de escopo global (`:root`) no CSS para controle padronizado da paleta de cores "Deep Space" (fundos em tons de azul escuro/roxo estruturados em degradê) com contornos e textos em alto contraste neon (amarelo e ciano).
+* **Integrações de Módulos:** Redirecionamento configurado para repositórios individuais, perfis em plataformas profissionais (LinkedIn, GitHub) e visualização direta do **currículo online** hospedado em nuvem.
+* **Componentização UI:** Criação de *cards* interativos com efeitos de flutuação, sombras modulares e *badges* categorizados para exibição de ferramentas (Tech Minis).
+* **UX/UI Customizada:** Barra de rolagem nativa estilizada (`::-webkit-scrollbar`) integrando-se nativamente à interface de usuário.
 
-## 🌐 Acesso e Visualização
-Para visualizar o projeto localmente:
-1. Clone este repositório: `git clone https://github.com/seu-usuario/seu-repositorio.git`
-2. Abra o arquivo `index.html` em seu navegador de preferência.
+## 📁 Projetos Indexados
 
-Ou acesse a versão online via **GitHub Pages** através do link configurado neste repositório.
+O portfólio atua como hub para os seguintes repositórios:
+1. Calculadora Web
+2. Lista de Tarefas
+3. Integração de API (Hora e Clima)
+4. Guia Informativo de Primeiros Socorros
+5. Dashboard Analítico do Sistema Solar (Python/Streamlit)
+6. Hub de Automações Python
 
----
-Desenvolvido com foco em código limpo.
+## ⚙️ Configuração e Execução
+
+Como o projeto é estruturado de forma estática (Client-side), não há dependências de servidor para a sua visualização local.
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/brunojsdev/meu-portfolio.git](https://github.com/brunojsdev/meu-portfolio.git)
+   ```
+2. **Acesso:**
+Basta abrir o arquivo index.html em qualquer navegador web moderno.
+
+## 📁 Estrutura de Arquivos
+* `index.html:` Marcação semântica e conteúdo principal.
+
+* `style.css:` Lógica de estilização global, variáveis de cor, animações (@keyframes) e responsividade.
+
+* `script.js:` Funções de navegação do DOM e classe geradora do Canvas API.
+
+* `img/:` Diretório de armazenamento das miniaturas (thumbnails) e favicon.
