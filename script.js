@@ -19,7 +19,41 @@ function showSection(sectionId) {
 }
 
 /* ==========================================================================
-   2. ANIMAÇÃO DE FUNDO (CANVAS STARS)
+   2. INTERCEPTADOR DE URL (HASH)
+   Verifica se a URL contém um # para abrir a aba correta no carregamento
+   ========================================================================== */
+window.addEventListener('DOMContentLoaded', () => {
+  // Pega o texto depois do '#' na URL (ex: se for #projects, pega 'projects')
+  const hashDaUrl = window.location.hash.replace('#', '');
+  
+  // Se existir um texto e houver um elemento com esse ID no HTML, abre a seção
+  if (hashDaUrl && document.getElementById(hashDaUrl)) {
+    showSection(hashDaUrl);
+  }
+});
+
+
+function showSection(sectionId) {
+  // Esconde todas as seções...
+  document.querySelectorAll(".section-container").forEach((sec) => {
+    sec.classList.remove("active");
+  });
+
+  // Mostra a seção desejada...
+  document.getElementById(sectionId).classList.add("active");
+
+  // ADICIONE ESTA LINHA: Atualiza a URL com a seção atual
+  window.location.hash = sectionId;
+
+  // Rola a página suavemente...
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* ==========================================================================
+   3. ANIMAÇÃO DE FUNDO (CANVAS STARS)
    Cria um efeito de estrelas de 4 pontas curvadas (Estilo Ouros)
    ========================================================================== */
 const canvas = document.getElementById('bg-canvas');
