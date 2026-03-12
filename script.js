@@ -1,151 +1,144 @@
 /* ==========================================================================
    1. NAVEGAÇÃO ENTRE SEÇÕES
-   Função responsável por alternar as telas (Home / Projetos)
    ========================================================================== */
 function showSection(sectionId) {
-  // Esconde todas as seções removendo a classe 'active' de todas elas
   document.querySelectorAll(".section-container").forEach((sec) => {
     sec.classList.remove("active");
   });
 
-  // Mostra a seção desejada adicionando a classe 'active'
-  document.getElementById(sectionId).classList.add("active");
-
-  // Rola a página suavemente para o topo ao trocar de tela (Melhora a UX)
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  const target = document.getElementById(sectionId);
+  if (target) {
+    target.classList.add("active");
+    window.location.hash = sectionId;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
-/* ==========================================================================
-   2. INTERCEPTADOR DE URL (HASH)
-   Verifica se a URL contém um # para abrir a aba correta no carregamento
-   ========================================================================== */
 window.addEventListener('DOMContentLoaded', () => {
-  // Pega o texto depois do '#' na URL (ex: se for #projects, pega 'projects')
   const hashDaUrl = window.location.hash.replace('#', '');
-  
-  // Se existir um texto e houver um elemento com esse ID no HTML, abre a seção
   if (hashDaUrl && document.getElementById(hashDaUrl)) {
     showSection(hashDaUrl);
   }
 });
 
-
-function showSection(sectionId) {
-  // Esconde todas as seções...
-  document.querySelectorAll(".section-container").forEach((sec) => {
-    sec.classList.remove("active");
-  });
-
-  // Mostra a seção desejada...
-  document.getElementById(sectionId).classList.add("active");
-
-  // ADICIONE ESTA LINHA: Atualiza a URL com a seção atual
-  window.location.hash = sectionId;
-
-  // Rola a página suavemente...
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
 /* ==========================================================================
-   3. ANIMAÇÃO DE FUNDO (CANVAS STARS)
-   Cria um efeito de estrelas de 4 pontas curvadas (Estilo Ouros)
+   2. ANIMAÇÃO DE FUNDO (CANVAS MULTI-STARS)
+   Cria uma variedade de estrelas baseadas na imagem de referência
    ========================================================================== */
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 
-// Variáveis globais de controle do Canvas
 let width, height;
 let particles = [];
-
-// Paleta de cores da animação
-const colors = ['#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffaa00'];
-
-/* --- FUNÇÕES DE CONTROLE DO CANVAS --- */
+const colors = ['#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffffff'];
 
 function resize() {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
 }
 
-/* --- CLASSE PRINCIPAL: STAR (PARTÍCULAS) --- */
 class Star {
   constructor() {
     this.init();
   }
 
-  // Inicializa ou reseta as propriedades da estrela
   init() {
     this.x = Math.random() * width;
-    this.y = Math.random() * height; 
-    // Tamanho reduzido para melhor estética
-    this.size = Math.random() * 4 + 3; 
-    this.speed = Math.random() * 1.0 + 0.3;
+    this.y = Math.random() * height;
+    
+    // Variedade de Tamanhos
+    this.size = Math.random() * 5 + 2; 
+    this.speed = Math.random() * 0.5 + 0.2;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.opacity = Math.random() * 0.5 + 0.3; 
+    this.opacity = Math.random() * 0.6 + 0.2;
+    
+    // Define qual tipo de estrela será (0 a 3)
+    this.type = Math.floor(Math.random() * 4); 
+    
+    // Rotação aleatória inicial para dar organicidade
+    this.rotation = Math.random() * Math.PI;
+    this.rotationSpeed = (Math.random() - 0.5) * 0.01;
   }
 
-  // Atualiza a posição da partícula a cada frame
   update() {
     this.y += this.speed;
+    this.rotation += this.rotationSpeed;
     
-    // Se a estrela sair da tela pela parte de baixo, reseta para o topo
     if (this.y > height + 20) {
-      this.x = Math.random() * width;
+      this.init();
       this.y = -20;
     }
   }
 
-  // Desenha a estrela de 4 pontas curvada (Gordinha e Esticada)
   draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
-
+    ctx.rotate(this.rotation);
     ctx.globalAlpha = this.opacity;
-    
-    // Proporções estilo Naipe de Ouros
-    const R_y = this.size * 1.8; // Vertical esticada
-    const R_x = this.size * 1.2; // Horizontal gordinha
-    const c = 0.25;              // Controle da curvatura (pontas finas)
+    ctx.strokeStyle = this.color;
+    ctx.fillStyle = this.color;
+    ctx.lineWidth = 1;
 
     ctx.beginPath();
-    ctx.moveTo(0, -R_y);
-
-    // Curvas que formam o corpo da estrela
-    ctx.quadraticCurveTo(R_x * c, -R_y * c, R_x, 0);   
-    ctx.quadraticCurveTo(R_x * c, R_y * c, 0, R_y);    
-    ctx.quadraticCurveTo(-R_x * c, R_y * c, -R_x, 0); 
-    ctx.quadraticCurveTo(-R_x * c, -R_y * c, 0, -R_y); 
     
-    ctx.closePath();
-
-    // Estrela Oca por padrão
-    ctx.strokeStyle = this.color;
-    ctx.lineWidth = 1.2;
-    ctx.stroke();
-    
-    // Efeito de "piscar": preenche a estrela aleatoriamente
-    if (Math.random() > 0.985) {
-       ctx.globalAlpha = 1;
-       ctx.fillStyle = this.color;
-       ctx.fill();
+    switch(this.type) {
+      case 0: // Estrela 4 pontas Curvada (Estilo Ouros / Diamante)
+        this.drawStar4Curved(this.size * 1.8, this.size * 1.2, 0.25);
+        break;
+      case 1: // Brilho Fino (4 pontas esticadas)
+        this.drawStar4Thin(this.size * 2.5, this.size * 0.3);
+        break;
+      case 2: // Estrela de 8 pontas (Sparkle)
+        this.drawStar8(this.size * 1.5, this.size * 0.6);
+        break;
+      case 3: // Ponto de luz / Pequena estrela sólida
+        ctx.arc(0, 0, this.size * 0.4, 0, Math.PI * 2);
+        ctx.fill();
+        break;
     }
-    
+
+    ctx.stroke();
+
+    // Efeito de "Blink" (Piscar)
+    if (Math.random() > 0.99) {
+      ctx.globalAlpha = 1;
+      ctx.fill();
+    }
+
     ctx.restore();
+  }
+
+  // Desenho: Diamante curvado
+  drawStar4Curved(ry, rx, c) {
+    ctx.moveTo(0, -ry);
+    ctx.quadraticCurveTo(rx * c, -ry * c, rx, 0);
+    ctx.quadraticCurveTo(rx * c, ry * c, 0, ry);
+    ctx.quadraticCurveTo(-rx * c, ry * c, -rx, 0);
+    ctx.quadraticCurveTo(-rx * c, -ry * c, 0, -ry);
+  }
+
+  // Desenho: Estrela 4 pontas finas
+  drawStar4Thin(outer, inner) {
+    for (let i = 0; i < 4; i++) {
+      ctx.lineTo(0, -outer);
+      ctx.lineTo(inner, 0);
+      ctx.rotate(Math.PI / 2);
+    }
+  }
+
+  // Desenho: Estrela 8 pontas
+  drawStar8(outer, inner) {
+    for (let i = 0; i < 8; i++) {
+      ctx.lineTo(0, (i % 2 === 0) ? -outer : -inner);
+      ctx.rotate(Math.PI / 4);
+    }
   }
 }
 
-/* --- INICIALIZAÇÃO E LOOP DE ANIMAÇÃO --- */
-
 function initParticles() {
   particles = [];
-  const particleCount = Math.floor(width / 15); 
-  
+  // Quantidade baseada na largura da tela
+  const particleCount = Math.floor(width / 12);
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Star());
   }
@@ -153,23 +146,19 @@ function initParticles() {
 
 function animate() {
   ctx.clearRect(0, 0, width, height);
-  
   particles.forEach(p => {
     p.update();
     p.draw();
   });
-  
   requestAnimationFrame(animate);
 }
-
-/* --- EVENT LISTENERS --- */
 
 window.addEventListener('resize', () => {
   resize();
   initParticles();
 });
 
-/* --- START DO SCRIPT --- */
-resize();         
-initParticles();  
+// Inicialização
+resize();
+initParticles();
 animate();
