@@ -55,14 +55,12 @@ class Star {
     // Define qual tipo de estrela será (0 a 3)
     this.type = Math.floor(Math.random() * 4); 
     
-    // Rotação aleatória inicial para dar organicidade
-    this.rotation = Math.random() * Math.PI;
-    this.rotationSpeed = (Math.random() - 0.5) * 0.01;
+    // Rotação removida para manter as estrelas "em pé"
+    this.rotation = 0;
   }
 
   update() {
     this.y += this.speed;
-    this.rotation += this.rotationSpeed;
     
     if (this.y > height + 20) {
       this.init();
@@ -73,7 +71,7 @@ class Star {
   draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
-    ctx.rotate(this.rotation);
+    // ctx.rotate(this.rotation); // Removido para evitar que fiquem de lado
     ctx.globalAlpha = this.opacity;
     ctx.strokeStyle = this.color;
     ctx.fillStyle = this.color;
@@ -119,25 +117,28 @@ class Star {
 
   // Desenho: Estrela 4 pontas finas
   drawStar4Thin(outer, inner) {
-    for (let i = 0; i < 4; i++) {
-      ctx.lineTo(0, -outer);
-      ctx.lineTo(inner, 0);
-      ctx.rotate(Math.PI / 2);
-    }
+    // Desenha as linhas manualmente para garantir a orientação vertical
+    ctx.moveTo(0, -outer);
+    ctx.lineTo(inner, 0);
+    ctx.lineTo(0, outer);
+    ctx.lineTo(-inner, 0);
+    ctx.closePath();
   }
 
   // Desenho: Estrela 8 pontas
   drawStar8(outer, inner) {
+    // Desenha sem usar ctx.rotate repetitivo para garantir alinhamento vertical
     for (let i = 0; i < 8; i++) {
-      ctx.lineTo(0, (i % 2 === 0) ? -outer : -inner);
-      ctx.rotate(Math.PI / 4);
+      const angle = (i * Math.PI) / 4 - Math.PI / 2;
+      const radius = (i % 2 === 0) ? outer : inner;
+      ctx.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
     }
+    ctx.closePath();
   }
 }
 
 function initParticles() {
   particles = [];
-  // Quantidade baseada na largura da tela
   const particleCount = Math.floor(width / 12);
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Star());
