@@ -84,9 +84,9 @@ if (canvas) {
       const baseSize = Math.random() * 3 + 4; 
       
       // AJUSTE DE TAMANHO: 
-      // Tipo 3 (Vazada) fica menor. Os demais ficam maiores.
+      // Tipo 3 (Vazada) fica com tamanho normal. Os demais ficam maiores.
       if (this.type === 3) {
-        this.size = baseSize * 0.5; // Reduz o tamanho pela metade
+        this.size = baseSize; // Tamanho normal
       } else {
         this.size = baseSize * 1.5; // Aumenta o tamanho em 50%
       }
