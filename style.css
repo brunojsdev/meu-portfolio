@@ -340,10 +340,9 @@ h1 {
   font-weight: 600;
   text-transform: uppercase;
   color: transparent;
-  background: linear-gradient(to right, var(--borda-clara), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--borda-clara));
+  background: linear-gradient(to right, var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
 }
 
 .back-btn:hover {
