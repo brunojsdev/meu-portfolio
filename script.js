@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. NAVEGAÇÃO ENTRE SEÇÕES (INSTANTÂNEA)
+   1. NAVEGAÇÃO ENTRE SEÇÕES 
    ========================================================================== */
 
 function showSection(sectionId) {
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================================
-   2. ANIMAÇÃO DE FUNDO (TAMANHOS E PROPORÇÕES AJUSTADAS)
+   2. ANIMAÇÃO DE FUNDO 
    ========================================================================== */
 
 const canvas = document.getElementById('bg-canvas');
@@ -59,11 +59,11 @@ if (canvas) {
       
       // Definição de tamanhos por tipo conforme solicitado
       if (this.type === 1) {
-        this.size = Math.random() * 5 + 7; // Tipo 1: entre 5 e 11
+        this.size = Math.random() * 3 + 6; // Tipo 1: entre 3 e 9
       } else if (this.type === 2) {
-        this.size = Math.random() * 5 + 5; // Tipo 2: entre 5 e 10
+        this.size = Math.random() * 3 + 6; // Tipo 2: entre 3 e 9
       } else {
-        this.size = Math.random() * 5 + 4; // Tipo 3: entre 4 e 9
+        this.size = Math.random() * 2 + 5; // Tipo 3: entre 2 e 7
       }
       
       let foundPos = false;
