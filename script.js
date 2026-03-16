@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================================
-   2. ANIMAÇÃO DE FUNDO (CANVAS COM ANTICOLISÃO)
+   2. ANIMAÇÃO DE FUNDO (TAMANHOS E PROPORÇÕES AJUSTADAS)
    ========================================================================== */
 
 const canvas = document.getElementById('bg-canvas');
@@ -40,37 +40,43 @@ if (canvas) {
     height = canvas.height = window.innerHeight;
   }
 
-  /**
-   * Verifica se uma nova posição (x, y) está muito perto de estrelas existentes
-   */
   function isPosOccupied(x, y, minDistance) {
     for (let p of particles) {
       const dx = p.x - x;
       const dy = p.y - y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < minDistance) return true;
+      if (Math.sqrt(dx * dx + dy * dy) < minDistance) return true;
     }
     return false;
   }
 
   class Star {
     constructor() {
-      this.init(true); // 'true' para espalhar na tela toda no início
+      this.init(true);
     }
 
     init(fullScreen = false) {
       this.type = Math.floor(Math.random() * 3) + 1;
       
-      // Variação de tamanho unificada para todos os tipos
-      this.size = Math.random() * 4 + 3; // Tamanho base entre 3 e 7
+      // Definição de tamanhos por tipo conforme solicitado
+      if (this.type === 1) {
+        this.size = Math.random() * 3 + 4; // Tipo 1: entre 4 e 7
+      } else if (this.type === 2) {
+        this.size = Math.random() * 3 + 3; // Tipo 2: entre 3 e 6
+      } else {
+        this.size = Math.random() * 3 + 2; // Tipo 3: entre 2 e 5
+      }
       
       let foundPos = false;
       let attempts = 0;
-      while (!foundPos && attempts < 15) {
+      let safeMargin = 45; 
+
+      while (!foundPos && attempts < 30) {
         this.x = Math.random() * width;
         this.y = fullScreen ? Math.random() * height : -50;
         
-        if (!isPosOccupied(this.x, this.y, 45)) {
+        let currentMargin = attempts > 15 ? safeMargin / 2 : safeMargin;
+
+        if (!isPosOccupied(this.x, this.y, currentMargin)) {
           foundPos = true;
         }
         attempts++;
@@ -104,7 +110,6 @@ if (canvas) {
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
-      
       const s = this.size;
       
       if (this.isBlinking) {
@@ -123,7 +128,6 @@ if (canvas) {
         case 2: this._drawType2(s); break;
         case 3: this._drawType3(s); break;
       }
-
       ctx.restore();
     }
 
@@ -151,11 +155,11 @@ if (canvas) {
       ctx.fill();
     }
 
-    /** TIPO 3: Estrela Côncava esticada (Proporção corrigida) */
     _drawType3(s) {
       ctx.beginPath();
-      const vLen = s * 3.5; // Comprimento vertical
-      const hLen = s * 0.8; // Comprimento lateral
+      // Ajuste na proporção
+      const vLen = s * 2.2; 
+      const hLen = s * 0.7; 
       
       ctx.moveTo(0, -vLen);
       ctx.quadraticCurveTo(0, 0, hLen, 0);
@@ -171,7 +175,7 @@ if (canvas) {
   function initParticles() {
     resize();
     particles = [];
-    const particleCount = Math.floor(width / 35); 
+    const particleCount = Math.floor(width / 22); 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Star());
     }
