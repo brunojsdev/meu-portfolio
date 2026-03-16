@@ -348,14 +348,6 @@ h1 {
 
 .back-btn:hover {
   transform: translateX(-5px);
-  background: linear-gradient(to right,
-    var(--destaque-escuro), 
-    var(--destaque-medio), 
-    var(--destaque-claro), 
-    var(--destaque-medio), 
-    var(--destaque-escuro), 
-    var(--destaque-medio), 
-    var(--destaque-claro)
   filter: drop-shadow( 0 0 20px rgba(87, 82, 255, 0.5));
 }
 
