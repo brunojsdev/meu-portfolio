@@ -1,16 +1,15 @@
 /**
  * ==========================================================================
- * PROJETO: Portfólio Cyber-Modern - Sistema de Estrelas e Navegação
- * MODIFICAÇÕES: Retorno do ShadowBlur, Novo Formato Côncavo e Fim das Transições
+ * PROJETO: Portfólio Cyber-Modern - Script de Performance e Estética
+ * MODIFICAÇÕES: Anticolisão, Tamanhos Unificados e Losango Esticado (Tipo 3)
  * ==========================================================================
  */
 
 /* ==========================================================================
-   1. NAVEGAÇÃO ENTRE SEÇÕES (SEM ANIMAÇÃO)
+   1. NAVEGAÇÃO ENTRE SEÇÕES (INSTANTÂNEA)
    ========================================================================== */
 
 function showSection(sectionId) {
-  // Troca instantânea para evitar "lag" visual de animações lentas
   document.querySelectorAll(".section-container").forEach((sec) => {
     sec.classList.remove("active");
   });
@@ -19,12 +18,7 @@ function showSection(sectionId) {
   if (target) {
     target.classList.add("active");
     window.location.hash = sectionId;
-    
-    // Scroll instantâneo (behavior auto) mata o conflito com renderização do canvas
-    window.scrollTo({
-      top: 0,
-      behavior: "auto" 
-    });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
 }
 
@@ -37,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================================
-   2. ANIMAÇÃO DE FUNDO (CANVAS)
+   2. ANIMAÇÃO DE FUNDO (CANVAS COM ANTICOLISÃO)
    ========================================================================== */
 
 const canvas = document.getElementById('bg-canvas');
@@ -53,31 +47,47 @@ if (canvas) {
     height = canvas.height = window.innerHeight;
   }
 
+  /**
+   * Verifica se uma nova posição (x, y) está muito perto de estrelas existentes
+   */
+  function isPosOccupied(x, y, minDistance) {
+    for (let p of particles) {
+      const dx = p.x - x;
+      const dy = p.y - y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < minDistance) return true;
+    }
+    return false;
+  }
+
   class Star {
     constructor() {
-      this.init();
+      this.init(true); // 'true' para espalhar na tela toda no início
     }
 
-    init() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      
-      // Tipos: 1 (Risco), 2 (8 Pontas Grande), 3 (Novo Brilho Côncavo)
+    init(fullScreen = false) {
       this.type = Math.floor(Math.random() * 3) + 1;
       
-      const baseSize = Math.random() * 3 + 4; 
+      // Variação de tamanho unificada para todos os tipos
+      this.size = Math.random() * 4 + 3; // Tamanho base entre 3 e 7
       
-      if (this.type === 2) {
-        this.size = baseSize * 2.2; // Tipo 2 agora bem maior e imponente
-      } else if (this.type === 3) {
-        this.size = baseSize * 1.8; // Tamanho ideal para o formato da imagem
-      } else {
-        this.size = baseSize * 1.5;
+      // Tenta encontrar um lugar sem sobreposição (limite de 10 tentativas para performance)
+      let foundPos = false;
+      let attempts = 0;
+      while (!foundPos && attempts < 10) {
+        this.x = Math.random() * width;
+        this.y = fullScreen ? Math.random() * height : -50;
+        
+        // Espaçamento mínimo de 40px para evitar embolar
+        if (!isPosOccupied(this.x, this.y, 40)) {
+          foundPos = true;
+        }
+        attempts++;
       }
-      
-      this.speed = Math.random() * 0.4 + 0.15;
+
+      this.speed = Math.random() * 0.3 + 0.15;
       this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.opacity = Math.random() * 0.4 + 0.2; 
+      this.opacity = Math.random() * 0.4 + 0.2;
       this.isBlinking = false;
       this.blinkTimer = 0;
     }
@@ -85,9 +95,10 @@ if (canvas) {
     update() {
       this.y += this.speed;
       
-      if (!this.isBlinking && Math.random() > 0.99) {
+      // Controle do Flash (Blink)
+      if (!this.isBlinking && Math.random() > 0.992) {
         this.isBlinking = true;
-        this.blinkTimer = Math.floor(Math.random() * 5) + 3; 
+        this.blinkTimer = Math.floor(Math.random() * 6) + 3;
       }
 
       if (this.isBlinking) {
@@ -95,9 +106,9 @@ if (canvas) {
         if (this.blinkTimer <= 0) this.isBlinking = false;
       }
       
+      // Reset no topo com nova checagem de colisão
       if (this.y > height + 50) {
-        this.x = Math.random() * width;
-        this.y = -50;
+        this.init(false);
       }
     }
 
@@ -107,7 +118,6 @@ if (canvas) {
       
       const s = this.size;
       
-      // RETORNO DO SHADOWBLUR (Apenas no blink para performance)
       if (this.isBlinking) {
         ctx.globalAlpha = 1.0;
         ctx.shadowBlur = 15;
@@ -118,7 +128,6 @@ if (canvas) {
       }
       
       ctx.fillStyle = this.color;
-      ctx.strokeStyle = this.color;
 
       switch (this.type) {
         case 1: this._drawType1(s); break;
@@ -140,7 +149,6 @@ if (canvas) {
       drawTaper(3 * Math.PI / 4, s * 1.4, s * 0.2);
       drawTaper(-3 * Math.PI / 4, s * 0.8, s * 0.15);
       drawTaper(Math.PI / 4, s * 0.7, s * 0.15);
-      ctx.beginPath(); ctx.arc(0, 0, s * 0.15, 0, Math.PI * 2); ctx.fill();
     }
 
     _drawType2(s) {
@@ -154,18 +162,13 @@ if (canvas) {
       ctx.fill();
     }
 
-    /** TIPO 3: Estrela Côncava (Baseada na Imagem Enviada) */
+    /** TIPO 3: Losango esticado (Ponta vertical > Ponta horizontal) */
     _drawType3(s) {
       ctx.beginPath();
-      // Ponto superior para direita
-      ctx.moveTo(0, -s);
-      ctx.quadraticCurveTo(0, 0, s, 0);
-      // Direita para baixo
-      ctx.quadraticCurveTo(0, 0, 0, s);
-      // Baixo para esquerda
-      ctx.quadraticCurveTo(0, 0, -s, 0);
-      // Esquerda para cima
-      ctx.quadraticCurveTo(0, 0, 0, -s);
+      ctx.moveTo(0, -s * 2.2); // Topo bem esticado
+      ctx.lineTo(s * 0.7, 0);   // Direita curta
+      ctx.lineTo(0, s * 2.2);  // Baixo bem esticado
+      ctx.lineTo(-s * 0.7, 0);  // Esquerda curta
       ctx.closePath();
       ctx.fill();
     }
@@ -174,7 +177,7 @@ if (canvas) {
   function initParticles() {
     resize();
     particles = [];
-    const particleCount = Math.floor(width / 30); 
+    const particleCount = Math.floor(width / 35); 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Star());
     }
