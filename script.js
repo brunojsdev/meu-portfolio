@@ -63,7 +63,7 @@ if (canvas) {
       } else if (this.type === 2) {
         this.size = Math.random() * 4 + 5; // Tipo 2: entre 4 e 9
       } else {
-        this.size = Math.random() * 2 + 5; // Tipo 3: entre 2 e 7
+        this.size = Math.random() * 2 + 3; // Tipo 3: entre 2 e 5
       }
       
       let foundPos = false;
