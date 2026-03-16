@@ -343,6 +343,7 @@ h1 {
   background: linear-gradient(to right, var(--borda-clara), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
 }
 
 .back-btn:hover {
@@ -355,7 +356,7 @@ h1 {
     var(--destaque-escuro), 
     var(--destaque-medio), 
     var(--destaque-claro)
-  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
+  filter: drop-shadow( 0 0 20px rgba(87, 82, 255, 0.5));
 }
 
 /* ==========================================================================
