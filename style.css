@@ -340,13 +340,21 @@ h1 {
   font-weight: 600;
   text-transform: uppercase;
   color: transparent;
-  background: linear-gradient(to right, var(--borda-clara));
+  background: linear-gradient(to right, var(--borda-clara), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--borda-clara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .back-btn:hover {
   transform: translateX(-5px);
+  background: linear-gradient(to right,
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro), 
+    var(--destaque-medio), 
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro)
   filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
 }
 
