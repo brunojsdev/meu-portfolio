@@ -1,10 +1,3 @@
-/**
- * ==========================================================================
- * PROJETO: Portfólio Cyber-Modern - Script de Performance e Estética
- * MODIFICAÇÕES: Anticolisão, Tamanhos Unificados e Losango Esticado (Tipo 3)
- * ==========================================================================
- */
-
 /* ==========================================================================
    1. NAVEGAÇÃO ENTRE SEÇÕES (INSTANTÂNEA)
    ========================================================================== */
@@ -71,15 +64,13 @@ if (canvas) {
       // Variação de tamanho unificada para todos os tipos
       this.size = Math.random() * 4 + 3; // Tamanho base entre 3 e 7
       
-      // Tenta encontrar um lugar sem sobreposição (limite de 10 tentativas para performance)
       let foundPos = false;
       let attempts = 0;
-      while (!foundPos && attempts < 10) {
+      while (!foundPos && attempts < 15) {
         this.x = Math.random() * width;
         this.y = fullScreen ? Math.random() * height : -50;
         
-        // Espaçamento mínimo de 40px para evitar embolar
-        if (!isPosOccupied(this.x, this.y, 40)) {
+        if (!isPosOccupied(this.x, this.y, 45)) {
           foundPos = true;
         }
         attempts++;
@@ -95,7 +86,6 @@ if (canvas) {
     update() {
       this.y += this.speed;
       
-      // Controle do Flash (Blink)
       if (!this.isBlinking && Math.random() > 0.992) {
         this.isBlinking = true;
         this.blinkTimer = Math.floor(Math.random() * 6) + 3;
@@ -106,7 +96,6 @@ if (canvas) {
         if (this.blinkTimer <= 0) this.isBlinking = false;
       }
       
-      // Reset no topo com nova checagem de colisão
       if (this.y > height + 50) {
         this.init(false);
       }
@@ -162,13 +151,18 @@ if (canvas) {
       ctx.fill();
     }
 
-    /** TIPO 3: Losango esticado (Ponta vertical > Ponta horizontal) */
+    /** TIPO 3: Estrela Côncava esticada (Proporção corrigida) */
     _drawType3(s) {
       ctx.beginPath();
-      ctx.moveTo(0, -s * 2.2); // Topo bem esticado
-      ctx.lineTo(s * 0.7, 0);   // Direita curta
-      ctx.lineTo(0, s * 2.2);  // Baixo bem esticado
-      ctx.lineTo(-s * 0.7, 0);  // Esquerda curta
+      const vLen = s * 3.5; // Comprimento vertical
+      const hLen = s * 0.8; // Comprimento lateral
+      
+      ctx.moveTo(0, -vLen);
+      ctx.quadraticCurveTo(0, 0, hLen, 0);
+      ctx.quadraticCurveTo(0, 0, 0, vLen);
+      ctx.quadraticCurveTo(0, 0, -hLen, 0);
+      ctx.quadraticCurveTo(0, 0, 0, -vLen);
+      
       ctx.closePath();
       ctx.fill();
     }
