@@ -59,11 +59,11 @@ if (canvas) {
       
       // Definição de tamanhos por tipo conforme solicitado
       if (this.type === 1) {
-        this.size = Math.random() * 3 + 4; // Tipo 1: entre 4 e 7
+        this.size = Math.random() * 5 + 7; // Tipo 1: entre 5 e 11
       } else if (this.type === 2) {
-        this.size = Math.random() * 3 + 3; // Tipo 2: entre 3 e 6
+        this.size = Math.random() * 5 + 5; // Tipo 2: entre 5 e 10
       } else {
-        this.size = Math.random() * 3 + 2; // Tipo 3: entre 2 e 5
+        this.size = Math.random() * 5 + 4; // Tipo 3: entre 4 e 9
       }
       
       let foundPos = false;
