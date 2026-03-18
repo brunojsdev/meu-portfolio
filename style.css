@@ -256,7 +256,7 @@ h1 {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     
-    /* Borda inferior destacada (estilo do seu outro projeto) */
+    /* Borda inferior destacada */
     border: none !important;
     border-top: 4px solid var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
@@ -320,6 +320,19 @@ h1 {
 .projects-wrapper {
   width: 100%;
   max-width: 1200px;
+  padding: 40px; /* Respiro interno adicionado */
+  border-radius: 8px;
+  
+  /* Glassmorphism idêntico ao about-embedded */
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* Bordas destacadas */
+  border: none !important;
+  border-top: 4px solid var(--borda-clara) !important;
+  border-bottom: 4px solid var(--borda-clara) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .projects-header {
@@ -371,28 +384,31 @@ h1 {
     border-radius: 12px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     
+    /* Borda sólida inicial usando a variável clara */
+    border: 2px solid var(--borda-clara);
+    
     /* Glassmorphism: Mais claro e transparente */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     background: rgba(255, 255, 255, 0.08) !important;
-    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
-
 
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
   background: rgba(255, 255, 255, 0.08) !important;
-  linear-gradient(135deg, var(--borda-escura)) border-box; 
+  
+  /* Borda escura no hover */
+  border: 2px solid var(--borda-escura); 
 }
 
 .project-thumb {
   width: 100%;
   height: 160px;
   overflow: hidden;
-  background-color: 2px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid transparent;
-  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+  background-color: rgba(255, 255, 255, 0.05); /* Sintaxe corrigida */
+  border-bottom: 2px solid var(--borda-clara); /* Usando borda sólida para acompanhar o card */
+  transition: all 0.4s ease;
 }
 
 .project-thumb img {
@@ -403,7 +419,8 @@ h1 {
 }
 
 .project-card:hover .project-thumb {
-  border-image: linear-gradient(to right, var(--borda-escura)) 1;
+  /* Borda da imagem muda para a cor escura no hover do card */
+  border-bottom: 2px solid var(--borda-escura);
 }
 
 .project-card:hover .project-thumb img {
@@ -574,20 +591,22 @@ footer {
   }
   /* ------------------------------------------- */
 
-  .about-embedded {
+  /* Seção Sobre e Wrapper de Projetos responsivos */
+  .about-embedded,
+  .projects-wrapper {
     border: 2px solid transparent;
     border-bottom: 4px solid var(--borda-clara) !important;
     padding: 20px;
   }
 
   .project-card {
-    border: 2px solid transparent;
+    border: 2px solid var(--borda-clara);
     transform: none !important;
     background: rgba(255, 255, 255, 0.08) !important;
   }
 
   .project-card:hover {
-    border: 2px solid var(--borda-clara);
+    border: 2px solid var(--borda-escura);
     background: rgba(255, 255, 255, 0.12) !important;
   }
 
