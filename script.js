@@ -24,6 +24,19 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Inicializa os ícones quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+});
+
+// IMPORTANTE: Como seu site usa abas (showSection), 
+// você precisa rodar o comando toda vez que trocar de seção
+const originalShowSection = showSection;
+showSection = (sectionId) => {
+    originalShowSection(sectionId); // Executa sua função original
+    lucide.createIcons();           // Renderiza o ícone de novo
+};
+
 
 /* ==========================================================================
    2. LÓGICA DO BOTÃO VOLTAR (MOBILE FIXO)
