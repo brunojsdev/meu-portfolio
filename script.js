@@ -34,11 +34,10 @@ window.addEventListener('scroll', () => {
 
     if (!backBtn || !projectsSection) return;
 
-    // Verifica se a seção de projetos está visível (ativa)
     const isProjectsActive = projectsSection.classList.contains('active');
 
     if (window.innerWidth <= 768 && isProjectsActive) {
-        // Se rolar mais de 20px, encolhe o botão
+        // Se rolar mais de 20px, ele vira a barra fixa
         if (window.scrollY > 20) {
             backBtn.classList.add('scrolled');
         } else {
