@@ -320,19 +320,6 @@ h1 {
 .projects-wrapper {
   width: 100%;
   max-width: 1200px;
-  padding: 40px; /* Respiro interno adicionado */
-  border-radius: 8px;
-  
-  /* Glassmorphism idêntico ao about-embedded */
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  
-  /* Bordas destacadas */
-  border: none !important;
-  border-top: 4px solid var(--borda-clara) !important;
-  border-bottom: 4px solid var(--borda-clara) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .projects-header {
