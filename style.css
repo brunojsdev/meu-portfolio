@@ -1,35 +1,35 @@
 /* ==========================================================================
-   1. VARIÁVEIS DE TEMA (Design System)
+   1. VARIÁVEIS E PALETA DE CORES (ORGANIZADA)
    ========================================================================== */
 :root {
-  /* Cores de Fundo */
-  --fundo-escuro: #040014;    
-  --fundo-medio: #090024;     
-  --fundo-claro: #150136;     
-  --shadow-dark: rgba(16, 5, 38, 0.8); 
+  /* --- FUNDOS (Camadas de Profundidade) --- */
+  --fundo-escuro: #040014;    /* Roxo "Vazio Espacial" - Base mais profunda */
+  --fundo-medio: #090024;     /* Transição para gradientes e seções */
+  --fundo-claro: #150136;     /* Camada superior dos fundos roxos */
+  --shadow-dark: rgba(16, 5, 38, 0.8); /* Sombra densa para botões e cards */
 
-  /* Cores de Destaque */
-  --destaque-claro: #ffdd00;  
-  --destaque-medio: #ffaa00;  
-  --destaque-escuro: #ff9900; 
+  /* --- DESTAQUES (Paleta de Ouro/Sol) --- */
+  --destaque-claro: #ffdd00;  /* Amarelo vibrante para hover e brilho */
+  --destaque-medio: #ffaa00;  /* Ouro clássico para títulos e badges */
+  --destaque-escuro: #ff9900; /* Laranja de contraste para profundidade */
 
-  /* Cores de Interface */
-  --brilho-interface: #8b87ff; 
-  --borda-clara: #5752ff;      
-  --borda-escura: #ffaa00;     
-  --scroll-thumb: #4a2b99;     
+  /* --- INTERFACE E EFEITOS (Cyberpunk/Neon) --- */
+  --brilho-interface: #8b87ff; /* Violeta suave para realçar quinas e botões */
+  --borda-clara: #5752ff;      /* Roxo elétrico para bordas e focos principais */
+  --borda-escura: #ffaa00;     /* Usado no hover para transição de cores */
+  --scroll-thumb: #4a2b99;     /* Roxo "Realeza" para a barra de rolagem */
 
-  /* Glassmorphism (Controle centralizado de transparência) */
-  --glass-bg: rgba(255, 255, 255, 0.03);        /* Desktop: mais transparente */
-  --glass-bg-mobile: rgba(255, 255, 255, 0.08); /* Mobile: mais visível */
+  /* --- EFEITO GLASSMORPHISM (Vidro) --- */
+  --glass-bg: rgba(255, 255, 255, 0.03);        /* Transparência suave para Desktop */
+  --glass-bg-mobile: rgba(255, 255, 255, 0.08); /* Opacidade original para Mobile */
   --glass-blur: blur(8px);
 
-  /* Tipografia */
-  --textos: #c9e4ff;           
+  /* --- TEXTOS --- */
+  --textos: #c9e4ff;           /* Azul glacial pálido para leitura confortável */
 }
 
 /* ==========================================================================
-   2. RESET CSS (Normalização)
+   2. RESET E CONFIGURAÇÕES GERAIS
    ========================================================================== */
 * {
   margin: 0;
@@ -39,28 +39,116 @@
 }
 
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro));
+  background: linear-gradient(
+    135deg, 
+    var(--fundo-escuro), 
+    var(--fundo-medio), 
+    var(--fundo-claro), 
+    var(--fundo-medio), 
+    var(--fundo-escuro), 
+    var(--fundo-medio), 
+    var(--fundo-claro), 
+    var(--fundo-medio), 
+    var(--fundo-escuro)
+  );
   color: var(--textos);
 }
 
-button, a {
+button {
   cursor: pointer;
   border: none;
   outline: none;
+  transition: all 0.3s ease;
+}
+
+a {
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
 }
 
 /* ==========================================================================
-   3. ESTRUTURA GLOBAL E NAVEGAÇÃO
+   3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA 
    ========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: var(--fundo-escuro);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--fundo-escuro);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fundo-claro);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--fundo-claro);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--destaque-medio);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. TIPOGRAFIA GERAL E TEXTOS
+   ========================================================================== */
+p, 
+.bio-text, 
+.project-desc, 
+.location {
+  color: var(--textos);
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right, 
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro), 
+    var(--destaque-medio), 
+    var(--destaque-escuro), 
+    var(--destaque-medio), 
+    var(--destaque-claro)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
+}
+
+/* ==========================================================================
+   5. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
+   ========================================================================== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.27;
+}
+
 .section-container {
-  display: none; /* Esconde todas as seções por padrão */
+  display: none;
   width: 100%;
   min-height: 100vh;
   padding: 20px;
@@ -75,92 +163,371 @@ button, a {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.27;
-  pointer-events: none; /* Garante que o canvas não bloqueie cliques */
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
-   4. COMPONENTES REUTILIZÁVEIS
+   6. SEÇÃO: TELA INICIAL (HOME)
    ========================================================================== */
-/* Botões do Menu Principal */
-.menu-btn {
-  padding: 14px 35px;
-  font-weight: 700;
+#home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+header {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  font-size: 1.9rem;
+  font-weight: 300;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(to right, var(--borda-clara));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.3));
+}
+
+.main-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--textos);
   border-radius: 4px;
-  background: linear-gradient(var(--fundo-escuro), var(--fundo-medio)) padding-box,
-              linear-gradient(135deg, var(--borda-clara)) border-box;
   border: 3px solid transparent;
+  box-shadow: 0 0 10px var(--shadow-dark);
+  background: 
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .menu-btn:hover {
   transform: translateY(-3px);
-  background: linear-gradient(var(--fundo-escuro), var(--fundo-medio)) padding-box,
-              linear-gradient(135deg, var(--borda-escura)) border-box;
-}
-
-/* Botão Voltar (Efeito Glass) */
-.back-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-transform: uppercase;
-  background: rgba(var(--brilho-interface), 0.05) !important;
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--borda-clara) !important;
-}
-
-.back-btn:hover {
-  border-color: var(--borda-escura) !important;
-  transform: translateX(-3px);
-}
-
-/* Glass Panels (Sobre e Cards) */
-.about-embedded, .project-card {
-  background: var(--glass-bg) !important;
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--borda-clara);
-  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
+  background: 
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
 /* ==========================================================================
-   5. MEDIA QUERIES (Responsividade Mobile)
+   7. SEÇÃO: SOBRE (ABOUT)
+   ========================================================================== */
+.about-embedded {
+    width: 100%;
+    padding: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+    border-radius: 8px;
+    
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    
+    border: none !important;
+    border-top: 4px solid var(--borda-clara) !important;
+    border-bottom: 4px solid var(--borda-clara) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+}
+
+.bio-text {
+  margin-bottom: 25px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.skill-badge {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  background: 
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.skill-badge span {
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.4));
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
+}
+
+/* ==========================================================================
+   8. SEÇÃO: PROJETOS
+   ========================================================================== */
+.projects-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projects-header {
+  margin-bottom: 30px;
+  padding-left: 20px;
+  text-align: left;
+  border-left: 5px solid var(--borda-clara);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    background: rgba(139, 135, 255, 0.05) !important; /* Brilho sutil desktop */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--borda-clara) !important;
+    color: var(--textos);
+}
+
+.back-btn:hover {
+    border-color: var(--borda-escura) !important;
+    box-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
+    transform: translateX(-3px);
+}
+
+/* ==========================================================================
+   9. COMPONENTES: CARDS DE PROJETO
+   ========================================================================== */
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--borda-clara);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    background: var(--glass-bg) !important;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
+  border: 2px solid var(--borda-escura); 
+}
+
+.project-thumb {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid var(--borda-clara);
+  transition: all 0.4s ease;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-thumb {
+  border-bottom: 2px solid var(--borda-escura);
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.1);
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.tech-mini {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  background: 
+    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.tech-mini span {
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio), var(--destaque-escuro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.3));
+}
+
+.action-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--textos);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: 
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.action-btn:hover {
+  box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
+  background: 
+    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;
+}
+
+/* ==========================================================================
+   10. FOOTER (RODAPÉ)
+   ========================================================================== */
+footer {
+  align-self: stretch;
+  margin-top: auto;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -15px;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--textos);
+  background: var(--fundo-escuro);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Restaura a opacidade do Glassmorphism para melhor leitura no mobile */
-  .about-embedded, .project-card {
+  h1 { font-size: 2.5rem; }
+  
+  .main-menu { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .menu-btn { 
+    justify-content: center; 
+    padding: 14px 10px;
+    font-size: 0.85rem;
+    transform: none !important;
+  }
+
+  /* Restaura opacidade original do glassmorphism no mobile */
+  .about-embedded {
     background: var(--glass-bg-mobile) !important;
   }
 
-  /* Comportamento do botão voltar flutuante */
+  .project-card, .project-card:hover {
+    background: var(--glass-bg-mobile) !important;
+    transform: none !important;
+  }
+
   .back-btn {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 9999;
-    background: rgba(4, 0, 20, 0.9) !important;
+    padding: 12px 18px;
+    background: rgba(4, 0, 20, 0.8) !important;
+    border: 1px solid var(--borda-clara) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    width: auto;
+    height: 45px;
   }
 
   .back-btn.scrolled {
     width: 45px;
     padding: 0;
     justify-content: center;
+    border-color: var(--borda-escura) !important;
     border-radius: 50%;
   }
 
   .back-btn.scrolled .btn-text { display: none; }
+  .back-btn.scrolled .btn-icon {
+    font-size: 1.3rem;
+    color: var(--destaque-medio);
+  }
+
+  .projects-wrapper {
+    padding: 80px 20px 20px 20px !important;
+    border-bottom: 4px solid var(--borda-clara) !important;
+  }
 }
