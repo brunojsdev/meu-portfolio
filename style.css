@@ -554,44 +554,66 @@ footer {
     background: rgba(255, 255, 255, 0.08) !important;
   }
 
-  /* --- NOVO BOTÃO VOLTAR FIXO --- */
+/* BOTÃO VOLTAR EM ESTADO NORMAL (No topo da página) */
   .back-btn {
-    position: fixed; /* Prende na tela */
+    position: fixed; 
     top: 20px;
     left: 20px;
     z-index: 9999;
-    padding: 12px 18px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    background: rgba(4, 0, 20, 0.8) !important;
-    border: 1px solid var(--borda-clara) !important;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(139, 135, 255, 0.1) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--borda-clara) !important;
+    transition: all 0.4s ease-in-out;
     width: auto;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  /* Estado encolhido ao rolar */
+  /* ESTADO SCROLLED: O botão vira o HEADER INTEIRO */
   .back-btn.scrolled {
-    width: 45px;
-    padding: 0;
-    justify-content: center;
-    border-color: var(--borda-escura) !important;
-    border-radius: 50%;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important; /* Cobre a largura inteira */
+    height: 65px; /* Altura de um cabeçalho padrão */
+    border-radius: 0 !important; /* Tira o arredondado para virar barra */
+    padding: 0 25px !important;
+    justify-content: flex-start !important; /* Alinha a seta e o texto à esquerda */
+    
+    /* Glassmorphism Reforçado */
+    background: rgba(4, 0, 20, 0.85) !important; 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Borda apenas na parte de baixo */
+    border: none !important;
+    border-bottom: 2px solid var(--borda-clara) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
 
+  /* Mudança do texto via CSS quando scrollar */
   .back-btn.scrolled .btn-text {
-    display: none; /* Esconde o texto */
+    font-size: 0; /* Esconde o texto original "Voltar ao Início" */
+  }
+
+  .back-btn.scrolled .btn-text::before {
+    content: "Voltar"; /* Injeta apenas "Voltar" */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: none; /* Deixa mais amigável */
+    visibility: visible;
   }
 
   .back-btn.scrolled .btn-icon {
-    font-size: 1.3rem;
-    color: var(--destaque-medio);
+    font-size: 1.5rem;
+    color: var(--destaque-claro);
   }
+
+  /* Ajuste do topo da seção para não ficar colado na barra */
+  .projects-wrapper {
+    padding-top: 100px !important; 
+  }
+}
 
   /* Ajuste para o conteúdo não ficar embaixo do botão fixo */
   .projects-wrapper {
