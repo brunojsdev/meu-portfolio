@@ -512,8 +512,21 @@ footer {
     font-size: 2.5rem; 
   }
 
-::-webkit-scrollbar-thumb:active {
-    background: var(--destaque-medio);
+/* Força a barra a aparecer e ficar amarela no mobile durante a rolagem */
+  ::-webkit-scrollbar {
+    width: 6px; /* Um pouco mais fina para não atrapalhar no celular */
+    display: block;
+  }
+
+  /* Quando você estiver interagindo com a página, o thumb fica amarelo */
+  body:active ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--destaque-medio) !important;
+  }
+
+  /* Garante que o fundo da barra não fique branco no mobile */
+  ::-webkit-scrollbar-track {
+    background: var(--fundo-escuro);
   }
    
   /* Mantendo o grid 2x2, mas com o seu estilo original de botão */
