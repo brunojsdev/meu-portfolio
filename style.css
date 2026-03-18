@@ -1,25 +1,31 @@
 /* ==========================================================================
-   1. VARIÁVEIS E PALETA DE CORES
+   1. VARIÁVEIS E PALETA DE CORES (ORGANIZADA)
    ========================================================================== */
 :root {
-  /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #150136;
-  --fundo-medio: #090024;
-  --fundo-escuro: #040014;
+  /* --- FUNDOS (Camadas de Profundidade) --- */
+  --fundo-escuro: #040014;    /* Roxo "Vazio Espacial" - Base mais profunda */
+  --fundo-medio: #090024;     /* Transição para gradientes e seções */
+  --fundo-claro: #150136;     /* Camada superior dos fundos roxos */
+  --shadow-dark: rgba(16, 5, 38, 0.8); /* Sombra densa para botões e cards */
 
-  /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
-  --destaque-claro: #ffdd00;
-  --destaque-medio: #ffaa00;
-  --destaque-escuro: #ff9900;
+  /* --- DESTAQUES (Paleta de Ouro/Sol) --- */
+  --destaque-claro: #ffdd00;  /* Amarelo vibrante para hover e brilho */
+  --destaque-medio: #ffaa00;  /* Ouro clássico para títulos e badges */
+  --destaque-escuro: #ff9900; /* Laranja de contraste para profundidade */
 
-  --brilho-interface: #8b87ff; /* Nova cor para realçar as quinas e dar profundidade */
-   
-  /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
-  --borda-clara: #5752ff;
-  --borda-escura: #ffaa00;
+  /* --- INTERFACE E EFEITOS (Cyberpunk/Neon) --- */
+  --brilho-interface: #8b87ff; /* Violeta suave para realçar quinas e botões */
+  --borda-clara: #5752ff;      /* Roxo elétrico para bordas e focos principais */
+  --borda-escura: #ffaa00;     /* Usado no hover para transição de cores */
+  --scroll-thumb: #4a2b99;     /* Roxo "Realeza" para a barra de rolagem */
 
-  /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
-  --textos: #c9e4ff;
+  /* --- EFEITO GLASSMORPHISM (Vidro) --- */
+  --glass-bg: rgba(255, 255, 255, 0.03);        /* Transparência suave para Desktop */
+  --glass-bg-mobile: rgba(255, 255, 255, 0.08); /* Opacidade original para Mobile */
+  --glass-blur: blur(8px);
+
+  /* --- TEXTOS --- */
+  --textos: #c9e4ff;           /* Azul glacial pálido para leitura confortável */
 }
 
 /* ==========================================================================
@@ -72,17 +78,15 @@ a {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  background-color: var(--fundo-escuro); /* Garante que não haja fundo branco */
+  background-color: var(--fundo-escuro);
 }
 
-/* Esconde os botões de seta que causam os blocos brancos nas pontas */
 ::-webkit-scrollbar-button {
   display: none;
   width: 0;
   height: 0;
 }
 
-/* O canto onde as barras se encontram */
 ::-webkit-scrollbar-corner {
   background-color: var(--fundo-escuro);
 }
@@ -93,9 +97,9 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a2b99;
+  background: var(--scroll-thumb);
   border-radius: 10px;
-  border: 2px solid var(--fundo-claro); /* Espaçamento para o trilho */
+  border: 2px solid var(--fundo-claro);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -140,7 +144,7 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.70;
+  opacity: 0.27;
 }
 
 .section-container {
@@ -155,6 +159,7 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -214,7 +219,6 @@ h1 {
   margin-bottom: 50px;
 }
 
-/* Botões do Menu Principal */
 .menu-btn {
   display: inline-flex;
   align-items: center;
@@ -227,9 +231,9 @@ h1 {
   color: var(--textos);
   border-radius: 4px;
   border: 3px solid transparent;
-  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
+  box-shadow: 0 0 10px var(--shadow-dark);
   background: 
-    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio)) padding-box,
+    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
@@ -251,12 +255,10 @@ h1 {
     text-align: left;
     border-radius: 8px;
     
-    /* Glassmorphism: Mais escuro e transparente */
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     
-    /* Borda inferior destacada */
     border: none !important;
     border-top: 4px solid var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
@@ -281,12 +283,6 @@ h1 {
   text-align: justify;
 }
 
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .skill-badge {
   padding: 5px 12px;
   font-size: 0.85rem;
@@ -309,9 +305,6 @@ h1 {
 .skill-badge:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
-  background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 /* ==========================================================================
@@ -343,14 +336,12 @@ h1 {
     gap: 8px;
     padding: 10px 20px;
     margin-bottom: 20px;
-    cursor: pointer;
-    border-radius: 50px; /* Estilo pílula */
+    border-radius: 50px;
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Cores e Glassmorphism */
-    background: rgba(139, 135, 255, 0.1) !important;
+    background: rgba(139, 135, 255, 0.05) !important; /* Brilho sutil desktop */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--borda-clara) !important;
@@ -375,22 +366,15 @@ h1 {
     overflow: hidden;
     border-radius: 12px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
-    /* Borda sólida inicial usando a variável clara */
     border: 2px solid var(--borda-clara);
-    
-    /* Glassmorphism: Mais claro e transparente */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    background: var(--glass-bg) !important;
 }
 
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08) !important;
-  
-  /* Borda escura no hover */
   border: 2px solid var(--borda-escura); 
 }
 
@@ -398,8 +382,8 @@ h1 {
   width: 100%;
   height: 160px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.05); /* Sintaxe corrigida */
-  border-bottom: 2px solid var(--borda-clara); /* Usando borda sólida para acompanhar o card */
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid var(--borda-clara);
   transition: all 0.4s ease;
 }
 
@@ -411,7 +395,6 @@ h1 {
 }
 
 .project-card:hover .project-thumb {
-  /* Borda da imagem muda para a cor escura no hover do card */
   border-bottom: 2px solid var(--borda-escura);
 }
 
@@ -427,19 +410,6 @@ h1 {
   padding: 25px;
 }
 
-.project-desc {
-  margin-bottom: 25px;
-  line-height: 1.5;
-}
-
-.project-techs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-/* Tech Mini */
 .tech-mini {
   padding: 4px 10px;
   font-size: 0.75rem;
@@ -459,22 +429,6 @@ h1 {
   filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.3));
 }
 
-.tech-mini:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
-  background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
-}
-
-.project-actions {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  margin-top: auto;
-}
-
-/* Botões de Ação dentro dos Projetos */
 .action-btn {
   display: flex;
   flex: 1;
@@ -483,11 +437,9 @@ h1 {
   padding: 10px 5px;
   font-size: 0.85rem;
   font-weight: 600;
-  text-decoration: none;
   color: var(--textos);
   border-radius: 4px;
   border: 1px solid transparent;
-  transition: all 0.3s ease;
   background: 
     linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
@@ -522,10 +474,8 @@ footer {
    11. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-  h1 { 
-    font-size: 2.5rem; 
-  }
-   
+  h1 { font-size: 2.5rem; }
+  
   .main-menu { 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -534,38 +484,34 @@ footer {
   
   .menu-btn { 
     justify-content: center; 
-    text-align: center; 
     padding: 14px 10px;
     font-size: 0.85rem;
-    border: 2px solid transparent;
-    background: 
-      linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-      linear-gradient(135deg, var(--borda-clara)) border-box;
     transform: none !important;
   }
 
-  /* --- NOVO BOTÃO VOLTAR FIXO --- */
+  /* Restaura opacidade original do glassmorphism no mobile */
+  .about-embedded {
+    background: var(--glass-bg-mobile) !important;
+  }
+
+  .project-card, .project-card:hover {
+    background: var(--glass-bg-mobile) !important;
+    transform: none !important;
+  }
+
   .back-btn {
-    position: fixed; /* Prende na tela */
+    position: fixed;
     top: 20px;
     left: 20px;
     z-index: 9999;
     padding: 12px 18px;
-    border-radius: 30px;
-    font-size: 0.9rem;
     background: rgba(4, 0, 20, 0.8) !important;
     border: 1px solid var(--borda-clara) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     width: auto;
     height: 45px;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  /* Estado encolhido ao rolar */
   .back-btn.scrolled {
     width: 45px;
     padding: 0;
@@ -574,43 +520,14 @@ footer {
     border-radius: 50%;
   }
 
-  .back-btn.scrolled .btn-text {
-    display: none; /* Esconde o texto */
-  }
-
+  .back-btn.scrolled .btn-text { display: none; }
   .back-btn.scrolled .btn-icon {
     font-size: 1.3rem;
     color: var(--destaque-medio);
   }
 
-  /* Ajuste para o conteúdo não ficar embaixo do botão fixo */
   .projects-wrapper {
-    padding: 80px 20px 20px 20px !important; /* Aumentado o topo */
-    border: 2px solid transparent;
+    padding: 80px 20px 20px 20px !important;
     border-bottom: 4px solid var(--borda-clara) !important;
-  }
-
-  .about-embedded {
-    padding: 20px;
-    border: 2px solid transparent;
-    border-bottom: 4px solid var(--borda-clara) !important;
-  }
-
-   /* Opacidade no mobile */
-  .about-embedded {
-    background: rgba(255, 255, 255, 0.08) !important;
-  }
-
-  .project-card, .project-card:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-  }
-   
-  .project-card {
-    border: 2px solid var(--borda-clara);
-    transform: none !important;
-  }
-
-  .project-card:hover {
-    border: 2px solid var(--borda-escura);
   }
 }
