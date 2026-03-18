@@ -554,45 +554,6 @@ footer {
     background: rgba(255, 255, 255, 0.08) !important;
   }
 
-  /* --- NOVO BOTÃO VOLTAR FIXO --- */
-  .back-btn {
-    position: fixed; /* Prende na tela */
-    top: 20px;
-    left: 20px;
-    z-index: 9999;
-    padding: 12px 18px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    background: rgba(4, 0, 20, 0.8) !important;
-    border: 1px solid var(--borda-clara) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    width: auto;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  /* Estado encolhido ao rolar */
-  .back-btn.scrolled {
-    width: 45px;
-    padding: 0;
-    justify-content: center;
-    border-color: var(--borda-escura) !important;
-    border-radius: 50%;
-  }
-
-  .back-btn.scrolled .btn-text {
-    display: none; /* Esconde o texto */
-  }
-
-  .back-btn.scrolled .btn-icon {
-    font-size: 1.3rem;
-    color: var(--destaque-medio);
-  }
-
   /* Ajuste para o conteúdo não ficar embaixo do botão fixo */
   .projects-wrapper {
     padding: 80px 20px 20px 20px !important; /* Aumentado o topo */
