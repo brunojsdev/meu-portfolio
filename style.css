@@ -537,6 +537,15 @@ footer {
   }
 
   /* Cards dos projetos mais claros e com bordas menores */
+  /* Removendo animações de movimento que causam sensação de lag no mobile */
+  .project-card, 
+  .project-card:hover, 
+  .project-thumb img, 
+  .project-card:hover .project-thumb img {
+    transform: none !important; /* Impede o card de subir e a imagem de dar zoom */
+    transition: none !important; /* Remove o tempo de animação para o toque ser instantâneo */
+  }
+
   .project-card {
     border-width: 2px;
     background: 
@@ -545,7 +554,8 @@ footer {
   }
 
   .project-card:hover {
-    border-width: 1px;
+    border-width: 2px; /* Mantendo 2px para evitar o "pulo" visual ao clicar */
+    box-shadow: none;  /* Sombras pesadas podem causar lentidão em celulares antigos */
     background: 
       linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro)) padding-box,
       linear-gradient(135deg, var(--borda-escura)) border-box; 
