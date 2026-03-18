@@ -7,8 +7,13 @@
     
     <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="style.css" />
+    
     <!-- Ícone da aba do navegador -->
     <link rel="icon" type="image/png" href="./img/fi-port.png">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
   </head>
   <body>
     <!-- ========================================== -->
@@ -92,18 +97,22 @@
     <!-- ========================================== -->
     <div id="projects" class="section-container">
       <div class="projects-wrapper">
-        
+
+     <header class="projects-sticky-header">
+       
         <!-- Botão Voltar -->
-       <button class="back-btn" id="back-btn" onclick="showSection('home')">
-       <span class="btn-icon">←</span> 
-       <span class="btn-text">Voltar ao Início</span>
-       </button>
-        
+        <button class="back-btn" id="back-btn" onclick="showSection('home')">
+        <i data-lucide="arrow-big-left" class="btn-icon"></i> 
+        <span class="btn-text">Voltar ao Início</span>
+        </button>
+
         <!-- Cabeçalho da Seção de Projetos -->
-        <div class="projects-header">
-          <h2 style="font-size: 2rem;">Meus Projetos</h2>
-          <p class="project-desc" style="margin-top: 5px;">Repositórios e Experimentos</p>
+        <div class="projects-header-content">
+          <h2 class="projects-title">Meus Projetos</h2>
+          <p class="projects-subtitle">Repositórios e Experimentos</p>
         </div>
+       
+     </header>
 
         <!-- Grade de Projetos -->
         <div class="projects-grid">
