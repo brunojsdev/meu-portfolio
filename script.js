@@ -54,20 +54,18 @@ if (canvas) {
       this.init(true);
     }
 
-   init(fullScreen = false) {
+    init(fullScreen = false) {
       this.type = Math.floor(Math.random() * 3) + 1;
       
-      // Ajuste de tamanho das estrelas: menores e menos esticadas no mobile
       if (window.innerWidth <= 768) {
         if (this.type === 1) {
-          this.size = Math.random() * 3 + 4; // Tipo 1: entre 4 e 7
+          this.size = Math.random() * 3 + 4;
         } else if (this.type === 2) {
-          this.size = Math.random() * 3 + 3; // Tipo 2: entre 3 e 6
+          this.size = Math.random() * 3 + 3;
         } else {
-          this.size = Math.random() * 3 + 2; // Tipo 3: entre 2 e 5
+          this.size = Math.random() * 3 + 2;
         }
       } else {
-        // Tamanhos originais para o desktop
         if (this.type === 1) {
           this.size = Math.random() * 3 + 6;
         } else if (this.type === 2) {
@@ -168,7 +166,6 @@ if (canvas) {
 
     _drawType3(s) {
       ctx.beginPath();
-      // Ajuste na proporção
       const vLen = s * 2.2; 
       const hLen = s * 0.7; 
       
@@ -201,3 +198,26 @@ if (canvas) {
   window.addEventListener('resize', initParticles);
   resize(); initParticles(); animate();
 }
+
+
+/* ==========================================================================
+   3. LÓGICA DO BOTÃO VOLTAR (MOBILE)
+   ========================================================================== */
+
+window.addEventListener('scroll', () => {
+    const backBtn = document.getElementById('back-btn');
+    if (!backBtn) return;
+
+    // Apenas aplica o efeito se a largura for de mobile (até 768px)
+    if (window.innerWidth <= 768) {
+        // Se rolar mais de 40px para baixo, adiciona a classe 'scrolled'
+        if (window.scrollY > 40) {
+            backBtn.classList.add('scrolled');
+        } else {
+            backBtn.classList.remove('scrolled');
+        }
+    } else {
+        // Garante que o botão volte ao normal se a tela for redimensionada para desktop
+        backBtn.classList.remove('scrolled');
+    }
+});
