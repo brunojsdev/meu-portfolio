@@ -252,12 +252,12 @@ h1 {
     border-radius: 8px;
     
     /* Glassmorphism: Mais escuro e transparente */
-    background: rgba(0, 0, 0, 0.4) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     
     /* Borda inferior destacada (estilo do seu outro projeto) */
-    border: none !important;
+    border: var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
