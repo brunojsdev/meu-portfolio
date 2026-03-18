@@ -1,6 +1,6 @@
 /**
  * Meu Portfólio - Arquivo Principal de Scripts
- * Organização: 1. Navegação, 2. UI Interativa, 3. Animação de Fundo (Canvas).
+ * Módulos: Navegação, Animação de Fundo (Canvas), UI Interativa.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,22 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       3. MÓDULO DE ANIMAÇÃO (Canvas Background) - POR ÚLTIMO
+       3. MÓDULO DE ANIMAÇÃO (Canvas Background)
        ========================================================================== */
     const BackgroundAnimation = (() => {
         const canvas = document.getElementById('bg-canvas');
-        if (!canvas) return; 
+        if (!canvas) return; // Se não houver canvas na página, encerra a execução
 
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
         const STAR_COLORS = ['#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffaa00'];
 
+        // Ajusta o tamanho do canvas para o tamanho da tela
         const resize = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         };
 
+        // Verifica se o espaço já está ocupado por outra estrela (evita sobreposição)
         const isPosOccupied = (x, y, minDistance) => {
             return particles.some(p => {
                 const dx = p.x - x;
@@ -106,8 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.init(true);
             }
 
+            // Inicializa ou reseta as propriedades da estrela
             init(fullScreen = false) {
-                this.type = Math.floor(Math.random() * 3) + 1;
+                this.type = Math.floor(Math.random() * 3) + 1; // 3 tipos diferentes de estrelas
                 this.size = this.calculateSize();
                 this.positionRandomly(fullScreen);
                 
@@ -120,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             calculateSize() {
                 const isMobile = window.innerWidth <= 768;
+                // Ajusta o tamanho baseando-se no dispositivo
                 if (isMobile) {
                     return this.type === 1 ? Math.random() * 3 + 4 : (this.type === 2 ? Math.random() * 3 + 3 : Math.random() * 3 + 2);
                 }
@@ -133,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 while (!foundPos && attempts < 30) {
                     this.x = Math.random() * width;
-                    this.y = fullScreen ? Math.random() * height : -50;
+                    this.y = fullScreen ? Math.random() * height : -50; // Nasce no topo se não for fullscreen
                     
                     let currentMargin = attempts > 15 ? safeMargin / 2 : safeMargin;
                     if (!isPosOccupied(this.x, this.y, currentMargin)) {
@@ -144,15 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             update() {
-                this.y += this.speed;
+                this.y += this.speed; // Movimento de queda
+                
+                // Lógica de piscar (cintilar)
                 if (!this.isBlinking && Math.random() > 0.992) {
                     this.isBlinking = true;
                     this.blinkTimer = Math.floor(Math.random() * 6) + 3;
                 }
+
                 if (this.isBlinking) {
                     this.blinkTimer--;
                     if (this.blinkTimer <= 0) this.isBlinking = false;
                 }
+                
+                // Se saiu da tela por baixo, reseta lá em cima
                 if (this.y > height + 50) {
                     this.init(false);
                 }
@@ -162,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 
+                // Aplica o brilho se estiver piscando
                 if (this.isBlinking) {
                     ctx.globalAlpha = 1.0;
                     ctx.shadowBlur = 15;
@@ -173,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ctx.fillStyle = this.color;
 
+                // Desenha a forma específica da estrela
                 switch (this.type) {
                     case 1: this._drawType1(this.size); break;
                     case 2: this._drawType2(this.size); break;
@@ -181,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.restore();
             }
 
+            // Estrela pontiaguda (estilo losango/ouros)
             _drawType1(s) {
                 const drawTaper = (angle, len, thk) => {
                     ctx.save(); ctx.rotate(angle); ctx.beginPath();
@@ -194,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 drawTaper(Math.PI / 4, s * 0.7, s * 0.15);
             }
 
+            // Estrela circular/brilhante
             _drawType2(s) {
                 ctx.beginPath();
                 for (let i = 0; i < 16; i++) {
@@ -205,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fill();
             }
 
+            // Estrela curvada
             _drawType3(s) {
                 ctx.beginPath();
                 ctx.moveTo(0, -(s * 2.2));
@@ -220,20 +234,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const initParticles = () => {
             resize();
             particles = [];
-            const particleCount = Math.floor(width / 22); 
+            const particleCount = Math.floor(width / 22); // Quantidade responsiva de estrelas
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Star());
             }
         };
 
         const animate = () => {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, width, height); // Limpa o frame anterior
+            particles.forEach(p => { 
+                p.update(); 
+                p.draw(); 
+            });
+            requestAnimationFrame(animate); // Chama o próximo frame
         };
 
+        // Inicialização
         window.addEventListener('resize', initParticles);
         initParticles();
         animate();
-    })();
+
+    })(); // IIFE - Immediately Invoked Function Expression
 });
