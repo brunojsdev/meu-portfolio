@@ -520,7 +520,7 @@ footer {
     text-align: center; 
     padding: 12px 10px;
     font-size: 0.85rem;
-    border-width: 1px; /* Bordas menores */
+    border-width: 2px; /* Bordas menores */
   }
   
   .about-header { 
@@ -529,13 +529,13 @@ footer {
 
   /* Reduzindo bordas da seção Sobre */
   .about-embedded {
-    border-width: 1px;
+    border-width: 2px;
     padding: 20px;
   }
 
   /* Cards dos projetos mais claros e com bordas menores */
   .project-card {
-    border-width: 1px;
+    border-width: 2px;
     background: 
       linear-gradient(135deg, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio)) padding-box,
       linear-gradient(135deg, var(--borda-clara)) border-box;
