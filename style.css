@@ -212,30 +212,43 @@ h1 {
   margin-bottom: 50px;
 }
 
+/* Botões do Menu Principal */
 .menu-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 35px;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  gap: 12px;
+  padding: 16px 38px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--textos);
-  border-radius: 4px;
-  border: 3px solid transparent;
-  box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
+  border-radius: 6px; /* Bordas levemente mais arredondadas para um ar moderno */
+  border: 2px solid transparent;
+  
+  /* Efeito de Profundidade: Sombra externa + Brilho interno no topo */
+  box-shadow: 
+    0 8px 15px rgba(0, 0, 0, 0.4), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-clara), #2a25ff) border-box;
+  
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .menu-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
+  transform: translateY(-4px);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 12px 25px rgba(87, 82, 255, 0.3), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-escura)) border-box;
+    linear-gradient(to bottom, #1a1555, var(--fundo-escuro)) padding-box,
+    linear-gradient(135deg, var(--borda-escura), var(--destaque-claro)) border-box;
 }
 
 /* ==========================================================================
@@ -457,28 +470,32 @@ h1 {
   margin-top: auto;
 }
 
+/* Botões de Ação dentro dos Projetos */
 .action-btn {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 10px 5px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
+  padding: 12px 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--textos);
   border-radius: 4px;
   border: 1px solid transparent;
-  transition: all 0.3s ease;
+  
+  /* Profundidade menor por ser um botão menor */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .action-btn:hover {
-  box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
+  box-shadow: 0 0 15px rgba(87, 82, 255, 0.4);
   background: 
-    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, #1a1555, var(--fundo-escuro)) padding-box,
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
@@ -509,18 +526,27 @@ footer {
   }
   
   /* Botões em grid 2x2 para ocupar menos espaço */
-  .main-menu { 
+ .main-menu { 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 15px; /* Espaço maior entre os botões para facilitar o toque */
   }
-  
+
   .menu-btn { 
-    justify-content: center; 
-    text-align: center; 
-    padding: 12px 10px;
-    font-size: 0.85rem;
-    border-width: 2px; /* Bordas menores */
+    padding: 18px 10px; /* Mais alto para facilitar o clique no celular */
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-width: 2px; /* Mantendo o padrão que você gostou */
+    
+    /* No mobile, reduzimos a sombra para não "pesar" no processamento */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: none !important; /* Removemos o movimento para evitar o lag que comentamos */
+  }
+
+  .action-btn {
+    padding: 15px 5px; /* Botão mais "gordinho" no mobile melhora a UX */
+    font-size: 0.75rem;
+    border-width: 2px;
   }
   
   .about-header { 
