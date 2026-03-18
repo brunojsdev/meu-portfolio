@@ -203,23 +203,25 @@ if (canvas) {
 
 
 /* ==========================================================================
-   3. LÓGICA DO BOTÃO VOLTAR (MOBILE)
+   3. LÓGICA DO BOTÃO VOLTAR (MOBILE FIXO)
    ========================================================================== */
-
 window.addEventListener('scroll', () => {
     const backBtn = document.getElementById('back-btn');
-    if (!backBtn) return;
+    const projectsSection = document.getElementById('projects');
 
-    // Apenas aplica o efeito se a largura for de mobile (até 768px)
-    if (window.innerWidth <= 768) {
-        // Se rolar mais de 40px para baixo, adiciona a classe 'scrolled'
-        if (window.scrollY > 40) {
+    if (!backBtn || !projectsSection) return;
+
+    // Verifica se a seção de projetos está visível (ativa)
+    const isProjectsActive = projectsSection.classList.contains('active');
+
+    if (window.innerWidth <= 768 && isProjectsActive) {
+        // Se rolar mais de 20px, encolhe o botão
+        if (window.scrollY > 20) {
             backBtn.classList.add('scrolled');
         } else {
             backBtn.classList.remove('scrolled');
         }
     } else {
-        // Garante que o botão volte ao normal se a tela for redimensionada para desktop
         backBtn.classList.remove('scrolled');
     }
 });
