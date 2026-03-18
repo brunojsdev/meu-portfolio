@@ -257,7 +257,8 @@ h1 {
     -webkit-backdrop-filter: blur(8px);
     
     /* Borda inferior destacada (estilo do seu outro projeto) */
-    border: var(--borda-clara) !important;
+    border: none !important;
+    border-top: 4px solid var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -374,14 +375,14 @@ h1 {
     background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px var(--borda-clara);
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 15px 35px rgba(87, 82, 255, 0.4);
-    border-color: var(--borda-clara);
+    border-color: var(--borda-escura);
 }
 
 .project-thumb {
@@ -389,7 +390,8 @@ h1 {
   height: 160px;
   overflow: hidden;
   background-color: 2px solid rgba(255, 255, 255, 0.1);
-  border-image: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
 .project-thumb img {
@@ -400,7 +402,7 @@ h1 {
 }
 
 .project-card:hover .project-thumb {
-  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+  border-image: linear-gradient(to right, var(--borda-escura)) 1;
 }
 
 .project-card:hover .project-thumb img {
