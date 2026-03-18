@@ -511,7 +511,11 @@ footer {
   h1 { 
     font-size: 2.5rem; 
   }
-  
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--destaque-medio);
+  }
+   
   /* Mantendo o grid 2x2, mas com o seu estilo original de botão */
   .main-menu { 
     display: grid;
