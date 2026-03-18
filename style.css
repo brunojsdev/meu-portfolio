@@ -403,7 +403,7 @@ h1 {
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   
   /* Borda escura no hover */
   border: 2px solid var(--borda-escura); 
@@ -413,7 +413,7 @@ h1 {
   width: 100%;
   height: 160px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.05); /* Sintaxe corrigida */
+  background-color: rgba(255, 255, 255, 0.03); /* Sintaxe corrigida */
   border-bottom: 2px solid var(--borda-clara); /* Usando borda sólida para acompanhar o card */
   transition: all 0.4s ease;
 }
