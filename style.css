@@ -329,6 +329,17 @@ h1 {
   border-left: 5px solid var(--borda-clara);
 }
 
+.projects-sticky-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.projects-title { font-size: 2rem; margin: 0; }
+.projects-subtitle { font-size: 1rem; opacity: 0.8; }
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -554,44 +565,57 @@ footer {
     background: rgba(255, 255, 255, 0.08) !important;
   }
 
-  /* --- NOVO BOTÃO VOLTAR FIXO --- */
-  .back-btn {
-    position: fixed; /* Prende na tela */
-    top: 20px;
-    left: 20px;
+ /* Fixa o cabeçalho no topo apenas no mobile */
+  .projects-sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 9999;
-    padding: 12px 18px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    background: rgba(4, 0, 20, 0.8) !important;
-    border: 1px solid var(--borda-clara) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    width: auto;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 20px;
+    background: transparent;
+    transition: all 0.4s ease-in-out;
   }
 
-  /* Estado encolhido ao rolar */
-  .back-btn.scrolled {
+  /* EFEITO AO ROLAR (Adicionado via JS) */
+  .projects-sticky-header.scrolled {
+    flex-direction: row; /* Botão e Título na mesma linha */
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    background: rgba(4, 0, 20, 0.8) !important; /* Fundo padrão escuro */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 2px solid var(--borda-clara);
+  }
+
+  /* Botão vira um círculo no scroll */
+  .projects-sticky-header.scrolled .back-btn {
     width: 45px;
+    height: 45px;
     padding: 0;
     justify-content: center;
-    border-color: var(--borda-escura) !important;
     border-radius: 50%;
+    border-color: var(--borda-escura) !important;
   }
 
-  .back-btn.scrolled .btn-text {
-    display: none; /* Esconde o texto */
+  .projects-sticky-header.scrolled .btn-text {
+    display: none; /* Esconde o texto "Voltar" */
   }
 
-  .back-btn.scrolled .btn-icon {
-    font-size: 1.3rem;
-    color: var(--destaque-medio);
+  .projects-sticky-header.scrolled .projects-title {
+    font-size: 1.1rem !important;
+    margin-left: 15px;
   }
+
+  .projects-sticky-header.scrolled .projects-subtitle {
+    display: none; /* Esconde o subtítulo no scroll */
+  }
+
+  /* Espaço para os cards não ficarem embaixo do header fixo */
+  .projects-grid {
+    margin-top: 140px !important;
+  }
+}
 
   /* Ajuste para o conteúdo não ficar embaixo do botão fixo */
   .projects-wrapper {
