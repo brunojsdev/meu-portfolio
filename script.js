@@ -54,16 +54,27 @@ if (canvas) {
       this.init(true);
     }
 
-    init(fullScreen = false) {
+   init(fullScreen = false) {
       this.type = Math.floor(Math.random() * 3) + 1;
       
-      // Definição de tamanhos por tipo conforme solicitado
-      if (this.type === 1) {
-        this.size = Math.random() * 3 + 6; // Tipo 1: entre 3 e 9
-      } else if (this.type === 2) {
-        this.size = Math.random() * 4 + 5; // Tipo 2: entre 4 e 9
+      // Ajuste de tamanho das estrelas: menores e menos esticadas no mobile
+      if (window.innerWidth <= 768) {
+        if (this.type === 1) {
+          this.size = Math.random() * 3 + 4; // Tipo 1: entre 4 e 7
+        } else if (this.type === 2) {
+          this.size = Math.random() * 3 + 3; // Tipo 2: entre 3 e 6
+        } else {
+          this.size = Math.random() * 3 + 2; // Tipo 3: entre 2 e 5
+        }
       } else {
-        this.size = Math.random() * 2 + 3; // Tipo 3: entre 2 e 5
+        // Tamanhos originais para o desktop
+        if (this.type === 1) {
+          this.size = Math.random() * 3 + 6;
+        } else if (this.type === 2) {
+          this.size = Math.random() * 4 + 5;
+        } else {
+          this.size = Math.random() * 2 + 3;
+        }
       }
       
       let foundPos = false;
