@@ -11,7 +11,9 @@ function showSection(sectionId) {
   if (target) {
     target.classList.add("active");
     window.location.hash = sectionId;
-    window.scrollTo({ top: 0, behavior: "auto" });
+    // window.scrollTo({ top: 0, behavior: "auto" });
+     // Sugestão para a linha 15 do seu script.js
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
