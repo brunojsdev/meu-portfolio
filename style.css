@@ -363,6 +363,21 @@ h1 {
     transform: translateX(-3px);
 }
 
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5px; /* Deixa a seta mais gordinha/visível */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn.scrolled .btn-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0; /* Centraliza no círculo quando encolher */
+}
+
 /* ==========================================================================
    9. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
