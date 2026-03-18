@@ -12,6 +12,8 @@
   --destaque-medio: #ffaa00;
   --destaque-escuro: #ff9900;
 
+  --brilho-interface: #8b87ff; /* Nova cor para realçar as quinas e dar profundidade */
+   
   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
   --borda-clara: #5752ff;
   --borda-escura: #ffaa00;
@@ -223,28 +225,37 @@ h1 {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--textos);
-  border-radius: 6px; /* Bordas levemente mais arredondadas para um ar moderno */
-  border: 2px solid transparent;
+  border-radius: 4px;
+  border: none; /* Vamos usar box-shadow para a borda parecer 3D */
   
-  /* Efeito de Profundidade: Sombra externa + Brilho interno no topo */
+  /* Efeito de Camadas: 
+     1. Luz interna no topo (Bevel)
+     2. Sombra interna na base (Depth)
+     3. Sombra externa (Drop Shadow) */
   box-shadow: 
-    0 8px 15px rgba(0, 0, 0, 0.4), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 2px 0 var(--brilho-interface), 
+    inset 0 -2px 5px rgba(0, 0, 0, 0.8),
+    0 10px 20px rgba(0, 0, 0, 0.6);
     
-  background: 
-    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara), #2a25ff) border-box;
+  /* Fundo com degradê diagonal para simular curvatura */
+  background: linear-gradient(165deg, #1e155e 0%, var(--fundo-medio) 40%, var(--fundo-escuro) 100%);
   
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .menu-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   color: #fff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  /* Glow externo no hover */
   box-shadow: 
-    0 12px 25px rgba(87, 82, 255, 0.3), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 2px 0 var(--destaque-claro), 
+    inset 0 -2px 5px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(87, 82, 255, 0.4);
+    
+  background: linear-gradient(165deg, #2a1f8a 0%, #150136 50%, var(--fundo-escuro) 100%);
+}
     
   background: 
     linear-gradient(to bottom, #1a1555, var(--fundo-escuro)) padding-box,
@@ -482,21 +493,16 @@ h1 {
   text-transform: uppercase;
   color: var(--textos);
   border-radius: 4px;
-  border: 1px solid transparent;
-  
-  /* Profundidade menor por ser um botão menor */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  
-  background: 
-    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+  box-shadow: 
+    inset 0 1px 0 var(--brilho-interface), 
+    0 4px 8px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, #1a1050, var(--fundo-escuro));
+  transition: all 0.2s ease;
 }
 
 .action-btn:hover {
-  box-shadow: 0 0 15px rgba(87, 82, 255, 0.4);
-  background: 
-    linear-gradient(to bottom, #1a1555, var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-escura)) border-box;
+  filter: brightness(1.2);
+  box-shadow: 0 0 15px rgba(87, 82, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -526,27 +532,27 @@ footer {
   }
   
   /* Botões em grid 2x2 para ocupar menos espaço */
- .main-menu { 
+.main-menu { 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px; /* Espaço maior entre os botões para facilitar o toque */
+    gap: 15px;
   }
 
   .menu-btn { 
-    padding: 18px 10px; /* Mais alto para facilitar o clique no celular */
+    padding: 20px 10px; 
     font-size: 0.8rem;
-    letter-spacing: 0.5px;
-    border-width: 2px; /* Mantendo o padrão que você gostou */
-    
-    /* No mobile, reduzimos a sombra para não "pesar" no processamento */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transform: none !important; /* Removemos o movimento para evitar o lag que comentamos */
+    /* No mobile, as sombras internas precisam ser um pouco mais fortes para aparecerem */
+    box-shadow: 
+      inset 0 2px 0 var(--brilho-interface),
+      inset 0 -3px 0 rgba(0,0,0,0.6),
+      0 5px 10px rgba(0,0,0,0.4);
+    transform: none !important; /* Sem lag no clique */
   }
 
   .action-btn {
-    padding: 15px 5px; /* Botão mais "gordinho" no mobile melhora a UX */
+    padding: 16px 5px;
     font-size: 0.75rem;
-    border-width: 2px;
+    box-shadow: inset 0 1px 0 var(--brilho-interface);
   }
   
   .about-header { 
