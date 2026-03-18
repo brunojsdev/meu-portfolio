@@ -555,10 +555,12 @@ footer {
   }
 
   /* Removendo animações de imagem no mobile para fluidez */
-  .project-thumb img, .project-card:hover .project-thumb img {
+  /*
+   .project-thumb img, .project-card:hover .project-thumb img {
     transform: none !important;
     transition: none !important;
   }
+*/
 
   .project-card:hover {
     border: 2px solid transparent;
