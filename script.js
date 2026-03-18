@@ -26,7 +26,50 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================================
-   2. ANIMAÇÃO DE FUNDO 
+   2. LÓGICA DO CABEÇALHO E BOTÃO (MOBILE FIXO)
+   ========================================================================== */
+
+// Inicializa os ícones do Lucide assim que o script carregar
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+});
+
+window.addEventListener('scroll', () => {
+    // Selecionamos o header inteiro para que título e botão se fundam no scroll
+    const header = document.querySelector('.projects-sticky-header');
+    const projectsSection = document.getElementById('projects');
+
+    if (!header || !projectsSection) return;
+
+    // Verifica se a seção de projetos está visível (ativa)
+    const isProjectsActive = projectsSection.classList.contains('active');
+
+    if (window.innerWidth <= 768 && isProjectsActive) {
+        // Se rolar mais de 20px, o header inteiro "encolhe" e fixa
+        if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Garante que os ícones sejam renderizados novamente ao trocar de aba
+const originalShowSection = showSection;
+showSection = function(sectionId) {
+    originalShowSection(sectionId);
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+};
+
+
+/* ==========================================================================
+   3. ANIMAÇÃO DE FUNDO 
    ========================================================================== */
 
 const canvas = document.getElementById('bg-canvas');
@@ -200,28 +243,3 @@ if (canvas) {
   window.addEventListener('resize', initParticles);
   resize(); initParticles(); animate();
 }
-
-
-/* ==========================================================================
-   3. LÓGICA DO BOTÃO VOLTAR (MOBILE FIXO)
-   ========================================================================== */
-window.addEventListener('scroll', () => {
-    const backBtn = document.getElementById('back-btn');
-    const projectsSection = document.getElementById('projects');
-
-    if (!backBtn || !projectsSection) return;
-
-    // Verifica se a seção de projetos está visível (ativa)
-    const isProjectsActive = projectsSection.classList.contains('active');
-
-    if (window.innerWidth <= 768 && isProjectsActive) {
-        // Se rolar mais de 20px, encolhe o botão
-        if (window.scrollY > 20) {
-            backBtn.classList.add('scrolled');
-        } else {
-            backBtn.classList.remove('scrolled');
-        }
-    } else {
-        backBtn.classList.remove('scrolled');
-    }
-});
