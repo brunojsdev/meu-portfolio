@@ -245,17 +245,21 @@ h1 {
    7. SEÇÃO: SOBRE (ABOUT)
    ========================================================================== */
 .about-embedded {
-  width: 100%;
-  padding: 40px;
-  margin-bottom: 40px;
-  text-align: left;
-  border-radius: 8px;
-  border: 3px solid transparent;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: 
-    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    width: 100%;
+    padding: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+    border-radius: 8px;
+    
+    /* Glassmorphism: Mais escuro e transparente */
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Borda inferior destacada (estilo do seu outro projeto) */
+    border: none !important;
+    border-bottom: 4px solid var(--borda-clara) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-header {
@@ -357,26 +361,27 @@ h1 {
    9. COMPONENTES: CARDS DE PROJETO
    ========================================================================== */
 .project-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 6px;
-  border: 3px solid transparent;
-  transition: transform 0.3s, box-shadow 0.3s;
-  background: 
-    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Glassmorphism: Mais claro e transparente */
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
-  background: 
-    linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-escura)) border-box; 
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 15px 35px rgba(87, 82, 255, 0.4);
+    border-color: var(--borda-clara);
 }
 
 .project-thumb {
