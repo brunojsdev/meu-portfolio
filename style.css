@@ -522,14 +522,14 @@ footer {
    11. RESPONSIVIDADE (MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* 1. RESET DE SEGURANÇA CONTRA ROLAGEM LATERAL */
-  html, body {
-    overflow-x: hidden; /* Corta qualquer coisa que tente vazar pro lado */
-    width: 100%;
-    position: relative;
+  body, html {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
-  h1 { font-size: 2.5rem; }
+  h1 { 
+    font-size: 2.5rem; 
+  }
    
   .main-menu { 
     display: grid;
@@ -538,27 +538,56 @@ footer {
   }
   
   .menu-btn { 
+    justify-content: center; 
+    text-align: center; 
     padding: 14px 10px;
     font-size: 0.85rem;
+    border: 2px solid transparent;
+    background: 
+      linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+      linear-gradient(135deg, var(--borda-clara)) border-box;
     transform: none !important;
   }
+ 
+  .about-embedded {
+    padding: 20px;
+    border: none !important;
+    border-bottom: 4px solid var(--borda-clara) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
 
-  /* 2. REMOVENDO A LINHA ROXA E BORDA DUPLA */
   .projects-wrapper {
     padding: 80px 20px 20px 20px !important; 
+    border-bottom: none !important; /* O footer já tem borda, não precisa dessa */
     width: 100%;
-    border: none !important; /* Remove a borda de baixo que batia no footer */
     box-sizing: border-box;
   }
 
-  /* CORREÇÃO DO FOOTER: O culpado pela linha lateral era o -20px */
-  footer {
-    margin: 30px 0 0 0 !important; /* Zera margens laterais negativas */
-    width: 100%;
-    border-top: 2px solid var(--borda-clara); /* Apenas uma borda no topo */
+  /* Mantém o respiro lateral apenas nos cards para não bugar o scroll */
+  .projects-grid {
+    padding: 0 20px;
   }
 
-  /* 3. CABEÇALHO FIXO (SETADO PARA LARGURA TOTAL) */
+footer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .project-card {
+    border: 2px solid var(--borda-clara);
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .project-card:hover {
+    border: 2px solid var(--borda-escura);
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* BOTÃO VOLTAR / HEADER (MOBILE FIXO) */
+  
+  /* ESTADO NORMAL: Pílula flutuante no topo */
   .back-btn {
     position: fixed; 
     top: 20px;
@@ -570,41 +599,50 @@ footer {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--borda-clara) !important;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease-in-out;
+    width: auto;
     box-sizing: border-box;
   }
 
-  /* ESTADO SCROLLED: Vira a barra de topo completa */
+  /* ESTADO SCROLLED: Vira uma barra de Header de ponta a ponta */
   .back-btn.scrolled {
     top: 0 !important;
     left: 0 !important;
-    width: 100% !important; /* Cobre a tela inteira sem sobrar nada */
-    height: 60px; 
-    border-radius: 0 !important; 
-    justify-content: flex-start !important;
+    width: 100vw !important; /* Força cobrir a tela toda horizontalmente */
+    height: 65px; 
+    border-radius: 0 !important; /* Fica reto/quadrado */
     padding: 0 20px !important;
-    background: rgba(4, 0, 20, 0.95) !important; /* Fundo sólido para cobrir o conteúdo */
+    justify-content: flex-start !important;
+    
+    /* Fundo Glassmorphism escuro e legível */
+    background: rgba(4, 0, 20, 0.85) !important; 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Tira a borda completa e deixa só embaixo */
     border: none !important;
     border-bottom: 2px solid var(--borda-clara) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
 
-  /* Texto "Voltar ao Início" vira apenas "Voltar" */
+  /* Substitui "Voltar ao Início" por apenas "Voltar" */
   .back-btn.scrolled .btn-text {
-    font-size: 0;
+    font-size: 0; /* Esconde o original */
   }
 
   .back-btn.scrolled .btn-text::before {
-    content: "Voltar";
+    content: "Voltar"; /* Cria o texto novo */
     font-size: 1.1rem;
     font-weight: 700;
+    text-transform: none;
     visibility: visible;
-    margin-left: 10px;
+    margin-left: 5px; /* Espaço entre a seta e o texto */
   }
 
-  /* Garante que os cards não vazem */
-  .project-card {
-    width: 100%;
-    margin: 0;
-    transform: none !important;
+  /* Seta no estado scrollado */
+  .back-btn.scrolled .btn-icon {
+    font-size: 1.5rem;
+    color: var(--destaque-claro);
   }
 }
+
