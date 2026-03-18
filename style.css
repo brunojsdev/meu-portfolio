@@ -512,69 +512,63 @@ footer {
     font-size: 2.5rem; 
   }
   
-  /* Botões em grid 2x2 para ocupar menos espaço */
-.main-menu { 
+  /* Mantendo o grid 2x2, mas com o seu estilo original de botão */
+  .main-menu { 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-
-  .menu-btn { 
-    padding: 20px 10px; 
-    font-size: 0.8rem;
-    /* No mobile, as sombras internas precisam ser um pouco mais fortes para aparecerem */
-    box-shadow: 
-      inset 0 2px 0 var(--brilho-interface),
-      inset 0 -3px 0 rgba(0,0,0,0.6),
-      0 5px 10px rgba(0,0,0,0.4);
-    transform: none !important; /* Sem lag no clique */
-  }
-
-  .action-btn {
-    padding: 16px 5px;
-    font-size: 0.75rem;
-    box-shadow: inset 0 1px 0 var(--brilho-interface);
+    gap: 12px;
   }
   
-  .about-header { 
-    flex-direction: column; 
+  /* Restauração fiel do seu estilo original de botões */
+  .menu-btn { 
+    justify-content: center; 
+    text-align: center; 
+    padding: 14px 10px;
+    font-size: 0.85rem;
+    border: 2px solid transparent; /* Borda leve conforme você pediu */
+    background: 
+      linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+      linear-gradient(135deg, var(--borda-clara)) border-box;
+    transform: none !important; /* Evita o lag */
   }
 
-/* Reduzindo bordas da seção Sobre e deixando o fundo mais claro */
+  .menu-btn:hover {
+    background: 
+      linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+      linear-gradient(135deg, var(--borda-escura)) border-box;
+  }
+  
+  /* Restaurando a borda da seção Sobre */
   .about-embedded {
-    border-width: 2px;
+    border: 2px solid transparent;
     padding: 20px;
     background: 
-      linear-gradient(135deg, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio)) padding-box,
+      linear-gradient(135deg, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
       linear-gradient(135deg, var(--borda-clara)) border-box;
   }
 
-  /* Cards dos projetos mais claros e com bordas menores */
-  /* Removendo animações de movimento que causam sensação de lag no mobile */
-  .project-card, 
-  .project-card:hover, 
-  .project-thumb img, 
-  .project-card:hover .project-thumb img {
-    transform: none !important; /* Impede o card de subir e a imagem de dar zoom */
-    transition: none !important; /* Remove o tempo de animação para o toque ser instantâneo */
-  }
-
+  /* Cards dos projetos - Estilo original mas com fundo levemente mais claro */
   .project-card {
-    border-width: 2px;
+    border: 2px solid transparent;
+    transform: none !important;
     background: 
       linear-gradient(135deg, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio)) padding-box,
       linear-gradient(135deg, var(--borda-clara)) border-box;
+  }
+
+  /* Removendo animações de imagem no mobile para fluidez */
+  .project-thumb img, .project-card:hover .project-thumb img {
+    transform: none !important;
+    transition: none !important;
   }
 
   .project-card:hover {
-    border-width: 2px; /* Mantendo 2px para evitar o "pulo" visual ao clicar */
-    box-shadow: none;  /* Sombras pesadas podem causar lentidão em celulares antigos */
+    border: 2px solid transparent;
     background: 
       linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro)) padding-box,
       linear-gradient(135deg, var(--borda-escura)) border-box; 
   }
 
-  /* Reduzindo as bordas dos botões de ação e tags dentro dos cards */
   .tech-mini, .action-btn {
     border-width: 1px;
   }
