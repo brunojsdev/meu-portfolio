@@ -507,15 +507,49 @@ footer {
   h1 { 
     font-size: 2.5rem; 
   }
+  
+  /* Botões em grid 2x2 para ocupar menos espaço */
   .main-menu { 
-    flex-direction: column; 
-    align-items: stretch; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
+  
   .menu-btn { 
     justify-content: center; 
     text-align: center; 
+    padding: 12px 10px;
+    font-size: 0.85rem;
+    border-width: 1px; /* Bordas menores */
   }
+  
   .about-header { 
     flex-direction: column; 
+  }
+
+  /* Reduzindo bordas da seção Sobre */
+  .about-embedded {
+    border-width: 1px;
+    padding: 20px;
+  }
+
+  /* Cards dos projetos mais claros e com bordas menores */
+  .project-card {
+    border-width: 1px;
+    background: 
+      linear-gradient(135deg, var(--fundo-medio), var(--fundo-claro), var(--fundo-medio)) padding-box,
+      linear-gradient(135deg, var(--borda-clara)) border-box;
+  }
+
+  .project-card:hover {
+    border-width: 1px;
+    background: 
+      linear-gradient(135deg, var(--fundo-claro), var(--fundo-medio), var(--fundo-claro)) padding-box,
+      linear-gradient(135deg, var(--borda-escura)) border-box; 
+  }
+
+  /* Reduzindo as bordas dos botões de ação e tags dentro dos cards */
+  .tech-mini, .action-btn {
+    border-width: 1px;
   }
 }
