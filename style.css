@@ -252,7 +252,7 @@ h1 {
     border-radius: 8px;
     
     /* Glassmorphism: Mais escuro e transparente */
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     
@@ -382,7 +382,7 @@ h1 {
     /* Glassmorphism: Mais claro e transparente */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
 .project-card:hover {
@@ -596,6 +596,15 @@ footer {
     border-bottom: 4px solid var(--borda-clara) !important;
   }
 
+   /* Opacidade no mobile */
+  .about-embedded {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .project-card, .project-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+   
   .project-card {
     border: 2px solid var(--borda-clara);
     transform: none !important;
