@@ -229,7 +229,7 @@ h1 {
   border: 3px solid transparent;
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
@@ -237,7 +237,7 @@ h1 {
   transform: translateY(-3px);
   box-shadow: 0 0 20px rgba(87, 82, 255, 0.5);
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
@@ -504,14 +504,14 @@ h1 {
   border: 1px solid transparent;
   transition: all 0.3s ease;
   background: 
-    linear-gradient(to bottom, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to bottom, var(--fundo-medio), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
 .action-btn:hover {
   box-shadow: 0 0 15px rgba(87, 82, 255, 0.5);
   background: 
-    linear-gradient(to top, var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
+    linear-gradient(to top, var(--fundo-medio), var(--fundo-claro), var(--borda-clara), var(--fundo-claro), var(--fundo-medio)) padding-box,
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
