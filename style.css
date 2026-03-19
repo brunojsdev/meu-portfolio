@@ -15,13 +15,13 @@
   --brilho-interface: #8b87ff; /* Nova cor para realçar as quinas e dar profundidade */
 
    /* BOTÕES (Exclusivo para Botões e similares) */
-   --btm-claro: #190063;
-   --btm-medio: #13004d;
-   --btm-escuro: #0e0136;
+   --btm-claro: #17005c;
+   --btm-medio: #110042;
+   --btm-escuro: #0d0033;
 
-   --btm-claro-h: #6e4300;
-   --btm-medio-h: #4a2d00;
-   --btm-escuro-h: #211400;
+   --btm-claro-h: #6b4100;
+   --btm-medio-h: #4d2b01;
+   --btm-escuro-h: #301b00;
    
    /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
    --borda-clara: #5752ff;
