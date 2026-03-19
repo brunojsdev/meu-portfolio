@@ -397,11 +397,11 @@ h1 {
     min-height: 380px;
     padding: 0;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     
     /* Borda sólida inicial usando a variável clara */
-    border: 2px solid var(--borda-clara);
+    border: 3px solid var(--borda-clara);
     
     /* Glassmorphism: Mais claro e transparente */
     backdrop-filter: blur(6px);
@@ -415,7 +415,7 @@ h1 {
   background: rgba(255, 255, 255, 0.04) !important;
   
   /* Borda escura no hover */
-  border: 2px solid var(--borda-escura); 
+  border: 3px solid var(--borda-escura); 
 }
 
 .project-thumb {
@@ -423,7 +423,7 @@ h1 {
   height: 160px;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.03); /* Sintaxe corrigida */
-  border-bottom: 2px solid var(--borda-clara); /* Usando borda sólida para acompanhar o card */
+  border-bottom: 3px solid var(--borda-clara); /* Usando borda sólida para acompanhar o card */
   transition: all 0.4s ease;
 }
 
@@ -436,7 +436,7 @@ h1 {
 
 .project-card:hover .project-thumb {
   /* Borda da imagem muda para a cor escura no hover do card */
-  border-bottom: 2px solid var(--borda-escura);
+  border-bottom: 3px solid var(--borda-escura);
 }
 
 .project-card:hover .project-thumb img {
@@ -630,10 +630,20 @@ footer {
   .project-card {
     width: 100%;
     margin: 0;
+    border: 2px solid var(--borda-clara);
     background: rgba(255, 255, 255, 0.05) !important;
     transform: none !important;
   }
 
-   .project-card:hover {
-    background: rgba(255, 255, 255, 0.055) !important;
+ .project-card:hover {
+   border: 2px solid var(--borda-escura); 
+   background: rgba(255, 255, 255, 0.055) !important;
+}
+
+.project-thumb {
+  border-bottom: 2px solid var(--borda-clara); 
+}
+   
+.project-card:hover .project-thumb {
+ border-bottom: 2px solid var(--borda-escura);
 }
