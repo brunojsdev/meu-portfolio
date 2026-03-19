@@ -397,13 +397,13 @@ h1 {
     /* Glassmorphism: Mais claro e transparente */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.04) !important;
+    background: rgba(255, 255, 255, 0.035) !important;
 }
 
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(87, 82, 255, 0.3);
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(255, 255, 255, 0.035) !important;
   
   /* Borda escura no hover */
   border: 2px solid var(--borda-escura); 
@@ -624,4 +624,7 @@ footer {
     background: rgba(255, 255, 255, 0.05) !important;
     transform: none !important;
   }
+
+   .project-card:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
 }
