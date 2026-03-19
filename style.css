@@ -358,28 +358,18 @@ h1 {
     text-transform: uppercase;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Cores e Glassmorphism 
+    /* Cores e Glassmorphism  */
     background: rgba(139, 135, 255, 0.1) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--borda-clara) !important;
-   */
-   
-   background: 
-    linear-gradient(to bottom, var(--btm-claro), var(--btm-medio), var(--btm-escuro), var(--btm-medio), var(--btm-claro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
-   
     color: var(--textos);
 }
 
 .back-btn:hover {
-   /* border-color: var(--borda-escura) !important;
+    border-color: var(--borda-escura) !important;
     box-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
-  */
-   background: 
-    linear-gradient(to bottom, var(--btm-claro-h), var(--btm-medio-h), var(--btm-escuro-h), var(--btm-medio-h), var(--btm-claro-h)) padding-box,
-    linear-gradient(135deg, var(--borda-escura)) border-box;
-  transform: translateX(-3px);
+    transform: translateX(-3px);
 }
 
 .btn-icon {
