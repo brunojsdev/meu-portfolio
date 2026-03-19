@@ -234,7 +234,7 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--textos);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 3px solid transparent;
   box-shadow: 0 0 10px rgba(16, 5, 38, 0.8);
   background: 
@@ -309,7 +309,7 @@ h1 {
 }
 
 .skill-badge span {
-  background: linear-gradient(to right, var(--btm-medio), var(--btm-escuro), var(--btm-medio));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.4));
@@ -319,8 +319,8 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(87, 82, 255, 0.4);
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    linear-gradient( var(--btm-medio), var(--btm-escuro), var(--btm-medio)) padding-box,
+    linear-gradient( 135deg, var(--borda-clara)) border-box;
 }
 
 /* ==========================================================================
@@ -477,21 +477,19 @@ h1 {
 }
 
 .tech-mini span {
-  background: linear-gradient(to right, var(--btm-medio), var(--btm-escuro), var(--btm-medio));
+  background: linear-gradient(to right, var(--destaque-medio), var(--destaque-escuro), var(--destaque-medio));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.3));
 }
 
-/*
 .tech-mini:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(87, 82, 255, 0.4);
   background: 
-    linear-gradient(var(--fundo-escuro), var(--fundo-medio), var(--fundo-claro), var(--fundo-medio), var(--fundo-escuro)) padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    linear-gradient( var(--btm-medio), var(--btm-escuro), var(--btm-medio)) padding-box,
+    linear-gradient( 135deg, var(--borda-clara)) border-box;
 }
-*/
 
 .project-actions {
   display: flex;
@@ -511,7 +509,7 @@ h1 {
   font-weight: 600;
   text-decoration: none;
   color: var(--textos);
-  border-radius: 10px;
+  border-radius: 7px;
   border: 1px solid transparent;
   transition: all 0.3s ease;
   background: 
