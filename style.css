@@ -369,6 +369,7 @@ h1 {
 .back-btn:hover {
     border-color: var(--borda-escura) !important;
     box-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
+    color: var(--borda-escura) !important;
     transform: translateX(-3px);
 }
 
