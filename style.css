@@ -53,9 +53,13 @@ body {
     var(--fundo-escuro), 
     var(--fundo-medio), 
     var(--fundo-claro), 
+    var(--fundo-brilhante), 
+    var(--fundo-claro), 
     var(--fundo-medio), 
     var(--fundo-escuro), 
     var(--fundo-medio), 
+    var(--fundo-claro), 
+    var(--fundo-brilhante), 
     var(--fundo-claro), 
     var(--fundo-medio), 
     var(--fundo-escuro)
