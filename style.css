@@ -3,10 +3,9 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #150136;
-  --fundo-medio: #090024;
-  --fundo-escuro: #040014;
-  --fundo-brilhante: #3200fc;
+  --fundo-claro: #190142;
+  --fundo-medio: #0c0030;
+  --fundo-escuro: #06001c;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
   --destaque-claro: #ffdd00;
@@ -52,23 +51,11 @@ body {
     135deg, 
     var(--fundo-escuro), 
     var(--fundo-medio), 
-    var(--fundo-medio), 
     var(--fundo-claro), 
-    var(--fundo-claro), 
-    var(--fundo-brilhante), 
-    var(--fundo-claro), 
-    var(--fundo-claro), 
-    var(--fundo-medio), 
     var(--fundo-medio),      
     var(--fundo-escuro), 
     var(--fundo-medio), 
-    var(--fundo-medio), 
     var(--fundo-claro), 
-    var(--fundo-claro), 
-    var(--fundo-brilhante), 
-    var(--fundo-claro), 
-    var(--fundo-claro), 
-    var(--fundo-medio), 
     var(--fundo-medio), 
     var(--fundo-escuro)
   );
