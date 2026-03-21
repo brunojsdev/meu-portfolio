@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   /* FUNDOS (Exclusivo para Fundos/Backgrounds) */
-  --fundo-claro: #190142;
-  --fundo-medio: #0b002b;
-  --fundo-escuro: #06001c;
+   --fundo-claro: #150136;
+   --fundo-medio: #090024;
+   --fundo-escuro: #040014;
 
   /* DESTAQUES (Exclusivo para Títulos e Textos de Destaque) */
   --destaque-claro: #ffdd00;
@@ -149,7 +149,7 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.50;
+  opacity: 0.35;
 }
 
 .section-container {
