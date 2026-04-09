@@ -428,7 +428,7 @@ h1 {
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(255, 170, 0, 0.4);
-  background: var(--nuvem-indigo), transparent 85%) !important;
+  background: var(--nuvem-indigo), transparent 65%) !important;
   
   /* Borda escura no hover */
   border: 3px solid var(--borda-escura); 
