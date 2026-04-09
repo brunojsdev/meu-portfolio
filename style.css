@@ -278,7 +278,7 @@ h1 {
     border-radius: 8px;
     
     /* Tom roxo bem translúcido para ver as estrelas */
-    background: rgba(255, 255, 255, 0.07) !important;
+    background: var(--nuvem-indigo) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
@@ -419,7 +419,7 @@ h1 {
     border: 3px solid var(--borda-clara);
     
     /* Mesma transparência para consistência */
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: var(--nuvem-indigo) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
@@ -428,7 +428,7 @@ h1 {
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(255, 170, 0, 0.4);
-  background: rgba(255, 255, 255, 0.055) !important;
+  background: var(--nuvem-indigo) !important;
   
   /* Borda escura no hover */
   border: 3px solid var(--borda-escura); 
