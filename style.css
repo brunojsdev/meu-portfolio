@@ -54,19 +54,22 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--textos);
-  background-color: var(--fundo-escuro); 
+  background-color: #03000a; /* Fundo base */
 
-  /* Efeito Vinheta: Bordas escuras e centro com as cores da nebulosa */
   background-image: 
-    /* Camada de escuridão nas bordas (Vignette) */
-    radial-gradient(circle at center, transparent 20%, var(--fundo-escuro) 90%),
-    /* Suas nebulosas originais posicionadas */
-    radial-gradient(circle at 50% 30%, var(--nebulosa-3), transparent 60%),
-    radial-gradient(circle at 15% 40%, var(--nebulosa-1), transparent 45%),
-    radial-gradient(circle at 85% 70%, var(--nebulosa-2), transparent 50%),
-    radial-gradient(circle at 50% 100%, var(--nebulosa-base), transparent 60%);
+    /* 1. Sombra no Topo para legibilidade do H1 */
+    linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 20%),
+    /* 2. Vinheta lateral e inferior muito mais suave */
+    radial-gradient(circle at center, transparent 40%, rgba(3,0,10,0.95) 95%),
+    /* 3. Nebulosas centrais com opacidade reduzida (Suavizadas) */
+    radial-gradient(circle at 50% 30%, rgba(75, 0, 130, 0.2), transparent 60%),
+    radial-gradient(circle at 15% 40%, rgba(138, 43, 226, 0.15), transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(200, 0, 255, 0.1), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(40, 0, 100, 0.25), transparent 60%);
+  
   background-attachment: fixed;
 }
+
 
 button {
   cursor: pointer;
@@ -212,8 +215,8 @@ h1 {
 }
 
 .subtitle {
-  font-size: 2.1rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: transparent;
