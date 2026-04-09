@@ -221,7 +221,7 @@ h1 {
 }
 
 .subtitle {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -569,7 +569,9 @@ footer {
   }
 
   h1 { font-size: 2.5rem; }
-   
+
+  .subtitle { font-size: 0.9rem;}
+
   .main-menu { 
     display: grid;
     grid-template-columns: 1fr 1fr;
