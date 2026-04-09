@@ -278,7 +278,7 @@ h1 {
     border-radius: 8px;
     
     /* Tom roxo bem translúcido para ver as estrelas */
-    background: var(--nuvem-indigo) !important;
+    background: var(--nuvem-indigo), transparent 85%) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
