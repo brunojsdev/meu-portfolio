@@ -30,11 +30,16 @@
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
 
-   /* CORES DA NEBULOSA (Nuvens espaciais) */
-  --nebulosa-1: rgba(138, 43, 226, 0.4);  /* Roxo/Violeta vibrante */
-  --nebulosa-2: rgba(200, 0, 255, 0.25);  /* Magenta */
-  --nebulosa-3: rgba(75, 0, 130, 0.5);    /* Índigo profundo */
-  --nebulosa-base: rgba(40, 0, 100, 0.6); /* Fundo da nebulosa escuro */
+  /* CORES SOMBRAS DE FUNDO */
+  --sombra-topo: rgba(0, 0, 0, 0.85);
+  --vinheta-bordas: rgba(3, 0, 10, 0.7); /* Mais claro que o anterior */
+  --fundo-profundo: #03000a;
+
+  /* CORES DAS NEBULOSAS (Ajustadas para mais brilho) */
+  --nuvem-indigo: rgba(75, 0, 130, 0.25);    
+  --nuvem-violeta: rgba(138, 43, 226, 0.2); 
+  --nuvem-magenta: rgba(200, 0, 255, 0.15);  
+  --nuvem-base: rgba(40, 0, 100, 0.3);      
 }
 
 /* ==========================================================================
@@ -54,18 +59,20 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--textos);
-  background-color: #03000a; /* Fundo base */
+  background-color: var(--fundo-profundo);
 
   background-image: 
-    /* 1. Sombra no Topo para legibilidade do H1 */
-    linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 20%),
-    /* 2. Vinheta lateral e inferior muito mais suave */
-    radial-gradient(circle at center, transparent 40%, rgba(3,0,10,0.95) 95%),
-    /* 3. Nebulosas centrais com opacidade reduzida (Suavizadas) */
-    radial-gradient(circle at 50% 30%, rgba(75, 0, 130, 0.2), transparent 60%),
-    radial-gradient(circle at 15% 40%, rgba(138, 43, 226, 0.15), transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(200, 0, 255, 0.1), transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(40, 0, 100, 0.25), transparent 60%);
+    /* 1. Sombra no Topo (Mantido exatamente como estava para legibilidade) */
+    linear-gradient(to bottom, var(--sombra-topo) 0%, transparent 20%),
+    
+    /* 2. Vinheta lateral reajustada (Mais espaço para as nebulosas) */
+    radial-gradient(circle at center, transparent 70%, var(--vinheta-bordas) 100%),
+    
+    /* 3. Nebulosas centrais (Mais vivas no centro e parte inferior) */
+    radial-gradient(circle at 50% 35%, var(--nuvem-indigo), transparent 65%),
+    radial-gradient(circle at 20% 50%, var(--nuvem-violeta), transparent 55%),
+    radial-gradient(circle at 80% 75%, var(--nuvem-magenta), transparent 55%),
+    radial-gradient(circle at 50% 100%, var(--nuvem-base), transparent 70%);
   
   background-attachment: fixed;
 }
