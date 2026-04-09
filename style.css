@@ -54,19 +54,18 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--textos);
-
-  /* A base do espaço utiliza a variável mais escura */
   background-color: var(--fundo-escuro); 
-  
-  /* O efeito de Nebulosa reorganizado para escurecer o topo onde fica o nome */
+
+  /* Efeito Vinheta: Bordas escuras e centro com as cores da nebulosa */
   background-image: 
-    /* Mancha escura principal no topo central para contraste do título */
-    radial-gradient(circle at 50% 15%, var(--fundo-escuro), transparent 60%),
-    /* Nuvens espaciais usando suas variáveis */
+    /* Camada de escuridão nas bordas (Vignette) */
+    radial-gradient(circle at center, transparent 20%, var(--fundo-escuro) 90%),
+    /* Suas nebulosas originais posicionadas */
+    radial-gradient(circle at 50% 30%, var(--nebulosa-3), transparent 60%),
     radial-gradient(circle at 15% 40%, var(--nebulosa-1), transparent 45%),
     radial-gradient(circle at 85% 70%, var(--nebulosa-2), transparent 50%),
-    radial-gradient(circle at 50% 10%, var(--nebulosa-3), transparent 50%),
     radial-gradient(circle at 50% 100%, var(--nebulosa-base), transparent 60%);
+  background-attachment: fixed;
 }
 
 button {
@@ -270,16 +269,15 @@ h1 {
     text-align: left;
     border-radius: 8px;
     
-    /* Glassmorphism: Roxo escuro translúcido para destacar estrelas */
-    background: rgba(17, 0, 66, 0.6) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* Tom roxo bem translúcido para ver as estrelas */
+    background: rgba(17, 0, 66, 0.3) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     
-    /* Mantendo suas bordas originais */
     border: none !important;
     border-top: 4px solid var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .about-header {
@@ -410,15 +408,14 @@ h1 {
     overflow: hidden;
     border-radius: 10px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
-    /* Borda sólida inicial usando a variável clara */
     border: 3px solid var(--borda-clara);
     
-    /* Glassmorphism: Mais claro e transparente */
+    /* Mesma transparência para consistência */
+    background: rgba(21, 1, 54, 0.3) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.035) !important;
 }
+
 
 .project-card:hover {
   transform: translateY(-7px);
