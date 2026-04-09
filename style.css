@@ -58,8 +58,11 @@ body {
   /* A base do espaço utiliza a variável mais escura */
   background-color: var(--fundo-escuro); 
   
-  /* O efeito de Nebulosa utilizando as novas variáveis */
+  /* O efeito de Nebulosa reorganizado para escurecer o topo onde fica o nome */
   background-image: 
+    /* Mancha escura principal no topo central para contraste do título */
+    radial-gradient(circle at 50% 15%, var(--fundo-escuro), transparent 60%),
+    /* Nuvens espaciais usando suas variáveis */
     radial-gradient(circle at 15% 40%, var(--nebulosa-1), transparent 45%),
     radial-gradient(circle at 85% 70%, var(--nebulosa-2), transparent 50%),
     radial-gradient(circle at 50% 10%, var(--nebulosa-3), transparent 50%),
@@ -267,16 +270,16 @@ h1 {
     text-align: left;
     border-radius: 8px;
     
-    /* Glassmorphism: Mais escuro e transparente */
-    background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Glassmorphism: Roxo escuro translúcido para destacar estrelas */
+    background: rgba(17, 0, 66, 0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     
-    /* Borda inferior destacada */
+    /* Mantendo suas bordas originais */
     border: none !important;
     border-top: 4px solid var(--borda-clara) !important;
     border-bottom: 4px solid var(--borda-clara) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .about-header {
