@@ -62,7 +62,7 @@ window.addEventListener('scroll', () => {
 });
 
 /* ==========================================================================
-   3. ANIMAÇÃO DE FUNDO 
+   3. ANIMAÇÃO DE FUNDO ESPACIAL
    ========================================================================== */
 
 const canvas = document.getElementById('bg-canvas');
@@ -70,114 +70,88 @@ const canvas = document.getElementById('bg-canvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let width, height;
-  let particles = [];
-  const colors = ['#bbff00', '#ddff00', '#ffff00', '#ffcc00', '#ffaa00'];
+  let stars = [];
+  let shootingStars = [];
+
+  // PARTE IMPORTANTE 1: Paleta de cores das estrelas
+  const starColors = ['#ffffff', '#fff4e6', '#ffdd00', '#ffaa00', '#ffcc80', '#e6f2ff'];
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   }
 
-  function isPosOccupied(x, y, minDistance) {
-    for (let p of particles) {
-      const dx = p.x - x;
-      const dy = p.y - y;
-      if (Math.sqrt(dx * dx + dy * dy) < minDistance) return true;
-    }
-    return false;
-  }
-
+  // ==========================================
+  // CLASSE: ESTRELAS DE FUNDO
+  // ==========================================
   class Star {
     constructor() {
-      this.init(true);
+      this.init();
     }
 
-    init(fullScreen = false) {
+    init() {
+      // Define a forma da estrela usando seus 3 desenhos originais
       this.type = Math.floor(Math.random() * 3) + 1;
       
-      if (window.innerWidth <= 768) {
-        if (this.type === 1) {
-          this.size = Math.random() * 3 + 4;
-        } else if (this.type === 2) {
-          this.size = Math.random() * 3 + 3;
-        } else {
-          this.size = Math.random() * 3 + 2;
-        }
-      } else {
-        if (this.type === 1) {
-          this.size = Math.random() * 3 + 6;
-        } else if (this.type === 2) {
-          this.size = Math.random() * 4 + 5;
-        } else {
-          this.size = Math.random() * 2 + 3;
-        }
-      }
+      // PARTE IMPORTANTE 2: Lógica de Parallax (Tamanho define a velocidade)
+      let baseSize = Math.random() * 2 + 0.5; 
       
-      let foundPos = false;
-      let attempts = 0;
-      let safeMargin = 45; 
+      if (this.type === 1) this.size = baseSize * 2.5;
+      else if (this.type === 2) this.size = baseSize * 1.8;
+      else this.size = baseSize * 1.2;
 
-      while (!foundPos && attempts < 30) {
-        this.x = Math.random() * width;
-        this.y = fullScreen ? Math.random() * height : -50;
-        
-        let currentMargin = attempts > 15 ? safeMargin / 2 : safeMargin;
-
-        if (!isPosOccupied(this.x, this.y, currentMargin)) {
-          foundPos = true;
-        }
-        attempts++;
-      }
-
-      this.speed = Math.random() * 0.3 + 0.15;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.opacity = Math.random() * 0.4 + 0.2;
-      this.isBlinking = false;
-      this.blinkTimer = 0;
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.baseSpeedX = (Math.random() - 0.5) * 0.1; 
+      this.baseSpeedY = baseSize * 0.3 + 0.1;       
+      
+      this.color = starColors[Math.floor(Math.random() * starColors.length)];
+      
+      // PARTE IMPORTANTE 3: Controle do brilho pulsante (Twinkle)
+      this.maxOpacity = Math.random() * 0.7 + 0.3;
+      this.opacity = this.maxOpacity;
+      this.twinkleSpeed = Math.random() * 0.02 + 0.005;
+      this.twinklePhase = Math.random() * Math.PI * 2;
     }
 
     update() {
-      this.y += this.speed;
+      this.x += this.baseSpeedX;
+      this.y -= this.baseSpeedY; // Faz as estrelas subirem
       
-      if (!this.isBlinking && Math.random() > 0.992) {
-        this.isBlinking = true;
-        this.blinkTimer = Math.floor(Math.random() * 6) + 3;
-      }
+      // Pulsação suave usando a função Seno
+      this.twinklePhase += this.twinkleSpeed;
+      this.opacity = (Math.sin(this.twinklePhase) * 0.5 + 0.5) * this.maxOpacity;
 
-      if (this.isBlinking) {
-        this.blinkTimer--;
-        if (this.blinkTimer <= 0) this.isBlinking = false;
+      // Recicla a estrela se ela sair da tela
+      if (this.y < -20) {
+        this.y = height + 20;
+        this.x = Math.random() * width;
       }
-      
-      if (this.y > height + 50) {
-        this.init(false);
-      }
+      if (this.x < -20) this.x = width + 20;
+      if (this.x > width + 20) this.x = -20;
     }
 
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
-      const s = this.size;
       
-      if (this.isBlinking) {
-        ctx.globalAlpha = 1.0;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = this.color;
-      } else {
-        ctx.globalAlpha = this.opacity;
-        ctx.shadowBlur = 0;
-      }
-      
+      // Adiciona o brilho externo
+      ctx.shadowBlur = this.size * 2;
+      ctx.shadowColor = this.color;
+      ctx.globalAlpha = this.opacity;
       ctx.fillStyle = this.color;
 
+      // PARTE IMPORTANTE 4: Uso das SUAS funções de desenho
       switch (this.type) {
-        case 1: this._drawType1(s); break;
-        case 2: this._drawType2(s); break;
-        case 3: this._drawType3(s); break;
+        case 1: this._drawType1(this.size); break;
+        case 2: this._drawType2(this.size); break;
+        case 3: this._drawType3(this.size); break;
       }
+      
       ctx.restore();
     }
 
+    // --- Suas Funções Originais de Desenho de Estrelas ---
     _drawType1(s) {
       const drawTaper = (angle, len, thk) => {
         ctx.save(); ctx.rotate(angle); ctx.beginPath();
@@ -206,33 +180,110 @@ if (canvas) {
       ctx.beginPath();
       const vLen = s * 2.2; 
       const hLen = s * 0.7; 
-      
       ctx.moveTo(0, -vLen);
       ctx.quadraticCurveTo(0, 0, hLen, 0);
       ctx.quadraticCurveTo(0, 0, 0, vLen);
       ctx.quadraticCurveTo(0, 0, -hLen, 0);
       ctx.quadraticCurveTo(0, 0, 0, -vLen);
-      
       ctx.closePath();
       ctx.fill();
     }
   }
 
-  function initParticles() {
+  // ==========================================
+  // CLASSE: ESTRELA CADENTE
+  // ==========================================
+  class ShootingStar {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.active = false;
+      // Define a raridade do evento (só atira se for > 0.993)
+      if(Math.random() > 0.993) {
+        this.active = true;
+        this.x = Math.random() * width;
+        this.y = 0;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 5 + 3);
+        this.speedY = Math.random() * 5 + 5;
+        this.len = Math.random() * 80 + 30; // Tamanho do rastro
+        this.opacity = 1;
+      }
+    }
+
+    update() {
+      if (!this.active) {
+        this.reset();
+        return;
+      }
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.opacity -= 0.015; // O rastro apaga gradualmente
+
+      if (this.opacity <= 0 || this.y > height || this.x < 0 || this.x > width) {
+        this.active = false;
+      }
+    }
+
+    draw() {
+      if (!this.active) return;
+      
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x - this.speedX * (this.len / 10), this.y - this.speedY * (this.len / 10));
+      ctx.lineWidth = this.size;
+      ctx.lineCap = "round";
+      
+      // PARTE IMPORTANTE 5: Criação do rastro com Degradê
+      let grad = ctx.createLinearGradient(this.x, this.y, this.x - this.speedX * (this.len / 10), this.y - this.speedY * (this.len / 10));
+      grad.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
+      grad.addColorStop(1, `rgba(255, 170, 0, 0)`);
+      
+      ctx.strokeStyle = grad;
+      ctx.stroke();
+    }
+  }
+
+  // ==========================================
+  // LOOP DE INICIALIZAÇÃO
+  // ==========================================
+  function initSpace() {
     resize();
-    particles = [];
-    const particleCount = Math.floor(width / 22); 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Star());
+    stars = [];
+    shootingStars = [];
+    
+    // Controla a quantidade de estrelas na tela (ajuste o divisor 8000 para mais ou menos estrelas)
+    const numStars = Math.floor((width * height) / 8000); 
+    
+    for (let i = 0; i < numStars; i++) {
+      stars.push(new Star());
+    }
+
+    for(let i=0; i < 2; i++){
+      shootingStars.push(new ShootingStar());
     }
   }
 
   function animate() {
-    ctx.clearRect(0, 0, width, height);
-    particles.forEach(p => { p.update(); p.draw(); });
+    ctx.clearRect(0, 0, width, height); // Limpa o frame
+    
+    stars.forEach(star => {
+      star.update();
+      star.draw();
+    });
+
+    shootingStars.forEach(sStar => {
+      sStar.update();
+      sStar.draw();
+    });
+
     requestAnimationFrame(animate);
   }
 
-  window.addEventListener('resize', initParticles);
-  resize(); initParticles(); animate();
+  window.addEventListener('resize', initSpace);
+  resize(); 
+  initSpace(); 
+  animate();
 }
