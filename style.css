@@ -54,24 +54,37 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--textos);
-  background-color: #020006; /* Fundo base mais profundo */
+  
+  /* Gradiente linear real de cima a baixo */
+  background: linear-gradient(
+    to bottom, 
+    #020006 0%, 
+    #050015 30%, 
+    #0a0020 70%, 
+    #0d0033 100%
+  );
+  background-attachment: fixed;
+}
 
+/* Camada das Nebulosas (Separada para não bugar o fundo) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  
+  /* Suas nebulosas originais aqui com opacidade controlada */
   background-image: 
-    /* 1. Camada de Legibilidade: Topo escuro sólido que clareia para o meio */
-    linear-gradient(to bottom, 
-        rgba(2, 0, 6, 1) 0%, 
-        rgba(2, 0, 6, 0.8) 15%, 
-        transparent 50%
-    ),
-    /* 2. Gradiente Linear de Fundo (Escuro -> Médio) */
-    linear-gradient(to bottom, #020006 0%, #0a0020 100%),
-    /* 3. Suas Nebulosas Originais posicionadas estrategicamente */
     radial-gradient(circle at 80% 20%, var(--nebulosa-3), transparent 50%),
     radial-gradient(circle at 20% 50%, var(--nebulosa-1), transparent 50%),
     radial-gradient(circle at 70% 80%, var(--nebulosa-2), transparent 55%),
     radial-gradient(circle at 50% 100%, var(--nebulosa-base), transparent 70%);
   
-  background-attachment: fixed;
+  opacity: 0.6; /* Ajuste aqui se quiser as nuvens mais fortes ou mais fracas */
 }
 
 button {
