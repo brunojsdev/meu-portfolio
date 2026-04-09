@@ -29,6 +29,12 @@
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
   --textos: #c9e4ff;
+
+   /* CORES DA NEBULOSA (Nuvens espaciais) */
+  --nebulosa-1: rgba(138, 43, 226, 0.4);  /* Roxo/Violeta vibrante */
+  --nebulosa-2: rgba(200, 0, 255, 0.25);  /* Magenta */
+  --nebulosa-3: rgba(75, 0, 130, 0.5);    /* Índigo profundo */
+  --nebulosa-base: rgba(40, 0, 100, 0.6); /* Fundo da nebulosa escuro */
 }
 
 /* ==========================================================================
@@ -47,19 +53,17 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(
-    135deg, 
-    var(--fundo-escuro), 
-    var(--fundo-medio), 
-    var(--fundo-claro), 
-    var(--fundo-medio),      
-    var(--fundo-escuro), 
-    var(--fundo-medio), 
-    var(--fundo-claro), 
-    var(--fundo-medio), 
-    var(--fundo-escuro)
-  );
   color: var(--textos);
+
+  /* A base do espaço utiliza a variável mais escura */
+  background-color: var(--fundo-escuro); 
+  
+  /* O efeito de Nebulosa utilizando as novas variáveis */
+  background-image: 
+    radial-gradient(circle at 15% 40%, var(--nebulosa-1), transparent 45%),
+    radial-gradient(circle at 85% 70%, var(--nebulosa-2), transparent 50%),
+    radial-gradient(circle at 50% 10%, var(--nebulosa-3), transparent 50%),
+    radial-gradient(circle at 50% 100%, var(--nebulosa-base), transparent 60%);
 }
 
 button {
@@ -149,7 +153,10 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.35;
+  /* Opacidade aumentada para 0.8 para as estrelas brilharem mais forte */
+  opacity: 0.8; 
+  /* Pointer-events: none garante que o canvas não bloqueie os cliques nos seus botões */
+  pointer-events: none; 
 }
 
 .section-container {
