@@ -64,7 +64,6 @@ window.addEventListener('scroll', () => {
 /* ==========================================================================
    3. ANIMAÇÃO DE FUNDO ESPACIAL
    ========================================================================== */
-
 const canvas = document.getElementById('bg-canvas');
 
 if (canvas) {
