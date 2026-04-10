@@ -28,8 +28,12 @@
    --borda-escura: #ffaa00;
 
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
-  --textos: #c9e4ff;
+   --textos: #c9e4ff;
 
+  /* CORES SOMBRAS DE FUNDO */
+   --cards: #4B0082;
+   --cards-h: #301b00;
+    
   /* CORES SOMBRAS DE FUNDO */
   --sombra-topo: rgba(0, 0, 0, 0.85);
   --vinheta-bordas: rgba(3, 0, 10, 0.7); /* Mais claro que o anterior */
@@ -419,7 +423,7 @@ h1 {
     border: 3px solid var(--borda-clara);
     
     /* Mesma transparência para consistência */
-    background: var(--btm-claro) !important;
+    background: var(--cards) !important;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
@@ -428,7 +432,7 @@ h1 {
 .project-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 10px 30px rgba(255, 170, 0, 0.4);
-  background: var(--nuvem-indigo), transparent 65%) !important;
+  background: var(--cards-h) !important;
   
   /* Borda escura no hover */
   border: 3px solid var(--borda-escura); 
