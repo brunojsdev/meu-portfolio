@@ -588,7 +588,7 @@ footer {
   }
 
    .about-embedded {
-    background: rgba(255, 255, 255, 0.07) !important;
+    background: var(--cards) !important;
   }
    
   .projects-wrapper {
@@ -652,13 +652,13 @@ footer {
     width: 100%;
     margin: 0;
     border: 2px solid var(--borda-clara);
-    background: rgba(87, 82, 255, 0.4) !important;
+    background: var(--cards) !important;
     transform: none !important;
   }
 
  .project-card:hover {
    border: 2.5px solid var(--borda-card-h); 
-   background: rgba(87, 82, 255, 0.4) !important;
+   background: var(--cards-h) !important;
 }
 
 .project-thumb {
