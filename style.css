@@ -28,7 +28,7 @@
    --borda-escura: #ffaa00;
    --cards: #17005c;
    --cards-h: #0d0033;
-   --borda-card-h: #4a2b99;
+   --borda-card-h: #7672fc;
    
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
    --textos: #c9e4ff;
@@ -120,13 +120,13 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: --borda-card-h;
+  background: var(--borda-clara);
   border-radius: 10px;
   border: 2px solid var(--fundo-claro); /* Espaçamento para o trilho */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--destaque-medio);
+  background: var(--borda-escura);
   cursor: pointer;
 }
 
