@@ -30,9 +30,9 @@
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
    --textos: #c9e4ff;
 
-  /* CORES SOMBRAS DE FUNDO */
-   --cards: #4B0082;
-   --cards-h: #301b00;
+  /* CORES DOS CARDS */
+   --cards: #110042;
+   --cards-h: #300300;
     
   /* CORES SOMBRAS DE FUNDO */
   --sombra-topo: rgba(0, 0, 0, 0.85);
@@ -282,7 +282,7 @@ h1 {
     border-radius: 8px;
     
     /* Tom roxo bem translúcido para ver as estrelas */
-    background: var(--btm-claro) !important;
+    background: var(--cards) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
