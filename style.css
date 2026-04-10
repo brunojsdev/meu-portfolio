@@ -23,17 +23,16 @@
    --btm-medio-h: #4d2b01;
    --btm-escuro-h: #301b00;
    
-   /* BORDAS (Exclusivo para Bordas, Botão Voltar, Tech Minis e Subtítulo) */
+   /* CORES DOS CARDS E BORDAS */
    --borda-clara: #5752ff;
    --borda-escura: #ffaa00;
-
+   --cards: #17005c;
+   --cards-h: #0d0033;
+   --borda-card-h: #150136;
+   
   /* TEXTOS (Exclusivo para Textos Comuns de leitura) */
    --textos: #c9e4ff;
 
-  /* CORES DOS CARDS */
-   --cards: #110042;
-   --cards-h: #6c02d6;
-    
   /* CORES SOMBRAS DE FUNDO */
   --sombra-topo: rgba(0, 0, 0, 0.85);
   --vinheta-bordas: rgba(3, 0, 10, 0.7); /* Mais claro que o anterior */
