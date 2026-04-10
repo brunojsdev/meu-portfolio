@@ -434,7 +434,7 @@ h1 {
   background: var(--cards-h) !important;
   
   /* Borda escura no hover */
-  border: 3px solid var(--borda-escura); 
+  border: 3px solid var(--borda-card-h); 
 }
 
 .project-thumb {
