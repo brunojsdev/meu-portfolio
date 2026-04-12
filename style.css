@@ -34,15 +34,15 @@
    --textos: #c9e4ff;
 
   /* CORES SOMBRAS DE FUNDO */
-  --sombra-topo: rgba(0, 0, 0, 0.85);
-  --vinheta-bordas: rgba(3, 0, 10, 0.7); /* Mais claro que o anterior */
-  --fundo-profundo: #03000a;
+   --sombra-topo: rgba(0, 0, 0, 0.85);
+   --vinheta-bordas: rgba(3, 0, 10, 0.7); /* Mais claro que o anterior */
+   --fundo-profundo: #03000a;
 
   /* CORES DAS NEBULOSAS (Ajustadas para mais brilho) */
-  --nuvem-indigo: rgba(75, 0, 130, 0.25);    
-  --nuvem-violeta: rgba(138, 43, 226, 0.2); 
-  --nuvem-magenta: rgba(200, 0, 255, 0.15);  
-  --nuvem-base: rgba(40, 0, 100, 0.3);      
+   --nuvem-indigo: rgba(75, 0, 130, 0.25);    
+   --nuvem-violeta: rgba(138, 43, 226, 0.2); 
+   --nuvem-magenta: rgba(200, 0, 255, 0.15);  
+   --nuvem-base: rgba(40, 0, 100, 0.3);      
 }
 
 /* ==========================================================================
