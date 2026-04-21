@@ -855,18 +855,19 @@ footer {
 
   /* ESTADO SCROLLED: Vira a barra de topo completa */
   .back-btn.scrolled {
+    position: fixed !important;
+    z-index: 9999 !important;
     top: 0 !important;
     left: 0 !important;
-    width: 100% !important; /* Cobre a tela inteira sem sobrar nada */
+    width: 100% !important;
     height: 60px;
     border-radius: 0 !important;
     justify-content: flex-start !important;
     padding: 0 20px !important;
-    background: var(
-      --bg-scrolled
-    ) !important; /* Fundo sólido para cobrir o conteúdo */
+    background: var(--bg-scrolled) !important;
     border: none !important;
     border-bottom: 2px solid var(--borda-clara) !important;
+    margin: 0 !important;
   }
 
   /* Texto "Voltar ao Início" vira apenas "Voltar" */
