@@ -1,0 +1,855 @@
+/* ==========================================================================
+
+VARIÁVEIS E PALETA DE CORES
+========================================================================== */
+:root {
+  --fundo-claro: #150136;
+  --fundo-medio: #090024;
+  --fundo-escuro: #040014;
+
+  --destaque-claro: #ffdd00;
+  --destaque-medio: #ffaa00;
+  --destaque-escuro: #ff9900;
+
+  --brilho-interface: #8b87ff;
+
+  --btm-claro: #17005c;
+  --btm-medio: #110042;
+  --btm-escuro: #0d0033;
+
+  --btm-claro-h: #6b4100;
+  --btm-medio-h: #4d2b01;
+  --btm-escuro-h: #301b00;
+
+  --borda-clara: #5752ff;
+  --borda-escura: #ffaa00;
+  --cards: rgba(
+    23,
+    0,
+    92,
+    0.4
+  ); /* Otimizado para Glassmorphism com HEX + Alpha */
+  --cards-h: rgba(13, 0, 51, 0.6);
+  --borda-card-h: #7c78ff;
+
+  --textos: #c9e4ff;
+
+  --sombra-topo: rgba(0, 0, 0, 0.85);
+  --vinheta-bordas: rgba(3, 0, 10, 0.7);
+  --fundo-profundo: #03000a;
+
+  --nuvem-indigo: rgba(75, 0, 130, 0.25);
+
+  --nuvem-violeta: rgba(138, 43, 226, 0.2);
+  --nuvem-magenta: rgba(200, 0, 255, 0.15);
+
+  --nuvem-base: rgba(40, 0, 100, 0.3);
+
+  /* Novas variáveis adicionadas para suporte flexível aos dois temas */
+  --cor-subtitle-sec: #a5a3ff;
+  --cor-sombra-texto: rgba(255, 170, 0, 0.3);
+  --cor-sombra-btn-hover: rgba(255, 170, 0, 0.4);
+  --cor-sombra-box: rgba(87, 82, 255, 0.4);
+  --back-btn-bg: rgba(139, 135, 255, 0.1);
+  --bg-scrolled: rgba(4, 0, 20, 0.95);
+}
+
+/* ==========================================================================
+   NOVO: TEMA CLARO (LIGHT MODE)
+   Inversão: Roxos viram Amarelos/Laranjas e vice-versa
+   ========================================================================== */
+body.light-mode {
+  /* Tons solares saturados para evitar o aspecto pálido */
+  --fundo-claro: #ffe082;
+  --fundo-medio: #ffb300;
+  --fundo-escuro: #e65100;
+
+  --destaque-claro: #4338ca; /* Roxo escurecido para um degradê mais harmônico */
+  --destaque-medio: #3b35cc;
+  --destaque-escuro: #17005c;
+
+  --brilho-interface: #ff7700;
+
+  /* Degradê dos botões levemente mais claro, mantendo a textura */
+  --btm-claro: #fffef7;
+  --btm-medio: #ffe082;
+  --btm-escuro: #ffca28;
+
+  --btm-claro-h: #e8e6ff;
+  --btm-medio-h: #c6c2ff;
+  --btm-escuro-h: #a19bff;
+
+  --borda-clara: #ff9500;
+  --borda-escura: #5752ff;
+
+  --cards: rgba(255, 255, 255, 0.6);
+  --cards-h: rgba(
+    255,
+    183,
+    77,
+    0.85
+  ); /* Laranja mais nítido e escuro no hover */
+  --borda-card-h: #5752ff;
+
+  --textos: #150136;
+
+  --sombra-topo: rgba(255, 220, 150, 0.4);
+  /* Vinheta saturada e escura para profundidade real nas bordas */
+  --vinheta-bordas: rgba(183, 28, 28, 0.5);
+  --fundo-profundo: #fff9c4;
+
+  /* Nuvens em degradê de ouro e fogo */
+  --nuvem-indigo: rgba(255, 143, 0, 0.4);
+  --nuvem-violeta: rgba(255, 193, 7, 0.3);
+  --nuvem-magenta: rgba(255, 111, 0, 0.2);
+  --nuvem-base: rgba(255, 235, 59, 0.4);
+
+  /* Subtítulo com a cor solicitada */
+  --cor-subtitle-sec: #e65100;
+  --cor-sombra-texto: rgba(87, 82, 255, 0.25);
+  --cor-sombra-btn-hover: rgba(87, 82, 255, 0.4);
+  --cor-sombra-box: rgba(200, 100, 0, 0.25);
+  --back-btn-bg: rgba(255, 255, 255, 0.5);
+  --bg-scrolled: rgba(251, 230, 212, 0.95);
+}
+
+body.light-mode .subtitle {
+  background: none;
+  -webkit-text-fill-color: var(--cor-subtitle-sec) !important;
+  color: var(--cor-subtitle-sec);
+}
+
+/* Mantém o Footer com o tom dos cards no modo claro */
+body.light-mode footer {
+  background: var(--cards);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 2px solid var(--borda-clara);
+}
+
+/* ==========================================================================
+2. RESET E CONFIGURAÇÕES GERAIS
+========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--textos);
+  background-color: var(--fundo-profundo);
+
+  background-image:
+    linear-gradient(to bottom, var(--sombra-topo) 0%, transparent 20%),
+    radial-gradient(
+      circle at center,
+      transparent 40%,
+      var(--vinheta-bordas) 100%
+    ),
+    radial-gradient(circle at 50% 35%, var(--nuvem-indigo), transparent 65%),
+    radial-gradient(circle at 20% 50%, var(--nuvem-violeta), transparent 55%),
+    radial-gradient(circle at 80% 75%, var(--nuvem-magenta), transparent 55%),
+    radial-gradient(circle at 50% 100%, var(--nuvem-base), transparent 70%);
+
+  background-attachment: fixed;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA
+========================================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: var(--fundo-escuro);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--fundo-escuro);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fundo-claro);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--borda-clara);
+  border-radius: 10px;
+  border: 2px solid var(--fundo-claro);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--borda-escura);
+}
+
+/* ==========================================================================
+4. TIPOGRAFIA GERAL E TEXTOS
+========================================================================== */
+p,
+.bio-text,
+.project-desc,
+.location {
+  color: var(--textos);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right,
+    var(--destaque-escuro),
+    var(--destaque-medio),
+    var(--destaque-claro),
+    var(--destaque-medio),
+    var(--destaque-escuro),
+    var(--destaque-medio),
+    var(--destaque-claro)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px var(--cor-sombra-texto));
+}
+
+/* ==========================================================================
+5. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
+========================================================================== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.section-container {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  z-index: 1;
+  animation: fadeIn 0.5s ease forwards;
+  position: relative; /* Necessário para posicionar o botão de tema solto aqui */
+}
+
+.section-container.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   NOVO: BOTÃO DE TEMA CLARO/ESCURO
+   ========================================================================== */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--borda-clara);
+  background: var(--cards);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--borda-escura);
+  box-shadow: 0 0 15px var(--cor-sombra-btn-hover);
+}
+
+.img-dark-mode,
+.img-light-mode {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  background-color: var(--destaque-claro);
+  border-radius: 50%;
+}
+
+.img-light-mode {
+  display: none; /* Esconde no modo escuro */
+}
+
+/* Comportamento de visibilidade ao ativar o light-mode */
+body.light-mode .img-dark-mode {
+  display: none;
+}
+
+body.light-mode .img-light-mode {
+  display: block;
+}
+
+/* ==========================================================================
+6. SEÇÃO: TELA INICIAL (HOME)
+========================================================================== */
+#home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+header {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(
+    to right,
+    var(--borda-clara),
+    var(--cor-subtitle-sec)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--textos);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px var(--sombra-topo);
+  background:
+    linear-gradient(
+        to bottom,
+        var(--btm-claro),
+        var(--btm-medio),
+        var(--btm-escuro),
+        var(--btm-medio),
+        var(--btm-claro)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px var(--cor-sombra-btn-hover);
+  background:
+    linear-gradient(
+        to bottom,
+        var(--btm-claro-h),
+        var(--btm-medio-h),
+        var(--btm-escuro-h),
+        var(--btm-medio-h),
+        var(--btm-claro-h)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;
+}
+
+/* ==========================================================================
+7. SEÇÃO: SOBRE (ABOUT)
+========================================================================== */
+.about-embedded {
+  width: 100%;
+  padding: 40px;
+  margin-bottom: 40px;
+  text-align: left;
+  border-radius: 8px;
+  background: var(--cards);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 4px solid var(--borda-clara);
+  border-bottom: 4px solid var(--borda-clara);
+  box-shadow: 0 10px 40px var(--cor-sombra-box);
+  transform: translateZ(0); /* Aceleração de hardware para o blur */
+}
+
+.about-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+}
+
+.bio-text {
+  margin-bottom: 25px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  background:
+    linear-gradient(
+        var(--btm-claro),
+        var(--btm-medio),
+        var(--btm-escuro),
+        var(--btm-medio),
+        var(--btm-claro)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.skill-badge span {
+  background: linear-gradient(
+    to right,
+    var(--destaque-medio),
+    var(--destaque-escuro),
+    var(--destaque-medio)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px var(--cor-sombra-btn-hover));
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--cor-sombra-box);
+  background:
+    linear-gradient(var(--btm-medio), var(--btm-escuro), var(--btm-medio))
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+/* ==========================================================================
+8. SEÇÃO: PROJETOS
+========================================================================== */
+.projects-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projects-header {
+  margin-bottom: 30px;
+  padding-left: 20px;
+  text-align: left;
+  border-left: 5px solid var(--borda-clara);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--back-btn-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--borda-clara);
+  color: var(--textos);
+  transform: translateZ(0);
+}
+
+.back-btn:hover {
+  border-color: var(--borda-escura);
+  box-shadow: 0 0 15px var(--cor-sombra-btn-hover);
+  color: var(--borda-escura);
+  transform: translateX(-3px);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn.scrolled .btn-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+/* ==========================================================================
+9. COMPONENTES: CARDS DE PROJETO
+========================================================================== */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 3px solid var(--borda-clara);
+  background: var(--cards);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transform: translateZ(0);
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 30px var(--cor-sombra-box);
+  background: var(--cards-h);
+  border: 3px solid var(--borda-card-h);
+}
+
+.project-thumb {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 3px solid var(--borda-clara);
+  transition: all 0.4s ease;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-thumb {
+  border-bottom: 3px solid var(--borda-card-h);
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.1);
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.project-desc {
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.project-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tech-mini {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  background:
+    linear-gradient(
+        var(--btm-claro),
+        var(--btm-medio),
+        var(--btm-escuro),
+        var(--btm-medio),
+        var(--btm-claro)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.tech-mini span {
+  background: linear-gradient(
+    to right,
+    var(--destaque-medio),
+    var(--destaque-escuro),
+    var(--destaque-medio)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px var(--cor-sombra-texto));
+}
+
+.project-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.action-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--textos);
+  border-radius: 7px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  background:
+    linear-gradient(
+        to bottom,
+        var(--btm-claro),
+        var(--btm-medio),
+        var(--btm-escuro),
+        var(--btm-medio),
+        var(--btm-claro)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+}
+
+.action-btn:hover {
+  box-shadow: 0 0 15px var(--cor-sombra-btn-hover);
+  background:
+    linear-gradient(
+        to top,
+        var(--btm-claro-h),
+        var(--btm-medio-h),
+        var(--btm-escuro-h),
+        var(--btm-medio-h),
+        var(--btm-claro-h)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;
+}
+
+/* ==========================================================================
+10. FOOTER (RODAPÉ)
+========================================================================== */
+footer {
+  align-self: stretch;
+  margin-top: auto;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -15px;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--textos);
+  background: var(--fundo-escuro);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, var(--borda-clara)) 1;
+}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden; /* Corta qualquer coisa que tente vazar pro lado */
+    width: 100%;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .main-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .menu-btn {
+    padding: 14px 10px;
+    font-size: 0.85rem;
+    transform: none !important;
+  }
+
+  .about-embedded {
+    background: var(--cards) !important;
+  }
+
+  .projects-wrapper {
+    padding: 80px 20px 20px 20px !important;
+    width: 100%;
+    border: none !important; /* Remove a borda de baixo que batia no footer */
+    box-sizing: border-box;
+  }
+
+  /* CORREÇÃO DO FOOTER: O culpado pela linha lateral era o -20px */
+  footer {
+    margin: 30px 0 0 0 !important; /* Zera margens laterais negativas */
+    width: 100%;
+    border-top: 2px solid var(--borda-clara); /* Apenas uma borda no topo */
+  }
+
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: var(--back-btn-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--borda-clara) !important;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  /* ESTADO SCROLLED: Vira a barra de topo completa */
+  .back-btn.scrolled {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important; /* Cobre a tela inteira sem sobrar nada */
+    height: 60px;
+    border-radius: 0 !important;
+    justify-content: flex-start !important;
+    padding: 0 20px !important;
+    background: var(
+      --bg-scrolled
+    ) !important; /* Fundo sólido para cobrir o conteúdo */
+    border: none !important;
+    border-bottom: 2px solid var(--borda-clara) !important;
+  }
+
+  /* Texto "Voltar ao Início" vira apenas "Voltar" */
+  .back-btn.scrolled .btn-text {
+    font-size: 0;
+  }
+
+  .back-btn.scrolled .btn-text::before {
+    content: "Voltar";
+    font-size: 1.1rem;
+    font-weight: 700;
+    visibility: visible;
+    margin-left: 10px;
+  }
+
+  /* Garante que os cards não vazem */
+  .project-card {
+    width: 100%;
+    margin: 0;
+    border: 2px solid var(--borda-clara);
+    background: var(--cards) !important;
+    transform: none !important;
+  }
+
+  .project-card:hover {
+    border: 2.5px solid var(--borda-card-h);
+    background: var(--cards-h) !important;
+  }
+
+  .project-thumb {
+    border-bottom: 2px solid var(--borda-clara);
+  }
+
+  .project-card:hover .project-thumb {
+    border-bottom: 2.5px solid var(--borda-card-h);
+  }
+} /* FIM DO MEDIA QUERY QUE ESTAVA ABERTO */

@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio | Bruno J. Silveira</title>
+
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Ícone da aba do navegador -->
+    <link rel="icon" type="image/png" href="./img/fi-port.png" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- ========================================== -->
+    <!-- FUNDO ANIMADO (CANVAS)                     -->
+    <!-- ========================================== -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO: INÍCIO (HOME)                       -->
+    <!-- ========================================== -->
+    <div id="home" class="section-container active">
+      <!-- BOTÃO DE TEMA CLARO/ESCURO -->
+      <button
+        id="theme-toggle-btn"
+        class="theme-toggle-btn"
+        title="Alternar Modo Claro/Escuro"
+      >
+        <!-- Ícone para quando estiver no modo escuro (mostra sol) -->
+        <i data-lucide="sun" class="img-dark-mode"></i>
+        <!-- Ícone para quando estiver no modo claro (mostra lua) -->
+        <i data-lucide="moon" class="img-light-mode"></i>
+      </button>
+
+      <!-- Cabeçalho Principal -->
+      <header>
+        <h1 id="main-name">Bruno J. Silveira</h1>
+        <p class="subtitle">Desenvolvedor Front-End Júnior</p>
+      </header>
+
+      <!-- Conteúdo da Página Inicial -->
+      <div id="home-content">
+        <!-- Menu de Navegação / Links -->
+        <nav class="main-menu">
+          <a
+            href="https://drive.google.com/file/d/1t2DajlJwI-84VLO5ucwGJvo1viQvGNV0/view"
+            class="menu-btn"
+            title="PDF do Currículo"
+            target="_blank"
+          >
+            📄 Currículo
+          </a>
+          <button
+            class="menu-btn"
+            onclick="showSection('projects')"
+            title="Visualizar Projetos"
+          >
+            📂 Projetos
+          </button>
+          <a
+            href="https://www.linkedin.com/in/bruno-j-silveira-b64763390"
+            class="menu-btn"
+            title="LinkedIn"
+            target="_blank"
+          >
+            🔗 LinkedIn
+          </a>
+          <a
+            href="https://github.com/brunojsdev"
+            class="menu-btn"
+            title="Github"
+            target="_blank"
+          >
+            🖥️ GitHub
+          </a>
+        </nav>
+
+        <!-- Bloco: Sobre o Desenvolvedor -->
+        <section class="about-embedded">
+          <div class="about-header">
+            <h2>Sobre o Desenvolvedor</h2>
+            <div class="location">📍 São Bernardo do Campo, SP</div>
+          </div>
+
+          <!-- Habilidades / Ferramentas -->
+          <h4 style="margin-bottom: 10px">Ferramentas e Linguagens</h4>
+          <div
+            class="skills-list"
+            style="
+              margin-bottom: 25px;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+            "
+          >
+            <!-- O Span interno permite o gradiente no texto enquanto o fundo roxo fica no elemento pai -->
+            <span class="skill-badge"><span>HTML5</span></span>
+            <span class="skill-badge"><span>CSS3</span></span>
+            <span class="skill-badge"><span>JavaScript</span></span>
+            <span class="skill-badge"><span>Java</span></span>
+            <span class="skill-badge"><span>Python</span></span>
+            <span class="skill-badge"><span>Github</span></span>
+            <span class="skill-badge"><span>Git</span></span>
+            <span class="skill-badge"><span>Tailwind</span></span>
+            <span class="skill-badge"><span>VS Code</span></span>
+            <span class="skill-badge"><span>Vercel</span></span>
+            <span class="skill-badge"><span>Streamlit</span></span>
+            <span class="skill-badge"><span>Canvas API</span></span>
+            <span class="skill-badge"><span>APIs (Async/Await)</span></span>
+          </div>
+
+          <!-- Objetivos -->
+          <h4 style="margin-bottom: 10px">Minha Trajetória e Foco</h4>
+          <p class="bio-text">
+            Tenho 25 anos e sou apaixonado por criar experiências digitais que
+            unam estética e alta performance. Nos últimos anos, venho atuando no
+            desenvolvimento de soluções web práticas, combinando interfaces
+            modernas (JavaScript, HTML, CSS) com a lógica e a eficiência de
+            automações em Python. Meu grande foco atual é aprimorar a construção
+            de aplicações fluidas e interativas, explorando ferramentas visuais
+            nativas como a Canvas API, mantendo sempre um código limpo e focado
+            na experiência do usuário.
+          </p>
+
+          <!-- Hobbies -->
+          <h4 style="margin-bottom: 10px">Interesses Além do Código</h4>
+          <p class="bio-text">
+            Sou um grande consumidor de cultura pop, tenho interesse em
+            quadrinhos (Marvel e DC), animes, animações independentes e no
+            universo de Pokémon. Para equilibrar o tempo na frente das telas,
+            pratico caminhadas regulares, o que me ajuda a manter a constância e
+            o foco.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO: PROJETOS                            -->
+    <!-- ========================================== -->
+    <div id="projects" class="section-container">
+      <div class="projects-wrapper">
+        <!-- Botão Voltar -->
+        <button class="back-btn" id="back-btn" onclick="showSection('home')">
+          <i data-lucide="arrow-big-left" class="btn-icon"></i>
+          <span class="btn-text">Voltar ao Início</span>
+        </button>
+
+        <!-- Cabeçalho da Seção de Projetos -->
+        <div class="projects-header">
+          <h2 style="font-size: 2rem">Meus Projetos</h2>
+          <p class="project-desc" style="margin-top: 5px">
+            Repositórios e Experimentos
+          </p>
+        </div>
+
+        <!-- Grade de Projetos -->
+        <div class="projects-grid">
+          <!-- Projeto: Lista de Tarefas -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/tarefa.png" alt="Capa Todo List" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Lista de Tarefas</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Canvas API</span></span>
+                  <span class="tech-mini"><span>DOM Manipulation</span></span>
+                </div>
+                <p class="project-desc">
+                  Aplicação para gerenciamento de tarefas diárias com marcação
+                  de conclusão.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/lista-tarefas/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/lista-tarefas"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Guia de Primeiros Socorros -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/sos.png" alt="Capa SOS" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Guia de Primeiros Socorros</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Lucide Icons</span></span>
+                  <span class="tech-mini"><span>Tailwind CSS</span></span>
+                </div>
+                <p class="project-desc">
+                  Uma página informativa com um guia simples e interativo para
+                  instruções de primeiros socorros.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/guia-primeiros-socorros/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/guia-primeiros-socorros"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Hora e Clima -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/horaeclima.png" alt="Capa Hora e Clima" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Hora e Clima</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Async/Await</span></span>
+                  <span class="tech-mini"><span>Date API</span></span>
+                </div>
+                <p class="project-desc">
+                  Aplicação unificada que fornece dados meteorológicos em tempo
+                  real integrados com um relógio digital.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/api-clima-hora/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/api-clima-hora"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Jogo da Cobrinha usando Python -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/cobrapy.jpg" alt="Capa Python" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Jogo da Cobrinha em Python</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>Brython Engine</span></span>
+                  <span class="tech-mini"><span>Python</span></span>
+                  <span class="tech-mini"><span>Canvas API</span></span>
+                </div>
+                <p class="project-desc">
+                  O clássico Jogo da Cobrinha recriado utilizando Python e sua
+                  biblioteca Brython.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/jogo-da-cobrinha/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/jogo-da-cobrinha"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Automação Python -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/autopy.png" alt="Capa Automação Python" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Automação Python</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Canvas API</span></span>
+                  <span class="tech-mini"><span>Auto Python</span></span>
+                </div>
+                <p class="project-desc">
+                  Scripts para manipulação de arquivos e automação de rotinas.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/automacoes-python/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/automacoes-python"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Calculadora Web -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/calc.png" alt="Capa Calculadora" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Calculadora Web</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Canvas API</span></span>
+                  <span class="tech-mini"><span>UX Design</span></span>
+                </div>
+                <p class="project-desc">
+                  Uma calculadora funcional com interface moderna e operações
+                  básicas.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://brunojsdev.github.io/calculadora-web/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/calculadora-web"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Dashboard do Sistema Solar -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/ss-py.png" alt="Capa Dashboard Py" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Dashboard do Sistema Solar</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>Pandas</span></span>
+                  <span class="tech-mini"><span>Plotly</span></span>
+                  <span class="tech-mini"><span>Python</span></span>
+                  <span class="tech-mini"><span>Streamlit</span></span>
+                </div>
+                <p class="project-desc">
+                  Dashboard informativo com algumas curiosidades e fatos sobre o
+                  Sistema Solar.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://dashboard-sistema-solar-python.streamlit.app/"
+                  target="_blank"
+                  class="action-btn demo"
+                >
+                  Ver Projeto ↗
+                </a>
+                <a
+                  href="https://github.com/brunojsdev/dashboard-sistema-solar"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto: Portfólio Pessoal -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="img/port.png" alt="Capa Portfolio" />
+            </div>
+            <div class="project-content">
+              <div>
+                <h4>Portfólio Pessoal</h4>
+                <div class="project-techs">
+                  <span class="tech-mini"><span>HTML5</span></span>
+                  <span class="tech-mini"><span>CSS3</span></span>
+                  <span class="tech-mini"><span>JavaScript</span></span>
+                  <span class="tech-mini"><span>Canvas API</span></span>
+                  <span class="tech-mini"><span>Modularização</span></span>
+                </div>
+                <p class="project-desc">
+                  Meu portfólio pessoal com minhas informações de contado e
+                  projetos. Ele é responsivo e com animações em Canvas.
+                </p>
+              </div>
+              <div class="project-actions">
+                <a
+                  href="https://github.com/brunojsdev/meu-portfolio"
+                  target="_blank"
+                  class="action-btn code"
+                >
+                  Código &lt;/&gt;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fim Grid -->
+      </div>
+      <!-- Fim Wrapper -->
+    </div>
+    <!-- Fim Seção Projetos -->
+
+    <!-- Rodapé Principal -->
+    <footer>
+      &copy; 2026 Bruno J. Silveira. Todos os direitos reservados.
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- SCRIPTS                                    -->
+    <!-- ========================================== -->
+    <script src="script.js"></script>
+  </body>
+</html>
