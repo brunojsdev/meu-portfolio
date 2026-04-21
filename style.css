@@ -771,12 +771,38 @@ footer {
     position: relative;
   }
 
+  header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 0;
   }
 
   .subtitle {
+    width: 100%; /* Força o subtítulo a ir para a linha de baixo */
     font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .theme-toggle-btn {
+    position: static; /* Remove o absolute para alinhar com o h1 */
+    width: 35px;
+    height: 35px;
+    border-width: 2px;
+  }
+
+  .img-dark-mode,
+  .img-light-mode {
+    width: 24px;
+    height: 24px;
   }
 
   .main-menu {
@@ -810,18 +836,21 @@ footer {
   }
 
   .back-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 9999;
-    padding: 10px 20px;
-    border-radius: 50px;
-    background: var(--back-btn-bg) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--borda-clara) !important;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+    position: relative; /* Começa no fluxo normal, como no desktop */
+    top: auto;
+    left: auto;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background:
+      linear-gradient(
+          to bottom,
+          var(--btm-claro),
+          var(--btm-medio),
+          var(--btm-escuro)
+        )
+        padding-box,
+      linear-gradient(135deg, var(--borda-clara)) border-box !important;
+    width: fit-content;
   }
 
   /* ESTADO SCROLLED: Vira a barra de topo completa */
