@@ -1,8 +1,10 @@
-/* ==========================================================================
+/* 
+   1. NAVEGAÇÃO E LÓGICA SPA
+   Controla qual div (.section-container) está visível e gerencia o histórico da URL.
+*/
 
-NAVEGAÇÃO ENTRE SEÇÕES
-========================================================================== */
 function showSection(sectionId) {
+  // Oculta todas as seções antes de mostrar a desejada
   document.querySelectorAll(".section-container").forEach((sec) => {
     sec.classList.remove("active");
   });
@@ -10,10 +12,14 @@ function showSection(sectionId) {
   const target = document.getElementById(sectionId);
   if (target) {
     target.classList.add("active");
-    window.location.hash = sectionId;
+
+    // Atualiza a URL (hash) para permitir o uso do botão Voltar do navegador
+    if (window.location.hash !== `#${sectionId}`) {
+      window.location.hash = sectionId;
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Reinicia os ícones sempre que trocar de seção (Consolidado)
+    // Garante que os ícones do Lucide sejam renderizados na nova seção
     if (typeof lucide !== "undefined") {
       lucide.createIcons();
     }
@@ -27,42 +33,37 @@ window.addEventListener("hashchange", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifica se a URL já possui um hash ao carregar a página
+  // Carregamento inicial baseado na URL
   const initialSection = window.location.hash.replace("#", "") || "home";
   showSection(initialSection);
 
-  // Recupera o tema salvo no navegador
+  // Persistência de Tema: Verifica se o usuário já escolheu o modo claro antes
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light-mode");
-    // Pequeno atraso para garantir que o canvas carregue com as cores certas
     setTimeout(() => {
       if (window.refreshSpace) window.refreshSpace();
     }, 100);
   }
 
-  // Inicializa funcionalidade do Botão de Tema
+  // Listener para o botão de troca de tema
   const themeBtn = document.getElementById("theme-toggle-btn");
   if (themeBtn) {
     themeBtn.addEventListener("click", () => {
-      // Alterna a classe no body
       document.body.classList.toggle("light-mode");
 
-      // Salva a preferência
       const isLight = document.body.classList.contains("light-mode");
       localStorage.setItem("theme", isLight ? "light" : "dark");
 
-      // Re-inicia o canvas imediatamente para trocar as cores das estrelas
-      if (window.refreshSpace) {
-        window.refreshSpace();
-      }
+      if (window.refreshSpace) window.refreshSpace();
     });
   }
 });
 
-/* ==========================================================================
-2. LÓGICA DO BOTÃO VOLTAR
-========================================================================== */
+/* 
+   2. COMPORTAMENTO MOBILE
+   Faz o botão "Voltar" grudar no topo da tela quando o usuário rola a página de projetos no celular.
+*/
 
 window.addEventListener("scroll", () => {
   const backBtn = document.getElementById("back-btn");
@@ -79,14 +80,14 @@ window.addEventListener("scroll", () => {
     } else {
       backBtn.classList.remove("scrolled");
     }
-  } else {
-    backBtn.classList.remove("scrolled");
   }
 });
 
-/* ==========================================================================
-3. ANIMAÇÃO DE FUNDO ESPACIAL (OTIMIZADA PARA PERFORMANCE EM MOBILE)
-========================================================================== */
+/* 
+   3. MOTOR DE ANIMAÇÃO (CANVAS API)
+   Cria o efeito de espaço sideral. As estrelas agora têm 4 pontas e caem.
+*/
+
 const canvas = document.getElementById("bg-canvas");
 
 if (canvas) {
@@ -95,7 +96,7 @@ if (canvas) {
   let stars = [];
   let shootingStars = [];
 
-  // Cores padrão (Tema Escuro)
+  // Paleta de cores dinâmica baseada no tema
   const darkStarColors = [
     "#ffffff",
     "#fff4e6",
@@ -105,7 +106,6 @@ if (canvas) {
     "#e6f2ff",
   ];
 
-  // Cores Invertidas (Tema Claro) - Estrelas arroxeadas para dar contraste com fundo amarelo/laranja
   const lightStarColors = [
     "#150136",
     "#090024",
@@ -115,11 +115,13 @@ if (canvas) {
     "#17005c",
   ];
 
+  // Ajusta o tamanho do canvas para ocupar toda a janela
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   }
 
+  // Classe para gerenciar cada estrela individualmente
   class Star {
     constructor() {
       this.init();
@@ -135,8 +137,9 @@ if (canvas) {
 
       this.x = Math.random() * width;
       this.y = Math.random() * height;
+      // DIREÇÃO ALTERADA: Agora as estrelas descem (y positivo)
       this.baseSpeedX = (Math.random() - 0.5) * 0.1;
-      this.baseSpeedY = baseSize * 0.3 + 0.1;
+      this.baseSpeedY = baseSize * 0.4 + 0.2; // Aumentado levemente para dar mais dinamismo
 
       // Seleciona a paleta de cores correta dependendo do modo ativado
       const isLightMode = document.body.classList.contains("light-mode");
@@ -152,14 +155,16 @@ if (canvas) {
     }
 
     update() {
+      // Movimentação para baixo
       this.x += this.baseSpeedX;
-      this.y -= this.baseSpeedY;
+      this.y += this.baseSpeedY;
       this.twinklePhase += this.twinkleSpeed;
       this.opacity =
         (Math.sin(this.twinklePhase) * 0.5 + 0.5) * this.maxOpacity;
 
-      if (this.y < -20) {
-        this.y = height + 20;
+      // Loop infinito: se sair por baixo, volta para o topo
+      if (this.y > height + 20) {
+        this.y = -20;
         this.x = Math.random() * width;
       }
       if (this.x < -20) this.x = width + 20;
@@ -167,75 +172,42 @@ if (canvas) {
     }
 
     draw() {
-      ctx.save();
-      ctx.translate(this.x, this.y);
+      const alpha = this.opacity;
 
-      // OTIMIZAÇÃO: Círculo translúcido no lugar do pesado shadowBlur
-      ctx.globalAlpha = this.opacity * 0.2;
+      // Efeito de brilho (Halo) ao redor da estrela
+      ctx.globalAlpha = alpha * 0.2;
       ctx.fillStyle = this.color;
       ctx.beginPath();
-      ctx.arc(0, 0, this.size * 1.5, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Desenho da estrela principal
-      ctx.globalAlpha = this.opacity;
-      switch (this.type) {
-        case 1:
-          this._drawType1(this.size);
-          break;
-        case 2:
-          this._drawType2(this.size);
-          break;
-        case 3:
-          this._drawType3(this.size);
-          break;
-      }
-      ctx.restore();
+      // NÚCLEO DA ESTRELA: Agora desenha uma forma de 4 pontas (diamante)
+      ctx.globalAlpha = alpha;
+      this._drawFourPointStar(this.x, this.y, this.size);
+      ctx.globalAlpha = 1.0;
     }
 
-    _drawType1(s) {
-      ctx.rotate(Math.PI / 8);
-      this._drawTaper(-Math.PI / 4, s * 2.2, s * 0.2);
-      this._drawTaper((3 * Math.PI) / 4, s * 1.4, s * 0.2);
-      this._drawTaper((-3 * Math.PI) / 4, s * 0.8, s * 0.15);
-      this._drawTaper(Math.PI / 4, s * 0.7, s * 0.15);
-    }
-
-    _drawTaper(angle, len, thk) {
-      ctx.save();
-      ctx.rotate(angle);
+    /* 
+       Desenha uma estrela de 4 pontas geométrica
+       x, y: centro da estrela
+       s: tamanho base
+    */
+    _drawFourPointStar(x, y, s) {
       ctx.beginPath();
-      ctx.moveTo(0, -thk / 2);
-      ctx.lineTo(len, 0);
-      ctx.lineTo(0, thk / 2);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    _drawType2(s) {
-      ctx.beginPath();
-      ctx.arc(0, 0, s * 0.8, 0, Math.PI * 2);
-      ctx.fill();
-      this._drawTaper(0, s * 1.8, s * 0.3);
-      this._drawTaper(Math.PI / 2, s * 1.8, s * 0.3);
-      this._drawTaper(Math.PI, s * 1.8, s * 0.3);
-      this._drawTaper(-Math.PI / 2, s * 1.8, s * 0.3);
-    }
-
-    _drawType3(s) {
-      ctx.beginPath();
-      const vLen = s * 2.2;
-      const hLen = s * 0.7;
-      ctx.moveTo(0, -vLen);
-      ctx.quadraticCurveTo(0, 0, hLen, 0);
-      ctx.quadraticCurveTo(0, 0, 0, vLen);
-      ctx.quadraticCurveTo(0, 0, -hLen, 0);
-      ctx.quadraticCurveTo(0, 0, 0, -vLen);
+      ctx.moveTo(x, y - s * 2.5); // Ponta Superior
+      ctx.lineTo(x + s * 0.4, y - s * 0.4); // Curva interna
+      ctx.lineTo(x + s * 2.5, y); // Ponta Direita
+      ctx.lineTo(x + s * 0.4, y + s * 0.4);
+      ctx.lineTo(x, y + s * 2.5); // Ponta Inferior
+      ctx.lineTo(x - s * 0.4, y + s * 0.4);
+      ctx.lineTo(x - s * 2.5, y); // Ponta Esquerda
+      ctx.lineTo(x - s * 0.4, y - s * 0.4);
       ctx.closePath();
       ctx.fill();
     }
   }
 
+  // Classe para gerenciar as estrelas cadentes aleatórias
   class ShootingStar {
     constructor() {
       this.reset();
@@ -245,10 +217,10 @@ if (canvas) {
       if (Math.random() > 0.993) {
         this.active = true;
         this.x = Math.random() * width;
-        this.y = 0;
+        this.y = -50;
         this.size = Math.random() * 2 + 1;
         this.speedX = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 5 + 3);
-        this.speedY = Math.random() * 5 + 5;
+        this.speedY = Math.random() * 5 + 7; // Cometas também caem rápido
         this.len = Math.random() * 80 + 30;
         this.opacity = 1;
       }
@@ -275,8 +247,8 @@ if (canvas) {
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
       ctx.lineTo(
-        this.x - this.speedX * (this.len / 10),
-        this.y - this.speedY * (this.len / 10),
+        this.x - this.speedX * (this.len / 5),
+        this.y - this.speedY * (this.len / 5),
       );
       ctx.lineWidth = this.size;
       ctx.lineCap = "round";
@@ -288,10 +260,9 @@ if (canvas) {
         this.y - this.speedY * (this.len / 10),
       );
 
-      // Verifica o tema para aplicar a cor do rastro do cometa
       if (document.body.classList.contains("light-mode")) {
-        grad.addColorStop(0, `rgba(21, 1, 54, ${this.opacity})`); // Roxo Escuro
-        grad.addColorStop(1, `rgba(87, 82, 255, 0)`); // Dissolve para Roxo claro
+        grad.addColorStop(0, `rgba(21, 1, 54, ${this.opacity})`);
+        grad.addColorStop(1, `rgba(87, 82, 255, 0)`);
       } else {
         grad.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
         grad.addColorStop(1, `rgba(255, 170, 0, 0)`);
@@ -302,12 +273,13 @@ if (canvas) {
     }
   }
 
+  // Inicializa o array de estrelas baseado na resolução da tela
   function initSpace() {
     resize();
     stars = [];
     shootingStars = [];
 
-    // OTIMIZAÇÃO: Limite máximo fixado em 150 estrelas para evitar travamentos
+    // Densidade de estrelas equilibrada para não sobrecarregar dispositivos lentos
     const calculatedStars = Math.floor((width * height) / 12000);
     const numStars = Math.min(calculatedStars, 150);
 
@@ -320,11 +292,11 @@ if (canvas) {
     }
   }
 
-  // Expondo a função para que o botão de tema a chame sem problemas de escopo
   window.refreshSpace = initSpace;
 
+  // Loop principal de animação
   function animate() {
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height); // Limpa o quadro anterior
 
     stars.forEach((star) => {
       star.update();

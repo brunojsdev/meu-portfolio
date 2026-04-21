@@ -1,3 +1,12 @@
+<!-- 
+  ESTRUTURA PRINCIPAL (HTML5)
+  Este arquivo define a ossatura do Portfólio, utilizando o conceito de SPA (Single Page Application)
+-->
+<!-- 
+  ESTRUTURA PRINCIPAL (HTML5)
+  Este arquivo define a organização das seções. O portfólio funciona como uma 
+  Single Page Application (SPA), onde o JS alterna a visibilidade das divs.
+-->
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -15,36 +24,34 @@
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <!-- ========================================== -->
-    <!-- FUNDO ANIMADO (CANVAS)                     -->
-    <!-- ========================================== -->
+    <!-- O Canvas é a camada de fundo onde as estrelas são desenhadas via código -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- ========================================== -->
-    <!-- SEÇÃO: INÍCIO (HOME)                       -->
-    <!-- ========================================== -->
+    <!-- 
+      SEÇÃO 1: HOME 
+      Contém a apresentação principal, links de redes sociais e o resumo "Sobre".
+    -->
     <div id="home" class="section-container active">
-      <!-- BOTÃO DE TEMA CLARO/ESCURO -->
+      <!-- BOTÃO DE TEMA: O script.js alterna a classe .light-mode no body ao clicar aqui -->
       <button
         id="theme-toggle-btn"
         class="theme-toggle-btn"
         title="Alternar Modo Claro/Escuro"
       >
-        <!-- Ícone para quando estiver no modo escuro (mostra sol) -->
-        <i data-lucide="sun" class="img-dark-mode"></i>
-        <!-- Ícone para quando estiver no modo claro (mostra lua) -->
-        <i data-lucide="moon" class="img-light-mode"></i>
+        <!-- Ícone para quando estiver no modo escuro (Estrela Amarela) -->
+        <i data-lucide="star" class="img-dark-mode"></i>
+        <!-- Ícone para quando estiver no modo claro (Estrela Riscada Roxa) -->
+        <i data-lucide="star-off" class="img-light-mode"></i>
       </button>
 
-      <!-- Cabeçalho Principal -->
+      <!-- Cabeçalho com nome e cargo -->
       <header>
         <h1 id="main-name">Bruno J. Silveira</h1>
         <p class="subtitle">Desenvolvedor Front-End Júnior</p>
       </header>
 
-      <!-- Conteúdo da Página Inicial -->
       <div id="home-content">
-        <!-- Menu de Navegação / Links -->
+        <!-- MENU PRINCIPAL: Botões que levam para links externos ou mudam de seção -->
         <nav class="main-menu">
           <a
             href="https://drive.google.com/file/d/1t2DajlJwI-84VLO5ucwGJvo1viQvGNV0/view"
@@ -79,24 +86,15 @@
           </a>
         </nav>
 
-        <!-- Bloco: Sobre o Desenvolvedor -->
+        <!-- CARTÃO SOBRE: Box com informações detalhadas e lista de tecnologias -->
         <section class="about-embedded">
           <div class="about-header">
             <h2>Sobre o Desenvolvedor</h2>
             <div class="location">📍 São Bernardo do Campo, SP</div>
           </div>
 
-          <!-- Habilidades / Ferramentas -->
-          <h4 style="margin-bottom: 10px">Ferramentas e Linguagens</h4>
-          <div
-            class="skills-list"
-            style="
-              margin-bottom: 25px;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: flex-start;
-            "
-          >
+          <h4>Ferramentas e Linguagens</h4>
+          <div class="skills-list">
             <!-- O Span interno permite o gradiente no texto enquanto o fundo roxo fica no elemento pai -->
             <span class="skill-badge"><span>HTML5</span></span>
             <span class="skill-badge"><span>CSS3</span></span>
@@ -113,8 +111,8 @@
             <span class="skill-badge"><span>APIs (Async/Await)</span></span>
           </div>
 
-          <!-- Objetivos -->
-          <h4 style="margin-bottom: 10px">Minha Trajetória e Foco</h4>
+          <!-- Textos biográficos -->
+          <h4>Minha Trajetória e Foco</h4>
           <p class="bio-text">
             Tenho 25 anos e sou apaixonado por criar experiências digitais que
             unam estética e alta performance. Nos últimos anos, venho atuando no
@@ -126,8 +124,7 @@
             na experiência do usuário.
           </p>
 
-          <!-- Hobbies -->
-          <h4 style="margin-bottom: 10px">Interesses Além do Código</h4>
+          <h4>Interesses Além do Código</h4>
           <p class="bio-text">
             Sou um grande consumidor de cultura pop, tenho interesse em
             quadrinhos (Marvel e DC), animes, animações independentes e no
@@ -139,12 +136,13 @@
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- SEÇÃO: PROJETOS                            -->
-    <!-- ========================================== -->
+    <!-- 
+      SEÇÃO 2: PROJETOS 
+      Esta div começa oculta e é exibida quando o usuário clica no botão "Projetos".
+    -->
     <div id="projects" class="section-container">
       <div class="projects-wrapper">
-        <!-- Botão Voltar -->
+        <!-- BOTÃO VOLTAR: Agora com a mesma textura dos botões de menu, sem transparência excessiva -->
         <button class="back-btn" id="back-btn" onclick="showSection('home')">
           <i data-lucide="arrow-big-left" class="btn-icon"></i>
           <span class="btn-text">Voltar ao Início</span>
@@ -158,9 +156,8 @@
           </p>
         </div>
 
-        <!-- Grade de Projetos -->
+        <!-- GRID DE PROJETOS: Cartões individuais para cada repositório -->
         <div class="projects-grid">
-          <!-- Projeto: Lista de Tarefas -->
           <div class="project-card">
             <div class="project-thumb">
               <img src="img/tarefa.png" alt="Capa Todo List" />
@@ -468,16 +465,12 @@
       </div>
       <!-- Fim Wrapper -->
     </div>
-    <!-- Fim Seção Projetos -->
 
-    <!-- Rodapé Principal -->
+    <!-- Rodapé simples -->
     <footer>
       &copy; 2026 Bruno J. Silveira. Todos os direitos reservados.
     </footer>
 
-    <!-- ========================================== -->
-    <!-- SCRIPTS                                    -->
-    <!-- ========================================== -->
     <script src="script.js"></script>
   </body>
 </html>

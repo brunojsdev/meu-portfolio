@@ -14,25 +14,30 @@ Interface web moderna e responsiva desenvolvida para centralizar projetos, habil
 
 ### 🌓 Sistema de Temas (Light & Dark Mode)
 
-O portfólio conta com uma inversão completa de paleta de cores. O modo escuro apresenta tons "Deep Space" (roxos e azuis), enquanto o modo claro utiliza tons solares e vibrantes (âmbar e laranja). A preferência do usuário é salva automaticamente no `localStorage`.
+O portfólio conta com uma inversão completa de paleta de cores controlada por um botão customizado com gradiente radial.
+
+- **Ícones Dinâmicos:** Utiliza o ícone `star` (Amarelo) para o modo escuro e `star-off` (Roxo) para o modo claro.
+- **Persistência:** A preferência do usuário é salva automaticamente no `localStorage`.
 
 ### 🚀 Background Interativo com Canvas API
 
-Um motor de partículas dinâmico renderiza estrelas e estrelas cadentes em tempo real.
+Um motor de partículas de alta performance renderiza o espaço sideral em tempo real.
 
-- **Otimização:** Limite de 150 partículas para garantir performance em dispositivos móveis.
-- **Reatividade:** As cores das partículas mudam instantaneamente ao alternar o tema da interface.
+- **Visual:** Estrelas geométricas de quatro pontas com movimento descendente e efeito de cintilação (twinkle).
+- **Alta Performance:** Renderização otimizada para 60 FPS, com a remoção de filtros de desfoque pesados (`backdrop-filter`) em elementos grandes para garantir fluidez total em qualquer dispositivo.
+- **Reatividade:** As cores das partículas e rastros de cometas mudam dinamicamente conforme o tema.
 
 ### 📱 Responsividade e UX Mobile
 
 Interface totalmente adaptável para dispositivos móveis:
 
 - **Menu Adaptativo:** Layout em grid para botões de navegação no mobile.
-- **Sticky Navigation:** O botão "Voltar" transforma-se em uma barra de topo fixa ao rolar a página na seção de projetos, melhorando a navegabilidade em telas pequenas.
+- **Sticky Navigation:** O botão "Voltar" possui uma transição para barra de topo fixa ao rolar a página na seção de projetos, garantindo que o usuário nunca perca a navegação de vista.
 
 ### 📂 Hub de Projetos Dinâmico
 
 Navegação entre seções controlada por manipulação de estado do DOM, permitindo alternar entre a Home e a Galeria de Projetos sem recarregar o navegador.
+A navegação também é integrada ao histórico do navegador (`hashchange`), permitindo o uso das setas "voltar/avançar" do sistema.
 
 ## 📁 Projetos Indexados
 

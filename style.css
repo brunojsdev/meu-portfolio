@@ -1,8 +1,9 @@
-/* ==========================================================================
-
-VARIÁVEIS E PALETA DE CORES
-========================================================================== */
+/* 
+   VARIÁVEIS TOTAIS (Design Tokens)
+   Centralização das cores para facilitar a manutenção e o sistema de temas.
+*/
 :root {
+  /* Cores de Fundo e Layout */
   --fundo-claro: #150136;
   --fundo-medio: #090024;
   --fundo-escuro: #040014;
@@ -23,12 +24,8 @@ VARIÁVEIS E PALETA DE CORES
 
   --borda-clara: #5752ff;
   --borda-escura: #ffaa00;
-  --cards: rgba(
-    23,
-    0,
-    92,
-    0.4
-  ); /* Otimizado para Glassmorphism com HEX + Alpha */
+  /* Aumentando a opacidade para reduzir a carga do blur */
+  --cards: rgba(23, 0, 92, 0.8);
   --cards-h: rgba(13, 0, 51, 0.6);
   --borda-card-h: #7c78ff;
 
@@ -54,10 +51,10 @@ VARIÁVEIS E PALETA DE CORES
   --bg-scrolled: rgba(4, 0, 20, 0.95);
 }
 
-/* ==========================================================================
-   NOVO: TEMA CLARO (LIGHT MODE)
-   Inversão: Roxos viram Amarelos/Laranjas e vice-versa
-   ========================================================================== */
+/* 
+   TEMA CLARO (LIGHT MODE)
+   Sobrescreve as variáveis do :root quando a classe .light-mode é injetada no Body via JS.
+*/
 body.light-mode {
   /* Tons solares saturados para evitar o aspecto pálido */
   --fundo-claro: #ffe082;
@@ -82,7 +79,7 @@ body.light-mode {
   --borda-clara: #ff9500;
   --borda-escura: #5752ff;
 
-  --cards: rgba(255, 255, 255, 0.6);
+  --cards: rgba(255, 255, 255, 0.9);
   --cards-h: rgba(
     255,
     183,
@@ -147,19 +144,15 @@ body {
   color: var(--textos);
   background-color: var(--fundo-profundo);
 
+  /* BACKGROUND RESTAURADO: Adição de gradientes radiais para trazer vida e profundidade (Nebulosas) */
   background-image:
-    linear-gradient(to bottom, var(--sombra-topo) 0%, transparent 20%),
-    radial-gradient(
-      circle at center,
-      transparent 40%,
-      var(--vinheta-bordas) 100%
-    ),
-    radial-gradient(circle at 50% 35%, var(--nuvem-indigo), transparent 65%),
-    radial-gradient(circle at 20% 50%, var(--nuvem-violeta), transparent 55%),
-    radial-gradient(circle at 80% 75%, var(--nuvem-magenta), transparent 55%),
-    radial-gradient(circle at 50% 100%, var(--nuvem-base), transparent 70%);
+    linear-gradient(to bottom, var(--sombra-topo) 0%, transparent 30%),
+    radial-gradient(circle at 20% 30%, var(--nuvem-indigo), transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--nuvem-magenta), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--nuvem-base), var(--fundo-profundo));
 
-  background-attachment: fixed;
+  background-attachment: fixed; /* Mantém o fundo estático enquanto o conteúdo rola */
+
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
@@ -178,9 +171,10 @@ a {
   transition: all 0.3s ease;
 }
 
-/* ==========================================================================
-3. BARRA DE ROLAGEM LATERAL CUSTOMIZADA
-========================================================================== */
+/* 
+   CUSTOM SCROLLBAR
+   Estilização da barra lateral para navegadores Webkit (Chrome, Edge, Safari).
+*/
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -243,9 +237,10 @@ h4 {
   filter: drop-shadow(0 0 10px var(--cor-sombra-texto));
 }
 
-/* ==========================================================================
-5. BACKGROUND (CANVAS) E TRANSIÇÕES DE SEÇÃO
-========================================================================== */
+/* 
+   LAYOUT SPA (Single Page Application)
+   Gerenciamento de visibilidade das seções e animação de fade-in.
+*/
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -283,9 +278,10 @@ h4 {
   }
 }
 
-/* ==========================================================================
-   NOVO: BOTÃO DE TEMA CLARO/ESCURO
-   ========================================================================== */
+/* 
+   BOTÃO DE ALTERNÂNCIA DE TEMA
+   Design circular flutuante com suporte a Glassmorphism.
+*/
 .theme-toggle-btn {
   position: absolute;
   top: 20px;
@@ -294,8 +290,12 @@ h4 {
   height: 50px;
   border-radius: 50%;
   border: 2px solid var(--borda-clara);
-  background: var(--cards);
-  backdrop-filter: blur(5px);
+  background: radial-gradient(
+    circle,
+    var(--btm-escuro) 0%,
+    var(--btm-claro) 100%
+  );
+  backdrop-filter: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,11 +312,18 @@ h4 {
 
 .img-dark-mode,
 .img-light-mode {
-  width: 26px;
-  height: 26px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
-  background-color: var(--destaque-claro);
-  border-radius: 50%;
+  background-color: transparent;
+}
+
+.img-dark-mode {
+  color: #ffdd00; /* Cor Amarela para o ícone Star */
+}
+
+.img-light-mode {
+  color: #5752ff; /* Cor Roxa para o ícone Star-off */
 }
 
 .img-light-mode {
@@ -332,9 +339,7 @@ body.light-mode .img-light-mode {
   display: block;
 }
 
-/* ==========================================================================
-6. SEÇÃO: TELA INICIAL (HOME)
-========================================================================== */
+/* SEÇÃO HOME: Estrutura do Hero e Menu Principal */
 #home-content {
   display: flex;
   flex-direction: column;
@@ -424,9 +429,7 @@ h1 {
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
-/* ==========================================================================
-7. SEÇÃO: SOBRE (ABOUT)
-========================================================================== */
+/* SEÇÃO SOBRE: Container estilo Glassmorphism (otimizado sem blur pesado) */
 .about-embedded {
   width: 100%;
   padding: 40px;
@@ -434,8 +437,8 @@ h1 {
   text-align: left;
   border-radius: 8px;
   background: var(--cards);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* O desfoque consome muita performance. Removido para fluidez. */
+  backdrop-filter: none;
   border-top: 4px solid var(--borda-clara);
   border-bottom: 4px solid var(--borda-clara);
   box-shadow: 0 10px 40px var(--cor-sombra-box);
@@ -464,6 +467,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 25px;
 }
 
 .skill-badge {
@@ -507,9 +511,7 @@ h1 {
     linear-gradient(135deg, var(--borda-clara)) border-box;
 }
 
-/* ==========================================================================
-8. SEÇÃO: PROJETOS
-========================================================================== */
+/* SEÇÃO PROJETOS: Grade responsiva e cabeçalho lateral */
 .projects-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -537,14 +539,23 @@ h1 {
   padding: 10px 20px;
   margin-bottom: 20px;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   text-transform: uppercase;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--back-btn-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--borda-clara);
+
+  /* TEXTURA DE BOTÃO: Removido Glassmorphism, aplicado o padrão de gradiente dos outros botões */
+  background:
+    linear-gradient(
+        to bottom,
+        var(--btm-claro),
+        var(--btm-medio),
+        var(--btm-escuro)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-clara)) border-box;
+
+  border: 3px solid transparent;
   color: var(--textos);
   transform: translateZ(0);
 }
@@ -554,6 +565,19 @@ h1 {
   box-shadow: 0 0 15px var(--cor-sombra-btn-hover);
   color: var(--borda-escura);
   transform: translateX(-3px);
+}
+
+/* Hover específico para o botão voltar com as cores de destaque */
+.back-btn:hover {
+  background:
+    linear-gradient(
+        to bottom,
+        var(--btm-claro-h),
+        var(--btm-medio-h),
+        var(--btm-escuro-h)
+      )
+      padding-box,
+    linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
 .btn-icon {
@@ -585,8 +609,7 @@ h1 {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 3px solid var(--borda-clara);
   background: var(--cards);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: none;
   transform: translateZ(0);
 }
 
@@ -720,9 +743,7 @@ h1 {
     linear-gradient(135deg, var(--borda-escura)) border-box;
 }
 
-/* ==========================================================================
-10. FOOTER (RODAPÉ)
-========================================================================== */
+/* FOOTER: Rodapé com borda em gradiente */
 footer {
   align-self: stretch;
   margin-top: auto;
@@ -738,9 +759,10 @@ footer {
   border-image: linear-gradient(to right, var(--borda-clara)) 1;
 }
 
-/* ==========================================================================
-   11. RESPONSIVIDADE (MOBILE)
-   ========================================================================== */
+/* 
+   RESPONSIVIDADE (Mobile First)
+   Ajustes de layout para telas menores e lógica de navegação "Sticky".
+*/
 @media (max-width: 768px) {
   html,
   body {
