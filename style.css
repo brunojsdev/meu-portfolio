@@ -50,12 +50,9 @@
   --fundo-profundo: #03000a;
 
   --nuvem-indigo: rgba(75, 0, 130, 0.25);
-
   --nuvem-violeta: rgba(138, 43, 226, 0.2);
   --nuvem-magenta: rgba(200, 0, 255, 0.15);
-
   --nuvem-base: rgba(40, 0, 100, 0.3);
-
   --cor-subtitle-sec: #a5a3ff;
   --cor-sombra-texto: rgba(255, 170, 0, 0.3);
   --cor-sombra-btn-hover: rgba(255, 170, 0, 0.4);
@@ -115,6 +112,18 @@ body.light-mode .subtitle {
   background: none;
   -webkit-text-fill-color: var(--cor-subtitle-sec) !important;
   color: var(--cor-subtitle-sec);
+}
+
+body.light-mode .skill-badge,
+body.light-mode .tech-mini {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid var(--brilho-interface) !important;
+}
+
+body.light-mode .skill-badge span,
+body.light-mode .tech-mini span {
+  color: var(--brilho-interface);
+  filter: none;
 }
 
 /* 3. RESET E CONFIGURAÇÕES GERAIS */
@@ -229,7 +238,7 @@ h4 {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.27;
   pointer-events: none;
 }
 
@@ -477,20 +486,12 @@ h1 {
         var(--btm-claro)
       )
       padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    var(--brilho-interface) border-box;
 }
 
 .skill-badge span {
-  background: linear-gradient(
-    to right,
-    var(--destaque-medio),
-    var(--destaque-escuro),
-    var(--destaque-medio)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 4px var(--cor-sombra-btn-hover));
+  color: var(--brilho-interface);
+  filter: drop-shadow(0 0 4px rgba(139, 135, 255, 0.4));
 }
 
 .skill-badge:hover {
@@ -674,20 +675,12 @@ h1 {
         var(--btm-claro)
       )
       padding-box,
-    linear-gradient(135deg, var(--borda-clara)) border-box;
+    var(--brilho-interface) border-box;
 }
 
 .tech-mini span {
-  background: linear-gradient(
-    to right,
-    var(--destaque-medio),
-    var(--destaque-escuro),
-    var(--destaque-medio)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 4px var(--cor-sombra-texto));
+  color: var(--brilho-interface);
+  filter: drop-shadow(0 0 4px rgba(139, 135, 255, 0.4));
 }
 
 .project-actions {
