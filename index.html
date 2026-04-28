@@ -1,13 +1,15 @@
-<!-- 
-  ESTRUTURA PRINCIPAL (HTML5)
-  Este arquivo define a ossatura do Portfólio, utilizando o conceito de SPA (Single Page Application)
--->
-<!-- 
-  ESTRUTURA PRINCIPAL (HTML5)
-  Este arquivo define a organização das seções. O portfólio funciona como uma 
-  Single Page Application (SPA), onde o JS alterna a visibilidade das divs.
--->
 <!doctype html>
+<!--
+  ==========================================================================
+  ÍNDICE DO ARQUIVO (HTML)
+  1. CONFIGURAÇÕES E METADADOS (<head>)
+  2. FUNDO INTERATIVO (Canvas)
+  3. SEÇÃO HOME (Apresentação e Menu)
+  4. SEÇÃO SOBRE (Bio e Skills)
+  5. SEÇÃO PROJETOS (Galeria e Filtros)
+  6. RODAPÉ E SCRIPTS
+  ==========================================================================
+-->
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -24,32 +26,27 @@
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <!-- O Canvas é a camada de fundo onde as estrelas são desenhadas via código -->
+    <!-- 2. FUNDO INTERATIVO: Camada para animação de estrelas/partículas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- 
-      SEÇÃO 1: HOME 
-      Contém a apresentação principal, links de redes sociais e o resumo "Sobre".
-    -->
+    <!-- 3. SEÇÃO HOME: Tela de entrada com nome e menu principal -->
     <div id="home" class="section-container active">
       <header>
-        <!-- BOTÃO DE TEMA: Posicionado antes do nome para alinhamento mobile -->
-        <button
-          id="theme-toggle-btn"
-          class="theme-toggle-btn"
-          title="Alternar Modo Claro/Escuro"
-        >
-          <!-- Ícone para quando estiver no modo escuro (Estrela Amarela) -->
-          <i data-lucide="star" class="img-dark-mode"></i>
-          <!-- Ícone para quando estiver no modo claro (Estrela Riscada Roxa) -->
-          <i data-lucide="star-off" class="img-light-mode"></i>
-        </button>
-        <h1 id="main-name">Bruno J. Silveira</h1>
+        <div class="header-name-container">
+          <h1 id="main-name">Bruno J. Silveira</h1>
+          <button
+            class="theme-toggle-btn home-toggle"
+            title="Alternar Modo Claro/Escuro"
+          >
+            <i data-lucide="star" class="img-dark-mode"></i>
+            <i data-lucide="star-off" class="img-light-mode"></i>
+          </button>
+        </div>
         <p class="subtitle">Desenvolvedor Front-End Júnior</p>
       </header>
 
       <div id="home-content">
-        <!-- MENU PRINCIPAL: Botões que levam para links externos ou mudam de seção -->
+        <!-- MENU: Navegação externa e controle de seções SPA -->
         <nav class="main-menu">
           <a
             href="https://drive.google.com/file/d/1t2DajlJwI-84VLO5ucwGJvo1viQvGNV0/view"
@@ -57,14 +54,14 @@
             title="PDF do Currículo"
             target="_blank"
           >
-            📄 Currículo
+            <i data-lucide="file-text" class="btn-icon"></i> Currículo
           </a>
           <button
             class="menu-btn"
             onclick="showSection('projects')"
             title="Visualizar Projetos"
           >
-            📂 Projetos
+            <i data-lucide="folders" class="btn-icon"></i> Projetos
           </button>
           <a
             href="https://www.linkedin.com/in/bruno-j-silveira-b64763390"
@@ -72,7 +69,7 @@
             title="LinkedIn"
             target="_blank"
           >
-            🔗 LinkedIn
+            <i data-lucide="circle-user" class="btn-icon"></i> LinkedIn
           </a>
           <a
             href="https://github.com/brunojsdev"
@@ -80,11 +77,11 @@
             title="Github"
             target="_blank"
           >
-            🖥️ GitHub
+            <i data-lucide="laptop" class="btn-icon"></i> GitHub
           </a>
         </nav>
 
-        <!-- CARTÃO SOBRE: Box com informações detalhadas e lista de tecnologias -->
+        <!-- 4. SEÇÃO SOBRE: Detalhes profissionais e badges de tecnologias -->
         <section class="about-embedded">
           <div class="about-header">
             <h2>Sobre o Desenvolvedor</h2>
@@ -134,17 +131,23 @@
       </div>
     </div>
 
-    <!-- 
-      SEÇÃO 2: PROJETOS 
-      Esta div começa oculta e é exibida quando o usuário clica no botão "Projetos".
-    -->
+    <!-- 5. SEÇÃO PROJETOS: Hub de repositórios e galeria interativa -->
     <div id="projects" class="section-container">
       <div class="projects-wrapper">
-        <!-- BOTÃO VOLTAR: Agora com a mesma textura dos botões de menu, sem transparência excessiva -->
-        <button class="back-btn" id="back-btn" onclick="showSection('home')">
-          <i data-lucide="arrow-big-left" class="btn-icon"></i>
-          <span class="btn-text">Voltar ao Início</span>
-        </button>
+        <div class="projects-nav-bar">
+          <button class="back-btn" id="back-btn" onclick="showSection('home')">
+            <i data-lucide="arrow-big-left-dash" class="btn-icon"></i>
+            <span class="btn-text">Voltar ao Início</span>
+          </button>
+          <button
+            id="theme-toggle-btn"
+            class="theme-toggle-btn projects-toggle"
+            title="Alternar Modo Claro/Escuro"
+          >
+            <i data-lucide="star" class="img-dark-mode"></i>
+            <i data-lucide="star-off" class="img-light-mode"></i>
+          </button>
+        </div>
 
         <!-- Cabeçalho da Seção de Projetos -->
         <div class="projects-header">
@@ -185,45 +188,6 @@
                 </a>
                 <a
                   href="https://github.com/brunojsdev/lista-tarefas"
-                  target="_blank"
-                  class="action-btn code"
-                >
-                  Código &lt;/&gt;
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Projeto: Guia de Primeiros Socorros -->
-          <div class="project-card">
-            <div class="project-thumb">
-              <img src="img/sos.png" alt="Capa SOS" />
-            </div>
-            <div class="project-content">
-              <div>
-                <h4>Guia de Primeiros Socorros</h4>
-                <div class="project-techs">
-                  <span class="tech-mini"><span>HTML5</span></span>
-                  <span class="tech-mini"><span>CSS3</span></span>
-                  <span class="tech-mini"><span>JavaScript</span></span>
-                  <span class="tech-mini"><span>Lucide Icons</span></span>
-                  <span class="tech-mini"><span>Tailwind CSS</span></span>
-                </div>
-                <p class="project-desc">
-                  Uma página informativa com um guia simples e interativo para
-                  instruções de primeiros socorros.
-                </p>
-              </div>
-              <div class="project-actions">
-                <a
-                  href="https://brunojsdev.github.io/guia-primeiros-socorros/"
-                  target="_blank"
-                  class="action-btn demo"
-                >
-                  Ver Projeto ↗
-                </a>
-                <a
-                  href="https://github.com/brunojsdev/guia-primeiros-socorros"
                   target="_blank"
                   class="action-btn code"
                 >
@@ -464,11 +428,12 @@
       <!-- Fim Wrapper -->
     </div>
 
-    <!-- Rodapé simples -->
+    <!-- 6. RODAPÉ E SCRIPTS -->
     <footer>
       &copy; 2026 Bruno J. Silveira. Todos os direitos reservados.
     </footer>
 
+    <!-- Lógica de temas, canvas e navegação -->
     <script src="script.js"></script>
   </body>
 </html>
