@@ -1,7 +1,18 @@
-/* 
-   1. NAVEGAÇÃO E LÓGICA SPA
-   Controla qual div (.section-container) está visível e gerencia o histórico da URL.
+/*
+  ==========================================================================
+  ÍNDICE DO ARQUIVO (JavaScript)
+  1. NAVEGAÇÃO E LÓGICA SPA (Single Page Application)
+  2. SISTEMA DE TEMAS (Persistência e Toggle)
+  3. COMPORTAMENTO MOBILE (Sticky Navigation)
+  4. MOTOR DE ANIMAÇÃO (Canvas API - Efeito Espacial)
+     - Configurações e Variáveis
+     - Classe Star (Estrelas Geométricas)
+     - Classe ShootingStar (Cometas)
+     - Inicialização e Ciclo de Animação
+  ==========================================================================
 */
+
+/* 1. NAVEGAÇÃO E LÓGICA SPA: Alternância de seções sem recarregar a página */
 
 function showSection(sectionId) {
   // Oculta todas as seções antes de mostrar a desejada
@@ -33,11 +44,11 @@ window.addEventListener("hashchange", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Carregamento inicial baseado na URL
+  /* 1.1 Inicialização da Seção */
   const initialSection = window.location.hash.replace("#", "") || "home";
   showSection(initialSection);
 
-  // Persistência de Tema: Verifica se o usuário já escolheu o modo claro antes
+  /* 2. SISTEMA DE TEMAS: Carregamento e Listeners */
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light-mode");
@@ -46,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  // Listener para o botão de troca de tema
-  const themeBtn = document.getElementById("theme-toggle-btn");
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
+  // Listener para os botões de troca de tema (Home e Projetos)
+  const themeBtns = document.querySelectorAll(".theme-toggle-btn");
+  themeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
 
       const isLight = document.body.classList.contains("light-mode");
@@ -57,19 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (window.refreshSpace) window.refreshSpace();
     });
-  }
+  });
 });
 
-/* 
-   2. COMPORTAMENTO MOBILE
-   Faz o botão "Voltar" grudar no topo da tela quando o usuário rola a página de projetos no celular.
-*/
+/* 3. COMPORTAMENTO MOBILE: Torna a navegação fixa (sticky) ao rolar no celular */
 
 window.addEventListener("scroll", () => {
   const backBtn = document.getElementById("back-btn");
+  const themeBtn = document.getElementById("theme-toggle-btn");
   const projectsSection = document.getElementById("projects");
 
-  if (!backBtn || !projectsSection) return;
+  if (!backBtn || !projectsSection || !themeBtn) return;
 
   const isProjectsActive = projectsSection.classList.contains("active");
 
@@ -77,16 +86,15 @@ window.addEventListener("scroll", () => {
     // Se rolar mais de 20px, ele vira a barra fixa
     if (window.scrollY > 20) {
       backBtn.classList.add("scrolled");
+      themeBtn.classList.add("scrolled");
     } else {
       backBtn.classList.remove("scrolled");
+      themeBtn.classList.remove("scrolled");
     }
   }
 });
 
-/* 
-   3. MOTOR DE ANIMAÇÃO (CANVAS API)
-   Cria o efeito de espaço sideral. As estrelas agora têm 4 pontas e caem.
-*/
+/* 4. MOTOR DE ANIMAÇÃO: Renderização do fundo espacial interativo via Canvas */
 
 const canvas = document.getElementById("bg-canvas");
 
@@ -96,7 +104,7 @@ if (canvas) {
   let stars = [];
   let shootingStars = [];
 
-  // Paleta de cores dinâmica baseada no tema
+  /* 4.1 Configurações de Cores (Reativas ao Tema) */
   const darkStarColors = [
     "#ffffff",
     "#fff4e6",
@@ -121,7 +129,7 @@ if (canvas) {
     height = canvas.height = window.innerHeight;
   }
 
-  // Classe para gerenciar cada estrela individualmente
+  /* 4.2 Classe Star: Gerencia o comportamento das estrelas fixas/descendentes */
   class Star {
     constructor() {
       this.init();
@@ -207,7 +215,7 @@ if (canvas) {
     }
   }
 
-  // Classe para gerenciar as estrelas cadentes aleatórias
+  /* 4.3 Classe ShootingStar: Gerencia os cometas aleatórios */
   class ShootingStar {
     constructor() {
       this.reset();
@@ -273,7 +281,7 @@ if (canvas) {
     }
   }
 
-  // Inicializa o array de estrelas baseado na resolução da tela
+  /* 4.4 Gerenciamento e Inicialização */
   function initSpace() {
     resize();
     stars = [];
