@@ -5,7 +5,7 @@
   2. SISTEMA DE TEMAS (Persistência e Toggle)
   3. COMPORTAMENTO MOBILE (Sticky Navigation)
   4. MOTOR DE ANIMAÇÃO (Canvas API - Efeito Espacial)
-     - Configurações e Variáveis
+     - Configurações e Variáveis 
      - Classe Star (Estrelas Geométricas)
      - Classe ShootingStar (Cometas)
      - Inicialização e Ciclo de Animação
